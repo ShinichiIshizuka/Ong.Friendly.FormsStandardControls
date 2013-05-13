@@ -14,6 +14,8 @@ namespace Ong.Friendly.FormsStandardControls
         WindowsAppFriend _app;
 
         //@@@ FindNodeを追加
+        //閉じる（Expandの逆）
+        //Edit,Checkを追加
 
         /// <summary>
         /// コンストラクタ

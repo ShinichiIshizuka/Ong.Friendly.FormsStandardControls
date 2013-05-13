@@ -5,6 +5,8 @@ using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
 {
+    //@@@ 石川さん（メニュー系全般）
+
     /// <summary>
     /// TypeがSystem.Windows.Forms.MenuStripのウィンドウに対応した操作を提供します
     /// </summary>

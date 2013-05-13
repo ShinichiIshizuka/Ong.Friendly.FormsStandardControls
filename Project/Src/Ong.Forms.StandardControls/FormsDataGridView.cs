@@ -6,6 +6,7 @@ using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
 {
+    //@@@ Îì‚³‚ñ
     //@@@ mada
     //    GetText‚ğ”z—ñ‚Åæ‚è‚½‚¢
     //    ChangeText‚¾‚¯‚Å‚È‚­ACombobox‚È‚Ç‚à—~‚µ‚¢
