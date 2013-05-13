@@ -46,14 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\FormsButton.cs" />
-    <Compile Include="Controls\FormsCheckBox.cs" />
-    <Compile Include="Controls\FormsComboBox.cs" />
-    <Compile Include="Controls\FormsTextBox.cs" />
-    <Compile Include="Controls\FormsTreeNode.cs" />
-    <Compile Include="Controls\FormsTreeView.cs" />
-    <Compile Include="Controls\FormsListBox.cs" />
-    <Compile Include="Controls\FormsRadioButton.cs" />
+    <Compile Include="FormsButton.cs" />
+    <Compile Include="FormsCheckBox.cs" />
+    <Compile Include="FormsComboBox.cs" />
+    <Compile Include="FormsTextBox.cs" />
+    <Compile Include="FormsTreeNode.cs" />
+    <Compile Include="FormsTreeView.cs" />
+    <Compile Include="FormsListBox.cs" />
+    <Compile Include="FormsRadioButton.cs" />
     <Compile Include="Inside\Initializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,22 +61,22 @@
     <Content Include="Settings\Ong.Friendly.FormsStandardControls.Plugin.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\AppVarWrapBase.cs" />
-    <Compile Include="Controls\FormsToolStripItem.cs" />
+    <Compile Include="AppVarWrapBase.cs" />
+    <Compile Include="FormsToolStripItem.cs" />
     <Compile Include="Inside\AppVarWrapper.cs" />
-    <Compile Include="Inside\FormsControlBase.cs" />
-    <Compile Include="Controls\FormsRichTextBox.cs" />
-    <Compile Include="Controls\FormsCheckedListBox.cs" />
-    <Compile Include="Controls\FormsListView.cs" />
-    <Compile Include="Controls\FormsListViewItem.cs" />
-    <Compile Include="Controls\FormsTabControl.cs" />
-    <Compile Include="Controls\FormsDataGridView.cs" />
-    <Compile Include="Controls\FormsContextMenuStrip.cs" />
-    <Compile Include="Controls\FormsMenuStrip.cs" />
-    <Compile Include="Controls\FormsToolStrip.cs" />
-    <Compile Include="Controls\FormsToolStripMenuItem.cs" />
-    <Compile Include="Controls\FormsNumericUpDownButtons.cs" />
-    <Compile Include="Controls\FormsNumericUpDownEdit.cs" />
+    <Compile Include="FormsControlBase.cs" />
+    <Compile Include="FormsRichTextBox.cs" />
+    <Compile Include="FormsCheckedListBox.cs" />
+    <Compile Include="FormsListView.cs" />
+    <Compile Include="FormsListViewItem.cs" />
+    <Compile Include="FormsTabControl.cs" />
+    <Compile Include="FormsDataGridView.cs" />
+    <Compile Include="FormsContextMenuStrip.cs" />
+    <Compile Include="FormsMenuStrip.cs" />
+    <Compile Include="FormsToolStrip.cs" />
+    <Compile Include="FormsToolStripMenuItem.cs" />
+    <Compile Include="FormsNumericUpDownButtons.cs" />
+    <Compile Include="FormsNumericUpDownEdit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

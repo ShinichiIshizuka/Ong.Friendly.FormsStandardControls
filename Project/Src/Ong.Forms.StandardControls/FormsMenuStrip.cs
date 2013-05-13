@@ -5,19 +5,20 @@ using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
+using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// FormsControlBase
+    /// WindowControlがSystem.Windows.Forms.MenuStripのウィンドウに対応した操作を提供します
     /// </summary>
-    public class FormsControlBase : WindowControl
+    public class FormsMenuStrip : FormsControlBase
     {
         /// <summary>
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsControlBase(WindowControl src)
+        public FormsMenuStrip(FormsControlBase src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());
@@ -28,19 +29,27 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="app">アプリケーション操作クラス</param>
         /// <param name="appVar">アプリケーション内変数</param>
-        public FormsControlBase(WindowsAppFriend app, AppVar appVar)
+        public FormsMenuStrip(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
             Initializer.Initialize(app, GetType());
         }
-        
+
         /// <summary>
-        /// テキストを取得します
+        /// 表示文字列からアイテムを検索します。
         /// </summary>
-        /// <returns>テキスト</returns>
-        public String Text
+        /// <param name="text">表示文字列</param>
+        /// <returns>表示文字列</returns>
+        public FormsToolStripMenuItem FindItem(string text)
         {
-            get { return (String)this["Text"]().Core; }
+            foreach (AppVar element in new Enumerate(this["Items"]()))
+            {
+                if (element["Text"]().ToString() == text)
+                {
+                    return new FormsToolStripMenuItem(element);
+                }
+            }
+            return null;
         }
     }
 }
