@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsStandardControlsTestForm", "FormsStandardControls\FormsStandardControlsTestForm.csproj", "{72494184-1F9F-410E-93CD-27D2DC3D5843}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCode", "Test\TestCode.csproj", "{21D50630-5045-4888-B457-869574205F6E}"
