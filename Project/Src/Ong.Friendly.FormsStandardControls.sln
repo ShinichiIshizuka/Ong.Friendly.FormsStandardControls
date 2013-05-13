@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsStandardControlsTestForm", "FormsStandardControls\FormsStandardControlsTestForm.csproj", "{72494184-1F9F-410E-93CD-27D2DC3D5843}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCode", "Test\TestCode.csproj", "{21D50630-5045-4888-B457-869574205F6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ong.Friendly.FormsStandardControls", "Ong.Forms.StandardControls\Ong.Friendly.FormsStandardControls.csproj", "{1CA63B58-74E7-4780-8C76-98B9082820E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72494184-1F9F-410E-93CD-27D2DC3D5843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72494184-1F9F-410E-93CD-27D2DC3D5843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72494184-1F9F-410E-93CD-27D2DC3D5843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72494184-1F9F-410E-93CD-27D2DC3D5843}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D50630-5045-4888-B457-869574205F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D50630-5045-4888-B457-869574205F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D50630-5045-4888-B457-869574205F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D50630-5045-4888-B457-869574205F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CA63B58-74E7-4780-8C76-98B9082820E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CA63B58-74E7-4780-8C76-98B9082820E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CA63B58-74E7-4780-8C76-98B9082820E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CA63B58-74E7-4780-8C76-98B9082820E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

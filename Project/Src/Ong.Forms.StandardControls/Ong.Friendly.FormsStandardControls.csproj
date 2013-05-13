@@ -1,0 +1,82 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1CA63B58-74E7-4780-8C76-98B9082820E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ong.Friendly.FormsStandardControls</RootNamespace>
+    <AssemblyName>Ong.Friendly.FormsStandardControls</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Ong.Friendly.Forms.StandardControls.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Ong.Friendly.FormsStandardControls.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Codeer.Friendly, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.Friendly.Windows, Version=1.6.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=1.6.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\FormsButton.cs" />
+    <Compile Include="Controls\FormsCheckBox.cs" />
+    <Compile Include="Controls\FormsComboBox.cs" />
+    <Compile Include="Controls\FormsTextBox.cs" />
+    <Compile Include="Controls\FormsTreeNode.cs" />
+    <Compile Include="Controls\FormsTreeView.cs" />
+    <Compile Include="Controls\FormsListBox.cs" />
+    <Compile Include="Controls\FormsRadioButton.cs" />
+    <Compile Include="Inside\Initializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Settings\Ong.Friendly.FormsStandardControls.Plugin.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\AppVarWrapBase.cs" />
+    <Compile Include="Controls\FormsToolStripItem.cs" />
+    <Compile Include="Inside\AppVarWrapper.cs" />
+    <Compile Include="Inside\WindowControlBase.cs" />
+    <Compile Include="Controls\FormsRichTextBox.cs" />
+    <Compile Include="Controls\FormsCheckedListBox.cs" />
+    <Compile Include="Controls\FormsListView.cs" />
+    <Compile Include="Controls\FormsListViewItem.cs" />
+    <Compile Include="Controls\FormsTabControl.cs" />
+    <Compile Include="Controls\FormsDataGridView.cs" />
+    <Compile Include="Controls\FormsContextMenuStrip.cs" />
+    <Compile Include="Controls\FormsMenuStrip.cs" />
+    <Compile Include="Controls\FormsToolStrip.cs" />
+    <Compile Include="Controls\FormsToolStripMenuItem.cs" />
+    <Compile Include="Controls\FormsNumericUpDownButtons.cs" />
+    <Compile Include="Controls\FormsNumericUpDownEdit.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

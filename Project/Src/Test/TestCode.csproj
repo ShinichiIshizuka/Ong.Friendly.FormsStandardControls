@@ -1,0 +1,78 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{21D50630-5045-4888-B457-869574205F6E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Codeer.Friendly, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.Friendly.Windows, Version=1.6.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=1.6.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.Friendly.Windows.NativeStandardControls, Version=0.9.3.0, Culture=neutral, PublicKeyToken=90759bf0c8b8639e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\Codeer\TestAssistant\v1.2.0.0\Codeer.Friendly.Windows.NativeStandardControls.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ButtonTest.cs" />
+    <Compile Include="CheckBoxTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="TreeViewTest.cs" />
+    <Compile Include="ComboBoxTest.cs" />
+    <Compile Include="RadioButtonTest.cs" />
+    <Compile Include="TextBoxTest.cs" />
+    <Compile Include="ListBoxTest.cs" />
+    <Compile Include="RichTextBoxTest.cs" />
+    <Compile Include="FormsCheckedListBoxTest.cs" />
+    <Compile Include="TabControlTest.cs" />
+    <Compile Include="ListViewTest.cs" />
+    <Compile Include="DataGridViewTest.cs" />
+    <Compile Include="ContextMenuStripTest.cs" />
+    <Compile Include="MenuStripTest.cs" />
+    <Compile Include="NumericUpDownTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ong.Forms.StandardControls\Ong.Friendly.FormsStandardControls.csproj">
+      <Project>{1CA63B58-74E7-4780-8C76-98B9082820E6}</Project>
+      <Name>Ong.Friendly.FormsStandardControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
