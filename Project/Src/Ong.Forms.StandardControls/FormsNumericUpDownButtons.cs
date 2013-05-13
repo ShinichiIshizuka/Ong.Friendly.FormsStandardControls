@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
@@ -8,8 +5,10 @@ using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
 {
+    //@@@ NumericUpdown１つで対応できるはず。
+
     /// <summary>
-    /// Windows.Forms.NumericUpDownButtonsのウィンドウに対応した操作を提供します
+    /// TypeがWindows.Forms.NumericUpDownButtonsのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsNumericUpDownButtons : FormsControlBase
     {
@@ -17,7 +16,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsNumericUpDownButtons(FormsControlBase src)
+        public FormsNumericUpDownButtons(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

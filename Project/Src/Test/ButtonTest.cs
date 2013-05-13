@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using NUnit.Framework;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
@@ -8,7 +6,6 @@ using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using Codeer.Friendly.Windows.NativeStandardControls;
-using System.Windows.Forms;
 namespace Test
 {
     /// <summary>

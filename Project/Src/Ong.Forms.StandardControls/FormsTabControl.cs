@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
@@ -9,7 +6,7 @@ using Ong.Friendly.FormsStandardControls.Inside;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// WindowControlがSystem.Windows.Forms.TabControlのウィンドウに対応した操作を提供します
+    /// TypeがWindowControlがSystem.Windows.Forms.TabControlのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsTabControl : FormsControlBase
     {
@@ -17,7 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsTabControl(FormsControlBase src)
+        public FormsTabControl(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());
@@ -66,7 +63,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="index">タブインデックス（０始まり）</param>
         /// <param name="async">非同期オブジェクト</param>
-        public void EmulateTabSelect(int index,Async async)
+        public void EmulateTabSelect(int index, Async async)
         {
             this["SelectedIndex", async](index);
         }

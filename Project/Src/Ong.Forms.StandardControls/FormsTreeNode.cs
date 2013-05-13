@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using Codeer.Friendly.Windows.Grasp;
-using Codeer.Friendly.Windows;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
+using Codeer.Friendly.Windows;
+using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -14,13 +11,19 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
     public class FormsTreeNode:AppVarWrapper
     {
+        WindowsAppFriend _app;
+
+        //@@@ FindNodeを追加
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
+        /// <param name="app">アプリケーション操作クラス</param>
         /// <param name="appVar">アプリケーション内変数</param>
-        public FormsTreeNode(AppVar appVar)
+        public FormsTreeNode(WindowsAppFriend app, AppVar appVar)
             : base(appVar)
         {
+            _app = app;
         }
     
         /// <summary>
@@ -30,7 +33,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>ノード</returns>
         public FormsTreeNode GetNode(int index)
         {
-            return new FormsTreeNode(AppVar["Nodes"]()["[]"](index));
+            return new FormsTreeNode(_app, AppVar["Nodes"]()["[]"](index));
         }
 
         /// <summary>
@@ -86,6 +89,53 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateExpand(Async async)
         {
             this["Expand", async]();
+        }
+
+        /// <summary>
+        /// ノードを指定されたテキストで検索します
+        /// </summary>
+        /// <param name="nodeText">各ノードのテキスト</param>
+        /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります</returns>
+        public FormsTreeNode FindNode(string nodeText)
+        {
+            AppVar returnNode = (_app[GetType(), "FindNodeInTarget"](AppVar, nodeText));
+            if (returnNode != null)
+            {
+                return new FormsTreeNode(_app, returnNode);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// ノードを指定されたテキストで検索します（内部）
+        /// </summary>
+        /// <param name="treeNode">ノード</param>
+        /// <param name="nodeText">検索するテキスト</param>
+        /// <returns></returns>
+        private static TreeNode FindNodeInTarget(TreeNode treeNode, string nodeText)
+        {
+            TreeNode findNode;
+            if (treeNode == null)
+            {
+                return null;
+            }
+            if (treeNode.Text == nodeText)
+            {
+                return treeNode;
+            }
+            foreach (TreeNode node in treeNode.Nodes)
+            {
+                if (node.Text == nodeText)
+                {
+                    return node;
+                }
+                findNode = FindNodeInTarget(node, nodeText);
+                if (findNode != null)
+                {
+                    return findNode;
+                }
+            }
+            return null;
         }
     }
 }

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
@@ -11,7 +9,7 @@ using System.Reflection;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// WindowControlがSystem.Windows.Forms.RadioButtonのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.RadioButtonのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsRadioButton : FormsControlBase
     {
@@ -19,7 +17,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsRadioButton(FormsControlBase src)
+        public FormsRadioButton(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

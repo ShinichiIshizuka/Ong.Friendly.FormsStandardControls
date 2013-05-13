@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
@@ -10,7 +7,7 @@ using Ong.Friendly.FormsStandardControls.Inside;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// WindowControlがSystem.Windows.Forms.TreeViewのウィンドウに対応した操作を提供します
+    /// TypeがWindowControlがSystem.Windows.Forms.TreeViewのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsTreeView : FormsControlBase
     {
@@ -18,7 +15,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsTreeView(FormsControlBase src)
+        public FormsTreeView(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());
@@ -42,7 +39,7 @@ namespace Ong.Friendly.FormsStandardControls
         {
             get
             {
-                return new FormsTreeNode(this["SelectedNode"]());
+                return new FormsTreeNode(App, this["SelectedNode"]());
             }
         }
 
@@ -76,7 +73,7 @@ namespace Ong.Friendly.FormsStandardControls
             AppVar returnNode = (App[GetType(), "FindNodeInTarget"](AppVar, nodeText));
             if (returnNode != null)
             {
-                return new FormsTreeNode(returnNode);
+                return new FormsTreeNode(App, returnNode);
             }
             return null;
         }

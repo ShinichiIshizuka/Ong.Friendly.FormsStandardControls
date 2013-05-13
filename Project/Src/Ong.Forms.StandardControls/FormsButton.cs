@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
@@ -9,7 +6,7 @@ using Ong.Friendly.FormsStandardControls.Inside;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// WindowControlがSystem.Windows.Forms.Buttonのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.Buttonのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsButton : FormsControlBase
     {
@@ -24,7 +21,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
- 　     /// コンストラクタです
+        /// コンストラクタです
         /// </summary>
         /// <param name="app">アプリケーション操作クラス</param>
         /// <param name="appVar">アプリケーション内変数</param>

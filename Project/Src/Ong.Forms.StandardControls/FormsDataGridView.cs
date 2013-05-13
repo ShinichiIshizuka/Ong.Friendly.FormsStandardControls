@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
@@ -9,8 +6,13 @@ using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
 {
+    //@@@ mada
+    //    GetTextを配列で取りたい
+    //    ChangeTextだけでなく、Comboboxなども欲しい
+    //    ChangeSelectが欲しい
+
     /// <summary>
-    /// WindowControlがSystem.Windows.Forms.DataGridViewのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.DataGridViewのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsDataGridView : FormsControlBase
     {
@@ -18,7 +20,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsDataGridView(FormsControlBase src)
+        public FormsDataGridView(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

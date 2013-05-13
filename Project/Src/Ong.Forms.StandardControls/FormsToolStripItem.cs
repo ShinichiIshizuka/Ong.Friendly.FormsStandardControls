@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Codeer.Friendly;
+﻿using Codeer.Friendly;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -10,6 +7,8 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
     public class FormsToolStripItem : AppVarWrapBase
     {
+        //@@@ いくつかのコントロールがあるはずなので対応が必要
+        //    メニュー系は、もう少し使いやすい構成にしたい。
         /// <summary>
         /// コンストラクタ
         /// </summary>

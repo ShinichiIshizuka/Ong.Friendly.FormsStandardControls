@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
@@ -9,8 +6,10 @@ using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
 {
+    //@@@ 編集系？もう少しI/Fを見直すこと
+
     /// <summary>
-    /// WindowControlがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsListView : FormsControlBase
     {
@@ -18,7 +17,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsListView(FormsControlBase src)
+        public FormsListView(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

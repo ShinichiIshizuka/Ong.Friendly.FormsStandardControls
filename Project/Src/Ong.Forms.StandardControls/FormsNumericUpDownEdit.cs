@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
@@ -9,7 +6,7 @@ using Ong.Friendly.FormsStandardControls.Inside;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// Windows.Forms.NumericUpDownEditのウィンドウに対応した操作を提供します
+    /// TypeがWindows.Forms.NumericUpDownEditのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsNumericUpDownEdit : FormsControlBase
     {
@@ -17,7 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsNumericUpDownEdit(FormsControlBase src)
+        public FormsNumericUpDownEdit(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

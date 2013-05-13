@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
-using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
@@ -10,7 +7,7 @@ using Ong.Friendly.FormsStandardControls.Inside;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// WindowControlがSystem.Windows.Forms.CheckListBoxのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.CheckdListBoxのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsCheckedListBox : FormsControlBase
     {
@@ -40,7 +37,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="index">インデックス</param>
         /// <param name="value">チェック状態</param>
-        public void EmulateCheckState(int index,CheckState value)
+        public void EmulateCheckState(int index, CheckState value)
         {
             this["SetItemCheckState"](index, value);
         }

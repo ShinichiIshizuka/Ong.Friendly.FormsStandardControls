@@ -1,17 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
-using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
 using System.Reflection;
+using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// WindowControlがSystem.Windows.Forms.CheckBoxのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.CheckBoxのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsCheckBox : FormsControlBase
     {
@@ -19,7 +17,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsCheckBox(FormsControlBase src)
+        public FormsCheckBox(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

@@ -13,8 +13,8 @@
       <PluginType>Ong.Friendly.FormsStandardControls.FormsCheckBox</PluginType>
     </PluginClassPair>
     <PluginClassPair>
-      <TargetType>System.Windows.Forms.CheckListBox</TargetType>
-      <PluginType>Ong.Friendly.FormsStandardControls.FormsCheckListBox</PluginType>
+      <TargetType>System.Windows.Forms.CheckedListBox</TargetType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsCheckedListBox</PluginType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.ComboBox</TargetType>

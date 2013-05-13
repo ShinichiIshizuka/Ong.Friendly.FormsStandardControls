@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
-using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// WindowControlがSystem.Windows.Forms.MenuStripのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.MenuStripのウィンドウに対応した操作を提供します
     /// </summary>
     public class FormsMenuStrip : FormsControlBase
     {
@@ -18,7 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsMenuStrip(FormsControlBase src)
+        public FormsMenuStrip(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());
