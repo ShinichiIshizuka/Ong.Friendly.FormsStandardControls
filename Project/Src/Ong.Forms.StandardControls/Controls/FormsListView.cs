@@ -12,13 +12,13 @@ namespace Ong.Friendly.FormsStandardControls
     /// <summary>
     /// WindowControlがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します
     /// </summary>
-    public class FormsListView : WindowControlBase
+    public class FormsListView : FormsControlBase
     {
         /// <summary>
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsListView(WindowControlBase src)
+        public FormsListView(FormsControlBase src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

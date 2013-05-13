@@ -13,13 +13,13 @@ namespace Ong.Friendly.FormsStandardControls
     /// <summary>
     /// WindowControlがSystem.Windows.Forms.RadioButtonのウィンドウに対応した操作を提供します
     /// </summary>
-    public class FormsRadioButton : WindowControlBase
+    public class FormsRadioButton : FormsControlBase
     {
         /// <summary>
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsRadioButton(WindowControlBase src)
+        public FormsRadioButton(FormsControlBase src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

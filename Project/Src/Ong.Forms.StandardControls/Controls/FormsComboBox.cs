@@ -13,13 +13,13 @@ namespace Ong.Friendly.FormsStandardControls
     /// <summary>
     /// WindowControlがSystem.Windows.Forms.ComboBoxのウィンドウに対応した操作を提供します
     /// </summary>
-    public class FormsComboBox : WindowControlBase
+    public class FormsComboBox : FormsControlBase
     {
         /// <summary>
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsComboBox(WindowControlBase src)
+        public FormsComboBox(FormsControlBase src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

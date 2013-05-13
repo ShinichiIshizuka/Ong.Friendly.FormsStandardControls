@@ -13,13 +13,13 @@ namespace Ong.Friendly.FormsStandardControls
     /// <summary>
     /// WindowControlがSystem.Windows.Forms.CheckBoxのウィンドウに対応した操作を提供します
     /// </summary>
-    public class FormsCheckBox : WindowControlBase
+    public class FormsCheckBox : FormsControlBase
     {
         /// <summary>
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsCheckBox(WindowControlBase src)
+        public FormsCheckBox(FormsControlBase src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

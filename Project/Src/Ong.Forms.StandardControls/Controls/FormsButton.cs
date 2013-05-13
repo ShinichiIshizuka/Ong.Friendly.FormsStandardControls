@@ -11,13 +11,13 @@ namespace Ong.Friendly.FormsStandardControls
     /// <summary>
     /// WindowControlがSystem.Windows.Forms.Buttonのウィンドウに対応した操作を提供します
     /// </summary>
-    public class FormsButton : WindowControlBase
+    public class FormsButton : FormsControlBase
     {
         /// <summary>
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsButton(WindowControlBase src)
+        public FormsButton(WindowControl src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());

@@ -64,7 +64,7 @@
     <Compile Include="Controls\AppVarWrapBase.cs" />
     <Compile Include="Controls\FormsToolStripItem.cs" />
     <Compile Include="Inside\AppVarWrapper.cs" />
-    <Compile Include="Inside\WindowControlBase.cs" />
+    <Compile Include="Inside\FormsControlBase.cs" />
     <Compile Include="Controls\FormsRichTextBox.cs" />
     <Compile Include="Controls\FormsCheckedListBox.cs" />
     <Compile Include="Controls\FormsListView.cs" />

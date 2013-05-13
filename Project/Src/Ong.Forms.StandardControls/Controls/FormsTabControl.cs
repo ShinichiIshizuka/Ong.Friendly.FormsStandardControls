@@ -11,13 +11,13 @@ namespace Ong.Friendly.FormsStandardControls
     /// <summary>
     /// WindowControlがSystem.Windows.Forms.TabControlのウィンドウに対応した操作を提供します
     /// </summary>
-    public class FormsTabControl : WindowControlBase
+    public class FormsTabControl : FormsControlBase
     {
         /// <summary>
         /// コンストラクタです
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
-        public FormsTabControl(WindowControlBase src)
+        public FormsTabControl(FormsControlBase src)
             : base(src)
         {
             Initializer.Initialize(App, GetType());
