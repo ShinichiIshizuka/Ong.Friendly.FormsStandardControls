@@ -56,6 +56,9 @@
     <Compile Include="FormsRadioButton.cs" />
     <Compile Include="Inside\Initializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormsToolStripComboBox.cs" />
+    <Compile Include="FormsToolStripButton.cs" />
+    <Compile Include="FormsToolStripTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings\Ong.Friendly.FormsStandardControls.Plugin.xml" />
@@ -71,10 +74,7 @@
     <Compile Include="FormsListViewItem.cs" />
     <Compile Include="FormsTabControl.cs" />
     <Compile Include="FormsDataGridView.cs" />
-    <Compile Include="FormsContextMenuStrip.cs" />
-    <Compile Include="FormsMenuStrip.cs" />
     <Compile Include="FormsToolStrip.cs" />
-    <Compile Include="FormsToolStripMenuItem.cs" />
     <Compile Include="FormsNumericUpDownButtons.cs" />
     <Compile Include="FormsNumericUpDownEdit.cs" />
   </ItemGroup>

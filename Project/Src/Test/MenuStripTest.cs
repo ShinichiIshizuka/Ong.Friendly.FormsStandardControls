@@ -47,8 +47,8 @@ namespace Test
         [Test]
         public void TestMenuStripClickmenu001ToolStripMenuItem()
         {
-            FormsMenuStrip menustrip1 = new FormsMenuStrip(app, testDlg["menuStrip1"]());
-            FormsToolStripMenuItem menuitem = menustrip1.FindItem("Menu001");
+            FormsToolStrip menustrip1 = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            FormsToolStripItem menuitem = menustrip1.FindItem("Menu001");
             menuitem.EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(100, count);
@@ -60,8 +60,8 @@ namespace Test
         [Test]
         public void TestMenuStripClickmenu00101ToolStripMenuItem()
         {
-            FormsMenuStrip menustrip1 = new FormsMenuStrip(app, testDlg["menuStrip1"]());
-            FormsToolStripMenuItem menuitem1 = menustrip1.FindItem("Menu001").FindItem("Menu001-01");
+            FormsToolStrip menustrip1 = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            FormsToolStripItem menuitem1 = menustrip1.FindItem("Menu001", "Menu001-01");
             menuitem1.EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(101, count);

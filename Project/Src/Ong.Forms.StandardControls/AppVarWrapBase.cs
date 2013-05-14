@@ -1,5 +1,6 @@
 ﻿using System;
 using Codeer.Friendly;
+using Codeer.Friendly.Windows;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -8,19 +9,27 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
     public class AppVarWrapBase
     {
+        WindowsAppFriend _app;
         AppVar _appVar;
 
         /// <summary>
         /// アプリケーション操作クラス
+        /// </summary>
+        public WindowsAppFriend App { get { return _app; } }
+
+        /// <summary>
+        /// アプリケーション変数操作クラス
         /// </summary>
         public AppVar AppVar { get { return _appVar; } }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
+        /// <param name="app">対象アプリ操作クラス</param>
         /// <param name="appVar">対象アプリ内変数操作クラス</param>
-        internal AppVarWrapBase(AppVar appVar)
+        internal AppVarWrapBase(WindowsAppFriend app, AppVar appVar)
         {
+            _app = app;
             _appVar = appVar;
         }
 

@@ -22,7 +22,7 @@
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.ContextMenuStrip</TargetType>
-      <PluginType>Ong.Friendly.FormsStandardControls.FormsContextMenuStrip</PluginType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsToolStrip</PluginType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.DataGridView</TargetType>
@@ -42,7 +42,7 @@
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.MenuStrip</TargetType>
-      <PluginType>Ong.Friendly.FormsStandardControls.FormsMenuStrip</PluginType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsToolStrip</PluginType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.UpDownBase+UpDownButtons</TargetType>
@@ -70,7 +70,7 @@
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.ToolStrip</TargetType>
-      <PluginType>Ong.Friendly.FormsStandardControls.FormsTreeNode</PluginType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsToolStrip</PluginType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.TreeView</TargetType>

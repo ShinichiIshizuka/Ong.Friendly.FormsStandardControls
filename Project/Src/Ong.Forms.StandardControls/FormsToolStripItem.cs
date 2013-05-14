@@ -1,4 +1,5 @@
 ﻿using Codeer.Friendly;
+using Codeer.Friendly.Windows;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -7,13 +8,12 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
     public class FormsToolStripItem : AppVarWrapBase
     {
-        //@@@ いくつかのコントロールがあるはずなので対応が必要
-        //    メニュー系は、もう少し使いやすい構成にしたい。
         /// <summary>
         /// コンストラクタ
         /// </summary>
+        /// <param name="app">対象アプリ操作クラス</param>
         /// <param name="appVar">対象アプリケーション内変数操作クラス</param>
-        public FormsToolStripItem(AppVar appVar) : base(appVar) { }
+        public FormsToolStripItem(WindowsAppFriend app, AppVar appVar) : base(app, appVar) { }
 
         /// <summary>
         /// クリックをエミュレートします。

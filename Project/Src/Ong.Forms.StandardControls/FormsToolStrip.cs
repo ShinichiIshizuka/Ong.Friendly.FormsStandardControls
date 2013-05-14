@@ -1,13 +1,14 @@
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
+using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
     /// ツールストリップ
     /// </summary>
-    public class FormsToolStrip : WindowControl
+    public class FormsToolStrip : FormsControlBase
     {
         /// <summary>
         /// コンストラクタです。
@@ -27,38 +28,129 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// 子アイテムを取得します。
         /// </summary>
-        /// <param name="index">インデックス。</param>
-        /// <returns></returns>
-        public FormsToolStripItem GetItem(int index)
+        /// <param name="indexs">インデックス。</param>
+        /// <returns>子アイテム</returns>
+        public FormsToolStripItem GetItem(params int[] indexs)
         {
-            return new FormsToolStripItem(this["Items"](index));
+            return new FormsToolStripItem(App, App[GetType(), "GetItemInTarget"](AppVar, indexs));
         }
 
         /// <summary>
         /// 子アイテムを取得します。
         /// </summary>
-        /// <param name="key">キーとなるインデックスです。</param>
-        /// <returns></returns>
-        public FormsToolStripItem GetItem(string key)
+        /// <param name="keys">キーとなるインデックスです。</param>
+        /// <returns>子アイテム</returns>
+        public FormsToolStripItem GetItem(params string[] keys)
         {
-            return new FormsToolStripItem(this["Items"](key));
+            return new FormsToolStripItem(App, App[GetType(), "GetItemInTarget"](AppVar, keys));
         }
 
         /// <summary>
         /// 表示文字列からアイテムを検索します。
         /// </summary>
-        /// <param name="text">表示文字列</param>
-        /// <returns>表示文字列</returns>
-        public FormsToolStripItem FindItem(string text)
+        /// <param name="texts">表示文字列。</param>
+        /// <returns>表示文字列。</returns>
+        public FormsToolStripItem FindItem(params string[] texts)
         {
-            foreach (AppVar element in new Enumerate(this["Items"]()))
+            return new FormsToolStripItem(App, App[GetType(), "FindItemInTarget"](AppVar, texts));
+        }
+
+        /// <summary>
+        /// アイテムを取得します。
+        /// </summary>
+        /// <param name="toolStrip">ツールストリップ。</param>
+        /// <param name="indexs">インデックス。</param>
+        /// <returns>アイテム。</returns>
+        static ToolStripItem GetItemInTarget(ToolStrip toolStrip, params int[] indexs)
+        {
+            int currentIndex = 0;
+            ToolStripItemCollection items = toolStrip.Items;
+            while (true)
             {
-                if (element["Text"]().ToString() == text)
+                ToolStripItem current = items[indexs[currentIndex]];
+                if (indexs.Length - 1 == currentIndex)
                 {
-                    return new FormsToolStripItem(element);
+                    return current;
                 }
+                else
+                {
+                    currentIndex++;
+                }
+                ToolStripDropDownItem dropDown = current as ToolStripDropDownItem;
+                if (dropDown == null)
+                {
+                    return null;
+                }
+                items = dropDown.DropDownItems;
             }
-            return null;
+        }
+
+        /// <summary>
+        /// アイテムを取得します。
+        /// </summary>
+        /// <param name="toolStrip">ツールストリップ。</param>
+        /// <param name="keys">インデックス。</param>
+        /// <returns>アイテム。</returns>
+        static ToolStripItem GetItemInTarget(ToolStrip toolStrip, params string[] keys)
+        {
+            int currentIndex = 0;
+            ToolStripItemCollection items = toolStrip.Items;
+            while (true)
+            {
+                ToolStripItem current = items[keys[currentIndex]];
+                if (keys.Length - 1 == currentIndex)
+                {
+                    return current;
+                }
+                else
+                {
+                    currentIndex++;
+                }
+                ToolStripDropDownItem dropDown = current as ToolStripDropDownItem;
+                if (dropDown == null)
+                {
+                    return null;
+                }
+                items = dropDown.DropDownItems;
+            }
+        }
+
+        /// <summary>
+        /// 表示文字列からアイテムを検索します。
+        /// </summary>
+        /// <param name="toolStrip">ツールストリップ。</param>
+        /// <param name="texts">表示文字列。</param>
+        /// <returns>アイテム。</returns>
+        static ToolStripItem FindItemInTarget(ToolStrip toolStrip, string[] texts)
+        {
+            int currentIndex = 0;
+            ToolStripItemCollection items = toolStrip.Items;
+            while (true)
+            {
+                ToolStripItem current = null;
+                foreach (ToolStripItem element in items)
+                {
+                    if (element.Text == texts[currentIndex])
+                    {
+                        if (texts.Length - 1 == currentIndex)
+                        {
+                            return element;
+                        }
+                        else
+                        {
+                            current = element;
+                            currentIndex++;
+                            break;
+                        }
+                    }
+                }
+                ToolStripDropDownItem dropDown = current as ToolStripDropDownItem;
+                if (dropDown == null)
+                {
+                    return null;
+                }
+                items = dropDown.DropDownItems;
+            }
         }
     }
 }

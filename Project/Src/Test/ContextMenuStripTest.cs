@@ -47,7 +47,7 @@ namespace Test
         [Test]
         public void TestContextMenuStripClick1()
         {
-            FormsContextMenuStrip contextmenustrip1 = new FormsContextMenuStrip(app, testDlg["contextMenuStrip1"]());
+            FormsToolStrip contextmenustrip1 = new FormsToolStrip(app, testDlg["contextMenuStrip1"]());
             contextmenustrip1.FindItem("MenuItem1").EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(1, count);
@@ -59,7 +59,7 @@ namespace Test
         [Test]
         public void TestContextMenuStripClick2()
         {
-            FormsContextMenuStrip contextmenustrip1 = new FormsContextMenuStrip(app, testDlg["contextMenuStrip1"]());
+            FormsToolStrip contextmenustrip1 = new FormsToolStrip(app, testDlg["contextMenuStrip1"]());
             contextmenustrip1.FindItem("MenuItem2").EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(2, count);
