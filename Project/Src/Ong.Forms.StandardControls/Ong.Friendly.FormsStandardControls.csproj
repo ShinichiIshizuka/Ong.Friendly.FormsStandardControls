@@ -56,9 +56,6 @@
     <Compile Include="FormsRadioButton.cs" />
     <Compile Include="Inside\Initializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FormsToolStripComboBox.cs" />
-    <Compile Include="FormsToolStripButton.cs" />
-    <Compile Include="FormsToolStripTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings\Ong.Friendly.FormsStandardControls.Plugin.xml" />

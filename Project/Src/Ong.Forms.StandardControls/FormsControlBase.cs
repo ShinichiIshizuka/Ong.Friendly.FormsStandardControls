@@ -41,9 +41,23 @@ namespace Ong.Friendly.FormsStandardControls
             get { return (String)this["Text"]().Core; }
         }
 
-        //@@@ Visibleを追加
+        /// <summary>
+        /// 表示/非表示を切り替えます。
+        /// </summary>
+        public bool Visible
+        {
+            get { return (bool)this["Visible"]().Core; }
+            set { this["Visible"](value); }
+        }
 
-        //@@@ Enableを追加
+        /// <summary>
+        /// 活性/非活性を切り替えます。
+        /// </summary>
+        public bool Enabled
+        {
+            get { return (bool)this["Enabled"]().Core; }
+            set { this["Enabled"](value); }
+        }
 
     }
 }
