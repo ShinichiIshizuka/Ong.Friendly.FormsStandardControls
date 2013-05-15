@@ -75,7 +75,7 @@ namespace Test
         }
 
         /// <summary>
-        /// 非表示
+        /// 非表示のテスト
         /// </summary>
         [Test]
         public void TestButtonVisible()
@@ -85,7 +85,7 @@ namespace Test
         }
 
         /// <summary>
-        /// 非活性
+        /// 非活性のテスト
         /// </summary>
         [Test]
         public void TestButtonEnabled()
