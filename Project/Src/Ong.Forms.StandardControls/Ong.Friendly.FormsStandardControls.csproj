@@ -50,6 +50,9 @@
     <Compile Include="FormsCheckBox.cs" />
     <Compile Include="FormsComboBox.cs" />
     <Compile Include="FormsTextBox.cs" />
+    <Compile Include="FormsToolStripButton.cs" />
+    <Compile Include="FormsToolStripComboBox.cs" />
+    <Compile Include="FormsToolStripTextBox.cs" />
     <Compile Include="FormsTreeNode.cs" />
     <Compile Include="FormsTreeView.cs" />
     <Compile Include="FormsListBox.cs" />
