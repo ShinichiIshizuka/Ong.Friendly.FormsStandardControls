@@ -64,7 +64,7 @@ namespace Ong.Friendly.FormsStandardControls
             get
             {
                 AppVar returnItem = (App[GetType(), "SelectItemInTarget"](AppVar));
-                return new FormsListViewItem(returnItem);
+                return new FormsListViewItem(App, returnItem);
             }
         }
 
@@ -125,7 +125,7 @@ namespace Ong.Friendly.FormsStandardControls
             AppVar returnItem = this["FindItemWithText"](itemText);
             if (returnItem != null)
             {
-                return new FormsListViewItem(returnItem);
+                return new FormsListViewItem(App, returnItem);
             }
             return null;
         }

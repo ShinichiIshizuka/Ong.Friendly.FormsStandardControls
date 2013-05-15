@@ -7,7 +7,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// <summary>
     /// AppVarラップアイテムの基本クラス
     /// </summary>
-    public class AppVarWrapBase
+    public class AppVarWrapper
     {
         WindowsAppFriend _app;
         AppVar _appVar;
@@ -27,7 +27,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="app">対象アプリ操作クラス</param>
         /// <param name="appVar">対象アプリ内変数操作クラス</param>
-        internal AppVarWrapBase(WindowsAppFriend app, AppVar appVar)
+        internal AppVarWrapper(WindowsAppFriend app, AppVar appVar)
         {
             _app = app;
             _appVar = appVar;

@@ -1,6 +1,7 @@
 using System;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
+using Codeer.Friendly.Windows;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -12,9 +13,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// コンストラクタ
         /// </summary>
+        /// <param name="app">アプリケーション操作クラス</param>
         /// <param name="appVar">アプリケーション内変数</param>
-        public FormsListViewItem(AppVar appVar)
-            : base(appVar)
+        public FormsListViewItem(WindowsAppFriend app, AppVar appVar)
+            : base(app, appVar)
         {
         }
     

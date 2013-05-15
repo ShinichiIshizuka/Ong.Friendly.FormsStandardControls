@@ -6,7 +6,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// <summary>
     /// ツールストリップアイテム操作クラス
     /// </summary>
-    public class FormsToolStripItem : AppVarWrapBase
+    public class FormsToolStripItem : AppVarWrapper
     {
         /// <summary>
         /// コンストラクタ

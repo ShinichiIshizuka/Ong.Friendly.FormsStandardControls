@@ -64,9 +64,8 @@
     <Content Include="Settings\Ong.Friendly.FormsStandardControls.Plugin.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppVarWrapBase.cs" />
+    <Compile Include="AppVarWrapper.cs" />
     <Compile Include="FormsToolStripItem.cs" />
-    <Compile Include="Inside\AppVarWrapper.cs" />
     <Compile Include="FormsControlBase.cs" />
     <Compile Include="FormsRichTextBox.cs" />
     <Compile Include="FormsCheckedListBox.cs" />

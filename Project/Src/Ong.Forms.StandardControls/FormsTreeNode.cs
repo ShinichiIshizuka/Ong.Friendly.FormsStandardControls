@@ -23,7 +23,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="app">アプリケーション操作クラス</param>
         /// <param name="appVar">アプリケーション内変数</param>
         public FormsTreeNode(WindowsAppFriend app, AppVar appVar)
-            : base(appVar)
+            : base(app, appVar)
         {
             _app = app;
         }
