@@ -6,6 +6,7 @@ using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using Codeer.Friendly.Windows.NativeStandardControls;
+
 namespace Test
 {
     /// <summary>
