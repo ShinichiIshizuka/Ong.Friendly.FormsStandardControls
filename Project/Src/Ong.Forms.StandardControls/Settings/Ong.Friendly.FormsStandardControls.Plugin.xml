@@ -45,16 +45,9 @@
       <PluginType>Ong.Friendly.FormsStandardControls.FormsToolStrip</PluginType>
     </PluginClassPair>
     <PluginClassPair>
-      <TargetType>System.Windows.Forms.UpDown</TargetType>
+      <TargetType>System.Windows.Forms.NumericUpDown</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsNumericUpDown</PluginType>
-    </PluginClassPair>
-    <PluginClassPair>
-      <TargetType>System.Windows.Forms.UpDownBase+UpDownButtons</TargetType>
-      <PluginType>Ong.Friendly.FormsStandardControls.FormsNumericUpDownButtons</PluginType>
-    </PluginClassPair>
-    <PluginClassPair>
-      <TargetType>System.Windows.Forms.UpDownBase+UpDownEdit</TargetType>
-      <PluginType>Ong.Friendly.FormsStandardControls.FormsNumericUpDownEdit</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.NumericUpDownGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.RadioButton</TargetType>
