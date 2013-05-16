@@ -50,6 +50,7 @@
     <Compile Include="FormsButton.cs" />
     <Compile Include="FormsCheckBox.cs" />
     <Compile Include="FormsComboBox.cs" />
+    <Compile Include="FormsNumericUpDown.cs" />
     <Compile Include="FormsTextBox.cs" />
     <Compile Include="FormsToolStripButton.cs" />
     <Compile Include="FormsToolStripComboBox.cs" />
@@ -75,8 +76,6 @@
     <Compile Include="FormsTabControl.cs" />
     <Compile Include="FormsDataGridView.cs" />
     <Compile Include="FormsToolStrip.cs" />
-    <Compile Include="FormsNumericUpDownButtons.cs" />
-    <Compile Include="FormsNumericUpDownEdit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

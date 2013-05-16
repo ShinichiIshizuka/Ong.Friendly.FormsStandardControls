@@ -45,6 +45,10 @@
       <PluginType>Ong.Friendly.FormsStandardControls.FormsToolStrip</PluginType>
     </PluginClassPair>
     <PluginClassPair>
+      <TargetType>System.Windows.Forms.UpDown</TargetType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsNumericUpDown</PluginType>
+    </PluginClassPair>
+    <PluginClassPair>
       <TargetType>System.Windows.Forms.UpDownBase+UpDownButtons</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsNumericUpDownButtons</PluginType>
     </PluginClassPair>

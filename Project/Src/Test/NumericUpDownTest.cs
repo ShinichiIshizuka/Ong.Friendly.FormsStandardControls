@@ -48,17 +48,16 @@ namespace Test
         [Test]
         public void TestNumericUpDownButtonClick()
         {
-            FormsNumericUpDownButtons numericUpDownButton = new FormsNumericUpDownButtons(app, testDlg["numericUpDown1"]());
-            numericUpDownButton.EmulateUpClick();
-            numericUpDownButton.EmulateUpClick();
-            numericUpDownButton.EmulateUpClick();
-            FormsNumericUpDownEdit numericUpDownEdit = new FormsNumericUpDownEdit(app, testDlg["numericUpDown1"]());
-            Assert.AreEqual(3, int.Parse(numericUpDownEdit.Text));
+            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
+            numericUpDown.EmulateUpClick();
+            numericUpDown.EmulateUpClick();
+            numericUpDown.EmulateUpClick();
+            Assert.AreEqual(3, int.Parse(numericUpDown.Text));
 
-            numericUpDownButton.EmulateDownClick();
-            Assert.AreEqual(2, int.Parse(numericUpDownEdit.Text));
-            numericUpDownButton.EmulateDownClick();
-            numericUpDownButton.EmulateDownClick();
+            numericUpDown.EmulateDownClick();
+            Assert.AreEqual(2, int.Parse(numericUpDown.Text));
+            numericUpDown.EmulateDownClick();
+            numericUpDown.EmulateDownClick();
         }
 
         /// <summary>
@@ -67,17 +66,16 @@ namespace Test
         [Test]
         public void TestNumericUpDownButtonAsyncClick()
         {
-            FormsNumericUpDownButtons numericUpDownButton = new FormsNumericUpDownButtons(app, testDlg["numericUpDown1"]());
-            numericUpDownButton.EmulateUpClick(new Async());
-            numericUpDownButton.EmulateUpClick(new Async());
-            numericUpDownButton.EmulateUpClick(new Async());
-            FormsNumericUpDownEdit numericUpDownEdit = new FormsNumericUpDownEdit(app, testDlg["numericUpDown1"]());
-            Assert.AreEqual(3, int.Parse(numericUpDownEdit.Text));
+            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
+            numericUpDown.EmulateUpClick(new Async());
+            numericUpDown.EmulateUpClick(new Async());
+            numericUpDown.EmulateUpClick(new Async());
+            Assert.AreEqual(3, int.Parse(numericUpDown.Text));
 
-            numericUpDownButton.EmulateDownClick(new Async());
-            Assert.AreEqual(2, int.Parse(numericUpDownEdit.Text));
-            numericUpDownButton.EmulateDownClick(new Async());
-            numericUpDownButton.EmulateDownClick(new Async());
+            numericUpDown.EmulateDownClick(new Async());
+            Assert.AreEqual(2, int.Parse(numericUpDown.Text));
+            numericUpDown.EmulateDownClick(new Async());
+            numericUpDown.EmulateDownClick(new Async());
         }
     }
 }
