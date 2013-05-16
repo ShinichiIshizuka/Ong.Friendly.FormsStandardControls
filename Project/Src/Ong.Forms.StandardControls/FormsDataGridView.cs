@@ -3,14 +3,13 @@ using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
+using System.Drawing;
+using System.Reflection;
 
 namespace Ong.Friendly.FormsStandardControls
 {
     //@@@ 石川さん
-    //@@@ mada
-    //    GetTextを配列で取りたい
-    //    ChangeTextだけでなく、Comboboxなども欲しい
-    //    ChangeSelectが欲しい
+    //複数選択、行選択、行削除
 
     /// <summary>
     /// TypeがSystem.Windows.Forms.DataGridViewのウィンドウに対応した操作を提供します
@@ -63,60 +62,206 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// 行列で指定したセルのテキストを取得します
         /// </summary>
-        /// <param name="row">行</param>
         /// <param name="col">列</param>
+        /// <param name="row">行</param>
         /// <returns>テキスト</returns>
-        public string GetText(int row, int col)
+        public string GetText(int col, int row)
         {
-            return (string)(App[GetType(), "GetTextInTarget"](AppVar, row, col).Core);
+            return (string)(App[GetType(), "GetTextInTarget"](AppVar, col, row).Core);
         }
 
         /// <summary>
         /// 行列で指定したセルのテキストを取得します(内部)
         /// </summary>
         /// <param name="datagridview">データグリッドビュー</param>
-        /// <param name="row">行</param>
         /// <param name="col">列</param>
+        /// <param name="row">行</param>
         /// <returns>テキスト</returns>
-        private static string GetTextInTarget(DataGridView datagridview, int row, int col)
+        private static string GetTextInTarget(DataGridView datagridview, int col, int row)
         {
-            return (string)(datagridview.Rows[row].Cells[col].Value);
+            object obj = datagridview.Rows[row].Cells[col].Value;
+            return obj != null ? obj.ToString() : string.Empty;
         }
 
         /// <summary>
-        /// 指定した行列のテキストを変更します
+        /// セルのチェック状態を順に変更する
         /// </summary>
-        /// <param name="row">行</param>
         /// <param name="col">列</param>
-        /// <param name="text">テキスト</param>
-        public void EmulateChangeText(int row, int col, string text)
+        /// <param name="row">行</param>
+        public void EmulateToggleCellCheck(int col, int row)
         {
-            App[GetType(), "EmulateChangeTextInTarget"](AppVar, row, col, text);
+            EmulateChangeCurrentCell(col, row);
+            this["OnKeyDown"](App.Dim(new NewInfo<KeyEventArgs>(Keys.Space)));
+            this["OnKeyUp"](App.Dim(new NewInfo<KeyEventArgs>(Keys.Space)));
         }
 
         /// <summary>
-        /// 指定した行列のテキストを変更します
-        /// 非同期で実行します
+        /// セルのチェック状態を順に変更する
         /// </summary>
-        /// <param name="row">行</param>
         /// <param name="col">列</param>
-        /// <param name="text">テキスト</param>
-        /// <param name="async">非同期動作オブジェクト</param>
-        public void EmulateChangeText(int row, int col, string text, Async async)
+        /// <param name="row">行</param>
+        /// <param name="async">非同期実行オブジェクト</param>
+        public void EmulateToggleCellCheck(int col, int row, Async async)
         {
-            App[GetType(), "EmulateChangeTextInTarget", async](AppVar, row, col, text);
+            EmulateChangeCurrentCell(col, row, new Async());
+            this["OnKeyDown", new Async()](App.Dim(new NewInfo<KeyEventArgs>(Keys.Space)));
+            this["OnKeyUp", async](App.Dim(new NewInfo<KeyEventArgs>(Keys.Space)));
         }
 
         /// <summary>
-        /// 指定した行列のテキストを変更します(内部)
+        /// セルのテキスト変更
         /// </summary>
-        /// <param name="datagridview">データグリッドビュー</param>
-        /// <param name="row">行</param>
         /// <param name="col">列</param>
+        /// <param name="row">行</param>
         /// <param name="text">テキスト</param>
-        private static void EmulateChangeTextInTarget(DataGridView datagridview, int row, int col, string text)
+        public void EmulateChangeCellText(int col, int row, string text)
         {
-            datagridview.Rows[row].Cells[col].Value = text;
+            App[GetType(), "EmulateChangeCellTextInTarget"](AppVar, col, row, text);
+        }
+
+        /// <summary>
+        /// セルのテキスト変更
+        /// </summary>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        /// <param name="text">テキスト</param>
+        /// <param name="async">非同期実行オブジェクト</param>
+        public void EmulateChangeCellText(int col, int row, string text, Async async)
+        {
+            App[GetType(), "EmulateChangeCellTextInTarget", async](AppVar, col, row, text);
+        }
+
+        /// <summary>
+        /// セルのテキスト変更
+        /// </summary>
+        /// <param name="grid">グリッド</param>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        /// <param name="text">テキスト</param>
+        static void EmulateChangeCellTextInTarget(DataGridView grid, int col, int row, string text)
+        {
+            EmulateChangeCurrentCellInTarget(grid, col, row);
+            grid.BeginEdit(false);
+            grid.EditingControl.Text = text;
+            grid.EndEdit();
+        }
+
+        /// <summary>
+        /// セルコンボ選択変更
+        /// </summary>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        /// <param name="index">インデックス</param>
+        public void EmulateChangeCellComboSelect(int col, int row, int index)
+        {
+            App[GetType(), "EmulateChangeCellComboSelectInTarget"](AppVar, col, row, index);
+        }
+
+        /// <summary>
+        /// セルコンボ選択変更
+        /// </summary>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        /// <param name="index">インデックス</param>
+        /// <param name="async">非同期実行オブジェクト</param>
+        public void EmulateChangeCellComboSelect(int col, int row, int index, Async async)
+        {
+            App[GetType(), "EmulateChangeCellComboSelectInTarget", async](AppVar, col, row, index);
+        }
+
+        /// <summary>
+        /// セルコンボ選択変更
+        /// </summary>
+        /// <param name="grid">グリッド</param>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        /// <param name="index">インデックス</param>
+        static void EmulateChangeCellComboSelectInTarget(DataGridView grid, int col, int row, int index)
+        {
+            EmulateChangeCurrentCellInTarget(grid, col, row);
+            grid.BeginEdit(false);
+            ((ComboBox)grid.EditingControl).SelectedIndex = index;
+            grid.EndEdit();
+        }
+
+        /// <summary>
+        /// セルボタンクリック
+        /// </summary>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        public void EmulateClickCellButton(int col, int row)
+        {
+            EmulateChangeCurrentCell(col, row);
+            this["OnCellContentClick"](App.Dim(new NewInfo<DataGridViewCellEventArgs>(col, row)));
+        }
+
+        /// <summary>
+        /// セルボタンクリック
+        /// </summary>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        /// <param name="async"></param>
+        public void EmulateClickCellButton(int col, int row, Async async)
+        {
+            EmulateChangeCurrentCell(col, row, new Async());
+            this["OnCellContentClick", async](App.Dim(new NewInfo<DataGridViewCellEventArgs>(col, row)));
+        }
+
+        /// <summary>
+        /// セルリンククリック
+        /// </summary>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        public void EmulateClickCellLink(int col, int row)
+        {
+            EmulateChangeCurrentCell(col, row);
+            this["OnCellContentClick"](App.Dim(new NewInfo<DataGridViewCellEventArgs>(col, row)));
+        }
+
+        /// <summary>
+        /// セルリンククリック
+        /// </summary>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        /// <param name="async">非同期実行オブジェクト</param>
+        public void EmulateClickCellLink(int col, int row, Async async)
+        {
+            EmulateChangeCurrentCell(col, row, new Async());
+            this["OnCellContentClick", async](App.Dim(new NewInfo<DataGridViewCellEventArgs>(col, row)));
+        }
+
+        /// <summary>
+        /// カレントセルを選択
+        /// </summary>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        public void EmulateChangeCurrentCell(int col, int row)
+        {
+            App[GetType(), "EmulateChangeCurrentCellInTarget"](AppVar, col, row);
+        }
+
+        /// <summary>
+        /// カレントセルを選択
+        /// </summary>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        /// <param name="async">非同期実行オブジェクト</param>
+        public void EmulateChangeCurrentCell(int col, int row, Async async)
+        {
+            App[GetType(), "EmulateChangeCurrentCellInTarget", async](AppVar, col, row);
+        }
+
+        /// <summary>
+        /// カレントセルを選択
+        /// </summary>
+        /// <param name="grid">グリッド</param>
+        /// <param name="col">列</param>
+        /// <param name="row">行</param>
+        static void EmulateChangeCurrentCellInTarget(DataGridView grid, int col, int row)
+        {
+            grid.Focus();
+            grid.Select();
+            grid.CurrentCell = grid[col, row];
         }
     }
 }

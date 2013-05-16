@@ -60,7 +60,7 @@ namespace Test
         public void TestDataGridViewChangeText()
         {
             FormsDataGridView datagridview1 = new FormsDataGridView(app, testDlg["dataGridView1"]());
-            datagridview1.EmulateChangeText(1, 1, "ïœçX",new Async());
+            datagridview1.EmulateChangeCellText(1, 1, "ïœçX", new Async());
         }
 
         /// <summary>
