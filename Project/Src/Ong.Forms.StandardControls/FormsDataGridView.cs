@@ -5,12 +5,10 @@ using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
 using System.Drawing;
 using System.Reflection;
+using System;
 
 namespace Ong.Friendly.FormsStandardControls
 {
-    //@@@ 石川さん
-    //複数選択、行選択、行削除
-
     /// <summary>
     /// TypeがSystem.Windows.Forms.DataGridViewのウィンドウに対応した操作を提供します
     /// </summary>
@@ -262,6 +260,114 @@ namespace Ong.Friendly.FormsStandardControls
             grid.Focus();
             grid.Select();
             grid.CurrentCell = grid[col, row];
+        }
+
+        /// <summary>
+        /// 選択状態解除
+        /// </summary>
+        public void EmulateClearSelection()
+        {
+            this["ClearSelection"]();
+        }
+
+        /// <summary>
+        /// 選択状態解除
+        /// </summary>
+        /// <param name="async">非同期実行オブジェクト</param>
+        public void EmulateClearSelection(Async async)
+        {
+            this["ClearSelection", async]();
+        }
+
+        /// <summary>
+        /// 選択状態変更
+        /// </summary>
+        /// <param name="cells">選択セル情報</param>
+        public void EmulateChangeCellSelected(params CellSelectedInfo[] cells)
+        {
+            App[GetType(), "EmulateChangeCellSelectedInTarget"](AppVar, cells);
+        }
+
+        /// <summary>
+        /// 選択状態変更
+        /// </summary>
+        /// <param name="async">非同期実行オブジェクト</param>
+        /// <param name="cells">選択セル情報</param>
+        public void EmulateChangeCellSelected(Async async, params CellSelectedInfo[] cells)
+        {
+            App[GetType(), "EmulateChangeCellSelectedInTarget"](AppVar, cells);
+        }
+
+        /// <summary>
+        /// 選択状態変更
+        /// </summary>
+        /// <param name="grid">グリッド</param>
+        /// <param name="cells">選択セル情報</param>
+        static void EmulateChangeCellSelectedInTarget(DataGridView grid, CellSelectedInfo[] cells)
+        {
+            grid.Focus();
+            grid.Select();
+            foreach (CellSelectedInfo cell in cells)
+            {
+                grid[cell.Col, cell.Row].Selected = cell.Selected;
+            }
+        }
+
+        /// <summary>
+        /// 行選択状態変更
+        /// </summary>
+        /// <param name="rows">選択行情報</param>
+        public void EmulateChangeRowSelected(params RowSelectedInfo[] rows)
+        {
+            App[GetType(), "EmulateChangeRowSelectedInTarget"](AppVar, rows);
+        }
+
+        /// <summary>
+        /// 行選択状態変更
+        /// </summary>
+        /// <param name="async">非同期実行オブジェクト</param>
+        /// <param name="rows">選択行情報</param>
+        public void EmulateChangeRowSelected(Async async, params RowSelectedInfo[] rows)
+        {
+            App[GetType(), "EmulateChangeRowSelectedInTarget"](AppVar, rows);
+        }
+
+        /// <summary>
+        /// 行選択状態変更
+        /// </summary>
+        /// <param name="grid">グリッド</param>
+        /// <param name="rows">選択行情報</param>
+        static void EmulateChangeRowSelectedInTarget(DataGridView grid, RowSelectedInfo[] rows)
+        {
+            grid.Focus();
+            grid.Select();
+            foreach (RowSelectedInfo row in rows)
+            {
+                grid.Rows[row.Row].Selected = row.Selected;
+            }
+        }
+
+        /// <summary>
+        /// Delete操作エミュレート
+        /// </summary>
+        public void EmulateDelete()
+        {
+            this["Focus"]();
+            this["Select"]();
+            this["OnKeyDown"](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
+            this["OnKeyUp"](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
+        }
+
+        /// <summary>
+        /// Delete操作エミュレート
+        /// </summary>
+        /// <param name="async">非同期実行オブジェクト</param>
+        public void EmulateDelete(Async async)
+        {
+            this["Focus", new Async()]();
+            this["Select", new Async()]();
+            this["OnKeyDown", new Async()](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
+            this["OnKeyUp", async](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
         }
     }
 }
