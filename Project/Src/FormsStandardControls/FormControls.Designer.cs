@@ -128,6 +128,7 @@
             // 
             this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
+            this.treeView1.LabelEdit = true;
             this.treeView1.Location = new System.Drawing.Point(2, 134);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(112, 178);

@@ -81,5 +81,48 @@ namespace Test
             treeView1.EmulateNodeSelect(node, new Async());
             node.EmulateExpand();
         }
+
+        /// <summary>
+        /// ノードをテキストで検索して展開したあと閉じます
+        /// </summary>
+        [Test]
+        public void TestTreeViewFindNodeAndSelectAndExpandCollapse()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeNode node = treeView1.FindNode("Child 2");
+            Assert.NotNull(node);
+            treeView1.EmulateNodeSelect(node, new Async());
+            node.EmulateExpand();
+            Assert.AreEqual(true, node.IsExpanded);
+            node.EmulateCollapse();
+            Assert.AreEqual(false, node.IsExpanded);
+        }
+
+        /// <summary>
+        /// ノードラベルを編集します
+        /// </summary>
+        [Test]
+        public void TestTreeViewEditLabel()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeNode node = treeView1.FindNode("Child 2");
+            Assert.NotNull(node);
+            node.EmulateEditLabelText("ChangeText");
+            Assert.AreEqual("ChangeText", node.Text);
+            node.EmulateEditLabelText("Child 2");
+        }
+
+        /// <summary>
+        /// ノードをチェックします
+        /// </summary>
+        [Test]
+        public void TestTreeViewCheck()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeNode node = treeView1.FindNode("Child 2");
+            Assert.NotNull(node);
+            node.EmulateCheck(true);
+            Assert.IsTrue(node.Checked);
+        }
     }
 }
