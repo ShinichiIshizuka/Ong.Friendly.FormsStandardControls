@@ -50,7 +50,7 @@ namespace Test
         public void TestTreeViewFindNodeAndSelect()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindNode("Child 2");
+            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
             Assert.NotNull(node);
             treeView1.EmulateNodeSelect(node, new Async());
         }
@@ -62,7 +62,7 @@ namespace Test
         public void TestTreeViewSelectNodeText()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindNode("Child 1");
+            FormsTreeNode node = treeView1.FindItem("Parent","Child 1");
             Assert.NotNull(node);
             treeView1.EmulateNodeSelect(node, new Async());
             FormsTreeNode selectedNode = treeView1.SelectNode;
@@ -76,7 +76,7 @@ namespace Test
         public void TestTreeViewFindNodeAndSelectAndExpand()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindNode("Child 2");
+            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
             Assert.NotNull(node);
             treeView1.EmulateNodeSelect(node, new Async());
             node.EmulateExpand();
@@ -89,7 +89,7 @@ namespace Test
         public void TestTreeViewFindNodeAndSelectAndExpandCollapse()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindNode("Child 2");
+            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
             Assert.NotNull(node);
             treeView1.EmulateNodeSelect(node, new Async());
             node.EmulateExpand();
@@ -105,7 +105,7 @@ namespace Test
         public void TestTreeViewEditLabel()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindNode("Child 2");
+            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
             Assert.NotNull(node);
             node.EmulateEditLabelText("ChangeText");
             Assert.AreEqual("ChangeText", node.Text);
@@ -119,7 +119,7 @@ namespace Test
         public void TestTreeViewCheck()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindNode("Child 2");
+            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
             Assert.NotNull(node);
             node.EmulateCheck(true);
             Assert.IsTrue(node.Checked);

@@ -64,69 +64,131 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ノードを指定されたテキストで検索します
+        /// 子アイテムを取得します。
         /// </summary>
-        /// <param name="nodeText">各ノードのテキスト</param>
-        /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります</returns>
-        public FormsTreeNode FindNode(string nodeText)
+        /// <param name="indexs">インデックス。</param>
+        /// <returns>子アイテム</returns>
+        public FormsTreeNode GetItem(params int[] indexs)
         {
-            AppVar returnNode = (App[GetType(), "FindNodeInTarget"](AppVar, nodeText));
-            if (returnNode != null)
-            {
-                return new FormsTreeNode(App, returnNode);
-            }
-            return null;
+            return new FormsTreeNode(App, App[GetType(), "GetItemInTarget"](AppVar, indexs));
         }
 
         /// <summary>
-        /// ノードを指定されたテキストで検索します（内部）
+        /// 子アイテムを取得します。
         /// </summary>
-        /// <param name="treeview">ツリービュー</param>
-        /// <param name="nodeText">検索するテキスト</param>
-        /// <returns>テキストと一致するノードを返却します。存在しない場合はnull,複数見つかった場合は最初のノードを返却します</returns>
-        private static TreeNode FindNodeInTarget(TreeView treeview,string nodeText)
+        /// <param name="keys">キーとなるインデックスです。</param>
+        /// <returns>子アイテム</returns>
+        public FormsTreeNode GetItem(params string[] keys)
         {
-            if (treeview.Nodes.Count > 0)
-            {
-                TreeNode treeNode = FindNodeInTargetCore(treeview.Nodes[0], nodeText);
-                if (treeNode != null)
-                {
-                    return treeNode;
-                }
-            }
-            return null;
+            return new FormsTreeNode(App, App[GetType(), "GetItemInTarget"](AppVar, keys));
         }
 
         /// <summary>
-        /// ノードを指定されたテキストで検索します（内部）
+        /// 表示文字列からアイテムを検索します。
         /// </summary>
-        /// <param name="treeNode">ノード</param>
-        /// <param name="nodeText">検索するテキスト</param>
-        /// <returns></returns>
-        private static TreeNode FindNodeInTargetCore(TreeNode treeNode,string nodeText)
+        /// <param name="texts">表示文字列。</param>
+        /// <returns>表示文字列。</returns>
+        public FormsTreeNode FindItem(params string[] texts)
         {
-            TreeNode findNode;
-            if(treeNode == null)
-            {
-                return null;
-            }
-            if(treeNode.Text == nodeText)
-            {
-                return treeNode;
-            }
-            foreach(TreeNode node in treeNode.Nodes)
-            {
-                if(node.Text == nodeText)
-                {
-                    return node;
-                }
-                findNode = FindNodeInTargetCore(node, nodeText);
-                if(findNode != null)
-                {   
-                    return findNode;
-                }
-            }
-            return null;
+            return new FormsTreeNode(App, App[GetType(), "FindItemInTarget"](AppVar, texts));
         }
+
+        /// <summary>
+        /// アイテムを取得します。
+        /// </summary>
+        /// <param name="trerview">ツリービュー</param>
+        /// <param name="indexs">インデックス</param>
+        /// <returns>アイテム</returns>
+        private static TreeNode GetItemInTarget(TreeView trerview, params int[] indexs)
+        {
+            int currentIndex = 0;
+            TreeNodeCollection items = trerview.Nodes;
+            while (true)
+            {
+                TreeNode current = items[indexs[currentIndex]];
+                if (indexs.Length - 1 == currentIndex)
+                {
+                    return current;
+                }
+                else
+                {
+                    currentIndex++;
+                }
+                TreeNode treenode = current as TreeNode;
+                if (treenode == null)
+                {
+                    return null;
+                }
+                items = treenode.Nodes;
+            }
+        }
+
+        /// <summary>
+        /// アイテムを取得します。
+        /// </summary>
+        /// <param name="trerview">ツリービュー</param>
+        /// <param name="keys">インデックス</param>
+        /// <returns>アイテム</returns>
+        private static TreeNode GetItemInTarget(TreeView trerview, params string[] keys)
+        {
+            int currentIndex = 0;
+            TreeNodeCollection items = trerview.Nodes;
+            while (true)
+            {
+                TreeNode current = items[keys[currentIndex]];
+                if (keys.Length - 1 == currentIndex)
+                {
+                    return current;
+                }
+                else
+                {
+                    currentIndex++;
+                }
+                TreeNode treenode = current as TreeNode;
+                if (treenode == null)
+                {
+                    return null;
+                }
+                items = treenode.Nodes;
+            }
+        }
+
+        /// <summary>
+        /// 表示文字列からアイテムを検索します。
+        /// </summary>
+        /// <param name="trerview">ツリービュー</param>
+        /// <param name="texts">表示文字列</param>
+        /// <returns>アイテム。</returns>
+        private static TreeNode FindItemInTarget(TreeView trerview, string[] texts)
+        {
+            int currentIndex = 0;
+            TreeNodeCollection items = trerview.Nodes;
+            while (true)
+            {
+                TreeNode current = null;
+                foreach (TreeNode element in items)
+                {
+                    if (element.Text == texts[currentIndex])
+                    {
+                        if (texts.Length - 1 == currentIndex)
+                        {
+                            return element;
+                        }
+                        else
+                        {
+                            current = element;
+                            currentIndex++;
+                            break;
+                        }
+                    }
+                }
+                TreeNode treenode = current as TreeNode;
+                if (treenode == null)
+                {
+                    return null;
+                }
+                items = treenode.Nodes;
+            }
+        }    
     }
 }
