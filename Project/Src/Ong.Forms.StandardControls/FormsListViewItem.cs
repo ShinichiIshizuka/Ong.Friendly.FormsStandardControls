@@ -2,6 +2,8 @@ using System;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
 using Codeer.Friendly.Windows;
+using System.Windows.Forms;
+using System.Reflection;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -36,6 +38,41 @@ namespace Ong.Friendly.FormsStandardControls
         public int RowIndex
         {
             get { return (int)this["Index"]().Core; }
+        }
+
+        public bool Checked
+        {
+            get { return (bool)this["Checked"]().Core; }
+        }
+
+        /// <summary>
+        /// チェック状態を設定します
+        /// </summary>
+        /// <param name="value">チェック状態</param>
+        public void EmulateCheck(bool value)
+        {
+            App[GetType(), "EmulateCheckInTarget"](AppVar, value);
+        }
+
+        /// <summary>
+        /// チェック状態を設定します
+        /// 非同期で実行します
+        /// </summary>
+        /// <param name="value">チェック状態</param>
+        /// <param name="async">非同期実行オブジェクト</param>
+        public void EmulateCheck(bool value, Async async)
+        {
+            App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
+        }
+
+        /// <summary>
+        /// チェック状態を設定します
+        /// </summary>
+        /// <param name="listviewitem">リストビューアイテム</param>
+        /// <param name="value">チェック状態</param>
+        static void EmulateCheckInTarget(ListViewItem listviewitem, bool value)
+        {
+            listviewitem.Checked = value;
         }
     }
 }

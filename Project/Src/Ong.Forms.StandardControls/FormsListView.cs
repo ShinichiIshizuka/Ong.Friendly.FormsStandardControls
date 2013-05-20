@@ -89,9 +89,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// 行を選択します
         /// </summary>
         /// <param name="row">行番号</param>
-        public void EmulateRowSelect(int row)
+        public void EmulateItemSelect(int row)
         {
-            App[GetType(), "RowSelectInTarget"](AppVar, row);
+            App[GetType(), "ItemSelectInTarget"](AppVar, row);
         }
 
         /// <summary>
@@ -100,9 +100,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="row">ノード</param>
         /// <param name="async">非同期オブジェクト</param>
-        public void EmulateRowSelect(int row, Async async)
+        public void EmulateItemSelect(int row, Async async)
         {
-            App[GetType(), "RowSelectInTarget", async](AppVar, row);
+            App[GetType(), "ItemSelectInTarget", async](AppVar, row);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="listview"></param>
         /// <param name="row"></param>
-        private static void RowSelectInTarget(ListView listview, int row)
+        private static void ItemSelectInTarget(ListView listview, int row)
         {
             listview.Items[row].Selected = true;
         }

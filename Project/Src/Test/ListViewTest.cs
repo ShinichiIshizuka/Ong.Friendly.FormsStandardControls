@@ -63,7 +63,7 @@ namespace Test
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
             FormsListViewItem item = listView1.FindItem("リンゴ");
             Assert.NotNull(item);
-            listView1.EmulateRowSelect(item.RowIndex, new Async());
+            listView1.EmulateItemSelect(item.RowIndex, new Async());
             Assert.AreEqual(3, listView1.SelectItem.RowIndex);
         }
 
@@ -74,8 +74,20 @@ namespace Test
         public void ListViewSelectAndTextGet()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            listView1.EmulateRowSelect(1, new Async());
+            listView1.EmulateItemSelect(1, new Async());
             Assert.AreEqual("ピーマン", listView1.SelectItem.Text);
+        }
+
+        /// <summary>
+        /// アイテムをチェックします
+        /// </summary>
+        [Test]
+        public void ListViewItemCheck()
+        {
+            FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
+            FormsListViewItem item = listView1.FindItem("リンゴ");
+            item.EmulateCheck(true);
+            Assert.IsTrue(item.Checked);
         }
     }
 }

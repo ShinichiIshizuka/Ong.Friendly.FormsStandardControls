@@ -320,6 +320,7 @@
             // 
             // listView1
             // 
+            this.listView1.CheckBoxes = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(1, 324);
             this.listView1.Name = "listView1";
