@@ -6,8 +6,6 @@ using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
 {
-    //@@@ 編集系？もう少しI/Fを見直すこと
-
     /// <summary>
     /// TypeがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します
     /// </summary>
@@ -35,9 +33,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 列数を取得します。
+        /// アイテム＋サブアイテム数を取得します。
         /// </summary>
-        public int ColumnCount
+        public int SubItemCount
         {
             get
             {
@@ -46,9 +44,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 行数を取得します。
+        /// アイテム数を取得します。
         /// </summary>
-        public int RowCount
+        public int ItemCount
         {
             get
             {
@@ -75,11 +73,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>選択されたリストアイテム</returns>
         private static ListViewItem SelectItemInTarget(ListView listview)
         {
-            for (int row = 0; row < listview.Items.Count; row++)
+            for (int itemIndex = 0; itemIndex < listview.Items.Count; itemIndex++)
             {
-                if (listview.Items[row].Selected == true)
+                if (listview.Items[itemIndex].Selected == true)
                 {
-                    return listview.Items[row];
+                    return listview.Items[itemIndex];
                 }
             }
             return null;
@@ -88,31 +86,31 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// 行を選択します
         /// </summary>
-        /// <param name="row">行番号</param>
-        public void EmulateItemSelect(int row)
+        /// <param name="itemIndex">行番号</param>
+        public void EmulateItemSelect(int itemIndex)
         {
-            App[GetType(), "ItemSelectInTarget"](AppVar, row);
+            App[GetType(), "ItemSelectInTarget"](AppVar, itemIndex);
         }
 
         /// <summary>
         /// リストアイテム（行）を選択します
         /// 非同期で実行します
         /// </summary>
-        /// <param name="row">ノード</param>
+        /// <param name="itemIndex">ノード</param>
         /// <param name="async">非同期オブジェクト</param>
-        public void EmulateItemSelect(int row, Async async)
+        public void EmulateItemSelect(int itemIndex, Async async)
         {
-            App[GetType(), "ItemSelectInTarget", async](AppVar, row);
+            App[GetType(), "ItemSelectInTarget", async](AppVar, itemIndex);
         }
 
         /// <summary>
         /// リストアイテム選択（内部）
         /// </summary>
         /// <param name="listview"></param>
-        /// <param name="row"></param>
-        private static void ItemSelectInTarget(ListView listview, int row)
+        /// <param name="itemIndex"></param>
+        private static void ItemSelectInTarget(ListView listview, int itemIndex)
         {
-            listview.Items[row].Selected = true;
+            listview.Items[itemIndex].Selected = true;
         }
 
         /// <summary>
@@ -122,12 +120,20 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>検索されたアイテムのアイテムハンドル。未発見時はnullが返ります</returns>
         public FormsListViewItem FindItem(string itemText)
         {
-            AppVar returnItem = this["FindItemWithText"](itemText);
+            AppVar returnItem = this["FindItemWithText"](itemText, true, 0);
             if (returnItem != null)
             {
                 return new FormsListViewItem(App, returnItem);
             }
             return null;
+        }
+
+        /// <summary>
+        /// Viewスタイルを取得します
+        /// </summary>
+        public View GetView
+        {
+            get { return (View)(this["View"]().Core); } 
         }
     }
 }

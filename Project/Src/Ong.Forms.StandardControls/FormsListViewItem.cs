@@ -32,14 +32,17 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 行を取得します
+        /// アイテムインデックスを取得します
         /// </summary>
         /// <returns>行番号</returns>
-        public int RowIndex
+        public int ItemIndex
         {
             get { return (int)this["Index"]().Core; }
         }
 
+        /// <summary>
+        /// チェック状態を取得します
+        /// </summary>
         public bool Checked
         {
             get { return (bool)this["Checked"]().Core; }
@@ -73,6 +76,27 @@ namespace Ong.Friendly.FormsStandardControls
         static void EmulateCheckInTarget(ListViewItem listviewitem, bool value)
         {
             listviewitem.Checked = value;
+        }
+
+        /// <summary>
+        /// サブアイテムを取得します
+        /// </summary>
+        /// <param name="subitemindex">サブアイテムインデックス</param>
+        /// <returns></returns>
+        public FormsListViewSubItem GetSubItem(int subitemindex)
+        {
+            return new FormsListViewSubItem(App, App[GetType(), "GetSubItemInTarget"](AppVar, subitemindex));
+        }
+
+        /// <summary>
+        /// サブアイテムを取得します(内部)
+        /// </summary>
+        /// <param name="listviewitem">リストビューアイテム</param>
+        /// <param name="subitemindex">リストビューサブアイテムインデックス</param>
+        /// <returns>FormsListViewSubItem</returns>
+        static ListViewItem.ListViewSubItem GetSubItemInTarget(ListViewItem listviewitem, int subitemindex)
+        {
+            return listviewitem.SubItems[subitemindex];
         }
     }
 }
