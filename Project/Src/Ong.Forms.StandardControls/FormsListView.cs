@@ -37,10 +37,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public int SubItemCount
         {
-            get
-            {
-                return (int)(this["Columns"]()["Count"]().Core);
-            }
+            get { return (int)(this["Columns"]()["Count"]().Core); }
         }
 
         /// <summary>
@@ -48,10 +45,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public int ItemCount
         {
-            get
-            {
-                return (int)(this["Items"]()["Count"]().Core);
-            }
+            get { return (int)(this["Items"]()["Count"]().Core); }
         }
 
         /// <summary>

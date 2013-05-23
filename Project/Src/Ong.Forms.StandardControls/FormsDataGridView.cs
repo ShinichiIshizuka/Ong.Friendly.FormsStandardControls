@@ -40,10 +40,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public int ColumnCount
         {
-            get
-            {
-                return (int)(this["ColumnCount"]().Core);
-            }
+            get { return (int)(this["ColumnCount"]().Core); }
         }
 
         /// <summary>
@@ -51,10 +48,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public int RowCount
         {
-            get
-            {
-                return (int)(this["RowCount"]().Core);
-            }
+            get { return (int)(this["RowCount"]().Core); }
         }
 
         /// <summary>

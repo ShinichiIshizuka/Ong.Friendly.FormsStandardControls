@@ -37,10 +37,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public FormsTreeNode SelectNode
         {
-            get
-            {
-                return new FormsTreeNode(App, this["SelectedNode"]());
-            }
+            get { return new FormsTreeNode(App, this["SelectedNode"]()); }
         }
 
         /// <summary>

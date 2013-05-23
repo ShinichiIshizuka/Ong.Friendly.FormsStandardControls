@@ -40,10 +40,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>操作実行delegate。</returns>
         public FriendlyOperation this[string operation]
         {
-            get
-            {
-                return _appVar[operation];
-            }
+            get { return _appVar[operation]; }
         }
 
         /// <summary>
@@ -54,10 +51,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>操作実行delegate。</returns>
         public FriendlyOperation this[string operation, Async async]
         {
-            get
-            {
-                return _appVar[operation, async];
-            }
+            get { return _appVar[operation, async]; }
         }
 
         /// <summary>
@@ -68,10 +62,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>操作実行delegate。</returns>
         public FriendlyOperation this[string operation, OperationTypeInfo operationTypeInfo]
         {
-            get
-            {
-                return _appVar[operation, operationTypeInfo];
-            }
+            get { return _appVar[operation, operationTypeInfo]; }
         }
 
         /// <summary>
@@ -83,10 +74,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>操作実行delegate。</returns>
         public FriendlyOperation this[string operation, OperationTypeInfo operationTypeInfo, Async async]
         {
-            get
-            {
-                return _appVar[operation, operationTypeInfo, async];
-            }
+            get { return _appVar[operation, operationTypeInfo, async]; }
         }
     }
 }

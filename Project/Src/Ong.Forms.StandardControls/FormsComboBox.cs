@@ -39,10 +39,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public int ItemCount
         {
-            get 
-            {
-                return (int)(this["Items"]()["Count"]().Core);
-            }
+            get { return (int)(this["Items"]()["Count"]().Core); }
         }
 
         /// <summary>
@@ -50,10 +47,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public int SelectedItemIndex
         {
-            get 
-            {
-                return (int)(this["SelectedIndex"]().Core);
-            }
+            get { return (int)(this["SelectedIndex"]().Core); }
         }
 
         /// <summary>
@@ -126,6 +120,5 @@ namespace Ong.Friendly.FormsStandardControls
             comboBox.SelectedIndex = index;
             comboBox.GetType().GetMethod("OnSelectionChangeCommitted", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(comboBox, new object[] { EventArgs.Empty });
         }
-
     }
 }
