@@ -2,6 +2,8 @@ using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
+using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -10,10 +12,6 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
     public class FormsListBox : FormsControlBase
     {
-        //@@@ SelectedIndexes 複数選択が欲しい
-        //    ChangeSelect
-        //    カレントと実セレクトの対応
-
         /// <summary>
         /// コンストラクタです
         /// </summary>
@@ -84,6 +82,60 @@ namespace Ong.Friendly.FormsStandardControls
         public int FindListIndex(string ItemText)
         {
             return (int)(this["FindString"](ItemText).Core);
+        }
+
+        /// <summary>
+        /// 指定されたインデックスに該当するアイテムを選択状態にします
+        /// </summary>
+        /// <param name="indexs">アイテム番号</param>
+        /// <param name="async">非同期オブジェクト</param>
+        public void EmulateChangeSelectedIndexes(int[] indexs, Async async)
+        {
+            App[GetType(), "ChangeSelectedIndexesTarget", async](AppVar, indexs);
+        }
+
+        /// <summary>
+        /// 指定されたインデックスに該当するアイテムを選択状態にします
+        /// </summary>
+        public void EmulateChangeSelectedIndexes(int[] indexs)
+        {
+            App[GetType(), "ChangeSelectedIndexesTarget"](AppVar, indexs);
+        }
+
+        /// <summary>
+        /// リストアイテム選択（内部）
+        /// </summary>
+        /// <param name="listbox"></param>
+        /// <param name="indexs"></param>
+        private static void ChangeSelectedIndexesTarget(ListBox listbox, params int[] indexs)
+        {
+            foreach (int item in indexs)
+            {
+                listbox.SetSelected(item, true);
+            }
+        }
+
+        /// <summary>
+        /// 選択状態のリスト項目一覧を取得します
+        /// </summary>
+        public int[] EmulateGetSelectedIndexes()
+        {
+            return (int[])(App[GetType(), "GetSelectedIndexesTarget"](AppVar).Core);
+        }
+
+        /// <summary>
+        /// リストアイテム選択（内部）
+        /// </summary>
+        /// <param name="listbox"></param>
+        private static int[] GetSelectedIndexesTarget(ListBox listbox)
+        {
+            List<int> list = new List<int>();
+            ListBox.SelectedIndexCollection collection = listbox.SelectedIndices;
+            for (int index = 0; index < collection.Count; index++)
+            {
+                list.Add(collection[index]);
+            }
+            return list.ToArray();
         }
     }
 }

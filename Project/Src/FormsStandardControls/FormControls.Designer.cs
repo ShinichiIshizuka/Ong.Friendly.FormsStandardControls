@@ -177,8 +177,19 @@
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 12;
+            this.listBox2.Items.AddRange(new object[] {
+            "Item-1",
+            "Item-2",
+            "Item-3",
+            "Item-4",
+            "Item-5",
+            "Item-6",
+            "Item-7",
+            "Item-8",
+            "Item-9"});
             this.listBox2.Location = new System.Drawing.Point(235, 224);
             this.listBox2.Name = "listBox2";
+            this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox2.Size = new System.Drawing.Size(120, 88);
             this.listBox2.TabIndex = 10;
             // 
