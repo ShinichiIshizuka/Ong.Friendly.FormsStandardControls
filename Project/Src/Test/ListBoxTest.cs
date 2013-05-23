@@ -66,6 +66,9 @@ namespace Test
             Assert.AreEqual(3, listbox1.SelectedIndex);
         }
 
+        /// <summary>
+        /// リストアイテムを選択状態にします。選択一覧を取得します。
+        /// </summary>
         [Test]
         public void TestSelectIndexes()
         {
