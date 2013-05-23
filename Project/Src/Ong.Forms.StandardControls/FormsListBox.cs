@@ -107,11 +107,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="listbox"></param>
         /// <param name="indexs"></param>
-        private static void ChangeSelectedIndexesTarget(ListBox listbox, params int[] indexs)
+        private static void ChangeSelectedIndexesTarget(ListBox listbox, int[] indexs)
         {
-            foreach (int item in indexs)
+            for (int i = 0; i < indexs.Length; i ++)
             {
-                listbox.SetSelected(item, true);
+                listbox.SetSelected(indexs[i], true);
             }
         }
 

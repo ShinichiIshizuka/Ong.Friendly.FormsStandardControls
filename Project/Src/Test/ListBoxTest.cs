@@ -65,5 +65,16 @@ namespace Test
 
             Assert.AreEqual(3, listbox1.SelectedIndex);
         }
+
+        [Test]
+        public void TestSelectIndexes()
+        {
+            FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
+            int[] select = new int[]{5};
+            listbox2.EmulateChangeSelectedIndexes(select);
+            int[] selected = listbox2.EmulateGetSelectedIndexes();
+            Assert.AreEqual(1, selected.Length);
+            Assert.AreEqual(5, selected[0]);
+        }
     }
 }
