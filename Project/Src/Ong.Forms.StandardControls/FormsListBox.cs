@@ -103,9 +103,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="indexs"></param>
         private static void ChangeSelectedIndexesTarget(ListBox listbox, int[] indexs)
         {
-            for (int i = 0; i < indexs.Length; i ++)
+            for (int itemIndex = 0; itemIndex < indexs.Length; itemIndex++)
             {
-                listbox.SetSelected(indexs[i], true);
+                listbox.SetSelected(indexs[itemIndex], true);
             }
         }
 
@@ -125,11 +125,20 @@ namespace Ong.Friendly.FormsStandardControls
         {
             List<int> list = new List<int>();
             ListBox.SelectedIndexCollection collection = listbox.SelectedIndices;
-            for (int index = 0; index < collection.Count; index++)
+            for (int itemIndex = 0; itemIndex < collection.Count; itemIndex++)
             {
-                list.Add(collection[index]);
+                list.Add(collection[itemIndex]);
             }
             return list.ToArray();
         }
+
+        /// <summary>
+        /// ‘I‘ğƒ‚[ƒh‚ğæ“¾‚µ‚Ü‚·
+        /// </summary>
+        public SelectionMode SelectionMode
+        {
+            get { return (SelectionMode)(this["SelectionMode"]().Core); }
+        }
+
     }
 }

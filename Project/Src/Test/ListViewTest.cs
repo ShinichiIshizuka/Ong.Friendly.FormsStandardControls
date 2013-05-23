@@ -101,7 +101,7 @@ namespace Test
         public void ListViewStyle()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            View viewStyle = listView1.GetView;
+            View viewStyle = listView1.ViewMode;
             Assert.AreEqual(View.Details, viewStyle);
         }
 

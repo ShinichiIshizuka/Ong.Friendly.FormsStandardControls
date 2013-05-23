@@ -123,9 +123,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// Viewスタイルを取得します
+        /// Viewモードを取得します
         /// </summary>
-        public View GetView
+        public View ViewMode
         {
             get { return (View)(this["View"]().Core); } 
         }
