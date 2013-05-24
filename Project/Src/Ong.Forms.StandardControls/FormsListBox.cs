@@ -104,7 +104,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="listbox">ListBox。</param>
         /// <param name="index">インデックス。</param>
-        /// <param name="state">選択状態にする場合はtrueを設定します。</param>
+        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
         private static void ChangeSelectedStateTarget(ListBox listbox, int index, bool isSelect)
         {
             listbox.SetSelected(index, isSelect);
