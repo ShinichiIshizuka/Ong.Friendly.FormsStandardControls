@@ -24,17 +24,17 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
- 　     /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsNumericUpDown(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
             Initializer.Initialize(app, GetType());
         }
         /// <summary>
-        /// △をクリックします
+        /// △をクリックします。
         /// </summary>
         public void EmulateUpClick()
         {
@@ -43,10 +43,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// △をクリックします
-        /// 非同期で実行します
+        /// △をクリックします。
+        /// 非同期で実行します。
         /// </summary>
-        /// <param name="async">非同期実行オブジェクト</param>
+        /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateUpClick(Async async)
         {
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)1));
@@ -54,7 +54,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ▽をクリックします
+        /// ▽をクリックします。
         /// </summary>
         public void EmulateDownClick()
         {
@@ -63,14 +63,33 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ▽をクリックします
-        /// 非同期で実行します
+        /// ▽をクリックします。
+        /// 非同期で実行します。
         /// </summary>
-        /// <param name="async">非同期実行オブジェクト</param>
+        /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateDownClick(Async async)
         {
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)2));
             this["upDownButtons"]()["OnUpDown", async](args);
+        }
+
+        /// <summary>
+        /// テキストを変更します。
+        /// </summary>
+        /// <param name="text">テキスト。</param>
+        public void EmulateChangeText(string text)
+        {
+            this["Text"](text);
+        }
+
+        /// <summary>
+        /// テキストを変更します。
+        /// </summary>
+        /// <param name="text">テキスト。</param>
+        /// <param name="async">非同期実行オブジェクト。</param>
+        public void EmulateChangeText(string text, Async async)
+        {
+            this["Text", async](text);
         }
     }
 }
