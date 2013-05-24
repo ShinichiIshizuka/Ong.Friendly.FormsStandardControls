@@ -73,25 +73,5 @@ namespace Test
             String buttonText = button1.Text;
             Assert.AreEqual("button1", buttonText);
         }
-
-        /// <summary>
-        /// 非表示のテスト
-        /// </summary>
-        [Test]
-        public void TestButtonVisible()
-        {
-            FormsButton button1 = new FormsButton(app, testDlg["button1"]());
-            button1.Visible = false;
-        }
-
-        /// <summary>
-        /// 非活性のテスト
-        /// </summary>
-        [Test]
-        public void TestButtonEnabled()
-        {
-            FormsButton button1 = new FormsButton(app, testDlg["button1"]());
-            button1.Enabled = false;
-        }
     }
 }

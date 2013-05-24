@@ -52,7 +52,7 @@ namespace Test
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
             Assert.AreEqual(4, listView1.ItemCount);
-            Assert.AreEqual(3, listView1.SubItemCount);
+            Assert.AreEqual(3, listView1.ColumnCount);
         }
 
         /// <summary>
@@ -62,10 +62,10 @@ namespace Test
         public void ListViewFindListItemAndSelect()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            FormsListViewItem item = listView1.FindItem("ÉäÉìÉS");
+            FormsListViewItem item = listView1.FindItemWithText("ÉäÉìÉS", true, 0);
             Assert.NotNull(item);
-            listView1.EmulateItemSelect(item.ItemIndex, new Async());
-            Assert.AreEqual(3, listView1.SelectItem.ItemIndex);
+            listView1.EmulateChangeSelectedState(item.ItemIndex,true ,new Async());
+            Assert.AreEqual(3, listView1.SelectIndexes[0]);
         }
 
         /// <summary>
@@ -75,8 +75,8 @@ namespace Test
         public void ListViewSelectAndTextGet()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            listView1.EmulateItemSelect(1, new Async());
-            Assert.AreEqual("ÉsÅ[É}Éì", listView1.SelectItem.Text);
+            listView1.EmulateChangeSelectedState(1, true, new Async());
+            Assert.AreEqual("ÉsÅ[É}Éì", listView1.GetListViewItem(listView1.SelectIndexes[0]).Text);
         }
 
         /// <summary>
@@ -87,10 +87,10 @@ namespace Test
         public void ListViewItemCheck()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            FormsListViewItem item1 = listView1.FindItem("ÉäÉìÉS");
+            FormsListViewItem item1 = listView1.FindItemWithText("ÉäÉìÉS", true, 0);
             item1.EmulateCheck(true);
             Assert.IsTrue(item1.Checked);
-            FormsListViewItem item2 = listView1.FindItem("ñÏçÿ");
+            FormsListViewItem item2 = listView1.FindItemWithText("ñÏçÿ", true, 0);
             Assert.AreEqual("ÉgÉ}Ég", item2.Text);
         }
 
@@ -112,7 +112,7 @@ namespace Test
         public void ListViewGetSubItem()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            FormsListViewItem item1 = listView1.FindItem("ÉäÉìÉS");
+            FormsListViewItem item1 = listView1.FindItemWithText("ÉäÉìÉS", true , 0);
             FormsListViewSubItem subitem1 = item1.GetSubItem(1);
             Assert.AreEqual("â ï®", subitem1.Text);
         }

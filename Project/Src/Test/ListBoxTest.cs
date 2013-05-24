@@ -74,10 +74,9 @@ namespace Test
         {
             FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
             int[] select = new int[]{5};
-            listbox2.EmulateChangeSelectedIndexes(select);
-            int[] selected = listbox2.EmulateGetSelectedIndexes();
-            Assert.AreEqual(1, selected.Length);
-            Assert.AreEqual(5, selected[0]);
+            listbox2.EmulateChangeSelectedIndex(5);
+            int selected = listbox2.SelectedIndex;
+            Assert.AreEqual(5, selected);
         }
 
     }
