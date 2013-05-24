@@ -89,10 +89,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// サブアイテムを取得します(内部)
+        /// サブアイテムを取得します(内部)。
         /// </summary>
-        /// <param name="listviewitem">リストビューアイテム</param>
-        /// <param name="subitemindex">リストビューサブアイテムインデックス</param>
+        /// <param name="listviewitem">リストビューアイテム。</param>
+        /// <param name="subitemindex">リストビューサブアイテムインデックス。</param>
         /// <returns>FormsListViewSubItem</returns>
         static ListViewItem.ListViewSubItem GetSubItemInTarget(ListViewItem listviewitem, int subitemindex)
         {

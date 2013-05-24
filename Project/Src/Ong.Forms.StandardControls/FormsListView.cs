@@ -3,18 +3,19 @@ using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
+using System.Collections.Generic;
 
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// TypeがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します。
     /// </summary>
     public class FormsListView : FormsControlBase
     {
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです</param>
+        /// <param name="src">元となるウィンドウコントロールです。</param>
         public FormsListView(WindowControl src)
             : base(src)
         {
@@ -22,10 +23,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsListView(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
@@ -33,9 +34,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// アイテム＋サブアイテム数を取得します。
+        /// 列数を取得します。
         /// </summary>
-        public int SubItemCount
+        public int ColumnCount
         {
             get { return (int)(this["Columns"]()["Count"]().Core); }
         }
@@ -49,69 +50,81 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 選択している最初のリストアイテムを取得します
+        /// 選択されたインデックスの一覧を取得します。
         /// </summary>
-        public FormsListViewItem SelectItem
+        public int[] SelectIndexes
         {
-            get
-            {
-                AppVar returnItem = (App[GetType(), "SelectItemInTarget"](AppVar));
-                return new FormsListViewItem(App, returnItem);
-            }
+            get { return (int[])(App[GetType(), "GetSelectedIndexesTarget"](AppVar).Core); } 
         }
-
+        
         /// <summary>
-        /// 選択リストアイテム（内部）
+        /// 選択されたインデックスの一覧を取得します（内部）。
         /// </summary>
         /// <param name="listview">リストビュー</param>
-        /// <returns>選択されたリストアイテム</returns>
-        private static ListViewItem SelectItemInTarget(ListView listview)
+        /// <returns>選択されたインデックス一覧。</returns>
+        private static int[] GetSelectedIndexesTarget(ListView listview)
         {
+            List<int> list = new List<int>();
             for (int itemIndex = 0; itemIndex < listview.Items.Count; itemIndex++)
             {
                 if (listview.Items[itemIndex].Selected == true)
                 {
-                    return listview.Items[itemIndex];
+                    list.Add(itemIndex);
                 }
             }
-            return null;
+            return list.ToArray();
         }
 
         /// <summary>
-        /// 行を選択します
+        /// 指定したインデックスのアイテムを取得します。
         /// </summary>
-        /// <param name="itemIndex">行番号</param>
+        /// <param name="index">インデックス。</param>
+        /// <returns>指定したインデックスのアイテム。</returns>
+        public FormsListViewItem GetListViewItem(int index)
+        {
+            return new FormsListViewItem(this["Items"](index).Core);
+        }
+        // GetListViewItem FormsListViewItemsを返す
+  
+        // EmulateChangeSelectedStateを作る
+        /*
+        /// <summary>
+        /// 行を選択します。
+        /// </summary>
+        /// <param name="itemIndex">行番号。</param>
         public void EmulateItemSelect(int itemIndex)
         {
             App[GetType(), "ItemSelectInTarget"](AppVar, itemIndex);
         }
 
         /// <summary>
-        /// リストアイテム（行）を選択します
-        /// 非同期で実行します
+        /// リストアイテム（行）を選択します。
+        /// 非同期で実行します。
         /// </summary>
-        /// <param name="itemIndex">ノード</param>
-        /// <param name="async">非同期オブジェクト</param>
+        /// <param name="itemIndex">ノード。</param>
+        /// <param name="async">非同期オブジェクト。</param>
         public void EmulateItemSelect(int itemIndex, Async async)
         {
             App[GetType(), "ItemSelectInTarget", async](AppVar, itemIndex);
         }
 
         /// <summary>
-        /// リストアイテム選択（内部）
+        /// リストアイテム選択（内部）。
         /// </summary>
-        /// <param name="listview"></param>
-        /// <param name="itemIndex"></param>
+        /// <param name="listview">リストビュー。</param>
+        /// <param name="itemIndex">インデックス。</param>
         private static void ItemSelectInTarget(ListView listview, int itemIndex)
         {
             listview.Items[itemIndex].Selected = true;
         }
+        */
+        //Delete
 
         /// <summary>
-        /// リストアイテムを指定されたテキストで検索します
+        /// リストアイテムを指定されたテキストで検索します。
         /// </summary>
         /// <param name="itemText">テキスト</param>
-        /// <returns>検索されたアイテムのアイテムハンドル。未発見時はnullが返ります</returns>
+        /// <returns>検索されたアイテムのアイテムハンドル。未発見時はnullが返ります。</returns>
         public FormsListViewItem FindItem(string itemText)
         {
             AppVar returnItem = this["FindItemWithText"](itemText, true, 0);
@@ -123,7 +136,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// Viewモードを取得します
+        /// Viewモードを取得します。
         /// </summary>
         public View ViewMode
         {
