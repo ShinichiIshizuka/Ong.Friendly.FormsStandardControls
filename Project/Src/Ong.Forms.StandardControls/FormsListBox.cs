@@ -86,7 +86,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期オブジェクト</param>
         public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
-            App[GetType(), "ChangeSelectedIndexesTarget", async](AppVar, index, isSelect);
+            App[GetType(), "ChangeSelectedIndexesInTarget", async](AppVar, index, isSelect);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
-            App[GetType(), "ChangeSelectedStateTarget"](AppVar, index, isSelect);
+            App[GetType(), "ChangeSelectedStateInTarget"](AppVar, index, isSelect);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="listbox">ListBox。</param>
         /// <param name="index">インデックス。</param>
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        private static void ChangeSelectedStateTarget(ListBox listbox, int index, bool isSelect)
+        private static void ChangeSelectedIndexesInTarget(ListBox listbox, int index, bool isSelect)
         {
             listbox.SetSelected(index, isSelect);
         }
@@ -115,14 +115,14 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public int[] SelectedIndexes
         {
-            get { return (int[])(App[GetType(), "GetSelectedIndexesTarget"](AppVar).Core); }
+            get { return (int[])(App[GetType(), "GetSelectedIndexesInTarget"](AppVar).Core); }
         }
 
         /// <summary>
         /// リストアイテムを選択します（内部）。
         /// </summary>
         /// <param name="listbox">リストボックス</param>
-        private static int[] GetSelectedIndexesTarget(ListBox listbox)
+        private static int[] GetSelectedIndexesInTarget(ListBox listbox)
         {
             List<int> list = new List<int>();
             ListBox.SelectedIndexCollection collection = listbox.SelectedIndices;

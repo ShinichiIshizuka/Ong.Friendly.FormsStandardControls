@@ -103,7 +103,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="isSelect">‘I‘ğó‘Ô‚É‚·‚éê‡‚Ítrue‚ğİ’è‚µ‚Ü‚·B</param>
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
-            App[GetType(), "ChangeSelectedStateTarget"](AppVar, index, isSelect);
+            App[GetType(), "ChangeSelectedStateInTarget"](AppVar, index, isSelect);
         }
 
         /// <summary>
