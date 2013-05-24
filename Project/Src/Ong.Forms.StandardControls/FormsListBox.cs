@@ -8,14 +8,14 @@ using System.Collections.Generic;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// TypeがSystem.Windows.Forms.ListBoxのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.ListBoxのウィンドウに対応した操作を提供します。
     /// </summary>
     public class FormsListBox : FormsControlBase
     {
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです</param>
+        /// <param name="src">元となるウィンドウコントロールです。</param>
         public FormsListBox(WindowControl src)
             : base(src)
         {
@@ -23,10 +23,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsListBox(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
@@ -34,7 +34,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 一覧のアイテム数を取得します
+        /// 一覧のアイテム数を取得します。
         /// </summary>
         public int ItemCount
         {
@@ -42,7 +42,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 現在選択されているアイテムのインデックスを取得します
+        /// 現在選択されているアイテムのインデックスを取得します。
         /// </summary>
         public int SelectedIndex
         {
@@ -50,7 +50,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
         
         /// <summary>
-        /// 指定されたインデックスに該当するアイテムを選択状態にします
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
         /// </summary>
         public void EmulateChangeSelectedIndex(int Index)
         {
@@ -58,69 +58,70 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 指定されたインデックスに該当するアイテムを選択状態にします
-        /// 非同期に実行します
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
+        /// 非同期に実行します。
         /// </summary>
-        /// <param name="Index">インデックス</param>
-        /// <param name="async">非同期実行オブジェクト</param>
+        /// <param name="Index">インデックス。</param>
+        /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateChangeSelectedIndex(int Index, Async async)
         {
             this["SelectedIndex", async](Index);
         }
 
         /// <summary>
-        /// アイテムを指定されたテキストで検索します
+        /// アイテムを指定されたテキストで検索します。
         /// </summary>
         /// <param name="ItemText">各ノードのテキスト</param>
-        /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります</returns>
+        /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
         public int FindListIndex(string ItemText)
         {
             return (int)(this["FindString"](ItemText).Core);
         }
 
         /// <summary>
-        /// 指定されたインデックスに該当するアイテムを選択状態にします
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
         /// </summary>
-        /// <param name="indexs">アイテム番号</param>
+        /// <param name="index">インデックス。</param>
+        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
         /// <param name="async">非同期オブジェクト</param>
-        public void EmulateChangeSelectedIndexes(int[] indexs, Async async)
+        public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
-            App[GetType(), "ChangeSelectedIndexesTarget", async](AppVar, indexs);
+            App[GetType(), "ChangeSelectedIndexesTarget", async](AppVar, index, isSelect);
         }
 
         /// <summary>
-        /// 指定されたインデックスに該当するアイテムを選択状態にします
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
         /// </summary>
-        public void EmulateChangeSelectedIndexes(int[] indexs)
+        /// <param name="index">インデックス。</param>
+        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        public void EmulateChangeSelectedState(int index, bool isSelect)
         {
-            App[GetType(), "ChangeSelectedIndexesTarget"](AppVar, indexs);
+            App[GetType(), "ChangeSelectedStateTarget"](AppVar, index, isSelect);
         }
 
         /// <summary>
-        /// リストアイテム選択（内部）
+        /// リストアイテム選択（内部）。
         /// </summary>
-        /// <param name="listbox"></param>
-        /// <param name="indexs"></param>
-        private static void ChangeSelectedIndexesTarget(ListBox listbox, int[] indexs)
+        /// <param name="listbox">ListBox。</param>
+        /// <param name="index">インデックス。</param>
+        /// <param name="state">選択状態にする場合はtrueを設定します。</param>
+        private static void ChangeSelectedStateTarget(ListBox listbox, int index, bool isSelect)
         {
-            for (int itemIndex = 0; itemIndex < indexs.Length; itemIndex++)
-            {
-                listbox.SetSelected(indexs[itemIndex], true);
-            }
+            listbox.SetSelected(index, isSelect);
         }
 
         /// <summary>
-        /// 選択状態のリスト項目一覧を取得します
+        /// 選択状態のリスト項目一覧を取得します。
         /// </summary>
-        public int[] EmulateGetSelectedIndexes()
+        public int[] SelectedIndexes
         {
-            return (int[])(App[GetType(), "GetSelectedIndexesTarget"](AppVar).Core);
+            get { return (int[])(App[GetType(), "GetSelectedIndexesTarget"](AppVar).Core); }
         }
 
         /// <summary>
-        /// リストアイテム選択（内部）
+        /// リストアイテム選択（内部）。
         /// </summary>
-        /// <param name="listbox"></param>
+        /// <param name="listbox">リストボックス</param>
         private static int[] GetSelectedIndexesTarget(ListBox listbox)
         {
             List<int> list = new List<int>();
@@ -133,7 +134,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 選択モードを取得します
+        /// 選択モードを取得します。
         /// </summary>
         public SelectionMode SelectionMode
         {
