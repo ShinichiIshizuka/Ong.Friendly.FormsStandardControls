@@ -54,7 +54,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public int[] SelectIndexes
         {
-            get { return (int[])(App[GetType(), "GetSelectedIndexesTarget"](AppVar).Core); } 
+            get { return (int[])(App[GetType(), "GetSelectedIndexesInTarget"](AppVar).Core); } 
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="listview">リストビュー</param>
         /// <returns>選択されたインデックス一覧。</returns>
-        private static int[] GetSelectedIndexesTarget(ListView listview)
+        private static int[] GetSelectedIndexesInTarget(ListView listview)
         {
             List<int> list = new List<int>();
             for (int itemIndex = 0; itemIndex < listview.Items.Count; itemIndex++)
@@ -93,7 +93,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期オブジェクト</param>
         public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
-            App[GetType(), "ChangeSelectedIndexesTarget", async](AppVar, index, isSelect);
+            App[GetType(), "ChangeSelectedIndexesInTarget", async](AppVar, index, isSelect);
         }
 
         /// <summary>
@@ -112,19 +112,21 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="listview">リストビュー。</param>
         /// <param name="index">インデックス。</param>
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        private static void ChangeSelectedStateTarget(ListView listview, int index, bool isSelect)
+        private static void ChangeSelectedIndexesInTarget(ListView listview, int index, bool isSelect)
         {
             listview.Items[index].Selected = isSelect;
         }
 
         /// <summary>
-        /// リストアイテムを指定されたテキストで検索します。
+        /// 指定したテキスト値で始まる最初のアイテムを検索します。
         /// </summary>
-        /// <param name="itemText">テキスト</param>
-        /// <returns>検索されたアイテムのアイテムハンドル。未発見時はnullが返ります。</returns>
-        public FormsListViewItem FindItem(string itemText)
+        /// <param name="itemText">テキスト。</param>
+        /// <param name="includeSubItemsInSearch">検索にサブ項目を含める場合は true。それ以外の場合は false。</param>
+        /// <param name="startIndex">検索を開始する位置の項目のインデックス。</param>
+        /// <returns>指定したテキスト値で始まる最初のアイテム</returns>
+        public FormsListViewItem FindItemWithText(string itemText, bool includeSubItemsInSearch, int startIndex)
         {
-            AppVar returnItem = this["FindItemWithText"](itemText, true, 0);
+            AppVar returnItem = this["FindItemWithText"](itemText, includeSubItemsInSearch, startIndex);
             if (returnItem != null)
             {
                 return new FormsListViewItem(App, returnItem);
