@@ -82,7 +82,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>指定したインデックスのアイテム。</returns>
         public FormsListViewItem GetListViewItem(int index)
         {
-            return new FormsListViewItem(this["Items"](index).Core);
+            return new FormsListViewItem(App, this["Items"]()["[]"](index));
         }
         // GetListViewItem FormsListViewItemsを返す
   
