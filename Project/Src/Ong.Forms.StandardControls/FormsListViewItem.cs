@@ -13,35 +13,35 @@ namespace Ong.Friendly.FormsStandardControls
     public class FormsListViewItem:AppVarWrapper
     {
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsListViewItem(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
         }
     
         /// <summary>
-        /// テキストを取得します
+        /// テキストを取得します。
         /// </summary>
-        /// <returns>テキスト</returns>
+        /// <returns>テキスト。</returns>
         public String Text
         {
             get { return (String)this["Text"]().Core; }
         }
 
         /// <summary>
-        /// アイテムインデックスを取得します
+        /// アイテムインデックスを取得します。
         /// </summary>
-        /// <returns>行番号</returns>
+        /// <returns>行番号。</returns>
         public int ItemIndex
         {
             get { return (int)this["Index"]().Core; }
         }
 
         /// <summary>
-        /// チェック状態を取得します
+        /// チェック状態を取得します。
         /// </summary>
         public bool Checked
         {
@@ -49,39 +49,39 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// チェック状態を設定します
+        /// チェック状態を設定します。
         /// </summary>
-        /// <param name="value">チェック状態</param>
+        /// <param name="value">チェック状態。</param>
         public void EmulateCheck(bool value)
         {
             App[GetType(), "EmulateCheckInTarget"](AppVar, value);
         }
 
         /// <summary>
-        /// チェック状態を設定します
-        /// 非同期で実行します
+        /// チェック状態を設定します。
+        /// 非同期で実行します。
         /// </summary>
-        /// <param name="value">チェック状態</param>
-        /// <param name="async">非同期実行オブジェクト</param>
+        /// <param name="value">チェック状態。</param>
+        /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateCheck(bool value, Async async)
         {
             App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
         }
 
         /// <summary>
-        /// チェック状態を設定します
+        /// チェック状態を設定します。
         /// </summary>
-        /// <param name="listviewitem">リストビューアイテム</param>
-        /// <param name="value">チェック状態</param>
+        /// <param name="listviewitem">リストビューアイテム。</param>
+        /// <param name="value">チェック状態。</param>
         static void EmulateCheckInTarget(ListViewItem listviewitem, bool value)
         {
             listviewitem.Checked = value;
         }
 
         /// <summary>
-        /// サブアイテムを取得します
+        /// サブアイテムを取得します。
         /// </summary>
-        /// <param name="subitemindex">サブアイテムインデックス</param>
+        /// <param name="subitemindex">サブアイテムインデックス。</param>
         /// <returns></returns>
         public FormsListViewSubItem GetSubItem(int subitemindex)
         {

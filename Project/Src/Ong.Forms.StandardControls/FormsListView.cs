@@ -84,41 +84,38 @@ namespace Ong.Friendly.FormsStandardControls
         {
             return new FormsListViewItem(App, this["Items"]()["[]"](index));
         }
-        // GetListViewItem FormsListViewItemsを返す
-  
-        // EmulateChangeSelectedStateを作る
-        /*
+
         /// <summary>
-        /// 行を選択します。
+        /// 指定されたインデックスに該当するアイテムの選択状態を変更します。
         /// </summary>
-        /// <param name="itemIndex">行番号。</param>
-        public void EmulateItemSelect(int itemIndex)
+        /// <param name="index">インデックス。</param>
+        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        /// <param name="async">非同期オブジェクト</param>
+        public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
-            App[GetType(), "ItemSelectInTarget"](AppVar, itemIndex);
+            App[GetType(), "ChangeSelectedIndexesTarget", async](AppVar, index, isSelect);
         }
 
         /// <summary>
-        /// リストアイテム（行）を選択します。
-        /// 非同期で実行します。
+        /// 指定されたインデックスに該当するアイテムの選択状態を変更します。
         /// </summary>
-        /// <param name="itemIndex">ノード。</param>
-        /// <param name="async">非同期オブジェクト。</param>
-        public void EmulateItemSelect(int itemIndex, Async async)
+        /// <param name="index">インデックス。</param>
+        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        public void EmulateChangeSelectedState(int index, bool isSelect)
         {
-            App[GetType(), "ItemSelectInTarget", async](AppVar, itemIndex);
+            App[GetType(), "ChangeSelectedStateTarget"](AppVar, index, isSelect);
         }
 
         /// <summary>
-        /// リストアイテム選択（内部）。
+        /// リストビューアイテム選択（内部）。
         /// </summary>
         /// <param name="listview">リストビュー。</param>
-        /// <param name="itemIndex">インデックス。</param>
-        private static void ItemSelectInTarget(ListView listview, int itemIndex)
+        /// <param name="index">インデックス。</param>
+        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        private static void ChangeSelectedStateTarget(ListView listview, int index, bool isSelect)
         {
-            listview.Items[itemIndex].Selected = true;
+            listview.Items[index].Selected = isSelect;
         }
-        */
-        //Delete
 
         /// <summary>
         /// リストアイテムを指定されたテキストで検索します。

@@ -13,19 +13,19 @@ namespace Ong.Friendly.FormsStandardControls
     public class FormsListViewSubItem:AppVarWrapper
     {
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsListViewSubItem(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
         }
     
         /// <summary>
-        /// テキストを取得します
+        /// テキストを取得します。
         /// </summary>
-        /// <returns>テキスト</returns>
+        /// <returns>テキスト。</returns>
         public String Text
         {
             get { return (String)this["Text"]().Core; }
