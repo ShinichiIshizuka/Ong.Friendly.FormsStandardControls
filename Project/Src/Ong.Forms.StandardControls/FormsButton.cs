@@ -6,14 +6,14 @@ using Ong.Friendly.FormsStandardControls.Inside;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// TypeがSystem.Windows.Forms.Buttonのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.Buttonのウィンドウに対応した操作を提供します。
     /// </summary>
     public class FormsButton : FormsControlBase
     {
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです</param>
+        /// <param name="src">元となるウィンドウコントロールです。</param>
         public FormsButton(WindowControl src)
             : base(src)
         {
@@ -21,10 +21,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsButton(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
@@ -32,7 +32,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// クリックします
+        /// クリックします。
         /// </summary>
         public void EmulateClick()
         {
@@ -40,10 +40,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// クリックします
-        /// 非同期で実行します
+        /// クリックします。
+        /// 非同期で実行します。
         /// </summary>
-        /// <param name="async">非同期実行オブジェクト</param>
+        /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateClick(Async async)
         {
             this["PerformClick", async]();
