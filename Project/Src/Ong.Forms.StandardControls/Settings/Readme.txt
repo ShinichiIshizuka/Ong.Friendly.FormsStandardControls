@@ -13,7 +13,7 @@
 
 ソフトウェア使用許諾契約
 	株式会社Codeer（以下、「弊社」といいます。）は、お客様が以下のソフトウェア使用許諾契約（以下「本契約」といいます。）
-	に同意いただける場合にかぎり、Ong.Friendly.FormsStandardControl_V1.6αにてインストールされる全てのソフトウェア
+	に同意いただける場合にかぎり、Ong.Friendly.FormsStandardControl_V1.6βにてインストールされる全てのソフトウェア
 	（以下、「本ソフトウェア」といいます。）の使用を許諾いたします。
 
 	①本ソフトウェアは商用利用可能です。
@@ -46,7 +46,7 @@
 	setup.exeを起動してインストールしてください。
 
 TestAssistantへのプラグイン方法
-	このインストーラではTestAssistant1.5にプラグインも実施します。
+	このインストーラではTestAssistant1.6にプラグインも実施します。
 	しかし、TestAssistantをデフォルト以外のフォルダにインストールされているお客様に関しては正しくプラグインされない可能性があります。
 	その場合は、手動でTestAssistantのインストールフォルダに以下のファイルをコピーしてください。
 	プラグインに関する詳細はCodeer.Friendly提供元のサイト情報を参照お願いします。
@@ -59,4 +59,4 @@ TestAssistantへのプラグイン方法
 
 
 アンインストール方法
-	『プログラムの追加と削除』からOng.Friendly.FormsStandardControl_V1.6αを削除してください。
+	『プログラムの追加と削除』からOng.Friendly.FormsStandardControl_V1.6βを削除してください。
