@@ -5,7 +5,7 @@ using Codeer.Friendly.Windows;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// AppVarラップアイテムの基本クラス。
+    /// AppVarラップアイテムの基本クラスです。
     /// </summary>
     public class AppVarWrapper
     {
@@ -13,17 +13,17 @@ namespace Ong.Friendly.FormsStandardControls
         AppVar _appVar;
 
         /// <summary>
-        /// アプリケーション操作クラス。
+        /// アプリケーション操作クラスです。
         /// </summary>
         public WindowsAppFriend App { get { return _app; } }
 
         /// <summary>
-        /// アプリケーション変数操作クラス。
+        /// アプリケーション変数操作クラスです。
         /// </summary>
         public AppVar AppVar { get { return _appVar; } }
 
         /// <summary>
-        /// コンストラクタ。
+        /// コンストラクタです。
         /// </summary>
         /// <param name="app">対象アプリ操作クラス。</param>
         /// <param name="appVar">対象アプリ内変数操作クラス。</param>

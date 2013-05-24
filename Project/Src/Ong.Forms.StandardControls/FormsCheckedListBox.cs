@@ -14,7 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです。</param>
+        /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsCheckedListBox(FormsControlBase src)
             : base(src)
         {

@@ -17,7 +17,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです。</param>
+        /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsDataGridView(WindowControl src)
             : base(src)
         {
@@ -76,7 +76,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルのチェック状態を順に変更する。
+        /// セルのチェック状態を順に変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -88,7 +88,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルのチェック状態を順に変更する。
+        /// セルのチェック状態を順に変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -101,7 +101,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルのテキスト変更。
+        /// セルのテキストを変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -112,7 +112,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルのテキスト変更。
+        /// セルのテキストを変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -124,7 +124,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルのテキスト変更。
+        /// セルのテキストを変更します。
         /// </summary>
         /// <param name="grid">グリッド。</param>
         /// <param name="col">列。</param>
@@ -139,7 +139,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルコンボ選択変更。
+        /// セルコンボの選択を変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -150,7 +150,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルコンボ選択変更。
+        /// セルコンボの選択を変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -162,7 +162,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルコンボ選択変更。
+        /// セルコンボの選択を変更します。
         /// </summary>
         /// <param name="grid">グリッド。</param>
         /// <param name="col">列。</param>
@@ -177,7 +177,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルボタンクリック。
+        /// セルボタンをクリックします。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -188,7 +188,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルボタンクリック。
+        /// セルボタンをクリックします。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -200,7 +200,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルリンククリック。
+        /// セルリンクをクリックします。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -211,7 +211,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルリンククリック。
+        /// セルリンクをクリックします。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -223,7 +223,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// カレントセルを選択。
+        /// カレントセルを選択します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -233,7 +233,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// カレントセルを選択。
+        /// カレントセルを選択します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
@@ -244,7 +244,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// カレントセルを選択。
+        /// カレントセルを選択します。
         /// </summary>
         /// <param name="grid">グリッド。</param>
         /// <param name="col">列。</param>
@@ -257,7 +257,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 選択状態解除。
+        /// 選択状態を解除します。
         /// </summary>
         public void EmulateClearSelection()
         {
@@ -265,7 +265,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 選択状態解除。
+        /// 選択状態を解除します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateClearSelection(Async async)
@@ -274,7 +274,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 選択状態変更。
+        /// 選択状態を変更します。
         /// </summary>
         /// <param name="cells">選択セル情報。</param>
         public void EmulateChangeCellSelected(params CellSelectedInfo[] cells)
@@ -283,7 +283,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 選択状態変更。
+        /// 選択状態を変更します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
         /// <param name="cells">選択セル情報。</param>
@@ -293,7 +293,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 選択状態変更。
+        /// 選択状態を変更します。
         /// </summary>
         /// <param name="grid">グリッド。</param>
         /// <param name="cells">選択セル情報。</param>
@@ -308,7 +308,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 行選択状態変更。
+        /// 行選択状態を変更します。
         /// </summary>
         /// <param name="rows">選択行情報。</param>
         public void EmulateChangeRowSelected(params RowSelectedInfo[] rows)
@@ -317,7 +317,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 行選択状態変更。
+        /// 行選択状態を変更します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
         /// <param name="rows">選択行情報。</param>
@@ -327,7 +327,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 行選択状態変更。
+        /// 行選択状態を変更します。
         /// </summary>
         /// <param name="grid">グリッド。</param>
         /// <param name="rows">選択行情報。</param>
@@ -342,7 +342,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// Delete操作エミュレート。
+        /// Delete操作をエミュレートします。
         /// </summary>
         public void EmulateDelete()
         {
@@ -353,7 +353,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// Delete操作エミュレート。
+        /// Delete操作をエミュレートします。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateDelete(Async async)

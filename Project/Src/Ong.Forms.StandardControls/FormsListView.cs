@@ -15,7 +15,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです。</param>
+        /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsListView(WindowControl src)
             : base(src)
         {
@@ -107,7 +107,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// リストビューアイテム選択（内部）。
+        /// リストビューアイテムを選択します（内部）。
         /// </summary>
         /// <param name="listview">リストビュー。</param>
         /// <param name="index">インデックス。</param>

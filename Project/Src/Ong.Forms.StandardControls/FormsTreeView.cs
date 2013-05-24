@@ -7,14 +7,14 @@ using Ong.Friendly.FormsStandardControls.Inside;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// TypeがWindowControlがSystem.Windows.Forms.TreeViewのウィンドウに対応した操作を提供します
+    /// TypeがWindowControlがSystem.Windows.Forms.TreeViewのウィンドウに対応した操作を提供します。
     /// </summary>
     public class FormsTreeView : FormsControlBase
     {
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです</param>
+        /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsTreeView(WindowControl src)
             : base(src)
         {
@@ -22,10 +22,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsTreeView(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
@@ -33,7 +33,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 選択しているノードを取得します
+        /// 選択しているノードを取得します。
         /// </summary>
         public FormsTreeNode SelectNode
         {
@@ -41,20 +41,20 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ノードを選択します
+        /// ノードを選択します。
         /// </summary>
-        /// <param name="node">ノード</param>
+        /// <param name="node">ノード。</param>
         public void EmulateNodeSelect(FormsTreeNode node)
         {
             this["SelectedNode"](node.AppVar);
         }
 
         /// <summary>
-        /// ノードを選択します
-        /// 非同期で実行します
+        /// ノードを選択します。
+        /// 非同期で実行します。
         /// </summary>
-        /// <param name="node">ノード</param>
-        /// <param name="async">非同期オブジェクト</param>
+        /// <param name="node">ノード。</param>
+        /// <param name="async">非同期オブジェクト。</param>
         public void EmulateNodeSelect(FormsTreeNode node, Async async)
         {
             this["SelectedNode", async](node.AppVar);
@@ -64,7 +64,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// 子アイテムを取得します。
         /// </summary>
         /// <param name="indexs">インデックス。</param>
-        /// <returns>子アイテム</returns>
+        /// <returns>子アイテム。</returns>
         public FormsTreeNode GetItem(params int[] indexs)
         {
             return new FormsTreeNode(App, App[GetType(), "GetItemInTarget"](AppVar, indexs));
@@ -74,7 +74,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// 子アイテムを取得します。
         /// </summary>
         /// <param name="keys">キーとなるインデックスです。</param>
-        /// <returns>子アイテム</returns>
+        /// <returns>子アイテム。</returns>
         public FormsTreeNode GetItem(params string[] keys)
         {
             return new FormsTreeNode(App, App[GetType(), "GetItemInTarget"](AppVar, keys));
@@ -93,8 +93,8 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// アイテムを取得します。
         /// </summary>
-        /// <param name="trerview">ツリービュー</param>
-        /// <param name="indexs">インデックス</param>
+        /// <param name="trerview">ツリービュー。</param>
+        /// <param name="indexs">インデックス。</param>
         /// <returns>アイテム</returns>
         private static TreeNode GetItemInTarget(TreeView trerview, params int[] indexs)
         {
@@ -123,8 +123,8 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// アイテムを取得します。
         /// </summary>
-        /// <param name="trerview">ツリービュー</param>
-        /// <param name="keys">インデックス</param>
+        /// <param name="trerview">ツリービュー。</param>
+        /// <param name="keys">インデックス。</param>
         /// <returns>アイテム</returns>
         private static TreeNode GetItemInTarget(TreeView trerview, params string[] keys)
         {
@@ -153,8 +153,8 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// 表示文字列からアイテムを検索します。
         /// </summary>
-        /// <param name="trerview">ツリービュー</param>
-        /// <param name="texts">表示文字列</param>
+        /// <param name="trerview">ツリービュー。</param>
+        /// <param name="texts">表示文字列。</param>
         /// <returns>アイテム。</returns>
         private static TreeNode FindItemInTarget(TreeView trerview, string[] texts)
         {

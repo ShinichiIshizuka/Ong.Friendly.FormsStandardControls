@@ -3,7 +3,7 @@
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// セル選択情報。
+    /// セル選択情報です。
     /// </summary>
     [Serializable]
     public class CellSelectedInfo
@@ -13,26 +13,26 @@ namespace Ong.Friendly.FormsStandardControls
         bool _selected;
 
         /// <summary>
-        /// 列。
+        /// 列です。
         /// </summary>
         public int Col { get { return _col; } set { _col = value; } }
 
         /// <summary>
-        /// 行。
+        /// 行です。
         /// </summary>
         public int Row { get { return _row; } set { _row = value; } }
 
         /// <summary>
-        /// 選択状態であるか。
+        /// 選択状態を取得します。
         /// </summary>
         public bool Selected { get { return _selected; } set { _selected = value; } }
 
         /// <summary>
-        /// コンストラクタ。
+        /// コンストラクタです。
         /// </summary>
         /// <param name="col">行。</param>
         /// <param name="row">列。</param>
-        /// <param name="selected">選択状態であるか。</param>
+        /// <param name="selected">選択状態。</param>
         public CellSelectedInfo(int col, int row, bool selected)
         {
             _col = col;

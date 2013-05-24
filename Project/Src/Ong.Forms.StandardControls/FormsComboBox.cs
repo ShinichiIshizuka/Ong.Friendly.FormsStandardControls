@@ -14,9 +14,9 @@ namespace Ong.Friendly.FormsStandardControls
     public class FormsComboBox : FormsControlBase
     {
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです。</param>
+        /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsComboBox(WindowControl src)
             : base(src)
         {
@@ -51,7 +51,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// アイテム文字列取得。
+        /// アイテムの文字列を取得します。
         /// </summary>
         /// <param name="index">インデックス。</param>
         /// <returns>アイテム文字列。</returns>

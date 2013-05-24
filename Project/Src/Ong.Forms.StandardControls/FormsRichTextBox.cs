@@ -6,14 +6,14 @@ using Ong.Friendly.FormsStandardControls.Inside;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// TypeがWindowControlがSystem.Windows.Forms.RichTextBoxのウィンドウに対応した操作を提供します
+    /// TypeがWindowControlがSystem.Windows.Forms.RichTextBoxのウィンドウに対応した操作を提供します。
     /// </summary>
     public class FormsRichTextBox : FormsControlBase
     {
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです</param>
+        /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsRichTextBox(WindowControl src)
             : base(src)
         {
@@ -21,10 +21,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsRichTextBox(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
@@ -32,20 +32,20 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// テキストを変更します
+        /// テキストを変更します。
         /// </summary>
-        /// <param name="newText">新たなテキスト</param>
+        /// <param name="newText">新たなテキスト。</param>
         public void EmulateChangeText(string newText)
         {
             this["Text"](newText);
         }
 
         /// <summary>
-        /// テキストを変更します
-        /// 非同期で実行します
+        /// テキストを変更します。
+        /// 非同期で実行します。
         /// </summary>
-        /// <param name="newText">新たなテキスト</param>
-        /// <param name="async">非同期実行オブジェクト</param>
+        /// <param name="newText">新たなテキスト。</param>
+        /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateChangeText(string newText, Async async)
         {
             this["Text", async](newText);

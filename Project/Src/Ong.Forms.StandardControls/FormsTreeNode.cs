@@ -7,17 +7,17 @@ using System.Windows.Forms;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// ツリーノード
+    /// ツリーノードです。
     /// </summary>
     public class FormsTreeNode:AppVarWrapper
     {
         WindowsAppFriend _app;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsTreeNode(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
@@ -25,55 +25,25 @@ namespace Ong.Friendly.FormsStandardControls
         }
     
         /// <summary>
-        /// ノード
+        /// テキストを取得します。
         /// </summary>
-        /// <param name="index">インデックス</param>
-        /// <returns>ノード</returns>
-        public FormsTreeNode GetNode(int index)
-        {
-            return new FormsTreeNode(_app, AppVar["Nodes"]()["[]"](index));
-        }
-
-        /// <summary>
-        /// テキストを変更します
-        /// </summary>
-        /// <param name="newText">新たなテキスト</param>
-        public void EmulateChangeText(string newText)
-        {
-            this["Text"](newText);
-        }
-
-        /// <summary>
-        /// テキストを変更します
-        /// 非同期で実行します
-        /// </summary>
-        /// <param name="newText">新たなテキスト</param>
-        /// <param name="async">非同期実行オブジェクト</param>
-        public void EmulateChangeText(string newText, Async async)
-        {
-            this["Text", async](newText);
-        }
-
-        /// <summary>
-        /// テキストを取得します
-        /// </summary>
-        /// <returns>テキスト</returns>
+        /// <returns>テキスト。</returns>
         public String Text
         {
             get { return (String)this["Text"]().Core; }
         }
 
         /// <summary>
-        /// 展開しているかを取得します
+        /// 展開しているかを取得します。
         /// </summary>
-        /// <returns>true:展開</returns>
+        /// <returns>true:展開。</returns>
         public bool IsExpanded
         {
             get { return (bool)this["IsExpanded"]().Core; }
         }
 
         /// <summary>
-        /// 展開します
+        /// 展開します。
         /// </summary>
         public void EmulateExpand()
         {
@@ -81,8 +51,8 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 展開します
-        /// 非同期で実行します
+        /// 展開します。
+        /// 非同期で実行します。
         /// </summary>
         public void EmulateExpand(Async async)
         {
@@ -90,7 +60,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 展開を閉じます
+        /// 展開を閉じます。
         /// </summary>
         public void EmulateCollapse()
         {
@@ -98,8 +68,8 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 展開を閉じます
-        /// 非同期で実行します
+        /// 展開を閉じます。
+        /// 非同期で実行します。
         /// </summary>
         public void EmulateCollapse(Async async)
         {
@@ -107,76 +77,29 @@ namespace Ong.Friendly.FormsStandardControls
         }
         
         /// <summary>
-        /// ノードを指定されたテキストで検索します
+        /// ノード名を編集します。
         /// </summary>
-        /// <param name="nodeText">各ノードのテキスト</param>
-        /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります</returns>
-        public FormsTreeNode FindNode(string nodeText)
-        {
-            AppVar returnNode = (_app[GetType(), "FindNodeInTarget"](AppVar, nodeText));
-            if (returnNode != null)
-            {
-                return new FormsTreeNode(_app, returnNode);
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// ノードを指定されたテキストで検索します（内部）
-        /// </summary>
-        /// <param name="treeNode">ノード</param>
-        /// <param name="nodeText">検索するテキスト</param>
-        /// <returns>検索されたノード</returns>
-        private static TreeNode FindNodeInTarget(TreeNode treeNode, string nodeText)
-        {
-            TreeNode findNode;
-            if (treeNode == null)
-            {
-                return null;
-            }
-            if (treeNode.Text == nodeText)
-            {
-                return treeNode;
-            }
-            foreach (TreeNode node in treeNode.Nodes)
-            {
-                if (node.Text == nodeText)
-                {
-                    return node;
-                }
-                findNode = FindNodeInTarget(node, nodeText);
-                if (findNode != null)
-                {
-                    return findNode;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// ノード名を編集します
-        /// </summary>
-        /// <param name="nodeText">テキスト</param>
+        /// <param name="nodeText">テキスト。</param>
         public void EmulateEditLabelText(string nodeText)
         {
             App[GetType(), "EmulateEditLabelTextInTarget"](AppVar, nodeText);
         }
 
         /// <summary>
-        /// ノード名を編集します(非同期)
+        /// ノード名を編集します(非同期)。
         /// </summary>
-        /// <param name="nodeText">テキスト</param>
-        /// <param name="async">非同期オブジェクト</param>
+        /// <param name="nodeText">テキスト。</param>
+        /// <param name="async">非同期オブジェクト。</param>
         public void EmulateEditLabelText(string nodeText, Async async)
         {
             App[GetType(), "EmulateEditLabelTextInTarget", async](AppVar, nodeText);
         }
 
         /// <summary>
-        /// ノード名を編集します（内部）
+        /// ノード名を編集します（内部）。
         /// </summary>
-        /// <param name="treeNode">ノード</param>
-        /// <param name="nodeText">テキスト</param>
+        /// <param name="treeNode">ノード。</param>
+        /// <param name="nodeText">テキスト。</param>
         private static void EmulateEditLabelTextInTarget(TreeNode treeNode, string nodeText)
         {
             treeNode.BeginEdit();
@@ -185,26 +108,26 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 
+        /// チェック状態を設定します。
         /// </summary>
-        /// <param name="check"></param>
+        /// <param name="check">true:チェック</param>
         public void EmulateCheck(bool check)
         {
             this["Checked"](check);
         }
 
         /// <summary>
-        /// 
+        /// チェック状態を設定します。
         /// </summary>
-        /// <param name="check"></param>
-        /// <param name="async"></param>
+        /// <param name="check">true:チェック</param>
+        /// <param name="async">非同期オブジェクト</param>
         public void EmulateCheck(bool check, Async async)
         {
             this["Checked", async](check);
         }
 
         /// <summary>
-        /// 
+        /// チェック状態を取得します。
         /// </summary>
         public bool Checked
         { 

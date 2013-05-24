@@ -15,7 +15,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです。</param>
+        /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsListBox(WindowControl src)
             : base(src)
         {
@@ -100,7 +100,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// リストアイテム選択（内部）。
+        /// リストアイテムを選択します（内部）。
         /// </summary>
         /// <param name="listbox">ListBox。</param>
         /// <param name="index">インデックス。</param>
@@ -119,7 +119,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// リストアイテム選択（内部）。
+        /// リストアイテムを選択します（内部）。
         /// </summary>
         /// <param name="listbox">リストボックス</param>
         private static int[] GetSelectedIndexesTarget(ListBox listbox)
@@ -140,6 +140,5 @@ namespace Ong.Friendly.FormsStandardControls
         {
             get { return (SelectionMode)(this["SelectionMode"]().Core); }
         }
-
     }
 }

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// ツールストリップ
+    /// ツールストリップです。
     /// </summary>
     public class FormsToolStrip : FormsControlBase
     {
@@ -39,7 +39,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// 子アイテムを取得します。
         /// </summary>
         /// <param name="keys">キーとなるインデックスです。</param>
-        /// <returns>子アイテム</returns>
+        /// <returns>子アイテム。</returns>
         public FormsToolStripItem GetItem(params string[] keys)
         {
             return new FormsToolStripItem(App, App[GetType(), "GetItemInTarget"](AppVar, keys));

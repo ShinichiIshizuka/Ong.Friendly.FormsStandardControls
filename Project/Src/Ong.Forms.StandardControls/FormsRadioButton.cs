@@ -9,14 +9,14 @@ using System.Reflection;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// TypeがSystem.Windows.Forms.RadioButtonのウィンドウに対応した操作を提供します
+    /// TypeがSystem.Windows.Forms.RadioButtonのウィンドウに対応した操作を提供します。
     /// </summary>
     public class FormsRadioButton : FormsControlBase
     {
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="src">元となるウィンドウコントロールです</param>
+        /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsRadioButton(WindowControl src)
             : base(src)
         {
@@ -24,10 +24,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス</param>
-        /// <param name="appVar">アプリケーション内変数</param>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
         public FormsRadioButton(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar)
         {
@@ -35,30 +35,30 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// チェック状態を設定します
+        /// チェック状態を設定します。
         /// </summary>
-        /// <param name="value">チェック状態</param>
+        /// <param name="value">チェック状態。</param>
         public void EmulateCheck(bool value)
         {
             App[GetType(), "EmulateCheckInTarget"](AppVar, value);
         }
 
         /// <summary>
-        /// チェック状態を設定します
+        /// チェック状態を設定します。
         /// 非同期で実行します
         /// </summary>
-        /// <param name="value">チェック状態</param>
-        /// <param name="async">非同期実行オブジェクト</param>
+        /// <param name="value">チェック状態。</param>
+        /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateCheck(bool value, Async async)
         {
             App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
         }
 
         /// <summary>
-        /// チェック状態を設定します
+        /// チェック状態を設定します。
         /// </summary>
-        /// <param name="radioButton">ラジオボタン</param>
-        /// <param name="value">チェック状態</param>
+        /// <param name="radioButton">ラジオボタン。</param>
+        /// <param name="value">チェック状態。</param>
         static void EmulateCheckInTarget(RadioButton radioButton, bool value)
         {
             while (radioButton.Checked != value)
@@ -68,9 +68,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// チェック状態を取得します
+        /// チェック状態を取得します。
         /// </summary>
-        /// <returns>チェック状態</returns>
+        /// <returns>チェック状態。</returns>
         public bool Checked
         {
             get { return (bool)(this["Checked"]().Core); }

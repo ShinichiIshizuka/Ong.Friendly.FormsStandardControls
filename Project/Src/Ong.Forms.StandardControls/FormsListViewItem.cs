@@ -8,12 +8,12 @@ using System.Reflection;
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
-    /// リストアイテム
+    /// リストアイテムです。
     /// </summary>
     public class FormsListViewItem:AppVarWrapper
     {
         /// <summary>
-        /// コンストラクタ。
+        /// コンストラクタです。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>

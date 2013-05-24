@@ -14,7 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
     public class FormsNumericUpDown : FormsControlBase
     {
         /// <summary>
-        /// コンストラクタです
+        /// コンストラクタです。
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
         public FormsNumericUpDown(WindowControl src)

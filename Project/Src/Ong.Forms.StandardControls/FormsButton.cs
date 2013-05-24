@@ -32,7 +32,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// クリックします。
+        /// クリックです。
         /// </summary>
         public void EmulateClick()
         {
@@ -40,7 +40,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// クリックします。
+        /// クリックです。
         /// 非同期で実行します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
