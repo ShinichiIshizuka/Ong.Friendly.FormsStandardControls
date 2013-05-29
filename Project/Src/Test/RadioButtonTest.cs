@@ -51,12 +51,12 @@ namespace Test
         {
             //“¯Šúˆ—
             FormsRadioButton radiobutton1 = new FormsRadioButton(app, testDlg["radioButton1"]());
-            radiobutton1.EmulateCheck(true);
+            radiobutton1.EmulateCheck();
             Assert.AreEqual(true, radiobutton1.Checked);
 
             //”ñ“¯ŠúÀs
             FormsRadioButton radiobutton2 = new FormsRadioButton(app, testDlg["radioButton2"]());
-            radiobutton2.EmulateCheck(true,new Async());
+            radiobutton2.EmulateCheck(new Async());
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(11, count);
         }

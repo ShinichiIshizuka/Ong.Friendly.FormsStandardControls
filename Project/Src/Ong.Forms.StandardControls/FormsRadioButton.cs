@@ -35,27 +35,25 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// チェック状態を設定します。
+        /// チェックします。
         /// </summary>
-        /// <param name="value">チェック状態。</param>
-        public void EmulateCheck(bool value)
+        public void EmulateCheck()
         {
-            App[GetType(), "EmulateCheckInTarget"](AppVar, value);
+            App[GetType(), "EmulateCheckInTarget"](AppVar, true);
         }
 
         /// <summary>
-        /// チェック状態を設定します。
+        /// チェックします。
         /// 非同期で実行します
         /// </summary>
-        /// <param name="value">チェック状態。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateCheck(bool value, Async async)
+        public void EmulateCheck(Async async)
         {
-            App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
+            App[GetType(), "EmulateCheckInTarget", async](AppVar, true);
         }
 
         /// <summary>
-        /// チェック状態を設定します。
+        /// チェック状態にします。
         /// </summary>
         /// <param name="radioButton">ラジオボタン。</param>
         /// <param name="value">チェック状態。</param>
