@@ -65,7 +65,7 @@ namespace Ong.Friendly.FormsStandardControls
                 radioButton.GetType().GetMethod("OnClick", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(radioButton, new object[] { EventArgs.Empty });
                 if (tryCount == 2)
                 {
-                    throw new NotSupportedException("EmulateCheckÇ…é∏îsÇµÇ‹ÇµÇΩÅB");
+                    throw new NotSupportedException(Properties.Resources.ErrorCheckSetting);
                 }
             }
         }
