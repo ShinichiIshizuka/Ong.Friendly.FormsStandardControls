@@ -59,9 +59,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="checkBox">チェックボックス。</param>
         /// <param name="value">チェック状態。</param>
-        static void EmulateCheckInTarget(CheckBox checkBox, bool value)
+        static void EmulateCheckInTarget(CheckBox checkBox, CheckState value)
         {
-            checkBox.Checked = value;
+            checkBox.CheckState = value;
         }
 
         /// <summary>
