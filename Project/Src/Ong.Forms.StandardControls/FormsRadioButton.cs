@@ -5,6 +5,7 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly;
 using Ong.Friendly.FormsStandardControls.Inside;
 using System.Reflection;
+using Ong.Friendly.FormsStandardControls.Properties;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -65,7 +66,7 @@ namespace Ong.Friendly.FormsStandardControls
                 radioButton.GetType().GetMethod("OnClick", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(radioButton, new object[] { EventArgs.Empty });
                 if (tryCount == 2)
                 {
-                    throw new NotSupportedException(Properties.Resources.ErrorCheckSetting);
+                    throw new NotSupportedException(Resources.ErrorCheckSetting);
                 }
             }
         }
