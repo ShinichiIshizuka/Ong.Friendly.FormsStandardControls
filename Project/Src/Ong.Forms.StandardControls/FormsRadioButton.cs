@@ -39,7 +39,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateCheck()
         {
-            App[GetType(), "EmulateCheckInTarget"](AppVar, true);
+            App[GetType(), "EmulateCheckInTarget"](AppVar);
         }
 
         /// <summary>
@@ -49,19 +49,24 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateCheck(Async async)
         {
-            App[GetType(), "EmulateCheckInTarget", async](AppVar, true);
+            App[GetType(), "EmulateCheckInTarget", async](AppVar);
         }
 
         /// <summary>
         /// チェック状態にします。
         /// </summary>
         /// <param name="radioButton">ラジオボタン。</param>
-        /// <param name="value">チェック状態。</param>
-        static void EmulateCheckInTarget(RadioButton radioButton, bool value)
+        static void EmulateCheckInTarget(RadioButton radioButton)
         {
-            while (radioButton.Checked != value)
+            int tryCount = 0;
+            while (radioButton.Checked != true)
             {
+                tryCount++;
                 radioButton.GetType().GetMethod("OnClick", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(radioButton, new object[] { EventArgs.Empty });
+                if (tryCount == 2)
+                {
+                    throw new NotSupportedException("EmulateCheckに失敗しました。");
+                }
             }
         }
 

@@ -38,7 +38,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// チェック状態を設定します。
         /// </summary>
         /// <param name="value">チェック状態。</param>
-        public void EmulateCheck(CheckState value)
+        public void EmulateCheck(bool value)
         {
             App[GetType(), "EmulateCheckInTarget"](AppVar, value);
         }
@@ -49,7 +49,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="value">チェック状態。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateCheck(CheckState value, Async async)
+        public void EmulateCheck(bool value, Async async)
         {
             App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
         }
@@ -59,12 +59,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="checkBox">チェックボックス。</param>
         /// <param name="value">チェック状態。</param>
-        static void EmulateCheckInTarget(CheckBox checkBox, CheckState value)
+        static void EmulateCheckInTarget(CheckBox checkBox, bool value)
         {
-            while (checkBox.CheckState != value)
-            {
-                checkBox.GetType().GetMethod("OnClick", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(checkBox, new object[] { EventArgs.Empty });
-            }
+            checkBox.Checked = value;
         }
 
         /// <summary>
