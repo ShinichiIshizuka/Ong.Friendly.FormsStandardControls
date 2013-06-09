@@ -38,6 +38,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateUpClick()
         {
+            this["Focus"]();
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)1));
             this["upDownButtons"]()["OnUpDown"](args);
         }
@@ -49,6 +50,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateUpClick(Async async)
         {
+            this["Focus", new Async()]();
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)1));
             this["upDownButtons"]()["OnUpDown", async](args);
         }
@@ -58,6 +60,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateDownClick()
         {
+            this["Focus"]();
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)2));
             this["upDownButtons"]()["OnUpDown"](args);
         }
@@ -69,6 +72,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateDownClick(Async async)
         {
+            this["Focus", new Async()]();
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)2));
             this["upDownButtons"]()["OnUpDown", async](args);
         }
@@ -79,6 +83,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="text">テキスト。</param>
         public void EmulateChangeText(string text)
         {
+            this["Focus"]();
             this["Text"](text);
         }
 
@@ -89,6 +94,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateChangeText(string text, Async async)
         {
+            this["Focus", new Async()]();
             this["Text", async](text);
         }
     }

@@ -38,8 +38,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// チェック状態を設定します。
         /// </summary>
         /// <param name="value">チェック状態。</param>
-        public void EmulateCheck(bool value)
+        public void EmulateCheck(CheckState value)
         {
+            this["Focus"]();
             App[GetType(), "EmulateCheckInTarget"](AppVar, value);
         }
 
@@ -49,8 +50,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="value">チェック状態。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateCheck(bool value, Async async)
+        public void EmulateCheck(CheckState value, Async async)
         {
+            this["Focus", new Async()]();
             App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
         }
 

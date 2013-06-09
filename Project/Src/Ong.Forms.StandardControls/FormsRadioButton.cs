@@ -40,6 +40,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateCheck()
         {
+            this["Focus"]();
             App[GetType(), "EmulateCheckInTarget"](AppVar);
         }
 
@@ -50,6 +51,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateCheck(Async async)
         {
+            this["Focus", new Async()]();
             App[GetType(), "EmulateCheckInTarget", async](AppVar);
         }
 

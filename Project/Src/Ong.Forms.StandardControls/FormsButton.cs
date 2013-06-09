@@ -36,6 +36,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateClick()
         {
+            this["Focus"]();
             this["PerformClick"]();
         }
 
@@ -46,6 +47,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateClick(Async async)
         {
+            this["Focus", new Async()]();
             this["PerformClick", async]();
         }
     }

@@ -39,6 +39,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="value">チェック状態。</param>
         public void EmulateCheckState(int index, CheckState value)
         {
+            this["Focus"]();
             this["SetItemCheckState"](index, value);
         }
 
@@ -51,6 +52,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateCheckState(int index ,CheckState value, Async async)
         {
+            this["Focus", new Async()]();
             this["SetItemCheckState", async](index, value);
         }
 
@@ -110,6 +112,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateChangeSelectedIndex(int Index)
         {
+            this["Focus"]();
             this["SelectedIndex"](Index);
         }
 
@@ -121,6 +124,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateChangeSelectedIndex(int Index, Async async)
         {
+            this["Focus", new Async()]();
             this["SelectedIndex", async](Index);
         }
 

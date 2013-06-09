@@ -37,6 +37,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="newText">新たなテキスト。</param>
         public void EmulateChangeText(string newText)
         {
+            this["Focus"]();
             this["Text"](newText);
         }
 
@@ -48,6 +49,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateChangeText(string newText, Async async)
         {
+            this["Focus", new Async()]();
             this["Text", async](newText);
         }
     }

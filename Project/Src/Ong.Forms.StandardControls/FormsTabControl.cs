@@ -55,6 +55,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="index">タブインデックス（０始まり）。</param>
         public void EmulateTabSelect(int index)
         {
+            this["Focus"]();
             this["SelectedIndex"](index);
         }
 
@@ -65,6 +66,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期オブジェクト。</param>
         public void EmulateTabSelect(int index, Async async)
         {
+            this["Focus", new Async()]();
             this["SelectedIndex", async](index);
         }
     }

@@ -77,6 +77,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="text">テキスト。</param>
         public void EmulateChangeText(string text)
         {
+            this["Focus"]();
             this["Text"](text);
         }
 
@@ -87,6 +88,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateChangeText(string text, Async async)
         {
+            this["Focus", new Async()]();
             this["Text", async](text);
         }
 
@@ -96,6 +98,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="index">インデックス。</param>
         public void EmulateChangeSelect(int index)
         {
+            this["Focus"]();
             App[GetType(), "EmulateChangeSelectInTarget"](AppVar, index);
         }
 
@@ -107,6 +110,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateChangeSelect(int index, Async async)
         {
+            this["Focus", new Async()]();
             App[GetType(), "EmulateChangeSelectInTarget", async](AppVar, index);
         }
 
