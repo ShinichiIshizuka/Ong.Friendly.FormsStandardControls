@@ -75,7 +75,7 @@ namespace Test
         /// チェックした一覧を取得します
         /// </summary>
         [Test]
-        public void TestCheckedListBoxCheckListGet()
+        public void TestCheckedListBoxCheckListGet1()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateCheckState(0, CheckState.Checked);
@@ -86,6 +86,38 @@ namespace Test
             Assert.AreEqual(0, list[0]);
             Assert.AreEqual(2, list[1]);
             Assert.AreEqual(4, list[2]);
+        }
+
+        /// <summary>
+        /// チェックした一覧を取得します
+        /// </summary>
+        [Test]
+        public void TestCheckedListBoxCheckListGet2()
+        {
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            checkedlistbox1.EmulateCheckState(1, CheckState.Checked, new Async());
+            checkedlistbox1.EmulateCheckState(3, CheckState.Checked, new Async());
+
+            int[] list = checkedlistbox1.CheckedIndices;
+            Assert.AreEqual(0, list[0]);
+            Assert.AreEqual(1, list[1]);
+            Assert.AreEqual(2, list[2]);
+            Assert.AreEqual(3, list[3]);
+            Assert.AreEqual(4, list[4]);
+        }
+
+        /// <summary>
+        /// インデックスでアイテムを選択し選択したインデックスを取得します
+        /// </summary>
+        [Test]
+        public void TestCheckedListBoxSelect()
+        {
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            checkedlistbox1.EmulateChangeSelectedIndex(4);
+            Assert.AreEqual(4, checkedlistbox1.SelectedItemIndex);
+
+            checkedlistbox1.EmulateChangeSelectedIndex(2,new Async());
+            Assert.AreEqual(2, checkedlistbox1.SelectedItemIndex);
         }
     }
 }

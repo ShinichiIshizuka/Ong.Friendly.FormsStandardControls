@@ -5,6 +5,7 @@ using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Codeer.Friendly;
 namespace Test
 {
     /// <summary>
@@ -52,6 +53,9 @@ namespace Test
             FormsCheckBox checkbox1 = new FormsCheckBox(app, testDlg["checkBox1"]());
             checkbox1.EmulateCheck(CheckState.Checked);
             Assert.AreEqual(CheckState.Checked, checkbox1.CheckState);
+
+            checkbox1.EmulateCheck(CheckState.Unchecked,new Async());
+            Assert.AreEqual(CheckState.Unchecked, checkbox1.CheckState);
         }
 
         /// <summary>

@@ -9,13 +9,6 @@ using Codeer.Friendly.Windows.NativeStandardControls;
 
 namespace Test
 {
-    // @@@ 親クラスのテストも作る
-    // @@@ テストは同期/非同期を作成する。
-    // @@@ 全I/Fのテストする。
-    // @@@ DataBind→Emulateを実施する前にFocusを与える。Textを設定したりすると発生するイベントに注意。
-    // @@@ 各コントロールのイベントを連携（一般的なものを抽出）
-    // @@@ 
-
     /// <summary>
     /// Buttonテスト
     /// </summary>

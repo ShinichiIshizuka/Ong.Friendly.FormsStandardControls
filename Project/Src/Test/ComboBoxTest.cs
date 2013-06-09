@@ -89,5 +89,44 @@ namespace Test
             String combobox1Text = combobox1.Text;
             Assert.AreEqual("Item-3", combobox1Text);
         }
+
+        /// <summary>
+        /// 3行目のテキストを取得します
+        /// </summary>
+        [Test]
+        public void TestComboBoxGetItemText()
+        {
+            FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
+            String combobox1Text = combobox1.GetItemText(2);
+            Assert.AreEqual("Item-3", combobox1Text);
+        }
+
+        /// <summary>
+        /// Item-2のテキストを持つアイテムのインデックスを検索します
+        /// </summary>
+        [Test]
+        public void TestFindStringItem()
+        {
+            FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
+            int findindex = combobox1.FindString("Item-2",0);
+            Assert.AreEqual(1, findindex);
+        }
+
+        /// <summary>
+        /// 1行目のテキストを設定します
+        /// </summary>
+        [Test]
+        public void TestComboBoxSetItemText()
+        {
+            FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
+            combobox1.EmulateChangeText("12345");
+            System.Windows.Forms.MessageBox.Show("");
+            String combobox1Text = combobox1.Text;
+            Assert.AreEqual("12345", combobox1Text);
+
+            combobox1.EmulateChangeText("66666",new Async());
+            combobox1Text = combobox1.Text;
+            Assert.AreEqual("66666", combobox1Text);
+        }
     }
 }
