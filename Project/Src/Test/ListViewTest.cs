@@ -92,6 +92,8 @@ namespace Test
             Assert.IsTrue(item1.Checked);
             FormsListViewItem item2 = listView1.FindItemWithText("ñÏçÿ", true, 0);
             Assert.AreEqual("ÉgÉ}Ég", item2.Text);
+            item1.EmulateCheck(false,new Async());
+            Assert.IsFalse(item1.Checked);
         }
 
         /// <summary>
