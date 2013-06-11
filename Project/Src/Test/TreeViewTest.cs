@@ -96,6 +96,10 @@ namespace Test
             Assert.AreEqual(true, node.IsExpanded);
             node.EmulateCollapse();
             Assert.AreEqual(false, node.IsExpanded);
+            node.EmulateExpand(new Async());
+            Assert.AreEqual(true, node.IsExpanded);
+            node.EmulateCollapse(new Async());
+            Assert.AreEqual(false, node.IsExpanded);
         }
 
         /// <summary>
@@ -109,7 +113,8 @@ namespace Test
             Assert.NotNull(node);
             node.EmulateEditLabelText("ChangeText");
             Assert.AreEqual("ChangeText", node.Text);
-            node.EmulateEditLabelText("Child 2");
+            node.EmulateEditLabelText("Child 2",new Async());
+            Assert.AreEqual("Child 2", node.Text);
         }
 
         /// <summary>
@@ -123,6 +128,8 @@ namespace Test
             Assert.NotNull(node);
             node.EmulateCheck(true);
             Assert.IsTrue(node.Checked);
+            node.EmulateCheck(false,new Async());
+            Assert.IsFalse(node.Checked);
         }
     }
 }
