@@ -37,9 +37,9 @@
     <DocumentationFile>bin\Release\Ong.Friendly.FormsStandardControls.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Codeer.Friendly, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL" />
-    <Reference Include="Codeer.Friendly.Windows, Version=1.6.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL" />
-    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=1.6.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.Friendly, Version=1.7.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.Friendly.Windows, Version=1.7.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=1.7.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
