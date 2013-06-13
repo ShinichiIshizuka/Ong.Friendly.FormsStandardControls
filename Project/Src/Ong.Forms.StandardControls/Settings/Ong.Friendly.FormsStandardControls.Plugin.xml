@@ -7,71 +7,83 @@
     <PluginClassPair>
       <TargetType>System.Windows.Forms.Button</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsButton</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsButtonGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.CheckBox</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsCheckBox</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsCheckBoxGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.CheckedListBox</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsCheckedListBox</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsCheckedListBoxGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.ComboBox</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsComboBox</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsComboBoxGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.ContextMenuStrip</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsToolStrip</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsToolStripGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.DataGridView</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsDataGridView</PluginType>
-    </PluginClassPair>
-    <PluginClassPair>
-      <TargetType>System.Windows.Forms.Label</TargetType>
-      <PluginType>Ong.Friendly.FormsStandardControls.FormsLabel</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsDataGridViewGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.ListBox</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsListBox</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsListBoxGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.ListView</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsListView</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsListViewGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.MenuStrip</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsToolStrip</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsToolStripGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.NumericUpDown</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsNumericUpDown</PluginType>
-      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.NumericUpDownGenerator</GeneratorType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsNumericUpDownGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.RadioButton</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsRadioButton</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsRadioButtonGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.RichTextBox</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsRichTextBox</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsRichTextBoxGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.TabControl</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsTabControl</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsTabControlGenerator</GeneratorType>
+      <IsGeneratorSearchChildren>true</IsGeneratorSearchChildren>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.TextBox</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsTextBox</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsTextBoxGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.ToolStrip</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsToolStrip</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsToolStripGenerator</GeneratorType>
     </PluginClassPair>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.TreeView</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsTreeView</PluginType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsTreeViewGenerator</GeneratorType>
     </PluginClassPair>
   </NetTypePairs>
 </PluginInfo>
