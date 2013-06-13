@@ -72,5 +72,41 @@ namespace Test
             FormsDataGridView datagridview1 = new FormsDataGridView(app, testDlg["dataGridView1"]());
             Assert.AreEqual("変更", datagridview1.GetText(1, 1));
         }
+
+        /// <summary>
+        /// チェック状態設定
+        /// </summary>
+        [Test]
+        public void TestDataGridViewCheck()
+        {
+            FormsDataGridView datagridview2 = new FormsDataGridView(app, testDlg["dataGridView2"]());
+            datagridview2.EmulateToggleCellCheck(2, 1);
+            datagridview2.EmulateToggleCellCheck(2, 2, new Async());
+            datagridview2.EmulateToggleCellCheck(2, 3, new Async());
+        }
+
+        /// <summary>
+        /// セルコンボ操作
+        /// </summary>
+        [Test]
+        public void TestDataGridViewComboBox()
+        {
+            FormsDataGridView datagridview2 = new FormsDataGridView(app, testDlg["dataGridView2"]());
+            datagridview2.EmulateChangeCellComboSelect(1, 1, 1);
+            datagridview2.EmulateChangeCellComboSelect(1, 2, 2, new Async());
+            datagridview2.EmulateChangeCellComboSelect(1, 3, 3, new Async());
+        }
+
+        /// <summary>
+        /// セルボタン操作
+        /// </summary>
+        [Test]
+        public void TestDataGridViewButton()
+        {
+            FormsDataGridView datagridview2 = new FormsDataGridView(app, testDlg["dataGridView2"]());
+            datagridview2.EmulateClickCellButton(0, 1);
+            datagridview2.EmulateClickCellButton(0, 2, new Async());
+            datagridview2.EmulateClickCellButton(0, 3, new Async());
+        }
     }
 }
