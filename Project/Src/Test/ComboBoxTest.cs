@@ -120,7 +120,6 @@ namespace Test
         {
             FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
             combobox1.EmulateChangeText("12345");
-            System.Windows.Forms.MessageBox.Show("");
             String combobox1Text = combobox1.Text;
             Assert.AreEqual("12345", combobox1Text);
 
