@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
@@ -12,15 +13,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// 重複した関数の削除。
         /// </summary>
-        /// <param name="name">名前。</param>
+        /// <param name="generator">ジェネレータ。</param>
         /// <param name="list">リスト。</param>
         /// <param name="function">関数。</param>
-        static internal void RemoveDuplicationFunction(string name, List<string> list, string function)
+        internal static void RemoveDuplicationFunction(GeneratorBase generator, List<Sentence> list, string function)
         {
             bool findChangeText = false;
             for (int i = list.Count - 1; 0 <= i; i--)
             {
-                if (list[i].IndexOf(name + "." + function) == 0)
+                if (IsDuplicationFunction(generator, list[i], function))
                 {
                     if (findChangeText)
                     {
@@ -33,6 +34,31 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                     findChangeText = false;
                 }
             }
+        }
+
+        /// <summary>
+        /// 重複した関数であるか。
+        /// </summary>
+        /// <param name="generator">ジェネレータ。</param>
+        /// <param name="sentence">センテンス。</param>
+        /// <param name="function">関数。</param>
+        /// <returns>重複した関数であるか。</returns>
+        private static bool IsDuplicationFunction(GeneratorBase generator, Sentence sentence, string function)
+        {
+            if (!ReferenceEquals(generator, sentence.Owner))
+            {
+                return false;
+            }
+            if (sentence.Tokens.Length <= 2)
+            {
+                return false;
+            }
+            if (!(sentence.Tokens[0] is TokenName) ||
+                (sentence.Tokens[1] == null))
+            {
+                return false;
+            }
+            return sentence.Tokens[1].ToString().IndexOf("." + function) == 0;
         }
 
         /// <summary>

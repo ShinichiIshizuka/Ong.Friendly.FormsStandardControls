@@ -2,34 +2,42 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Text;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
     /// <summary>
     /// コード生成
     /// </summary>
-    public class FormsToolStripGenerator : IDisposable
+    public class FormsToolStripGenerator : GeneratorBase
     {
-        string _name;
-        List<string> _code;
         ToolStrip _control;
         List<KeyValuePair<ToolStripItem, EventHandler>> _itemEvents = new List<KeyValuePair<ToolStripItem, EventHandler>>();
 
         /// <summary>
-        /// コンストラクタ
+        /// アタッチ。
         /// </summary>
-        /// <param name="handle">ウィンドウハンドル</param>
-        /// <param name="name">変数名称</param>
-        /// <param name="code">コード</param>
-        public FormsToolStripGenerator(IntPtr handle, string name, List<string> code)
+        /// <param name="windowHandle">ウィンドウハンドル(WPFオブジェクトの場合はIntPtr.Zero)。</param>
+        /// <param name="controlObject">コントロールのオブジェクト(ネイティブウィンドウの場合はnull)。</param>
+        public override void Attach(IntPtr windowHandle, object controlObject)
         {
-            _name = name;
-            _code = code;
-            _control = (ToolStrip)Control.FromHandle(handle);
+            _control = (ToolStrip)controlObject;
             foreach (ToolStripItem element in _control.Items)
             {
                 ConnectEventHandler(new string[] { element.Text }, element);
             }
+        }
+
+        /// <summary>
+        /// ディタッチ。
+        /// </summary>
+        protected override void Detach()
+        {
+            foreach (KeyValuePair<ToolStripItem, EventHandler> element in _itemEvents)
+            {
+                element.Key.Click -= element.Value;
+            }
+            _itemEvents.Clear();
         }
 
         /// <summary>
@@ -54,7 +62,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 EventHandler click = delegate
                 {
                     StringBuilder builder = new StringBuilder();
-                    builder.Append(_name + ".FindItem(");
+                    builder.Append(".FindItem(");
                     bool first = true;
                     foreach (string element in from)
                     {
@@ -66,43 +74,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                         builder.Append("\"" + element + "\"");
                     }
                     builder.Append(").EmulateClick();");
-                    _code.Add(builder.ToString());
+                    AddSentence(new TokenName(), builder.ToString());
                 };
                 item.Click += click;
                 _itemEvents.Add(new KeyValuePair<ToolStripItem, EventHandler>(item, click));
-            }
-        }
-
-        /// <summary>
-        /// ファイナライザ
-        /// </summary>
-        ~FormsToolStripGenerator()
-        {
-            Dispose(false);
-        }
-
-        /// <summary>
-        /// 破棄
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// 破棄
-        /// </summary>
-        /// <param name="disposing">破棄フラグ</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                foreach (KeyValuePair<ToolStripItem, EventHandler> element in _itemEvents)
-                {
-                    element.Key.Click -= element.Value;
-                }
-                _itemEvents.Clear();
             }
         }
     }

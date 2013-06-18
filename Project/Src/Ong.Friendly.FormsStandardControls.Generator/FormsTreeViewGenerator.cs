@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
@@ -9,26 +10,31 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// <summary>
     /// コード生成
     /// </summary>
-    public class FormsTreeViewGenerator : IDisposable
+    public class FormsTreeViewGenerator : GeneratorBase
     {
-        string _name;
-        List<string> _code;
         TreeView _control;
 
         /// <summary>
-        /// コンストラクタ
+        /// アタッチ。
         /// </summary>
-        /// <param name="handle">ウィンドウハンドル</param>
-        /// <param name="name">変数名称</param>
-        /// <param name="code">コード</param>
-        public FormsTreeViewGenerator(IntPtr handle, string name, List<string> code)
+        /// <param name="windowHandle">ウィンドウハンドル(WPFオブジェクトの場合はIntPtr.Zero)。</param>
+        /// <param name="controlObject">コントロールのオブジェクト(ネイティブウィンドウの場合はnull)。</param>
+        public override void Attach(IntPtr windowHandle, object controlObject)
         {
-            _name = name;
-            _code = code;
-            _control = (TreeView)Control.FromHandle(handle);
+            _control = (TreeView)controlObject;
             _control.AfterSelect += AfterSelect;
             _control.AfterExpand += AfterExpand;
             _control.AfterLabelEdit += AfterLabelEdit;
+        }
+
+        /// <summary>
+        /// ディタッチ。
+        /// </summary>
+        protected override void Detach()
+        {
+            _control.AfterSelect -= AfterSelect;
+            _control.AfterExpand -= AfterExpand;
+            _control.AfterLabelEdit -= AfterLabelEdit;
         }
 
         /// <summary>
@@ -39,7 +45,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         void AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             string from = GetNodePath(e.Node);
-            _code.Add(_name + from + ".EmulateChangeText(\"" + e.Label + "\");"); 
+            AddSentence(new TokenName(), from + ".EmulateChangeText(\"" + e.Label + "\");"); 
         }
 
         /// <summary>
@@ -50,7 +56,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         void AfterSelect(object sender, TreeViewEventArgs e)
         {
             string from = GetNodePath(e.Node);
-            _code.Add(_name + ".EmulateNodeSelect(" + _name + from + ");"); 
+            AddSentence(new TokenName(), ".EmulateNodeSelect(", new TokenName(), from + ");"); 
         }
 
         /// <summary>
@@ -61,7 +67,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         void AfterExpand(object sender, TreeViewEventArgs e)
         {
             string from = GetNodePath(e.Node);
-            _code.Add(_name + from + ".EmulateExpand();"); 
+            AddSentence(new TokenName(), from + ".EmulateExpand();"); 
         }
 
         /// <summary>
@@ -92,36 +98,5 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             }
             return front + "\"" + treeNode.Text + "\"";
         }
-
-        /// <summary>
-		/// ファイナライザ
-		/// </summary>
-        ~FormsTreeViewGenerator()
-		{
-			Dispose(false);
-		}
-
-		/// <summary>
-		/// 破棄
-		/// </summary>
-		public void Dispose()
-		{
-			Dispose(true);
-			GC.SuppressFinalize(this);
-		}
-
-		/// <summary>
-		/// 破棄
-		/// </summary>
-		/// <param name="disposing">破棄フラグ</param>
-		protected virtual void Dispose(bool disposing)
-		{
-            if (disposing)
-            {
-                _control.AfterSelect -= AfterSelect;
-                _control.AfterExpand -= AfterExpand;
-                _control.AfterLabelEdit -= AfterLabelEdit;
-            }
-		}
     }
 }
