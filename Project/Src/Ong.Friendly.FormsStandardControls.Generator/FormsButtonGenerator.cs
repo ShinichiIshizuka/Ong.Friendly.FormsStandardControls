@@ -5,6 +5,8 @@ using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
+    //@@@全体的にasync
+
     /// <summary>
     /// コード生成
     /// </summary>

@@ -7,6 +7,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator
 {
     //@@@チェックもいるよね。
 
+    //@@@メニューはやっぱり文字の方がいいけどね。
+
+    //@@@全体的に最適化
+
     /// <summary>
     /// コード生成
     /// </summary>

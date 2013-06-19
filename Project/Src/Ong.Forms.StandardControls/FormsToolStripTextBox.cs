@@ -24,6 +24,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// テキストボックス取得です。
         /// </summary>
-        public FormsTextBox ComboBox { get { return new FormsTextBox(App, this["TextBox"]()); } }
+        public FormsTextBox TextBox { get { return new FormsTextBox(App, this["TextBox"]()); } }
     }
 }
