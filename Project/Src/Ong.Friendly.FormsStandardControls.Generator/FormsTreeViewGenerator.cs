@@ -7,10 +7,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator
 {
     //@@@チェックもいるよね。
 
-    //@@@メニューはやっぱり文字の方がいいけどね。
-
     //@@@全体的に最適化
 
+    //@@@フォーカスチェックのタイミング
+    
     /// <summary>
     /// コード生成
     /// </summary>
@@ -49,7 +49,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         void AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             string from = GetNodePath(e.Node);
-            AddSentence(new TokenName(), from + ".EmulateChangeText(\"" + e.Label + "\");"); 
+            AddSentence(new TokenName(), from + ".EmulateChangeText(\"" + e.Label, new TokenAsync(CommaType.Before), "\");"); 
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         void AfterSelect(object sender, TreeViewEventArgs e)
         {
             string from = GetNodePath(e.Node);
-            AddSentence(new TokenName(), ".EmulateNodeSelect(", new TokenName(), from + ");"); 
+            AddSentence(new TokenName(), ".EmulateNodeSelect(", new TokenName(), from, new TokenAsync(CommaType.Before), ");"); 
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         void AfterExpand(object sender, TreeViewEventArgs e)
         {
             string from = GetNodePath(e.Node);
-            AddSentence(new TokenName(), from + ".EmulateExpand();"); 
+            AddSentence(new TokenName(), from + ".EmulateExpand(", new TokenAsync(CommaType.Non), ");"); 
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <returns>取得パス</returns>
         private string GetNodePath(TreeNode treeNode)
         {
-            return ".FindItem(" + GetNodePathCore(treeNode) + ")";
+            return ".FindItem(" + GetNodePathCore(treeNode) +  ")";
         }
 
         /// <summary>

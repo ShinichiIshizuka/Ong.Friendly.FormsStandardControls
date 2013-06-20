@@ -42,7 +42,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateChangeSelect(" + _control.SelectedIndex + ");");
+                AddSentence(new TokenName(), ".EmulateChangeSelect(" + _control.SelectedIndex, new TokenAsync(CommaType.Before), ");");
             }
         }
 
@@ -55,7 +55,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused && _control.DropDownStyle != ComboBoxStyle.DropDownList)
             {
-                AddSentence(new TokenName(), ".EmulateChangeText(" +  GenerateUtility.AdjustText(_control.Text) + ");");
+                AddSentence(new TokenName(), ".EmulateChangeText(" + GenerateUtility.AdjustText(_control.Text), new TokenAsync(CommaType.Before), ");");
             }
         }
         

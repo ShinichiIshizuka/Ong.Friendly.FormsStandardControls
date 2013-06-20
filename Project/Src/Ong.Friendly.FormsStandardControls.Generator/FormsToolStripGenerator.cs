@@ -24,7 +24,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             _control = (ToolStrip)controlObject;
             for (int i = 0; i < _control.Items.Count; i++ )
             {
-                ConnectEventHandler(new int[] { i }, _control.Items[i]);
+                ConnectEventHandler(new string[] { _control.Items[i].Text }, new int[] { i }, _control.Items[i]);
             }
         }
 
@@ -43,52 +43,55 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// イベント
         /// </summary>
-        /// <param name="from">至るまでのアイテムインデックス</param>
+        /// <param name="fromIndex">至るまでのアイテムインデックス</param>
         /// <param name="item">アイテム</param>
-        private void ConnectEventHandler(int[] from, ToolStripItem item)
+        private void ConnectEventHandler(string[] fromText, int[] fromIndex, ToolStripItem item)
         {
             ToolStripDropDownItem dropDown = item as ToolStripDropDownItem;
             if (dropDown != null && 0 < dropDown.DropDownItems.Count)
             {
                 for (int i = 0; i < dropDown.DropDownItems.Count; i++)
                 {
-                    List<int> nextFrom = new List<int>(from);
-                    nextFrom.Add(i);
-                    ConnectEventHandler(nextFrom.ToArray(), dropDown.DropDownItems[i]);
+                    List<string> nextFromText = new List<string>(fromText);
+                    nextFromText.Add(dropDown.DropDownItems[i].Text);
+                    List<int> nextFromIndex = new List<int>(fromIndex);
+                    nextFromIndex.Add(i);
+                    ConnectEventHandler(nextFromText.ToArray(), nextFromIndex.ToArray(), dropDown.DropDownItems[i]);
                 }
             }
             else
             {
                 //チェックボタン
-                if (AttachCheckButton(from, item))
+                if (AttachCheckButton(fromText, fromIndex, item))
                 {
                     return;
                 }
                 //コンボ
-                if (AttachCombo(from, item))
+                if (AttachCombo(fromText, fromIndex, item))
                 {
                     return;
                 }
                 //テキストボックス
-                if (AttachTextBox(from, item))
+                if (AttachTextBox(fromText, fromIndex, item))
                 {
                     return;
                 }
                 //クリックするメニュー
-                AttachToolStripItem(from, item);
+                AttachToolStripItem(fromText, fromIndex, item);
             }
         }
 
         /// <summary>
         /// ToolStripItemにアッタッチ
         /// </summary>
-        /// <param name="from">至るまでのインデックス</param>
+        /// <param name="fromText">至るまでのテキスト</param>
+        /// <param name="fromIndex">至るまでのインデックス</param>
         /// <param name="item">アタッチ対象アイテム</param>
-        private void AttachToolStripItem(int[] from, ToolStripItem item)
+        private void AttachToolStripItem(string[] fromText, int[] fromIndex, ToolStripItem item)
         {
             EventHandler click = delegate
             {
-                AddSentence(new TokenName(), GetItemPath(from) + ".EmulateClick();");
+                AddSentence(new TokenName(), GetItemPath(fromText, fromIndex) + ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
             };
             item.Click += click;
             _detachHandler.Add(delegate { item.Click -= click; });
@@ -97,10 +100,11 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// テキストボックスにアタッチ
         /// </summary>
-        /// <param name="from">至るまでのインデックス</param>
+        /// <param name="fromText">至るまでのテキスト</param>
+        /// <param name="fromIndex">至るまでのインデックス</param>
         /// <param name="item">アタッチ対象アイテム</param>
         /// <returns>アタッチしたか</returns>
-        private bool AttachTextBox(int[] from, ToolStripItem item)
+        private bool AttachTextBox(string[] fromText, int[] fromIndex, ToolStripItem item)
         {
             ToolStripTextBox textBox = item as ToolStripTextBox;
             if (textBox != null)
@@ -109,7 +113,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 EventHandler textChanged = delegate
                 {
                     AddSentence("new FormsToolStripTextBox(", new TokenName(),
-                        GetItemPath(from) + ").TextBox.EmulateChangeText(" + GenerateUtility.AdjustText(textBox.Text) + ");");
+                        GetItemPath(fromText, fromIndex) + ").TextBox.EmulateChangeText(" + GenerateUtility.AdjustText(textBox.Text), new TokenAsync(CommaType.Before), ");");
                 };
                 textBox.TextChanged += textChanged;
                 _detachHandler.Add(delegate { textBox.TextChanged -= textChanged; });
@@ -121,10 +125,11 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// コンボボックスにアタッチ
         /// </summary>
-        /// <param name="from">至るまでのインデックス</param>
+        /// <param name="fromText">至るまでのテキスト</param>
+        /// <param name="fromIndex">至るまでのインデックス</param>
         /// <param name="item">アタッチ対象アイテム</param>
         /// <returns>アタッチしたか</returns>
-        private bool AttachCombo(int[] from, ToolStripItem item)
+        private bool AttachCombo(string[] fromText, int[] fromIndex, ToolStripItem item)
         {
             ToolStripComboBox combo = item as ToolStripComboBox;
             if (combo != null)
@@ -133,7 +138,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 EventHandler selectedIndexChanged = delegate
                 {
                     AddSentence("new FormsToolStripComboBox(", new TokenName(),
-                        GetItemPath(from) + ").ComboBox.EmulateChangeSelect(" + combo.SelectedIndex + ");");
+                        GetItemPath(fromText, fromIndex) + ").ComboBox.EmulateChangeSelect(" + combo.SelectedIndex, new TokenAsync(CommaType.Before), ");");
                 };
                 combo.SelectedIndexChanged += selectedIndexChanged;
                 _detachHandler.Add(delegate { combo.SelectedIndexChanged -= selectedIndexChanged; });
@@ -149,7 +154,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                         }
                     }
                     AddSentence("new FormsToolStripComboBox(", new TokenName(),
-                        GetItemPath(from) + ").ComboBox.EmulateChangeText(" + GenerateUtility.AdjustText(combo.Text) + ");");
+                        GetItemPath(fromText, fromIndex) + ").ComboBox.EmulateChangeText(" + GenerateUtility.AdjustText(combo.Text), new TokenAsync(CommaType.Before), ");");
                 };
                 combo.TextChanged += textChanged;
                 _detachHandler.Add(delegate { combo.TextChanged -= textChanged; });
@@ -161,10 +166,11 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// チェックボタンにアタッチ
         /// </summary>
-        /// <param name="from">至るまでのインデックス</param>
+        /// <param name="fromText">至るまでのテキスト</param>
+        /// <param name="fromIndex">至るまでのインデックス</param>
         /// <param name="item">アタッチ対象アイテム</param>
         /// <returns>アタッチしたか</returns>
-        private bool AttachCheckButton(int[] from, ToolStripItem item)
+        private bool AttachCheckButton(string[] fromText, int[] fromIndex, ToolStripItem item)
         {
             ToolStripButton button = item as ToolStripButton;
             if (button != null && button.CheckOnClick)
@@ -172,7 +178,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 EventHandler checkStateChanged = delegate
                 {
                     AddSentence("new FormsToolStripButton(", new TokenName(),
-                        GetItemPath(from) + ").EmulateCheck(CheckState." + button.CheckState + ");");
+                        GetItemPath(fromText, fromIndex) + ").EmulateCheck(CheckState." + button.CheckState, new TokenAsync(CommaType.Before), ");");
                 };
                 button.CheckStateChanged += checkStateChanged;
                 _detachHandler.Add(delegate { button.CheckStateChanged -= checkStateChanged; });
@@ -180,18 +186,61 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             }
             return false;
         }
+        
+        /// <summary>
+        /// アイテムまでのパスを取得
+        /// </summary>
+        /// <param name="fromText">至るまでのテキスト</param>
+        /// <param name="fromIndex">至るまでのインデックス</param>
+        /// <returns>パス</returns>
+        private static string GetItemPath(string[] fromText, int[] fromIndex)
+        {
+            bool textMode = true;
+            foreach (string element in fromText)
+            {
+                if (string.IsNullOrEmpty(element))
+                {
+                    textMode = false;
+                    break;
+                }
+            }
+            return (textMode) ? GetItemPathText(fromText) : GetItemPathIndex(fromIndex);
+        }
 
         /// <summary>
         /// アイテムまでのパスを取得
         /// </summary>
-        /// <param name="from">至るまでのインデックス</param>
+        /// <param name="fromText">至るまでのテキスト</param>
         /// <returns>パス</returns>
-        private static string GetItemPath(int[] from)
+        private static string GetItemPathText(string[] fromText)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(".FindItem(");
+            bool first = true;
+            foreach (string element in fromText)
+            {
+                if (!first)
+                {
+                    builder.Append(", ");
+                }
+                first = false;
+                builder.Append(GenerateUtility.AdjustText(element));
+            }
+            builder.Append(")");
+            return builder.ToString();
+        }
+
+        /// <summary>
+        /// アイテムまでのパスを取得
+        /// </summary>
+        /// <param name="fromIndex">至るまでのインデックス</param>
+        /// <returns>パス</returns>
+        private static string GetItemPathIndex(int[] fromIndex)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(".GetItem(");
             bool first = true;
-            foreach (int element in from)
+            foreach (int element in fromIndex)
             {
                 if (!first)
                 {

@@ -3,6 +3,13 @@
   <AssemblyString>Ong.Friendly.FormsStandardControls.Generator, Version=1.7.0.0, Culture=neutral, PublicKeyToken=d15e24feb703b5b0</AssemblyString>
   <Company>onigiri-soft</Company>
   <WebPage>http://www.onigiri-soft.com/</WebPage>
+  <LoadDllInfos>
+    <LoadDllInfo>
+      <IsNative>false</IsNative>
+      <LoadDllType>StartupPath</LoadDllType>
+      <Name>Ong.Friendly.FormsStandardControls.dll</Name>
+    </LoadDllInfo>
+  </LoadDllInfos>
   <NetTypePairs>
     <PluginClassPair>
       <TargetType>System.Windows.Forms.Button</TargetType>

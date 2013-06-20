@@ -42,7 +42,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateChangeSelectedIndex(" + _control.SelectedIndex + ");");
+                AddSentence(new TokenName(), ".EmulateChangeSelectedIndex(" + _control.SelectedIndex, new TokenAsync(CommaType.Before), ");");
             }
         }
 
@@ -55,7 +55,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateCheckState(" + e.Index + ", CheckState." + e.NewValue + ");");
+                AddSentence(new TokenName(), ".EmulateCheckState(" + e.Index + ", CheckState." + e.NewValue, new TokenAsync(CommaType.Before), ");");
             }
         }
     }

@@ -40,7 +40,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateChangeText(\"" + _control.Value + "\");");
+                AddSentence(new TokenName(), ".EmulateChangeText(\"" + _control.Value, new TokenAsync(CommaType.Before), "\");");
             }
         }
     }

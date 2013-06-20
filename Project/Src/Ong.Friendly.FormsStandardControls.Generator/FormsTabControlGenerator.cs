@@ -40,7 +40,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateTabSelect(" + _control.SelectedIndex + ");");
+                AddSentence(new TokenName(), ".EmulateTabSelect(" + _control.SelectedIndex, new TokenAsync(CommaType.Before), ");");
             }
         }
     }
