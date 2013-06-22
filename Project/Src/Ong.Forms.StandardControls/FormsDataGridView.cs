@@ -76,28 +76,51 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルのチェック状態を順に変更します。
+        /// セルのチェック状態を変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
-        public void EmulateToggleCellCheck(int col, int row)
+        /// <param name="isChecked">チェック状態。</param>
+        public void EmulateCellCheck(int col, int row, bool isChecked)
         {
-            EmulateChangeCurrentCell(col, row);
-            this["OnKeyDown"](App.Dim(new NewInfo<KeyEventArgs>(Keys.Space)));
-            this["OnKeyUp"](App.Dim(new NewInfo<KeyEventArgs>(Keys.Space)));
+            App[GetType(), "EmulateCellCheckInTarget"](AppVar, col, row, isChecked);
         }
 
         /// <summary>
-        /// セルのチェック状態を順に変更します。
+        /// セルのチェック状態を変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
+        /// <param name="isChecked">チェック状態。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateToggleCellCheck(int col, int row, Async async)
+        public void EmulateCellCheck(int col, int row, bool isChecked, Async async)
         {
-            EmulateChangeCurrentCell(col, row, new Async());
-            this["OnKeyDown", new Async()](App.Dim(new NewInfo<KeyEventArgs>(Keys.Space)));
-            this["OnKeyUp", async](App.Dim(new NewInfo<KeyEventArgs>(Keys.Space)));
+            App[GetType(), "EmulateCellCheckInTarget", async](AppVar, col, row, isChecked);
+        }
+
+        /// <summary>
+        /// セルのチェック状態を変更します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        /// <param name="isChecked">チェック状態。</param>
+        static void EmulateCellCheckInTarget(DataGridView grid, int col, int row, bool isChecked)
+        {
+            EmulateChangeCurrentCellInTarget(grid, col, row);
+            while (true)
+            {
+                object data = grid[col, row].Value;
+                bool currentCheck = (data == null) ? false : (bool)data;
+                if (currentCheck == isChecked)
+                {
+                    break;
+                }
+                grid.BeginEdit(false);
+                grid.GetType().GetMethod("OnKeyDown", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
+                grid.GetType().GetMethod("OnKeyUp", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
+                grid.EndEdit();
+            }
         }
 
         /// <summary>
@@ -177,49 +200,36 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルボタンをクリックします。
+        /// セルボタン、セルリンクをクリックします。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
-        public void EmulateClickCellButton(int col, int row)
+        public void EmulateClickCellContent(int col, int row)
         {
-            EmulateChangeCurrentCell(col, row);
-            this["OnCellContentClick"](App.Dim(new NewInfo<DataGridViewCellEventArgs>(col, row)));
+            App[GetType(), "EmulateClickCellContentInTarget"](AppVar, col, row);
         }
 
         /// <summary>
-        /// セルボタンをクリックします。
+        /// セルボタン、セルリンクをクリックします。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
         /// <param name="async"></param>
-        public void EmulateClickCellButton(int col, int row, Async async)
+        public void EmulateClickCellContent(int col, int row, Async async)
         {
-            EmulateChangeCurrentCell(col, row, new Async());
-            this["OnCellContentClick", async](App.Dim(new NewInfo<DataGridViewCellEventArgs>(col, row)));
+            App[GetType(), "EmulateClickCellContentInTarget", async](AppVar, col, row);
         }
-
         /// <summary>
-        /// セルリンクをクリックします。
+        /// セルボタン、セルリンクをクリックします。
         /// </summary>
+        /// <param name="grid"></param>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
-        public void EmulateClickCellLink(int col, int row)
+        static void EmulateClickCellContentInTarget(DataGridView grid, int col, int row)
         {
-            EmulateChangeCurrentCell(col, row);
-            this["OnCellContentClick"](App.Dim(new NewInfo<DataGridViewCellEventArgs>(col, row)));
-        }
-
-        /// <summary>
-        /// セルリンクをクリックします。
-        /// </summary>
-        /// <param name="col">列。</param>
-        /// <param name="row">行。</param>
-        /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateClickCellLink(int col, int row, Async async)
-        {
-            EmulateChangeCurrentCell(col, row, new Async());
-            this["OnCellContentClick", async](App.Dim(new NewInfo<DataGridViewCellEventArgs>(col, row)));
+            EmulateChangeCurrentCellInTarget(grid, col, row);
+            grid.GetType().GetMethod("OnKeyDown", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
+            grid.GetType().GetMethod("OnKeyUp", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
         }
 
         /// <summary>

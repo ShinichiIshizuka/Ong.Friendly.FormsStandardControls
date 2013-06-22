@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Text;
 using Codeer.TestAssistant.GeneratorToolKit;
+using System.Globalization;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
@@ -62,22 +63,22 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             else
             {
                 //チェックボタン
-                if (AttachCheckButton(fromText, fromIndex, item))
+                if (AttachCheckButton(fromIndex, item))
                 {
                     return;
                 }
                 //コンボ
-                if (AttachCombo(fromText, fromIndex, item))
+                if (AttachCombo(fromIndex, item))
                 {
                     return;
                 }
                 //テキストボックス
-                if (AttachTextBox(fromText, fromIndex, item))
+                if (AttachTextBox(fromIndex, item))
                 {
                     return;
                 }
                 //クリックするメニュー
-                AttachToolStripItem(fromText, fromIndex, item);
+                AttachToolStripItem(fromText, item);
             }
         }
 
@@ -85,13 +86,12 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// ToolStripItemにアッタッチ
         /// </summary>
         /// <param name="fromText">至るまでのテキスト</param>
-        /// <param name="fromIndex">至るまでのインデックス</param>
         /// <param name="item">アタッチ対象アイテム</param>
-        private void AttachToolStripItem(string[] fromText, int[] fromIndex, ToolStripItem item)
+        private void AttachToolStripItem(string[] fromText, ToolStripItem item)
         {
             EventHandler click = delegate
             {
-                AddSentence(new TokenName(), GetItemPath(fromText, fromIndex) + ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
+                AddSentence(new TokenName(), GetItemPath(fromText) + ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
             };
             item.Click += click;
             _detachHandler.Add(delegate { item.Click -= click; });
@@ -100,11 +100,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// テキストボックスにアタッチ
         /// </summary>
-        /// <param name="fromText">至るまでのテキスト</param>
         /// <param name="fromIndex">至るまでのインデックス</param>
         /// <param name="item">アタッチ対象アイテム</param>
         /// <returns>アタッチしたか</returns>
-        private bool AttachTextBox(string[] fromText, int[] fromIndex, ToolStripItem item)
+        private bool AttachTextBox(int[] fromIndex, ToolStripItem item)
         {
             ToolStripTextBox textBox = item as ToolStripTextBox;
             if (textBox != null)
@@ -113,7 +112,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 EventHandler textChanged = delegate
                 {
                     AddSentence("new FormsToolStripTextBox(", new TokenName(),
-                        GetItemPath(fromText, fromIndex) + ").TextBox.EmulateChangeText(" + GenerateUtility.AdjustText(textBox.Text), new TokenAsync(CommaType.Before), ");");
+                        GetItemPath(fromIndex), ").TextBox.EmulateChangeText(", GenerateUtility.AdjustText(textBox.Text), new TokenAsync(CommaType.Before), ");");
                 };
                 textBox.TextChanged += textChanged;
                 _detachHandler.Add(delegate { textBox.TextChanged -= textChanged; });
@@ -125,11 +124,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// コンボボックスにアタッチ
         /// </summary>
-        /// <param name="fromText">至るまでのテキスト</param>
         /// <param name="fromIndex">至るまでのインデックス</param>
         /// <param name="item">アタッチ対象アイテム</param>
         /// <returns>アタッチしたか</returns>
-        private bool AttachCombo(string[] fromText, int[] fromIndex, ToolStripItem item)
+        private bool AttachCombo(int[] fromIndex, ToolStripItem item)
         {
             ToolStripComboBox combo = item as ToolStripComboBox;
             if (combo != null)
@@ -138,7 +136,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 EventHandler selectedIndexChanged = delegate
                 {
                     AddSentence("new FormsToolStripComboBox(", new TokenName(),
-                        GetItemPath(fromText, fromIndex) + ").ComboBox.EmulateChangeSelect(" + combo.SelectedIndex, new TokenAsync(CommaType.Before), ");");
+                        GetItemPath(fromIndex), ").ComboBox.EmulateChangeSelect(", 
+                        combo.SelectedIndex.ToString(CultureInfo.CurrentCulture), new TokenAsync(CommaType.Before), ");");
                 };
                 combo.SelectedIndexChanged += selectedIndexChanged;
                 _detachHandler.Add(delegate { combo.SelectedIndexChanged -= selectedIndexChanged; });
@@ -154,7 +153,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                         }
                     }
                     AddSentence("new FormsToolStripComboBox(", new TokenName(),
-                        GetItemPath(fromText, fromIndex) + ").ComboBox.EmulateChangeText(" + GenerateUtility.AdjustText(combo.Text), new TokenAsync(CommaType.Before), ");");
+                        GetItemPath(fromIndex), ").ComboBox.EmulateChangeText(", GenerateUtility.AdjustText(combo.Text), new TokenAsync(CommaType.Before), ");");
                 };
                 combo.TextChanged += textChanged;
                 _detachHandler.Add(delegate { combo.TextChanged -= textChanged; });
@@ -166,45 +165,37 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// チェックボタンにアタッチ
         /// </summary>
-        /// <param name="fromText">至るまでのテキスト</param>
         /// <param name="fromIndex">至るまでのインデックス</param>
         /// <param name="item">アタッチ対象アイテム</param>
         /// <returns>アタッチしたか</returns>
-        private bool AttachCheckButton(string[] fromText, int[] fromIndex, ToolStripItem item)
+        private bool AttachCheckButton(int[] fromIndex, ToolStripItem item)
         {
             ToolStripButton button = item as ToolStripButton;
-            if (button != null && button.CheckOnClick)
+            if (button != null)
             {
-                EventHandler checkStateChanged = delegate
+                if (button.CheckOnClick)
                 {
-                    AddSentence("new FormsToolStripButton(", new TokenName(),
-                        GetItemPath(fromText, fromIndex) + ").EmulateCheck(CheckState." + button.CheckState, new TokenAsync(CommaType.Before), ");");
-                };
-                button.CheckStateChanged += checkStateChanged;
-                _detachHandler.Add(delegate { button.CheckStateChanged -= checkStateChanged; });
-                return true;
-            }
-            return false;
-        }
-        
-        /// <summary>
-        /// アイテムまでのパスを取得
-        /// </summary>
-        /// <param name="fromText">至るまでのテキスト</param>
-        /// <param name="fromIndex">至るまでのインデックス</param>
-        /// <returns>パス</returns>
-        private static string GetItemPath(string[] fromText, int[] fromIndex)
-        {
-            bool textMode = true;
-            foreach (string element in fromText)
-            {
-                if (string.IsNullOrEmpty(element))
+                    EventHandler checkStateChanged = delegate
+                    {
+                        AddSentence("new FormsToolStripButton(", new TokenName(),
+                            GetItemPath(fromIndex) + ").EmulateCheck(CheckState." + button.CheckState, new TokenAsync(CommaType.Before), ");");
+                    };
+                    button.CheckStateChanged += checkStateChanged;
+                    _detachHandler.Add(delegate { button.CheckStateChanged -= checkStateChanged; });
+                    return true;
+                }
+                else
                 {
-                    textMode = false;
-                    break;
+                    EventHandler click = delegate
+                    {
+                        AddSentence(new TokenName(), GetItemPath(fromIndex) + ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
+                    };
+                    item.Click += click;
+                    _detachHandler.Add(delegate { item.Click -= click; });
+                    return true;
                 }
             }
-            return (textMode) ? GetItemPathText(fromText) : GetItemPathIndex(fromIndex);
+            return false;
         }
 
         /// <summary>
@@ -212,7 +203,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// </summary>
         /// <param name="fromText">至るまでのテキスト</param>
         /// <returns>パス</returns>
-        private static string GetItemPathText(string[] fromText)
+        private static string GetItemPath(string[] fromText)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(".FindItem(");
@@ -235,7 +226,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// </summary>
         /// <param name="fromIndex">至るまでのインデックス</param>
         /// <returns>パス</returns>
-        private static string GetItemPathIndex(int[] fromIndex)
+        private static string GetItemPath(int[] fromIndex)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(".GetItem(");
@@ -251,6 +242,20 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             }
             builder.Append(")");
             return builder.ToString();
+        }
+
+        /// <summary>
+        /// コードの最適化。
+        /// </summary>
+        /// <param name="list">コードリスト。</param>
+        public override void Optimize(List<Sentence> code)
+        {
+            GenerateUtility.RemoveDuplicationSentence(this, code,
+                new object[] { "new FormsToolStripTextBox(", new TokenName(), null, ").TextBox.EmulateChangeText(" });
+            GenerateUtility.RemoveDuplicationSentence(this, code,
+                new object[] { "new FormsToolStripComboBox(", new TokenName(), null, ").ComboBox.EmulateChangeSelect("});
+            GenerateUtility.RemoveDuplicationSentence(this, code,
+                new object[] { "new FormsToolStripComboBox(", new TokenName(), null, ").ComboBox.EmulateChangeText(" });
         }
     }
 }

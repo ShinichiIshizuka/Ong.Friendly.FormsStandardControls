@@ -89,7 +89,7 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
             this["Focus", new Async()]();
-            App[GetType(), "ChangeSelectedIndexesInTarget", async](AppVar, index, isSelect);
+            App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
             this["Focus"]();
-            App[GetType(), "ChangeSelectedStateInTarget"](AppVar, index, isSelect);
+            App[GetType(), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="listbox">ListBox。</param>
         /// <param name="index">インデックス。</param>
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        private static void ChangeSelectedIndexesInTarget(ListBox listbox, int index, bool isSelect)
+        private static void EmulateChangeSelectedStateInTarget(ListBox listbox, int index, bool isSelect)
         {
             listbox.SetSelected(index, isSelect);
         }

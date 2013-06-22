@@ -51,6 +51,9 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -66,9 +69,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -309,6 +309,35 @@
             this.toolStripButton4.Size = new System.Drawing.Size(23, 23);
             this.toolStripButton4.Text = "toolStripButton4";
             // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            "a",
+            "b",
+            "c"});
+            this.toolStripComboBox1.Items.AddRange(new object[] {
+            "a",
+            "b",
+            "c",
+            "d"});
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 26);
+            // 
+            // toolStripComboBox2
+            // 
+            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox2.Items.AddRange(new object[] {
+            "a",
+            "b",
+            "c"});
+            this.toolStripComboBox2.Name = "toolStripComboBox2";
+            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 26);
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 26);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -353,9 +382,10 @@
             // 
             this.listView1.CheckBoxes = true;
             this.listView1.HideSelection = false;
+            this.listView1.LabelEdit = true;
             this.listView1.Location = new System.Drawing.Point(1, 324);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(352, 74);
+            this.listView1.Size = new System.Drawing.Size(352, 112);
             this.listView1.TabIndex = 20;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -448,35 +478,6 @@
             this.dataGridView2.RowTemplate.Height = 21;
             this.dataGridView2.Size = new System.Drawing.Size(297, 111);
             this.dataGridView2.TabIndex = 25;
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "a",
-            "b",
-            "c"});
-            this.toolStripComboBox1.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c",
-            "d"});
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 26);
-            // 
-            // toolStripComboBox2
-            // 
-            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox2.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c"});
-            this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 26);
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 26);
             // 
             // FormControls
             // 

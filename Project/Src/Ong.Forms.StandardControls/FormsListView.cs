@@ -82,7 +82,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>指定したインデックスのアイテム。</returns>
         public FormsListViewItem GetListViewItem(int index)
         {
-            return new FormsListViewItem(App, this["Items"]()["[]"](index));
+            return new FormsListViewItem(App, AppVar, this["Items"]()["[]"](index));
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
             this["Focus", new Async()]();
-            App[GetType(), "ChangeSelectedIndexesInTarget", async](AppVar, index, isSelect);
+            App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
             this["Focus"]();
-            App[GetType(), "ChangeSelectedStateInTarget"](AppVar, index, isSelect);
+            App[GetType(), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="listview">リストビュー。</param>
         /// <param name="index">インデックス。</param>
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        private static void ChangeSelectedIndexesInTarget(ListView listview, int index, bool isSelect)
+        private static void EmulateChangeSelectedStateInTarget(ListView listview, int index, bool isSelect)
         {
             listview.Items[index].Selected = isSelect;
         }
@@ -131,7 +131,7 @@ namespace Ong.Friendly.FormsStandardControls
             AppVar returnItem = this["FindItemWithText"](itemText, includeSubItemsInSearch, startIndex);
             if (returnItem != null)
             {
-                return new FormsListViewItem(App, returnItem);
+                return new FormsListViewItem(App, AppVar, returnItem);
             }
             return null;
         }

@@ -9,6 +9,21 @@ namespace Ong.Friendly.FormsStandardControls
     public class FormsToolStripItem : AppVarWrapper
     {
         /// <summary>
+        /// テキスト
+        /// </summary>
+        public string Text { get { return (string)this["Text"]().Core; } }
+
+        /// <summary>
+        /// 可視状態か
+        /// </summary>
+        public bool Visible { get { return (bool)this["Visible"]().Core; } }
+
+        /// <summary>
+        /// 有効であるか
+        /// </summary>
+        public bool Enabled { get { return (bool)this["Enabled"]().Core; } }
+
+        /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="app">対象アプリ操作クラス。</param>

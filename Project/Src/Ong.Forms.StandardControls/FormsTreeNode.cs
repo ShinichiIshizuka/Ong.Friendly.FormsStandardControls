@@ -80,9 +80,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// ノード名を編集します。
         /// </summary>
         /// <param name="nodeText">テキスト。</param>
-        public void EmulateEditLabelText(string nodeText)
+        public void EmulateEditLabel(string nodeText)
         {
-            App[GetType(), "EmulateEditLabelTextInTarget"](AppVar, nodeText);
+            App[GetType(), "EmulateEditLabelInTarget"](AppVar, nodeText);
         }
 
         /// <summary>
@@ -90,9 +90,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="nodeText">テキスト。</param>
         /// <param name="async">非同期オブジェクト。</param>
-        public void EmulateEditLabelText(string nodeText, Async async)
+        public void EmulateEditLabel(string nodeText, Async async)
         {
-            App[GetType(), "EmulateEditLabelTextInTarget", async](AppVar, nodeText);
+            App[GetType(), "EmulateEditLabelInTarget", async](AppVar, nodeText);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="treeNode">ノード。</param>
         /// <param name="nodeText">テキスト。</param>
-        private static void EmulateEditLabelTextInTarget(TreeNode treeNode, string nodeText)
+        private static void EmulateEditLabelInTarget(TreeNode treeNode, string nodeText)
         {
             treeNode.BeginEdit();
             treeNode.Text = nodeText;

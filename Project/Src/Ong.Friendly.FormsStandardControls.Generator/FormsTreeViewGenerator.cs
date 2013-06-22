@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Codeer.TestAssistant.GeneratorToolKit;
+using System.Globalization;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
-    //@@@チェックもいるよね。
-
-    //@@@全体的に最適化
-
-    //@@@フォーカスチェックのタイミング
-    
     /// <summary>
     /// コード生成
     /// </summary>
@@ -29,6 +24,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             _control.AfterSelect += AfterSelect;
             _control.AfterExpand += AfterExpand;
             _control.AfterLabelEdit += AfterLabelEdit;
+            _control.AfterCheck += AfterCheck;
         }
 
         /// <summary>
@@ -39,6 +35,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             _control.AfterSelect -= AfterSelect;
             _control.AfterExpand -= AfterExpand;
             _control.AfterLabelEdit -= AfterLabelEdit;
+            _control.AfterCheck -= AfterCheck;
         }
 
         /// <summary>
@@ -49,7 +46,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         void AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             string from = GetNodePath(e.Node);
-            AddSentence(new TokenName(), from + ".EmulateChangeText(\"" + e.Label, new TokenAsync(CommaType.Before), "\");"); 
+            AddSentence(new TokenName(), from + ".EmulateEditLabel(" + GenerateUtility.AdjustText(e.Label), new TokenAsync(CommaType.Before), ");");
         }
 
         /// <summary>
@@ -59,8 +56,11 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="e">イベント内容</param>
         void AfterSelect(object sender, TreeViewEventArgs e)
         {
-            string from = GetNodePath(e.Node);
-            AddSentence(new TokenName(), ".EmulateNodeSelect(", new TokenName(), from, new TokenAsync(CommaType.Before), ");"); 
+            if (_control.Focused)
+            {
+                string from = GetNodePath(e.Node);
+                AddSentence(new TokenName(), ".EmulateNodeSelect(", new TokenName(), from, new TokenAsync(CommaType.Before), ");");
+            }
         }
 
         /// <summary>
@@ -70,8 +70,27 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="e">イベント内容</param>
         void AfterExpand(object sender, TreeViewEventArgs e)
         {
-            string from = GetNodePath(e.Node);
-            AddSentence(new TokenName(), from + ".EmulateExpand(", new TokenAsync(CommaType.Non), ");"); 
+            if (_control.Focused)
+            {
+                string from = GetNodePath(e.Node);
+                AddSentence(new TokenName(), from + ".EmulateExpand(", new TokenAsync(CommaType.Non), ");");
+            }
+        }
+
+        /// <summary>
+        /// チェックイベント
+        /// </summary>
+        /// <param name="sender">イベント送信元</param>
+        /// <param name="e">イベント内容</param>
+        void AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if (_control.Focused)
+            {
+                string from = GetNodePath(e.Node);
+                AddSentence(new TokenName(), from + ".EmulateCheck(" + 
+                    e.Node.Checked.ToString(CultureInfo.CurrentCulture).ToLower(CultureInfo.CurrentCulture),
+                    new TokenAsync(CommaType.Non), ");");
+            }
         }
 
         /// <summary>
@@ -101,6 +120,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 front += ", ";
             }
             return front + "\"" + treeNode.Text + "\"";
+        }
+
+        /// <summary>
+        /// コードの最適化。
+        /// </summary>
+        /// <param name="list">コードリスト。</param>
+        public override void Optimize(List<Sentence> code)
+        {
+            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateNodeSelect");
         }
     }
 }

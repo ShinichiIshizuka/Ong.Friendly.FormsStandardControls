@@ -9,7 +9,69 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// 自動生成ユーティリティー
     /// </summary>
     static class GenerateUtility
-    {
+    {        
+        /// <summary>
+        /// 重複したセンテンスの削除。
+        /// </summary>
+        /// <param name="generator">ジェネレータ。</param>
+        /// <param name="list">リスト。</param>
+        /// <param name="pattern">パターン。</param>
+        internal static void RemoveDuplicationSentence(GeneratorBase generator, List<Sentence> list, object[] pattern)
+        {
+            Sentence old = null;
+            for (int i = list.Count - 1; 0 <= i; i--)
+            {
+                Sentence current = list[i];
+                if (ReferenceEquals(generator, current.Owner))
+                {
+                    if (old != null)
+                    {
+                        if (IsDuplicationSentence(old, current, pattern))
+                        {
+                            list.RemoveAt(i);
+                        }
+                    }
+                }
+                old = current;
+            }
+        }
+
+        /// <summary>
+        /// 重複したセンテンスであるか
+        /// </summary>
+        /// <param name="lhs">比較対象1</param>
+        /// <param name="rhs">比較対象2</param>
+        /// <param name="pattern">パターン</param>
+        /// <returns>重複したセンテンスであるか</returns>
+        private static bool IsDuplicationSentence(Sentence lhs, Sentence rhs, object[] pattern)
+        {
+            if (lhs.Tokens.Length < pattern.Length ||
+                rhs.Tokens.Length < pattern.Length)
+            {
+                return false;
+            }
+            for (int i = 0; i < pattern.Length; i++)
+            {
+                if (pattern[i] == null)
+                {
+                    continue;
+                }
+                if (pattern[i] is TokenName && lhs.Tokens[i] is TokenName && rhs.Tokens[i] is TokenName)
+                {
+                    continue;
+                }
+                if (!lhs.Tokens[i].Equals(pattern[i]))
+                {
+                    return false;
+                }
+                if (!rhs.Tokens[i].Equals(pattern[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         /// <summary>
         /// 重複した関数の削除。
         /// </summary>

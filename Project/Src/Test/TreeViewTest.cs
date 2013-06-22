@@ -111,9 +111,9 @@ namespace Test
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
             FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
             Assert.NotNull(node);
-            node.EmulateEditLabelText("ChangeText");
+            node.EmulateEditLabel("ChangeText");
             Assert.AreEqual("ChangeText", node.Text);
-            node.EmulateEditLabelText("Child 2",new Async());
+            node.EmulateEditLabel("Child 2", new Async());
             Assert.AreEqual("Child 2", node.Text);
         }
 

@@ -80,9 +80,9 @@ namespace Test
         public void TestDataGridViewCheck()
         {
             FormsDataGridView datagridview2 = new FormsDataGridView(app, testDlg["dataGridView2"]());
-            datagridview2.EmulateToggleCellCheck(2, 1);
-            datagridview2.EmulateToggleCellCheck(2, 2, new Async());
-            datagridview2.EmulateToggleCellCheck(2, 3, new Async());
+            datagridview2.EmulateCellCheck(2, 1, true);
+            datagridview2.EmulateCellCheck(2, 2, false, new Async());
+            datagridview2.EmulateCellCheck(2, 3, true, new Async());
         }
 
         /// <summary>
@@ -104,9 +104,9 @@ namespace Test
         public void TestDataGridViewButton()
         {
             FormsDataGridView datagridview2 = new FormsDataGridView(app, testDlg["dataGridView2"]());
-            datagridview2.EmulateClickCellButton(0, 1);
-            datagridview2.EmulateClickCellButton(0, 2, new Async());
-            datagridview2.EmulateClickCellButton(0, 3, new Async());
+            datagridview2.EmulateClickCellContent(0, 1);
+            datagridview2.EmulateClickCellContent(0, 2, new Async());
+            datagridview2.EmulateClickCellContent(0, 3, new Async());
         }
     }
 }
