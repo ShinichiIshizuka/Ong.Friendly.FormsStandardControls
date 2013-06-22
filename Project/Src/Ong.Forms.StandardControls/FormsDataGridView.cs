@@ -6,6 +6,9 @@ using Ong.Friendly.FormsStandardControls.Inside;
 using System.Drawing;
 using System.Reflection;
 using System;
+using System.Collections.Generic;
+
+//@@@やっぱりできるだけ、1コールで処理を完結できるようにする
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -49,6 +52,74 @@ namespace Ong.Friendly.FormsStandardControls
         public int RowCount
         {
             get { return (int)(this["RowCount"]().Core); }
+        }
+
+        /// <summary>
+        /// 現在の選択セルを取得します。
+        /// </summary>
+        public Cell CurrentCell
+        {
+            get { return (Cell)(App[GetType(), "GetCurrentCellInTarget"](AppVar).Core); }
+        }
+
+        /// <summary>
+        /// 現在の選択セルを取得します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <returns>現在の選択セル。</returns>
+        static Cell GetCurrentCellInTarget(DataGridView grid)
+        {
+            if (grid.CurrentCell == null)
+            {
+                return null;
+            }
+            return new Cell(grid.CurrentCell.ColumnIndex, grid.CurrentCell.RowIndex);
+        }
+
+        /// <summary>
+        /// 現在の選択セルを取得します。
+        /// </summary>
+        public Cell[] SelectedCells
+        {
+            get { return (Cell[])(App[GetType(), "GetSelectedCellsInTarget"](AppVar).Core); }
+        }
+
+        /// <summary>
+        /// 現在の選択セルを取得します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <returns>現在の選択セル。</returns>
+        static Cell[] GetSelectedCellsInTarget(DataGridView grid)
+        {
+            List<Cell> list = new List<Cell>();
+            foreach (DataGridViewCell element in grid.SelectedCells)
+            {
+                list.Add(new Cell(element.ColumnIndex, element.RowIndex));
+            }
+            return list.ToArray();
+        }
+
+        /// <summary>
+        /// 現在の選択行を取得します。
+        /// </summary>
+        public int[] SelectedRows
+        {
+            get { return (int[])(App[GetType(), "GetSelectedRowsInTarget"](AppVar).Core); }
+        }
+
+        /// <summary>
+        /// 現在の選択行を取得します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <returns>現在の選択行。</returns>
+        static int[] GetSelectedRowsInTarget(DataGridView grid)
+        {
+            List<int> list = new List<int>();
+            foreach (DataGridViewRow element in grid.SelectedRows)
+            {
+                list.Add(element.Index);
+            }
+            return list.ToArray();
         }
 
         /// <summary>

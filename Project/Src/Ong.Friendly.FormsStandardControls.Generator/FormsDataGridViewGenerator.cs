@@ -7,9 +7,6 @@ using System.Globalization;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
-
-    //@@@行選択
-
     /// <summary>
     /// コード生成
     /// </summary>
@@ -70,7 +67,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         }
 
         DataGridView _control;
-        List<ColRow> _selectedIndices = new List<ColRow>();
 
         /// <summary>
         /// アタッチ。
@@ -83,7 +79,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             _control.SelectionChanged += SelectionChanged;
             _control.CellEndEdit += CellEndEdit;
             _control.CellContentClick += CellContentClick;
-            GetSelectedIndices(_selectedIndices);
         }
 
         /// <summary>
@@ -167,52 +162,61 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused)
             {
-                if (_control.MultiSelect)
-                {
-                    List<ColRow> current = new List<ColRow>();
-                    GetSelectedIndices(current);
-                    DiffSelect(current, _selectedIndices);
-                    _selectedIndices = current;
-                }
+                AddSentence(new TokenName(), ".EmulateClearSelection(", new TokenAsync(CommaType.Non), ");");
+                //現在のセルの設定
                 if (_control.CurrentCell != null)
                 {
-                    AddSentence(new TokenName(), ".EmulateChangeCurrentCell(" + 
+                    AddSentence(new TokenName(), ".EmulateChangeCurrentCell(" +
                         _control.CurrentCell.ColumnIndex + ", " + _control.CurrentCell.RowIndex, new TokenAsync(CommaType.Before), ");");
                 }
-            }
+
+                //行選択
+                List<int> currentRows = new List<int>();
+                GetSelectedRows(currentRows);
+                SelectRows(currentRows);
+
+                //セル選択
+                if (_control.MultiSelect)
+                {
+                    List<ColRow> currentCells = new List<ColRow>();
+                    GetSelectedIndices(currentCells);
+                    bool isSelectCell = false;
+                    foreach (ColRow element in currentCells)
+                    {
+                        if (currentRows.IndexOf(element.Row) == -1)
+                        {
+                            isSelectCell = true;
+                            break;
+                        }
+                    }
+                    if (_control.CurrentCell != null && currentCells.Count == 1 &&
+                        _control.CurrentCell.RowIndex == currentCells[0].Row &&
+                        _control.CurrentCell.ColumnIndex == currentCells[0].Col)
+                    {
+                        isSelectCell = false;
+                    }
+                    if (isSelectCell)
+                    {
+                        SelectCells(currentCells);
+                    }
+                }
+           }
         }
 
         /// <summary>
-        /// 差分チェック
+        /// セル選択
         /// </summary>
         /// <param name="current">現在状態</param>
-        /// <param name="old">前の選択状態</param>
-        private void DiffSelect(List<ColRow> current, List<ColRow> old)
+        private void SelectCells(List<ColRow> current)
         {
-            //oldで選択が消えているものをfalseにする
             StringBuilder args = new StringBuilder();
-            foreach (ColRow index in old)
-            {
-                if (current.IndexOf(index) == -1)
-                {
-                    if (0 < args.Length)
-                    {
-                        args.Append(", ");
-                    }
-                    args.Append("new CellSelectedInfo(" + index.Col + ", " + index.Row + ", false)");
-                }
-            }
-            //currentで選択が増えているものをtrueにする
             foreach (ColRow index in current)
             {
-                if (old.IndexOf(index) == -1)
+                if (0 < args.Length)
                 {
-                    if (0 < args.Length)
-                    {
-                        args.Append(", ");
-                    }
-                    args.Append("new CellSelectedInfo(" + index.Col + ", " + index.Row + ", true)");
+                    args.Append(", ");
                 }
+                args.Append("new CellSelectedInfo(" + index.Col + ", " + index.Row + ", true)");
             }
             if (args.Length == 0)
             {
@@ -233,6 +237,41 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             foreach (DataGridViewCell cell in _control.SelectedCells)
             {
                 list.Add(new ColRow(cell.ColumnIndex, cell.RowIndex));
+            }
+        }
+
+        /// <summary>
+        /// 行選択
+        /// </summary>
+        /// <param name="current">現在状態</param>
+        private void SelectRows(List<int> current)
+        {
+            StringBuilder args = new StringBuilder();
+            foreach (int index in current)
+            {
+                if (0 < args.Length)
+                {
+                    args.Append(", ");
+                }
+                args.Append("new RowSelectedInfo(" + index + ", true)");
+            }
+            if (args.Length == 0)
+            {
+                return;
+            }
+            AddSentence(new TokenName(), ".EmulateChangeRowSelected(", new TokenAsync(CommaType.After), args + ");");
+        }
+
+        /// <summary>
+        /// 選択行インデックス取得
+        /// </summary>
+        /// <param name="selectedRows">選択行インデックス</param>
+        private void GetSelectedRows(List<int> selectedRows)
+        {
+            selectedRows.Clear();
+            foreach (DataGridViewRow sel in _control.SelectedRows)
+            {
+                selectedRows.Add(sel.Index);
             }
         }
 

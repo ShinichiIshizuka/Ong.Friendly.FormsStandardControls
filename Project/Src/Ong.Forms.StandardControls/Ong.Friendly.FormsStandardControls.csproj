@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="RowSelectedInfo.cs" />
     <Compile Include="FormsListViewSubItem.cs" />
+    <Compile Include="Cell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings\Ong.Friendly.FormsStandardControls.Plugin.xml" />
