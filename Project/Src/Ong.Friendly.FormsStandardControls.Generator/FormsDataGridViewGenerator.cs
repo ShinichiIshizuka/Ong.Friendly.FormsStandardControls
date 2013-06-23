@@ -71,11 +71,9 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// アタッチ。
         /// </summary>
-        /// <param name="windowHandle">ウィンドウハンドル(WPFオブジェクトの場合はIntPtr.Zero)。</param>
-        /// <param name="controlObject">コントロールのオブジェクト(ネイティブウィンドウの場合はnull)。</param>
-        public override void Attach(IntPtr windowHandle, object controlObject)
+        protected override void Attach()
         {
-            _control = (DataGridView)controlObject;
+            _control = (DataGridView)ControlObject;
             _control.SelectionChanged += SelectionChanged;
             _control.CellEndEdit += CellEndEdit;
             _control.CellContentClick += CellContentClick;
