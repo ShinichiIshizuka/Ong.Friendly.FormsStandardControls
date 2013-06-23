@@ -115,7 +115,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             {
                 object obj = _control[e.ColumnIndex, e.RowIndex].Value;
                 string value = (obj == null) ? string.Empty : obj.ToString();
-                AddSentence(new TokenName(), ".EmulateChangeCellText(" + e.ColumnIndex + "," + e.RowIndex + ", " + value, new TokenAsync(CommaType.Before) + ");");
+                AddSentence(new TokenName(), ".EmulateChangeCellText(" + e.ColumnIndex + "," + e.RowIndex + ", " +
+                    GenerateUtility.AdjustText(value), new TokenAsync(CommaType.Before) + ");");
                 return;
             }
             DataGridViewComboBoxCell comboBox = _control[e.ColumnIndex, e.RowIndex] as DataGridViewComboBoxCell;
