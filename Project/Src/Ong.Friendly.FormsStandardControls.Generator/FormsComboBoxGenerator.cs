@@ -63,7 +63,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="list">コードリスト。</param>
         public override void Optimize(List<Sentence> code)
         {
-            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateChangeSelect");
             GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateChangeText");
         }
     }

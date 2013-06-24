@@ -56,14 +56,5 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 AddSentence(new TokenName(), ".EmulateCheckState(" + e.Index + ", CheckState." + e.NewValue, new TokenAsync(CommaType.Before), ");");
             }
         }
-
-        /// <summary>
-        /// コードの最適化。
-        /// </summary>
-        /// <param name="list">コードリスト。</param>
-        public override void Optimize(List<Sentence> code)
-        {
-            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateChangeSelectedIndex");
-        }
     }
 }

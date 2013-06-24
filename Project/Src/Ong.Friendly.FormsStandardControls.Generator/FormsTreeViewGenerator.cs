@@ -119,14 +119,5 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             }
             return front + "\"" + treeNode.Text + "\"";
         }
-
-        /// <summary>
-        /// コードの最適化。
-        /// </summary>
-        /// <param name="list">コードリスト。</param>
-        public override void Optimize(List<Sentence> code)
-        {
-            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateNodeSelect");
-        }
     }
 }

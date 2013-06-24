@@ -251,8 +251,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             GenerateUtility.RemoveDuplicationSentence(this, code,
                 new object[] { "new FormsToolStripTextBox(", new TokenName(), null, ").TextBox.EmulateChangeText(" });
             GenerateUtility.RemoveDuplicationSentence(this, code,
-                new object[] { "new FormsToolStripComboBox(", new TokenName(), null, ").ComboBox.EmulateChangeSelect("});
-            GenerateUtility.RemoveDuplicationSentence(this, code,
                 new object[] { "new FormsToolStripComboBox(", new TokenName(), null, ").ComboBox.EmulateChangeText(" });
         }
     }

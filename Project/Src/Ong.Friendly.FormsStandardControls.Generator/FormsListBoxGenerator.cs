@@ -93,14 +93,5 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 selectedIndices.Add(sel);
             }
         }
-
-        /// <summary>
-        /// コードの最適化。
-        /// </summary>
-        /// <param name="list">コードリスト。</param>
-        public override void Optimize(List<Sentence> code)
-        {
-            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateChangeSelectedIndex");
-        }
     }
 }

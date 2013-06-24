@@ -41,14 +41,5 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 AddSentence(new TokenName(), ".EmulateTabSelect(" + _control.SelectedIndex, new TokenAsync(CommaType.Before), ");");
             }
         }
-
-        /// <summary>
-        /// コードの最適化。
-        /// </summary>
-        /// <param name="list">コードリスト。</param>
-        public override void Optimize(List<Sentence> code)
-        {
-            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateTabSelect");
-        }
     }
 }

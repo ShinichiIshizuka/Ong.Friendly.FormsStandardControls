@@ -273,14 +273,5 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 selectedRows.Add(sel.Index);
             }
         }
-
-        /// <summary>
-        /// コードの最適化。
-        /// </summary>
-        /// <param name="list">コードリスト。</param>
-        public override void Optimize(List<Sentence> code)
-        {
-            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateChangeCurrentCell");
-        }
     }
 }
