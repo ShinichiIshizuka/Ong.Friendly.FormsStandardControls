@@ -46,6 +46,9 @@ namespace Test
 
         /// <summary>
         /// チェックテスト
+        /// EmulateCheck
+        /// CheckState
+        /// の両方をテスト
         /// </summary>
         [Test]
         public void TestCheckBoxCheck()
@@ -54,22 +57,9 @@ namespace Test
             checkbox1.EmulateCheck(CheckState.Checked);
             Assert.AreEqual(CheckState.Checked, checkbox1.CheckState);
 
+            //@@@非同期確認になっていない。
             checkbox1.EmulateCheck(CheckState.Unchecked,new Async());
             Assert.AreEqual(CheckState.Unchecked, checkbox1.CheckState);
-        }
-
-        /// <summary>
-        /// テキストを取得します
-        /// </summary>
-        [Test]
-        public void TestCheckBoxTextGet()
-        {
-            FormsCheckBox checkBox1 = new FormsCheckBox(app, testDlg["checkBox1"]());
-            String checkBox1Text = checkBox1.Text;
-            Assert.AreEqual("checkBox1", checkBox1Text);
-
-            checkBox1Text = checkBox1.Text;
-            Assert.AreEqual("checkBox1", checkBox1Text);
         }
     }
 }

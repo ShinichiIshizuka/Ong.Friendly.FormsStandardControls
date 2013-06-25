@@ -1,9 +1,9 @@
 using System;
-using System.Windows.Forms;
-using Codeer.Friendly.Windows;
-using Codeer.Friendly;
-using Ong.Friendly.FormsStandardControls.Inside;
 using System.Reflection;
+using System.Windows.Forms;
+using System.Collections.Generic;
+using Codeer.Friendly;
+using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
@@ -18,10 +18,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsComboBox(WindowControl src)
-            : base(src)
-        {
-            Initializer.Initialize(App, GetType());
-        }
+            : base(src) { }
 
         /// <summary>
         /// コンストラクタです。
@@ -29,10 +26,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
         public FormsComboBox(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
-        {
-            Initializer.Initialize(app, GetType());
-        }
+            : base(app, appVar) { }
 
         /// <summary>
         /// 一覧のアイテム数を取得します。

@@ -45,13 +45,14 @@ namespace Test
 
         /// <summary>
         /// テキスト設定・取得をします
+        /// @@@非同期
         /// </summary>
         [Test]
-        public void TestRichTextBoxTextGetAndSet()
+        public void TestEmulateChangeText()
         {
             FormsRichTextBox richtextbox1 = new FormsRichTextBox(app, testDlg["richTextBox1"]());
             richtextbox1.EmulateChangeText("RICHTEXTBOX1");
-            String richtextbox1Text = richtextbox1.Text;
+            string richtextbox1Text = richtextbox1.Text;
             Assert.AreEqual("RICHTEXTBOX1", richtextbox1Text);
 
             richtextbox1.EmulateChangeText("RICHTEXTBOX11", new Async());

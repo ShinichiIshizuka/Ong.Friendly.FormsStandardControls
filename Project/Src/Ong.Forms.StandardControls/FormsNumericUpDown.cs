@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Ong.Friendly.FormsStandardControls.Inside;
-using Codeer.Friendly.Windows.Grasp;
+﻿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
-using Codeer.Friendly;
+using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -18,10 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです</param>
         public FormsNumericUpDown(WindowControl src)
-            : base(src)
-        {
-            Initializer.Initialize(App, GetType());
-        }
+            : base(src) { }
 
         /// <summary>
         /// コンストラクタです。
@@ -29,14 +22,12 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
         public FormsNumericUpDown(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
-        {
-            Initializer.Initialize(app, GetType());
-        }
+            : base(app, appVar) { }
+
         /// <summary>
         /// △をクリックします。
         /// </summary>
-        public void EmulateUpClick()
+        public void EmulateUp()
         {
             this["Focus"]();
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)1));
@@ -48,7 +39,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// 非同期で実行します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateUpClick(Async async)
+        public void EmulateUp(Async async)
         {
             this["Focus", new Async()]();
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)1));
@@ -58,7 +49,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// ▽をクリックします。
         /// </summary>
-        public void EmulateDownClick()
+        public void EmulateDown()
         {
             this["Focus"]();
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)2));
@@ -70,7 +61,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// 非同期で実行します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateDownClick(Async async)
+        public void EmulateDown(Async async)
         {
             this["Focus", new Async()]();
             AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)2));

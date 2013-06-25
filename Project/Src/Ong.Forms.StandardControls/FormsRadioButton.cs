@@ -1,11 +1,10 @@
 using System;
 using System.Windows.Forms;
-using Codeer.Friendly.Windows.Grasp;
-using Codeer.Friendly.Windows;
-using Codeer.Friendly;
-using Ong.Friendly.FormsStandardControls.Inside;
 using System.Reflection;
 using Ong.Friendly.FormsStandardControls.Properties;
+using Codeer.Friendly;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -19,10 +18,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsRadioButton(WindowControl src)
-            : base(src)
-        {
-            Initializer.Initialize(App, GetType());
-        }
+            : base(src) { }
 
         /// <summary>
         /// コンストラクタです。
@@ -30,9 +26,15 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
         public FormsRadioButton(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
+            : base(app, appVar) { }
+
+        /// <summary>
+        /// チェック状態を取得します。
+        /// </summary>
+        /// <returns>チェック状態。</returns>
+        public bool Checked
         {
-            Initializer.Initialize(app, GetType());
+            get { return (bool)(this["Checked"]().Core); }
         }
 
         /// <summary>
@@ -71,15 +73,6 @@ namespace Ong.Friendly.FormsStandardControls
                     throw new NotSupportedException(Resources.ErrorCheckSetting);
                 }
             }
-        }
-
-        /// <summary>
-        /// チェック状態を取得します。
-        /// </summary>
-        /// <returns>チェック状態。</returns>
-        public bool Checked
-        {
-            get { return (bool)(this["Checked"]().Core); }
         }
     }
 }

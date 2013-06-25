@@ -1,9 +1,8 @@
-using Codeer.Friendly.Windows.Grasp;
-using Codeer.Friendly.Windows;
-using Codeer.Friendly;
-using Ong.Friendly.FormsStandardControls.Inside;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Codeer.Friendly;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -17,10 +16,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsListBox(WindowControl src)
-            : base(src)
-        {
-            Initializer.Initialize(App, GetType());
-        }
+            : base(src) { }
 
         /// <summary>
         /// コンストラクタです。
@@ -28,10 +24,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
         public FormsListBox(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
-        {
-            Initializer.Initialize(app, GetType());
-        }
+            : base(app, appVar) { }
 
         /// <summary>
         /// 一覧のアイテム数を取得します。
@@ -48,7 +41,33 @@ namespace Ong.Friendly.FormsStandardControls
         {
             get { return (int)(this["SelectedIndex"]().Core); }
         }
-        
+
+        /// <summary>
+        /// 選択モードを取得します。
+        /// </summary>
+        public SelectionMode SelectionMode
+        {
+            get { return (SelectionMode)(this["SelectionMode"]().Core); }
+        }
+
+        /// <summary>
+        /// 選択状態のリスト項目一覧を取得します。
+        /// </summary>
+        public int[] SelectedIndexes
+        {
+            get { return (int[])(App[GetType(), "GetSelectedIndexesInTarget"](AppVar).Core); }
+        }
+
+        /// <summary>
+        /// アイテムを指定されたテキストで検索します。
+        /// </summary>
+        /// <param name="ItemText">各ノードのテキスト</param>
+        /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        public int FindListIndex(string ItemText)
+        {
+            return (int)(this["FindString"](ItemText).Core);
+        }
+
         /// <summary>
         /// 指定されたインデックスに該当するアイテムを選択状態にします。
         /// </summary>
@@ -71,13 +90,14 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// アイテムを指定されたテキストで検索します。
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
         /// </summary>
-        /// <param name="ItemText">各ノードのテキスト</param>
-        /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
-        public int FindListIndex(string ItemText)
+        /// <param name="index">インデックス。</param>
+        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        public void EmulateChangeSelectedState(int index, bool isSelect)
         {
-            return (int)(this["FindString"](ItemText).Core);
+            this["Focus"]();
+            App[GetType(), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
         }
 
         /// <summary>
@@ -90,36 +110,6 @@ namespace Ong.Friendly.FormsStandardControls
         {
             this["Focus", new Async()]();
             App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
-        }
-
-        /// <summary>
-        /// 指定されたインデックスに該当するアイテムを選択状態にします。
-        /// </summary>
-        /// <param name="index">インデックス。</param>
-        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        public void EmulateChangeSelectedState(int index, bool isSelect)
-        {
-            this["Focus"]();
-            App[GetType(), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
-        }
-
-        /// <summary>
-        /// リストアイテムを選択します（内部）。
-        /// </summary>
-        /// <param name="listbox">ListBox。</param>
-        /// <param name="index">インデックス。</param>
-        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        private static void EmulateChangeSelectedStateInTarget(ListBox listbox, int index, bool isSelect)
-        {
-            listbox.SetSelected(index, isSelect);
-        }
-
-        /// <summary>
-        /// 選択状態のリスト項目一覧を取得します。
-        /// </summary>
-        public int[] SelectedIndexes
-        {
-            get { return (int[])(App[GetType(), "GetSelectedIndexesInTarget"](AppVar).Core); }
         }
 
         /// <summary>
@@ -138,11 +128,14 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 選択モードを取得します。
+        /// リストアイテムを選択します（内部）。
         /// </summary>
-        public SelectionMode SelectionMode
+        /// <param name="listbox">ListBox。</param>
+        /// <param name="index">インデックス。</param>
+        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        private static void EmulateChangeSelectedStateInTarget(ListBox listbox, int index, bool isSelect)
         {
-            get { return (SelectionMode)(this["SelectionMode"]().Core); }
+            listbox.SetSelected(index, isSelect);
         }
     }
 }

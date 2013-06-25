@@ -1,15 +1,14 @@
 using System;
-using Codeer.Friendly;
-using Ong.Friendly.FormsStandardControls.Inside;
-using Codeer.Friendly.Windows;
 using System.Windows.Forms;
+using Codeer.Friendly;
+using Codeer.Friendly.Windows;
 
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
     /// ツリーノードです。
     /// </summary>
-    public class FormsTreeNode:AppVarWrapper
+    public class FormsTreeNode : AppVarWrapper
     {
         WindowsAppFriend _app;
 
@@ -23,14 +22,14 @@ namespace Ong.Friendly.FormsStandardControls
         {
             _app = app;
         }
-    
+
         /// <summary>
         /// テキストを取得します。
         /// </summary>
         /// <returns>テキスト。</returns>
-        public String Text
+        public string Text
         {
-            get { return (String)this["Text"]().Core; }
+            get { return (string)this["Text"]().Core; }
         }
 
         /// <summary>
@@ -40,6 +39,14 @@ namespace Ong.Friendly.FormsStandardControls
         public bool IsExpanded
         {
             get { return (bool)this["IsExpanded"]().Core; }
+        }
+
+        /// <summary>
+        /// チェック状態を取得します。
+        /// </summary>
+        public bool Checked
+        {
+            get { return (bool)(this["Checked"]().Core); }
         }
 
         /// <summary>
@@ -75,7 +82,7 @@ namespace Ong.Friendly.FormsStandardControls
         {
             this["Collapse", async]();
         }
-        
+
         /// <summary>
         /// ノード名を編集します。
         /// </summary>
@@ -124,14 +131,6 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateCheck(bool check, Async async)
         {
             this["Checked", async](check);
-        }
-
-        /// <summary>
-        /// チェック状態を取得します。
-        /// </summary>
-        public bool Checked
-        { 
-            get { return (bool)(this["Checked"]().Core); }
         }
     }
 }

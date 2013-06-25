@@ -1,9 +1,6 @@
-using System;
 using System.Windows.Forms;
-using Codeer.Friendly.Windows;
 using Codeer.Friendly;
-using Ong.Friendly.FormsStandardControls.Inside;
-using System.Reflection;
+using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
@@ -18,10 +15,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="src">元となるウィンドウコントロールです。</param>
         public FormsCheckBox(WindowControl src)
-            : base(src)
-        {
-            Initializer.Initialize(App, GetType());
-        }
+            : base(src) { }
 
         /// <summary>
         /// コンストラクタです。
@@ -29,9 +23,15 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
         public FormsCheckBox(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
+            : base(app, appVar) { }
+
+        /// <summary>
+        /// チェック状態を取得します。
+        /// </summary>
+        /// <returns>チェック状態。</returns>
+        public CheckState CheckState
         {
-            Initializer.Initialize(app, GetType());
+            get { return (CheckState)(this["CheckState"]().Core); }
         }
 
         /// <summary>
@@ -64,15 +64,6 @@ namespace Ong.Friendly.FormsStandardControls
         static void EmulateCheckInTarget(CheckBox checkBox, CheckState value)
         {
             checkBox.CheckState = value;
-        }
-
-        /// <summary>
-        /// チェック状態を取得します。
-        /// </summary>
-        /// <returns>チェック状態。</returns>
-        public CheckState CheckState
-        {
-            get { return (CheckState)(this["CheckState"]().Core); }
         }
     }
 }

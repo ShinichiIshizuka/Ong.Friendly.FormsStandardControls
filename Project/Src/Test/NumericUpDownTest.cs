@@ -49,33 +49,36 @@ namespace Test
         public void TestNumericUpDownButtonClick()
         {
             FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
-            numericUpDown.EmulateUpClick();
-            numericUpDown.EmulateUpClick();
-            numericUpDown.EmulateUpClick();
+            numericUpDown.EmulateUp();
+            numericUpDown.EmulateUp();
+            numericUpDown.EmulateUp();
             Assert.AreEqual(3, int.Parse(numericUpDown.Text));
 
-            numericUpDown.EmulateDownClick();
+            numericUpDown.EmulateDown();
             Assert.AreEqual(2, int.Parse(numericUpDown.Text));
-            numericUpDown.EmulateDownClick();
-            numericUpDown.EmulateDownClick();
+            numericUpDown.EmulateDown();
+            numericUpDown.EmulateDown();
         }
 
         /// <summary>
-        /// クリックテスト
+        /// EmulateUp、EmulateDown非同期
+        /// @@@非同期まだ
         /// </summary>
         [Test]
-        public void TestNumericUpDownButtonAsyncClick()
+        public void TestNumericUpDown()
         {
             FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
-            numericUpDown.EmulateUpClick(new Async());
-            numericUpDown.EmulateUpClick(new Async());
-            numericUpDown.EmulateUpClick(new Async());
+            numericUpDown.EmulateUp(new Async());
+            numericUpDown.EmulateUp(new Async());
+            numericUpDown.EmulateUp(new Async());
             Assert.AreEqual(3, int.Parse(numericUpDown.Text));
 
-            numericUpDown.EmulateDownClick(new Async());
+            numericUpDown.EmulateDown(new Async());
             Assert.AreEqual(2, int.Parse(numericUpDown.Text));
-            numericUpDown.EmulateDownClick(new Async());
-            numericUpDown.EmulateDownClick(new Async());
+            numericUpDown.EmulateDown(new Async());
+            numericUpDown.EmulateDown(new Async());
         }
+
+        //@@@EmulateChangeText
     }
 }

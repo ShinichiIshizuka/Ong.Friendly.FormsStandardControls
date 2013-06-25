@@ -43,35 +43,35 @@ namespace Test
         }
 
         /// <summary>
-        /// タブ数を取得します
+        /// TabCountテスト
         /// </summary>
         [Test]
-        public void TestTabCountGet()
+        public void TestTabCount()
         {
             FormsTabControl tabcontrol1 = new FormsTabControl(app, testDlg["tabControl1"]());
             Assert.AreEqual(3, tabcontrol1.TabCount);
         }
 
         /// <summary>
-        /// タブをインデックスで設定します。
-        /// インデックスは０始まりです
+        /// SelectedIndexテスト
+        /// </summary>
+        [Test]
+        public void TestSelectedIndex()
+        {
+            FormsTabControl tabcontrol1 = new FormsTabControl(app, testDlg["tabControl1"]());
+            tabcontrol1.EmulateTabSelect(2);
+            Assert.AreEqual(2, tabcontrol1.SelectedIndex);
+        }
+
+        /// <summary>
+        /// EmulateTabSelect
+        /// @@@非同期
         /// </summary>
         [Test]
         public void TestTabSelect()
         {
             FormsTabControl tabcontrol1 = new FormsTabControl(app, testDlg["tabControl1"]());
             tabcontrol1.EmulateTabSelect(2,new Async());
-        }
-        /// <summary>
-        /// タブをインデックスで設定します。アクティブなタブ番号を取得します。
-        /// インデックスは０始まりです
-        /// </summary>
-        [Test]
-        public void TestTabSelectAndGetTabIndex()
-        {
-            FormsTabControl tabcontrol1 = new FormsTabControl(app, testDlg["tabControl1"]());
-            tabcontrol1.EmulateTabSelect(2);
-            Assert.AreEqual(2, tabcontrol1.SelectedIndex);
         }
     }
 }

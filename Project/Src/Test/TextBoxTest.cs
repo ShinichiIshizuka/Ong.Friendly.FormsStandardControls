@@ -45,30 +45,19 @@ namespace Test
 
         /// <summary>
         /// テキスト設定・取得をします
+        /// @@@非同期
         /// </summary>
         [Test]
-        public void TestTextBoxTextGetAndSet()
+        public void TestEmulateChangeText()
         {
             FormsTextBox textbox1 = new FormsTextBox(app, testDlg["textBox1"]());
             textbox1.EmulateChangeText("TEXTBOX1");
-            String textbox1Text = textbox1.Text;
+            string textbox1Text = textbox1.Text;
             Assert.AreEqual("TEXTBOX1", textbox1Text);
 
             textbox1.EmulateChangeText("TEXTBOX11", new Async());
             textbox1Text = textbox1.Text;
             Assert.AreEqual("TEXTBOX11", textbox1Text);
-        }
-
-        /// <summary>
-        /// テキスト設定してクリアして消えていることを確認します
-        /// </summary>
-        [Test]
-        public void TestTextBoxTextSetAndClearAndGet()
-        {
-            FormsTextBox textbox1 = new FormsTextBox(app, testDlg["textBox1"]());
-            textbox1.EmulateChangeText("TEXTBOX1");
-            String textbox1Text = textbox1.Text;
-            Assert.AreEqual("TEXTBOX1", textbox1Text);
         }
     }
 }

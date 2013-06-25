@@ -1,8 +1,7 @@
 using System.Windows.Forms;
-using Codeer.Friendly.Windows.Grasp;
-using Codeer.Friendly.Windows;
 using Codeer.Friendly;
-using Ong.Friendly.FormsStandardControls.Inside;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -16,10 +15,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsTreeView(WindowControl src)
-            : base(src)
-        {
-            Initializer.Initialize(App, GetType());
-        }
+            : base(src) { }
 
         /// <summary>
         /// コンストラクタです。
@@ -27,10 +23,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
         public FormsTreeView(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
-        {
-            Initializer.Initialize(app, GetType());
-        }
+            : base(app, appVar) { }
 
         /// <summary>
         /// 選択しているノードを取得します。
@@ -38,26 +31,6 @@ namespace Ong.Friendly.FormsStandardControls
         public FormsTreeNode SelectNode
         {
             get { return new FormsTreeNode(App, this["SelectedNode"]()); }
-        }
-
-        /// <summary>
-        /// ノードを選択します。
-        /// </summary>
-        /// <param name="node">ノード。</param>
-        public void EmulateNodeSelect(FormsTreeNode node)
-        {
-            this["SelectedNode"](node.AppVar);
-        }
-
-        /// <summary>
-        /// ノードを選択します。
-        /// 非同期で実行します。
-        /// </summary>
-        /// <param name="node">ノード。</param>
-        /// <param name="async">非同期オブジェクト。</param>
-        public void EmulateNodeSelect(FormsTreeNode node, Async async)
-        {
-            this["SelectedNode", async](node.AppVar);
         }
 
         /// <summary>
@@ -88,6 +61,26 @@ namespace Ong.Friendly.FormsStandardControls
         public FormsTreeNode FindItem(params string[] texts)
         {
             return new FormsTreeNode(App, App[GetType(), "FindItemInTarget"](AppVar, texts));
+        }
+
+        /// <summary>
+        /// ノードを選択します。
+        /// </summary>
+        /// <param name="node">ノード。</param>
+        public void EmulateNodeSelect(FormsTreeNode node)
+        {
+            this["SelectedNode"](node.AppVar);
+        }
+
+        /// <summary>
+        /// ノードを選択します。
+        /// 非同期で実行します。
+        /// </summary>
+        /// <param name="node">ノード。</param>
+        /// <param name="async">非同期オブジェクト。</param>
+        public void EmulateNodeSelect(FormsTreeNode node, Async async)
+        {
+            this["SelectedNode", async](node.AppVar);
         }
 
         /// <summary>
@@ -186,6 +179,6 @@ namespace Ong.Friendly.FormsStandardControls
                 }
                 items = treenode.Nodes;
             }
-        }    
+        }
     }
 }

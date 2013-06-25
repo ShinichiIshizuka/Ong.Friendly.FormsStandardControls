@@ -6,6 +6,8 @@ using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 namespace Test
 {
+    //@@@class
+
     /// <summary>
     /// DataGridViewƒeƒXƒg
     /// </summary>

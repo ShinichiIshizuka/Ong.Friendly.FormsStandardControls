@@ -6,6 +6,7 @@ using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using System.Windows.Forms;
+
 namespace Test
 {
     /// <summary>
@@ -45,54 +46,25 @@ namespace Test
         }
 
         /// <summary>
-        /// リストのアイテム数取得テスト
+        /// ItemCountテスト
         /// </summary>
         [Test]
-        public void TestCheckedListBoxItemCount()
+        public void TestItemCount()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
             int itemCount = checkedlistbox1.ItemCount;
             Assert.AreEqual(6, itemCount);
         }
 
-        /// <summary>
-        /// インデックスでアイテムを選択しテキストを取得します
-        /// </summary>
-        [Test]
-        public void TestCheckedListBoxSelectAndTextGet()
-        {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
-            checkedlistbox1.EmulateChangeSelectedIndex(4);
-            String checkedlistbox1Text = checkedlistbox1.Text;
-            Assert.AreEqual("Item-5", checkedlistbox1Text);
+        //@@@GetCheckState
 
-            checkedlistbox1.EmulateChangeSelectedIndex(2, new Async());
-            checkedlistbox1Text = checkedlistbox1.Text;
-            Assert.AreEqual("Item-3", checkedlistbox1Text);
-        }
+        //@@@FindListIndex
 
         /// <summary>
-        /// チェックした一覧を取得します
+        /// CheckedIndicesテスト
         /// </summary>
         [Test]
-        public void TestCheckedListBoxCheckListGet1()
-        {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
-            checkedlistbox1.EmulateCheckState(0, CheckState.Checked);
-            checkedlistbox1.EmulateCheckState(2, CheckState.Checked);
-            checkedlistbox1.EmulateCheckState(4, CheckState.Checked);
-
-            int[] list = checkedlistbox1.CheckedIndices;
-            Assert.AreEqual(0, list[0]);
-            Assert.AreEqual(2, list[1]);
-            Assert.AreEqual(4, list[2]);
-        }
-
-        /// <summary>
-        /// チェックした一覧を取得します
-        /// </summary>
-        [Test]
-        public void TestCheckedListBoxCheckListGet2()
+        public void TestCheckedIndices()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateCheckState(1, CheckState.Checked, new Async());
@@ -107,10 +79,10 @@ namespace Test
         }
 
         /// <summary>
-        /// インデックスでアイテムを選択し選択したインデックスを取得します
+        /// SelectedItemIndexテスト
         /// </summary>
         [Test]
-        public void TestCheckedListBoxSelect()
+        public void TestSelectedItemIndex()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateChangeSelectedIndex(4);
@@ -118,6 +90,41 @@ namespace Test
 
             checkedlistbox1.EmulateChangeSelectedIndex(2,new Async());
             Assert.AreEqual(2, checkedlistbox1.SelectedItemIndex);
+        }
+
+        /// <summary>
+        /// EmulateChangeSelectedIndexテスト
+        /// @@@非同期
+        /// </summary>
+        [Test]
+        public void TestEmulateChangeSelectedIndex()
+        {
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            checkedlistbox1.EmulateChangeSelectedIndex(4);
+            string checkedlistbox1Text = checkedlistbox1.Text;
+            Assert.AreEqual("Item-5", checkedlistbox1Text);
+
+            checkedlistbox1.EmulateChangeSelectedIndex(2, new Async());
+            checkedlistbox1Text = checkedlistbox1.Text;
+            Assert.AreEqual("Item-3", checkedlistbox1Text);
+        }
+
+        /// <summary>
+        /// EmulateCheckStateテスト
+        /// @@@非同期
+        /// </summary>
+        [Test]
+        public void TestEmulateCheckState()
+        {
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            checkedlistbox1.EmulateCheckState(0, CheckState.Checked);
+            checkedlistbox1.EmulateCheckState(2, CheckState.Checked);
+            checkedlistbox1.EmulateCheckState(4, CheckState.Checked);
+
+            int[] list = checkedlistbox1.CheckedIndices;
+            Assert.AreEqual(0, list[0]);
+            Assert.AreEqual(2, list[1]);
+            Assert.AreEqual(4, list[2]);
         }
     }
 }

@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseTest.cs" />
     <Compile Include="ButtonTest.cs" />
     <Compile Include="CheckBoxTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,7 +80,6 @@
     <Compile Include="ListViewTest.cs" />
     <Compile Include="DataGridViewTest.cs" />
     <Compile Include="ContextMenuStripTest.cs" />
-    <Compile Include="MenuStripTest.cs" />
     <Compile Include="NumericUpDownTest.cs" />
   </ItemGroup>
   <ItemGroup>

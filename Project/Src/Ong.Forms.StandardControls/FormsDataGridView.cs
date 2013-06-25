@@ -1,12 +1,9 @@
-using System.Windows.Forms;
-using Codeer.Friendly.Windows.Grasp;
-using Codeer.Friendly.Windows;
-using Codeer.Friendly;
-using Ong.Friendly.FormsStandardControls.Inside;
-using System.Drawing;
 using System.Reflection;
-using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
+using Codeer.Friendly;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
 
 //@@@やっぱりできるだけ、1コールで処理を完結できるようにする
 
@@ -22,10 +19,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsDataGridView(WindowControl src)
-            : base(src)
-        {
-            Initializer.Initialize(App, GetType());
-        }
+            : base(src) { }
 
         /// <summary>
         /// コンストラクタです。
@@ -33,10 +27,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
         public FormsDataGridView(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
-        {
-            Initializer.Initialize(app, GetType());
-        }
+            : base(app, appVar) { }
 
         /// <summary>
         /// 列数を取得します。
@@ -85,41 +76,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 現在の選択セルを取得します。
-        /// </summary>
-        /// <param name="grid">グリッド。</param>
-        /// <returns>現在の選択セル。</returns>
-        static Cell[] GetSelectedCellsInTarget(DataGridView grid)
-        {
-            List<Cell> list = new List<Cell>();
-            foreach (DataGridViewCell element in grid.SelectedCells)
-            {
-                list.Add(new Cell(element.ColumnIndex, element.RowIndex));
-            }
-            return list.ToArray();
-        }
-
-        /// <summary>
         /// 現在の選択行を取得します。
         /// </summary>
         public int[] SelectedRows
         {
             get { return (int[])(App[GetType(), "GetSelectedRowsInTarget"](AppVar).Core); }
-        }
-
-        /// <summary>
-        /// 現在の選択行を取得します。
-        /// </summary>
-        /// <param name="grid">グリッド。</param>
-        /// <returns>現在の選択行。</returns>
-        static int[] GetSelectedRowsInTarget(DataGridView grid)
-        {
-            List<int> list = new List<int>();
-            foreach (DataGridViewRow element in grid.SelectedRows)
-            {
-                list.Add(element.Index);
-            }
-            return list.ToArray();
         }
 
         /// <summary>
@@ -133,18 +94,7 @@ namespace Ong.Friendly.FormsStandardControls
             return (string)(App[GetType(), "GetTextInTarget"](AppVar, col, row).Core);
         }
 
-        /// <summary>
-        /// 行列で指定したセルのテキストを取得します(内部)。
-        /// </summary>
-        /// <param name="datagridview">データグリッドビュー。</param>
-        /// <param name="col">列。</param>
-        /// <param name="row">行。</param>
-        /// <returns>テキスト。</returns>
-        private static string GetTextInTarget(DataGridView datagridview, int col, int row)
-        {
-            object obj = datagridview.Rows[row].Cells[col].Value;
-            return obj != null ? obj.ToString() : string.Empty;
-        }
+        //@@@[][]でGetTextできるバージョン
 
         /// <summary>
         /// セルのチェック状態を変更します。
@@ -170,31 +120,6 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルのチェック状態を変更します。
-        /// </summary>
-        /// <param name="grid">グリッド。</param>
-        /// <param name="col">列。</param>
-        /// <param name="row">行。</param>
-        /// <param name="isChecked">チェック状態。</param>
-        static void EmulateCellCheckInTarget(DataGridView grid, int col, int row, bool isChecked)
-        {
-            EmulateChangeCurrentCellInTarget(grid, col, row);
-            while (true)
-            {
-                object data = grid[col, row].Value;
-                bool currentCheck = (data == null) ? false : (bool)data;
-                if (currentCheck == isChecked)
-                {
-                    break;
-                }
-                grid.BeginEdit(false);
-                grid.GetType().GetMethod("OnKeyDown", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
-                grid.GetType().GetMethod("OnKeyUp", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
-                grid.EndEdit();
-            }
-        }
-
-        /// <summary>
         /// セルのテキストを変更します。
         /// </summary>
         /// <param name="col">列。</param>
@@ -215,21 +140,6 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateChangeCellText(int col, int row, string text, Async async)
         {
             App[GetType(), "EmulateChangeCellTextInTarget", async](AppVar, col, row, text);
-        }
-
-        /// <summary>
-        /// セルのテキストを変更します。
-        /// </summary>
-        /// <param name="grid">グリッド。</param>
-        /// <param name="col">列。</param>
-        /// <param name="row">行。</param>
-        /// <param name="text">テキスト。</param>
-        static void EmulateChangeCellTextInTarget(DataGridView grid, int col, int row, string text)
-        {
-            EmulateChangeCurrentCellInTarget(grid, col, row);
-            grid.BeginEdit(false);
-            grid.EditingControl.Text = text;
-            grid.EndEdit();
         }
 
         /// <summary>
@@ -408,21 +318,6 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 行選択状態を変更します。
-        /// </summary>
-        /// <param name="grid">グリッド。</param>
-        /// <param name="rows">選択行情報。</param>
-        static void EmulateChangeRowSelectedInTarget(DataGridView grid, RowSelectedInfo[] rows)
-        {
-            grid.Focus();
-            grid.Select();
-            foreach (RowSelectedInfo row in rows)
-            {
-                grid.Rows[row.Row].Selected = row.Selected;
-            }
-        }
-
-        /// <summary>
         /// Delete操作をエミュレートします。
         /// </summary>
         public void EmulateDelete()
@@ -444,5 +339,105 @@ namespace Ong.Friendly.FormsStandardControls
             this["OnKeyDown", new Async()](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
             this["OnKeyUp", async](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
         }
+
+        /// <summary>
+        /// 現在の選択行を取得します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <returns>現在の選択行。</returns>
+        static int[] GetSelectedRowsInTarget(DataGridView grid)
+        {
+            List<int> list = new List<int>();
+            foreach (DataGridViewRow element in grid.SelectedRows)
+            {
+                list.Add(element.Index);
+            }
+            return list.ToArray();
+        }
+
+        /// <summary>
+        /// 行列で指定したセルのテキストを取得します(内部)。
+        /// </summary>
+        /// <param name="datagridview">データグリッドビュー。</param>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        /// <returns>テキスト。</returns>
+        static string GetTextInTarget(DataGridView datagridview, int col, int row)
+        {
+            object obj = datagridview.Rows[row].Cells[col].Value;
+            return obj != null ? obj.ToString() : string.Empty;
+        }
+
+
+        /// <summary>
+        /// 現在の選択セルを取得します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <returns>現在の選択セル。</returns>
+        static Cell[] GetSelectedCellsInTarget(DataGridView grid)
+        {
+            List<Cell> list = new List<Cell>();
+            foreach (DataGridViewCell element in grid.SelectedCells)
+            {
+                list.Add(new Cell(element.ColumnIndex, element.RowIndex));
+            }
+            return list.ToArray();
+        }
+
+        /// <summary>
+        /// セルのチェック状態を変更します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        /// <param name="isChecked">チェック状態。</param>
+        static void EmulateCellCheckInTarget(DataGridView grid, int col, int row, bool isChecked)
+        {
+            EmulateChangeCurrentCellInTarget(grid, col, row);
+            while (true)
+            {
+                object data = grid[col, row].Value;
+                bool currentCheck = (data == null) ? false : (bool)data;
+                if (currentCheck == isChecked)
+                {
+                    break;
+                }
+                grid.BeginEdit(false);
+                grid.GetType().GetMethod("OnKeyDown", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
+                grid.GetType().GetMethod("OnKeyUp", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
+                grid.EndEdit();
+            }
+        }
+
+        /// <summary>
+        /// セルのテキストを変更します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        /// <param name="text">テキスト。</param>
+        static void EmulateChangeCellTextInTarget(DataGridView grid, int col, int row, string text)
+        {
+            EmulateChangeCurrentCellInTarget(grid, col, row);
+            grid.BeginEdit(false);
+            grid.EditingControl.Text = text;
+            grid.EndEdit();
+        }
+
+        /// <summary>
+        /// 行選択状態を変更します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <param name="rows">選択行情報。</param>
+        static void EmulateChangeRowSelectedInTarget(DataGridView grid, RowSelectedInfo[] rows)
+        {
+            grid.Focus();
+            grid.Select();
+            foreach (RowSelectedInfo row in rows)
+            {
+                grid.Rows[row.Row].Selected = row.Selected;
+            }
+        }
+
     }
 }

@@ -46,7 +46,7 @@ namespace Test
         }
 
         /// <summary>
-        /// クリックテスト
+        /// EmulateClickのテスト
         /// </summary>
         [Test]
         public void TestButtonClick()
@@ -61,17 +61,6 @@ namespace Test
             WindowControl msg = testDlg.WaitForNextModal();
             NativeButton buttonOK = new NativeButton(msg.IdentifyFromWindowText("OK"));
             buttonOK.EmulateClick();
-        }
-
-        /// <summary>
-        /// テキストを取得します
-        /// </summary>
-        [Test]
-        public void TestButtonTextGet()
-        {
-            FormsButton button1 = new FormsButton(app, testDlg["button1"]());
-            String buttonText = button1.Text;
-            Assert.AreEqual("button1", buttonText);
         }
     }
 }

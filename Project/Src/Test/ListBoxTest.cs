@@ -5,6 +5,7 @@ using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using Codeer.Friendly;
 using System.Windows.Forms;
+
 namespace Test
 {
     /// <summary>
@@ -44,10 +45,10 @@ namespace Test
         }
 
         /// <summary>
-        /// リストのアイテム数取得テスト
+        /// ItemCountテスト
         /// </summary>
         [Test]
-        public void TestListBoxItemCount()
+        public void TestItemCount()
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
             int itemCount = listbox1.ItemCount;
@@ -55,21 +56,19 @@ namespace Test
         }
 
         /// <summary>
-        /// アイテムをテキストで検索し選択。そのアイテムのテキストとインデックスを取得します
+        /// FindListIndexテスト
         /// </summary>
         [Test]
-        public void TestListBoxSelectAndItemTextGet()
+        public void TestFindListIndex()
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
             int findIndex = listbox1.FindListIndex("Item-4");
-
             listbox1.EmulateChangeSelectedIndex(findIndex);
-
             Assert.AreEqual(3, listbox1.SelectedIndex);
         }
 
         /// <summary>
-        /// リストアイテムを選択状態にします。選択一覧を取得します。
+        /// SelectedIndextテスト
         /// </summary>
         [Test]
         public void TestSelectIndexes()
@@ -82,10 +81,25 @@ namespace Test
         }
 
         /// <summary>
-        /// リストアイテムを選択状態にします。選択一覧を取得します。
+        /// SelectionModeテスト
         /// </summary>
         [Test]
-        public void TestSelectAndGetIndexes()
+        public void TestSelectionMode()
+        {
+            FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
+            FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
+            Assert.AreEqual(SelectionMode.One, listbox1.SelectionMode);
+            Assert.AreEqual(SelectionMode.MultiSimple, listbox2.SelectionMode);
+        }
+
+        //@@@EmulateChangeSelectedState
+
+        /// <summary>
+        /// EmulateChangeSelectedIndexテスト
+        /// @@@Async
+        /// </summary>
+        [Test]
+        public void TestEmulateChangeSelectedIndex()
         {
             FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
             int[] select = new int[] { 1, 2, 4 };
@@ -96,18 +110,6 @@ namespace Test
             Assert.AreEqual(1, selected[0]);
             Assert.AreEqual(2, selected[1]);
             Assert.AreEqual(4, selected[2]);
-        }
-
-        /// <summary>
-        /// 選択モード
-        /// </summary>
-        [Test]
-        public void TestSelectionMode()
-        {
-            FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
-            FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
-            Assert.AreEqual(SelectionMode.One, listbox1.SelectionMode);
-            Assert.AreEqual(SelectionMode.MultiSimple, listbox2.SelectionMode);
         }
     }
 }

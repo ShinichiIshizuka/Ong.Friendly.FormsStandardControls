@@ -9,6 +9,13 @@ namespace Ong.Friendly.FormsStandardControls
     public class FormsToolStripItem : AppVarWrapper
     {
         /// <summary>
+        /// コンストラクタです。
+        /// </summary>
+        /// <param name="app">対象アプリ操作クラス。</param>
+        /// <param name="appVar">対象アプリケーション内変数操作クラス。</param>
+        public FormsToolStripItem(WindowsAppFriend app, AppVar appVar) : base(app, appVar) { }
+
+        /// <summary>
         /// テキスト
         /// </summary>
         public string Text { get { return (string)this["Text"]().Core; } }
@@ -22,13 +29,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// 有効であるか
         /// </summary>
         public bool Enabled { get { return (bool)this["Enabled"]().Core; } }
-
-        /// <summary>
-        /// コンストラクタです。
-        /// </summary>
-        /// <param name="app">対象アプリ操作クラス。</param>
-        /// <param name="appVar">対象アプリケーション内変数操作クラス。</param>
-        public FormsToolStripItem(WindowsAppFriend app, AppVar appVar) : base(app, appVar) { }
 
         /// <summary>
         /// クリックをエミュレートします。

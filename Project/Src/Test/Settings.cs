@@ -8,7 +8,7 @@ namespace Test
         /// <summary>
         /// テストアップリケーションパス
         /// </summary>
-        public static String TestApplicationPath
+        public static string TestApplicationPath
         {
             get { return Path.GetFullPath(@"../../../FormsStandardControls.exe"); }
         }

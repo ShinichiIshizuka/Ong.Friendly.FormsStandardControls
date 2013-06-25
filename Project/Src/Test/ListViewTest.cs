@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 namespace Test
 {
+    //@@@class
+
     /// <summary>
     /// ListViewƒeƒXƒg
     /// </summary>

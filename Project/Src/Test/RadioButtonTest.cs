@@ -45,9 +45,13 @@ namespace Test
 
         /// <summary>
         /// チェックテスト
+        /// Checked
+        /// EmulateCheck
+        /// を両方テスト
+        /// @@@非同期
         /// </summary>
         [Test]
-        public void TestRadioButtonCheck()
+        public void Test()
         {
             //同期処理
             FormsRadioButton radiobutton1 = new FormsRadioButton(app, testDlg["radioButton1"]());
@@ -59,17 +63,6 @@ namespace Test
             radiobutton2.EmulateCheck(new Async());
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(11, count);
-        }
-
-        /// <summary>
-        /// テキストを取得します
-        /// </summary>
-        [Test]
-        public void TestRadioButtonTextGet()
-        {
-            FormsRadioButton radiobutton1 = new FormsRadioButton(app, testDlg["radioButton1"]());
-            String radiobutton1Text = radiobutton1.Text;
-            Assert.AreEqual("radioButton1", radiobutton1Text);
         }
     }
 }

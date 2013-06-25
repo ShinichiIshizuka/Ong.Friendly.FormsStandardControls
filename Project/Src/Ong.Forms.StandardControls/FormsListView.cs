@@ -1,9 +1,8 @@
 using System.Windows.Forms;
-using Codeer.Friendly.Windows.Grasp;
-using Codeer.Friendly.Windows;
-using Codeer.Friendly;
-using Ong.Friendly.FormsStandardControls.Inside;
 using System.Collections.Generic;
+using Codeer.Friendly;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -17,10 +16,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="src">元となるウィンドウコントロール。</param>
         public FormsListView(WindowControl src)
-            : base(src)
-        {
-            Initializer.Initialize(App, GetType());
-        }
+            : base(src) { }
 
         /// <summary>
         /// コンストラクタです。
@@ -28,9 +24,14 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
         public FormsListView(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
+            : base(app, appVar) { }
+
+        /// <summary>
+        /// Viewモードを取得します。
+        /// </summary>
+        public View ViewMode
         {
-            Initializer.Initialize(app, GetType());
+            get { return (View)(this["View"]().Core); }
         }
 
         /// <summary>
@@ -58,24 +59,6 @@ namespace Ong.Friendly.FormsStandardControls
         }
         
         /// <summary>
-        /// 選択されたインデックスの一覧を取得します（内部）。
-        /// </summary>
-        /// <param name="listview">リストビュー</param>
-        /// <returns>選択されたインデックス一覧。</returns>
-        private static int[] GetSelectedIndexesInTarget(ListView listview)
-        {
-            List<int> list = new List<int>();
-            for (int itemIndex = 0; itemIndex < listview.Items.Count; itemIndex++)
-            {
-                if (listview.Items[itemIndex].Selected == true)
-                {
-                    list.Add(itemIndex);
-                }
-            }
-            return list.ToArray();
-        }
-
-        /// <summary>
         /// 指定したインデックスのアイテムを取得します。
         /// </summary>
         /// <param name="index">インデックス。</param>
@@ -90,18 +73,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="index">インデックス。</param>
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        /// <param name="async">非同期オブジェクト</param>
-        public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
-        {
-            this["Focus", new Async()]();
-            App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
-        }
-
-        /// <summary>
-        /// 指定されたインデックスに該当するアイテムの選択状態を変更します。
-        /// </summary>
-        /// <param name="index">インデックス。</param>
-        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
             this["Focus"]();
@@ -109,14 +80,15 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// リストビューアイテムを選択します（内部）。
+        /// 指定されたインデックスに該当するアイテムの選択状態を変更します。
         /// </summary>
-        /// <param name="listview">リストビュー。</param>
         /// <param name="index">インデックス。</param>
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        private static void EmulateChangeSelectedStateInTarget(ListView listview, int index, bool isSelect)
+        /// <param name="async">非同期オブジェクト</param>
+        public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
-            listview.Items[index].Selected = isSelect;
+            this["Focus", new Async()]();
+            App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
         }
 
         /// <summary>
@@ -137,11 +109,33 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// Viewモードを取得します。
+        /// 選択されたインデックスの一覧を取得します（内部）。
         /// </summary>
-        public View ViewMode
+        /// <param name="listview">リストビュー</param>
+        /// <returns>選択されたインデックス一覧。</returns>
+        private static int[] GetSelectedIndexesInTarget(ListView listview)
         {
-            get { return (View)(this["View"]().Core); } 
+            List<int> list = new List<int>();
+            for (int itemIndex = 0; itemIndex < listview.Items.Count; itemIndex++)
+            {
+                if (listview.Items[itemIndex].Selected == true)
+                {
+                    list.Add(itemIndex);
+                }
+            }
+            return list.ToArray();
         }
+
+        /// <summary>
+        /// リストビューアイテムを選択します（内部）。
+        /// </summary>
+        /// <param name="listview">リストビュー。</param>
+        /// <param name="index">インデックス。</param>
+        /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        private static void EmulateChangeSelectedStateInTarget(ListView listview, int index, bool isSelect)
+        {
+            listview.Items[index].Selected = isSelect;
+        }
+
     }
 }

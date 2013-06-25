@@ -1,11 +1,11 @@
 using System;
-using Codeer.Friendly;
-using Ong.Friendly.FormsStandardControls.Inside;
-using Codeer.Friendly.Windows;
-using System.Windows.Forms;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Codeer.Friendly;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -32,9 +32,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// テキストを取得します。
         /// </summary>
         /// <returns>テキスト。</returns>
-        public String Text
+        public string Text
         {
-            get { return (String)this["Text"]().Core; }
+            get { return (string)this["Text"]().Core; }
         }
 
         /// <summary>
@@ -52,6 +52,16 @@ namespace Ong.Friendly.FormsStandardControls
         public bool Checked
         {
             get { return (bool)this["Checked"]().Core; }
+        }
+
+        /// <summary>
+        /// サブアイテムを取得します。
+        /// </summary>
+        /// <param name="subitemindex">サブアイテムインデックス。</param>
+        /// <returns></returns>
+        public FormsListViewSubItem GetSubItem(int subitemindex)
+        {
+            return new FormsListViewSubItem(App, App[GetType(), "GetSubItemInTarget"](AppVar, subitemindex));
         }
 
         /// <summary>
@@ -75,16 +85,6 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// チェック状態を設定します。
-        /// </summary>
-        /// <param name="listviewitem">リストビューアイテム。</param>
-        /// <param name="value">チェック状態。</param>
-        static void EmulateCheckInTarget(ListViewItem listviewitem, bool value)
-        {
-            listviewitem.Checked = value;
-        }
-
-        /// <summary>
         /// テキストを編集します。
         /// </summary>
         /// <param name="text">テキスト。</param>
@@ -101,6 +101,17 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateEditLabel(string text, Async async)
         {
             App[GetType(), "EmulateEditLabelInTarget", async](_listView, AppVar, text);
+        }
+
+        /// <summary>
+        /// サブアイテムを取得します(内部)。
+        /// </summary>
+        /// <param name="listviewitem">リストビューアイテム。</param>
+        /// <param name="subitemindex">リストビューサブアイテムインデックス。</param>
+        /// <returns>FormsListViewSubItem</returns>
+        static ListViewItem.ListViewSubItem GetSubItemInTarget(ListViewItem listviewitem, int subitemindex)
+        {
+            return listviewitem.SubItems[subitemindex];
         }
 
         /// <summary>
@@ -140,24 +151,13 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// サブアイテムを取得します。
-        /// </summary>
-        /// <param name="subitemindex">サブアイテムインデックス。</param>
-        /// <returns></returns>
-        public FormsListViewSubItem GetSubItem(int subitemindex)
-        {
-            return new FormsListViewSubItem(App, App[GetType(), "GetSubItemInTarget"](AppVar, subitemindex));
-        }
-
-        /// <summary>
-        /// サブアイテムを取得します(内部)。
+        /// チェック状態を設定します。
         /// </summary>
         /// <param name="listviewitem">リストビューアイテム。</param>
-        /// <param name="subitemindex">リストビューサブアイテムインデックス。</param>
-        /// <returns>FormsListViewSubItem</returns>
-        static ListViewItem.ListViewSubItem GetSubItemInTarget(ListViewItem listviewitem, int subitemindex)
+        /// <param name="value">チェック状態。</param>
+        static void EmulateCheckInTarget(ListViewItem listviewitem, bool value)
         {
-            return listviewitem.SubItems[subitemindex];
+            listviewitem.Checked = value;
         }
 
         /// <summary>
@@ -196,6 +196,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="lpString">テキスト。</param>
         /// <returns>成否。</returns>
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern bool SetWindowText(IntPtr hWnd, String lpString);
+        public static extern bool SetWindowText(IntPtr hWnd, string lpString);
     }
 }

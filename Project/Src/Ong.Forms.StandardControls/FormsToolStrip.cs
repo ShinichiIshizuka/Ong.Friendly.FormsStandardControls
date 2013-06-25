@@ -1,7 +1,7 @@
-using Codeer.Friendly.Windows.Grasp;
-using Codeer.Friendly.Windows;
-using Codeer.Friendly;
 using System.Windows.Forms;
+using Codeer.Friendly;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
 {

@@ -1,7 +1,7 @@
 using System;
-using Codeer.Friendly.Windows.Grasp;
-using Codeer.Friendly.Windows;
 using Codeer.Friendly;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
@@ -36,9 +36,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// テキストを取得します。
         /// </summary>
         /// <returns>テキスト。</returns>
-        public String Text
+        public string Text
         {
-            get { return (String)this["Text"]().Core; }
+            get { return (string)this["Text"]().Core; }
         }
 
         /// <summary>

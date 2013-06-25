@@ -3,8 +3,11 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
+
 namespace Test
 {
+    //@@@class メニューとツールストリップのテスト 名前変える。
+
     /// <summary>
     /// ContextMenuStripテスト
     /// </summary>
@@ -63,6 +66,32 @@ namespace Test
             contextmenustrip1.FindItem("MenuItem2").EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(2, count);
+        }
+
+        /// <summary>
+        /// メニュークリック
+        /// </summary>
+        [Test]
+        public void TestMenuStripClickmenu001ToolStripMenuItem()
+        {
+            FormsToolStrip menustrip1 = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            FormsToolStripItem menuitem = menustrip1.FindItem("Menu001");
+            menuitem.EmulateClick();
+            int count = (int)testDlg["async_counter"]().Core;
+            Assert.AreEqual(100, count);
+        }
+
+        /// <summary>
+        /// サブメニュークリック 
+        /// </summary>
+        [Test]
+        public void TestMenuStripClickmenu00101ToolStripMenuItem()
+        {
+            FormsToolStrip menustrip1 = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            FormsToolStripItem menuitem1 = menustrip1.FindItem("Menu001", "Menu001-01");
+            menuitem1.EmulateClick();
+            int count = (int)testDlg["async_counter"]().Core;
+            Assert.AreEqual(101, count);
         }
     }
 }
