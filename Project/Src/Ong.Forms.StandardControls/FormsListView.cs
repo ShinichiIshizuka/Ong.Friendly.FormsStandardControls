@@ -78,11 +78,11 @@ namespace Ong.Friendly.FormsStandardControls
         public FormsListViewItem FindItemWithText(string itemText, bool includeSubItemsInSearch, int startIndex)
         {
             AppVar returnItem = this["FindItemWithText"](itemText, includeSubItemsInSearch, startIndex);
-            if (returnItem != null)
+            if ((bool)App[GetType(), "ReferenceEquals"](returnItem, null).Core)
             {
-                return new FormsListViewItem(App, AppVar, returnItem);
+                return null;
             }
-            return null;
+            return new FormsListViewItem(App, AppVar, returnItem);
         }
 
         /// <summary>

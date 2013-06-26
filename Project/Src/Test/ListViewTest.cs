@@ -5,6 +5,8 @@ using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System;
+using Codeer.Friendly.Windows.NativeStandardControls;
 
 namespace Test
 {
@@ -45,83 +47,31 @@ namespace Test
             }
         }
 
-        //@@@
-        //public View ViewMode
-        //int ColumnCount
-        //int ItemCount
-        //int[] SelectIndexes
-        //FormsListViewItem GetListViewItem(int index)
-        //FormsListViewItem FindItemWithText(string itemText, bool includeSubItemsInSearch, int startIndex)
-        // void EmulateChangeSelectedState(int index, bool isSelect)
-
-        //public string Text
-        // public int ItemIndex
-        //public bool Checked
-        //public FormsListViewSubItem GetSubItem(int subitemindex)
-        //public void EmulateCheck(bool value)
-        //public void EmulateEditLabel(string text)
-
-        //public string Text
-
-
-        /*
         /// <summary>
-        /// 行数と列数を取得します
+        /// ItemCountのテスト
         /// </summary>
         [Test]
-        public void ListViewRowColumnCount()
+        public void TestItemCount()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
             Assert.AreEqual(4, listView1.ItemCount);
-            Assert.AreEqual(3, listView1.ColumnCount);
         }
 
         /// <summary>
-        /// リストアイテムをテキストで検索して選択します
+        /// ColumnCountのテスト
         /// </summary>
         [Test]
-        public void ListViewFindListItemAndSelect()
+        public void TestColumnCount()
         {
-            FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            FormsListViewItem item = listView1.FindItemWithText("リンゴ", true, 0);
-            Assert.NotNull(item);
-            listView1.EmulateChangeSelectedState(item.ItemIndex,true ,new Async());
-            Assert.AreEqual(3, listView1.SelectIndexes[0]);
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            Assert.AreEqual(3, listView.ColumnCount);
         }
 
         /// <summary>
-        /// 行を選択し選択されたリストアイテムのテキストを取得します
+        /// ViewModeのテスト
         /// </summary>
         [Test]
-        public void ListViewSelectAndTextGet()
-        {
-            FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            listView1.EmulateChangeSelectedState(1, true, new Async());
-            Assert.AreEqual("ピーマン", listView1.GetListViewItem(listView1.SelectIndexes[0]).Text);
-        }
-
-        /// <summary>
-        /// アイテムをチェックします
-        /// サブアイテムを含めてチェックします
-        /// </summary>
-        [Test]
-        public void ListViewItemCheck()
-        {
-            FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            FormsListViewItem item1 = listView1.FindItemWithText("リンゴ", true, 0);
-            item1.EmulateCheck(true);
-            Assert.IsTrue(item1.Checked);
-            FormsListViewItem item2 = listView1.FindItemWithText("野菜", true, 0);
-            Assert.AreEqual("トマト", item2.Text);
-            item1.EmulateCheck(false,new Async());
-            Assert.IsFalse(item1.Checked);
-        }
-
-        /// <summary>
-        /// Viewのスタイルを取得します
-        /// </summary>
-        [Test]
-        public void ListViewStyle()
+        public void TestViewMode()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
             View viewStyle = listView1.ViewMode;
@@ -129,15 +79,188 @@ namespace Test
         }
 
         /// <summary>
-        /// サブアイテムを取得します
+        /// SelectIndexesのテスト
         /// </summary>
         [Test]
-        public void ListViewGetSubItem()
+        public void TestSelectIndexes()
         {
-            FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
-            FormsListViewItem item1 = listView1.FindItemWithText("リンゴ", true , 0);
-            FormsListViewSubItem subitem1 = item1.GetSubItem(1);
-            Assert.AreEqual("果物", subitem1.Text);
-        }*/
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+
+            //初期化
+            for (int i = 0; i < listView.ItemCount; i++)
+            {
+                listView.EmulateChangeSelectedState(i, false);
+            }
+
+            listView.EmulateChangeSelectedState(0, true);
+            listView.EmulateChangeSelectedState(2, true);
+            Assert.AreEqual(new int[]{0, 2}, listView.SelectIndexes);
+        }
+
+        /// <summary>
+        /// GetListViewItemのテスト
+        /// </summary>
+        [Test]
+        public void TestGetListViewItem()
+        {
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            Assert.AreEqual("ピーマン", listView.GetListViewItem(1).Text);
+        }
+
+        /// <summary>
+        /// FindItemWithTextのテスト
+        /// </summary>
+        [Test]
+        public void TestFindItemWithText()
+        {
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            Assert.AreEqual("ピーマン", listView.FindItemWithText("ピーマン", true, 0).Text);
+            Assert.IsNull(listView.FindItemWithText("ピーマン", true, 2));
+        }
+
+        /// <summary>
+        /// EmulateChangeSelectedStateのテスト
+        /// </summary>
+        [Test]
+        public void TestEmulateChangeSelectedState()
+        {
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+
+            //初期化
+            for (int i = 0; i < listView.ItemCount; i++)
+            {
+                listView.EmulateChangeSelectedState(i, false);
+            }
+
+            listView.EmulateChangeSelectedState(0, true);
+            Assert.AreEqual(new int[] { 0 }, listView.SelectIndexes);
+
+            //非同期
+            app[GetType(), "SelectEvent"](listView.AppVar);
+            listView.EmulateChangeSelectedState(2, true, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(new int[] { 0, 2 }, listView.SelectIndexes);
+        }
+
+        /// <summary>
+        /// 選択変更時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="listView">リストビュー</param>
+        static void SelectEvent(ListView listView)
+        {
+            EventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                listView.BeginInvoke((MethodInvoker)delegate
+                {
+                    listView.SelectedIndexChanged -= handler;
+                });
+            };
+            listView.SelectedIndexChanged += handler;
+        }
+
+        /// <summary>
+        /// ListViewItemのTextのテスト
+        /// </summary>
+        [Test]
+        public void TestItemText()
+        {
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            Assert.AreEqual("ピーマン", listView.GetListViewItem(1).Text);
+        }
+
+        /// <summary>
+        /// ListViewItemのItemIndexのテスト
+        /// </summary>
+        [Test]
+        public void TestItemIndex()
+        {
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            Assert.AreEqual(1, listView.GetListViewItem(1).ItemIndex);
+        }
+
+        /// <summary>
+        /// GetSubItemとSubItemのTextのテスト
+        /// </summary>
+        [Test]
+        public void TestGetSubItemAndSubItemText()
+        {
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            Assert.AreEqual("野菜", listView.GetListViewItem(1).GetSubItem(1).Text);
+        }
+
+        /// <summary>
+        /// ListViewItemのEmulateCheckとCheckedのテスト
+        /// </summary>
+        [Test]
+        public void TestItemEmulateCheckAndChecked()
+        {
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListViewItem item = listView.GetListViewItem(1);
+            item.EmulateCheck(true);
+            Assert.AreEqual(true, item.Checked);
+
+            //非同期
+            app[GetType(), "CheckedEvent"](listView.AppVar);
+            item.EmulateCheck(false, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(false, item.Checked);
+        }
+
+        /// <summary>
+        /// チェック変更時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="listView">リストビュー</param>
+        static void CheckedEvent(ListView listView)
+        {
+            ItemCheckedEventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                listView.BeginInvoke((MethodInvoker)delegate
+                {
+                    listView.ItemChecked -= handler;
+                });
+            };
+            listView.ItemChecked += handler;
+        }
+
+        /// <summary>
+        /// EmulateEditLabelのテスト
+        /// </summary>
+        [Test]
+        public void TestItemEmulateEditLabel()
+        {
+            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListViewItem item = listView.GetListViewItem(1);
+            string bk = item.Text;
+            item.EmulateEditLabel("abc");
+            Assert.AreEqual("abc", item.Text);
+
+            //非同期
+            app[GetType(), "LabelEditEvent"](listView.AppVar);
+            item.EmulateEditLabel(bk, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(bk, item.Text);
+        }
+
+        /// <summary>
+        /// ラベル変更時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="listView">リストビュー</param>
+        static void LabelEditEvent(ListView listView)
+        {
+            LabelEditEventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                listView.BeginInvoke((MethodInvoker)delegate
+                {
+                    listView.AfterLabelEdit -= handler;
+                });
+            };
+            listView.AfterLabelEdit += handler;
+        }
     }
 }
