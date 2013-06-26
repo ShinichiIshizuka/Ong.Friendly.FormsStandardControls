@@ -94,7 +94,18 @@ namespace Ong.Friendly.FormsStandardControls
             return (string)(App[GetType(), "GetTextInTarget"](AppVar, col, row).Core);
         }
 
-        //@@@[][]でGetTextできるバージョン
+        /// <summary>
+        /// 行列で指定した範囲のセルのテキストを取得します。
+        /// </summary>
+        /// <param name="startCol">開始列。</param>
+        /// <param name="startRow">開始行。</param>
+        /// <param name="endCol">終了列。</param>
+        /// <param name="endRow">終了行。</param>
+        /// <returns>テキスト配列。</returns>
+        public string[][] GetText(int startCol, int startRow, int endCol, int endRow)
+        {
+            return (string[][])(App[GetType(), "GetTextInTarget"](AppVar, startCol, startRow, endCol, endRow).Core);
+        }
 
         /// <summary>
         /// セルのチェック状態を変更します。
@@ -368,6 +379,31 @@ namespace Ong.Friendly.FormsStandardControls
             return obj != null ? obj.ToString() : string.Empty;
         }
 
+        /// <summary>
+        /// 行列で指定した範囲のセルのテキストを取得します。
+        /// </summary>
+        /// <param name="startCol">開始列。</param>
+        /// <param name="startRow">開始行。</param>
+        /// <param name="endCol">終了列。</param>
+        /// <param name="endRow">終了行。</param>
+        /// <returns>テキスト配列。</returns>
+        static string[][] GetTextInTarget(DataGridView datagridview, int startCol, int startRow, int endCol, int endRow)
+        {
+            int colCount = endRow - startRow + 1;
+            int rowCount = endRow - endCol + 1;
+            string[][] texts = new string[rowCount][];
+            for (int i = 0; i < rowCount; i++)
+            {
+                int row = i + startRow;
+                texts[i] = new string[colCount];
+                for (int j = 0; j < colCount; j++)
+                {
+                    int col = j + startCol;
+                    texts[i][j] = GetTextInTarget(datagridview, col, row);
+                }
+            }
+            return texts;
+        }
 
         /// <summary>
         /// 現在の選択セルを取得します。
