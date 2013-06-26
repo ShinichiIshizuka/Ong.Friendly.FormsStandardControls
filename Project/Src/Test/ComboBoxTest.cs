@@ -5,6 +5,8 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
+using System.Windows.Forms;
+using Codeer.Friendly.Windows.NativeStandardControls;
 
 namespace Test
 {
@@ -26,6 +28,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
 
         /// <summary>
@@ -91,32 +94,72 @@ namespace Test
 
         /// <summary>
         /// EmulateChangeSelectのテスト
-        /// @@@非同期のテストになっていない。
         /// </summary>
         [Test]
         public void TestEmulateChangeSelect()
         {
             FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
-            combobox1.EmulateChangeSelect(2, new Async());
-            string combobox1Text = combobox1.Text;
-            Assert.AreEqual("Item-3", combobox1Text);
+            combobox1.EmulateChangeSelect(2);
+            Assert.AreEqual(2, combobox1.SelectedItemIndex);
+
+            //非同期
+            app[GetType(), "SelectEvent"](combobox1.AppVar);
+            combobox1.EmulateChangeSelect(1, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(1, combobox1.SelectedItemIndex);
+        }
+
+        /// <summary>
+        /// 選択時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="comboBox">コンボボックス</param>
+        static void SelectEvent(ComboBox comboBox)
+        {
+            EventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                comboBox.BeginInvoke((MethodInvoker)delegate
+                {
+                    comboBox.SelectedIndexChanged -= handler;
+                });
+            };
+            comboBox.SelectedIndexChanged += handler;
         }
 
         /// <summary>
         /// EmulateChangeTextのテスト
-        /// @@@非同期
         /// </summary>
         [Test]
         public void TestEmulateChangeText()
         {
             FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
             combobox1.EmulateChangeText("12345");
-            string combobox1Text = combobox1.Text;
-            Assert.AreEqual("12345", combobox1Text);
+            Assert.AreEqual("12345", combobox1.Text);
 
+            //非同期
+            app[GetType(), "TextEvent"](combobox1.AppVar);
             combobox1.EmulateChangeText("66666",new Async());
-            combobox1Text = combobox1.Text;
-            Assert.AreEqual("66666", combobox1Text);
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual("66666", combobox1.Text);
+        }
+
+        /// <summary>
+        /// テキスト変更時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="comboBox">コンボボックス</param>
+        static void TextEvent(ComboBox comboBox)
+        {
+            EventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                comboBox.BeginInvoke((MethodInvoker)delegate
+                {
+                    comboBox.TextChanged -= handler;
+                });
+            };
+            comboBox.TextChanged += handler;
         }
     }
 }

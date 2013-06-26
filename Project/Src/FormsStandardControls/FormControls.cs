@@ -175,7 +175,7 @@ namespace FormsStandardControls
         /// <param name="e">イベントパラメタ</param>
         private void button1_Click(object sender, EventArgs e)
         {
-            async_counter = 3;
+            async_counter++;
         }
 
         /// <summary>

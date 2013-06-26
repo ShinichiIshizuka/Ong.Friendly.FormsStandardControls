@@ -6,6 +6,7 @@ using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Codeer.Friendly;
+using Codeer.Friendly.Windows.NativeStandardControls;
 namespace Test
 {
     /// <summary>
@@ -26,6 +27,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
 
         /// <summary>
@@ -53,13 +55,33 @@ namespace Test
         [Test]
         public void TestCheckBoxCheck()
         {
-            FormsCheckBox checkbox1 = new FormsCheckBox(app, testDlg["checkBox1"]());
-            checkbox1.EmulateCheck(CheckState.Checked);
-            Assert.AreEqual(CheckState.Checked, checkbox1.CheckState);
+            FormsCheckBox checkbox = new FormsCheckBox(app, testDlg["checkBox1"]());
+            checkbox.EmulateCheck(CheckState.Checked);
+            Assert.AreEqual(CheckState.Checked, checkbox.CheckState);
 
-            //@@@非同期確認になっていない。
-            checkbox1.EmulateCheck(CheckState.Unchecked,new Async());
-            Assert.AreEqual(CheckState.Unchecked, checkbox1.CheckState);
+            //非同期
+            app[GetType(), "CheckedChangeEvent"](checkbox.AppVar);
+            checkbox.EmulateCheck(CheckState.Unchecked, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(CheckState.Unchecked, checkbox.CheckState);
+        }
+
+        /// <summary>
+        /// 状態変更時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="checkBox">チェックボックス</param>
+        static void CheckedChangeEvent(CheckBox checkBox)
+        {
+            EventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                checkBox.BeginInvoke((MethodInvoker)delegate
+                {
+                    checkBox.CheckedChanged -= handler;
+                });
+            };
+            checkBox.CheckedChanged += handler;
         }
     }
 }

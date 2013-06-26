@@ -6,6 +6,7 @@ using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using Codeer.Friendly.Windows.NativeStandardControls;
+using System.Windows.Forms;
 
 namespace Test
 {
@@ -27,6 +28,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
         
         /// <summary>
@@ -51,16 +53,35 @@ namespace Test
         [Test]
         public void TestButtonClick()
         {
-            FormsButton button1 = new FormsButton(app, testDlg["button1"]());
-            button1.EmulateClick();
+            FormsButton button = new FormsButton(app, testDlg["button1"]());
+            button.EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
-            Assert.AreEqual(3, count);            
+            Assert.AreEqual(1, count);
 
-            FormsButton button2 = new FormsButton(app, testDlg["button2"]());
-            button2.EmulateClick(new Async());
-            WindowControl msg = testDlg.WaitForNextModal();
-            NativeButton buttonOK = new NativeButton(msg.IdentifyFromWindowText("OK"));
-            buttonOK.EmulateClick();
+            //非同期
+            app[GetType(), "TextEvent"](button.AppVar);
+            button.EmulateClick(new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            count = (int)testDlg["async_counter"]().Core;
+            Assert.AreEqual(2, count);
+        }
+
+        /// <summary>
+        /// クリック時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="button">ボタン</param>
+        static void TextEvent(Button button)
+        {
+            EventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                button.BeginInvoke((MethodInvoker)delegate
+                {
+                    button.Click -= handler;
+                });
+            };
+            button.Click += handler;
         }
     }
 }
