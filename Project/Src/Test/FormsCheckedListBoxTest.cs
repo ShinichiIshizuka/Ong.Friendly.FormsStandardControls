@@ -6,6 +6,7 @@ using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Codeer.Friendly.Windows.NativeStandardControls;
 
 namespace Test
 {
@@ -27,6 +28,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
 
         /// <summary>
@@ -118,13 +120,34 @@ namespace Test
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateCheckState(0, CheckState.Checked);
-            checkedlistbox1.EmulateCheckState(2, CheckState.Checked);
-            checkedlistbox1.EmulateCheckState(4, CheckState.Checked);
 
             int[] list = checkedlistbox1.CheckedIndices;
             Assert.AreEqual(0, list[0]);
-            Assert.AreEqual(2, list[1]);
-            Assert.AreEqual(4, list[2]);
+
+            //非同期
+            app[GetType(), "ItemCheckedEvent"](checkedlistbox1.AppVar);
+            checkedlistbox1.EmulateCheckState(0, CheckState.Unchecked,new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            int[] listUnchecked = checkedlistbox1.CheckedIndices;
+            Assert.AreEqual(0, list[0]);
         }
+
+        /// <summary>
+        /// 状態変更時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="checkdListBox">チェックリストボックス</param>
+        static void ItemCheckedEvent(CheckedListBox checkdListBox)
+        {
+            ItemCheckEventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                checkdListBox.BeginInvoke((MethodInvoker)delegate
+                {
+                    checkdListBox.ItemCheck -= handler;
+                });
+            };
+            checkdListBox.ItemCheck += handler;
+        }    
     }
 }
