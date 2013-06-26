@@ -140,7 +140,7 @@ namespace Test
         /// <summary>
         /// 選択変更時にメッセージボックスを表示する
         /// </summary>
-        /// <param name="listbox">ボタン</param>
+        /// <param name="listbox">リストボックス</param>
         static void ChangeSelectedIndexEvent(ListBox listbox)
         {
             EventHandler handler = null;
