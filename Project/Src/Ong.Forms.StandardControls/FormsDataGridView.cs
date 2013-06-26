@@ -56,20 +56,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// 現在の選択セルを取得します。
         /// </summary>
-        /// <param name="grid">グリッド。</param>
-        /// <returns>現在の選択セル。</returns>
-        static Cell GetCurrentCellInTarget(DataGridView grid)
-        {
-            if (grid.CurrentCell == null)
-            {
-                return null;
-            }
-            return new Cell(grid.CurrentCell.ColumnIndex, grid.CurrentCell.RowIndex);
-        }
-
-        /// <summary>
-        /// 現在の選択セルを取得します。
-        /// </summary>
         public Cell[] SelectedCells
         {
             get { return (Cell[])(App[GetType(), "GetSelectedCellsInTarget"](AppVar).Core); }
@@ -177,21 +163,6 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// セルコンボの選択を変更します。
-        /// </summary>
-        /// <param name="grid">グリッド。</param>
-        /// <param name="col">列。</param>
-        /// <param name="row">行。</param>
-        /// <param name="index">インデックス。</param>
-        static void EmulateChangeCellComboSelectInTarget(DataGridView grid, int col, int row, int index)
-        {
-            EmulateChangeCurrentCellInTarget(grid, col, row);
-            grid.BeginEdit(false);
-            ((ComboBox)grid.EditingControl).SelectedIndex = index;
-            grid.EndEdit();
-        }
-
-        /// <summary>
         /// セルボタン、セルリンクをクリックします。
         /// </summary>
         /// <param name="col">列。</param>
@@ -210,18 +181,6 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateClickCellContent(int col, int row, Async async)
         {
             App[GetType(), "EmulateClickCellContentInTarget", async](AppVar, col, row);
-        }
-        /// <summary>
-        /// セルボタン、セルリンクをクリックします。
-        /// </summary>
-        /// <param name="grid"></param>
-        /// <param name="col">列。</param>
-        /// <param name="row">行。</param>
-        static void EmulateClickCellContentInTarget(DataGridView grid, int col, int row)
-        {
-            EmulateChangeCurrentCellInTarget(grid, col, row);
-            grid.GetType().GetMethod("OnKeyDown", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
-            grid.GetType().GetMethod("OnKeyUp", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
         }
 
         /// <summary>
@@ -243,19 +202,6 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateChangeCurrentCell(int col, int row, Async async)
         {
             App[GetType(), "EmulateChangeCurrentCellInTarget", async](AppVar, col, row);
-        }
-
-        /// <summary>
-        /// カレントセルを選択します。
-        /// </summary>
-        /// <param name="grid">グリッド。</param>
-        /// <param name="col">列。</param>
-        /// <param name="row">行。</param>
-        static void EmulateChangeCurrentCellInTarget(DataGridView grid, int col, int row)
-        {
-            grid.Focus();
-            grid.Select();
-            grid.CurrentCell = grid[col, row];
         }
 
         /// <summary>
@@ -292,21 +238,6 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateChangeCellSelected(Async async, params CellSelectedInfo[] cells)
         {
             App[GetType(), "EmulateChangeCellSelectedInTarget"](AppVar, cells);
-        }
-
-        /// <summary>
-        /// 選択状態を変更します。
-        /// </summary>
-        /// <param name="grid">グリッド。</param>
-        /// <param name="cells">選択セル情報。</param>
-        static void EmulateChangeCellSelectedInTarget(DataGridView grid, CellSelectedInfo[] cells)
-        {
-            grid.Focus();
-            grid.Select();
-            foreach (CellSelectedInfo cell in cells)
-            {
-                grid[cell.Col, cell.Row].Selected = cell.Selected;
-            }
         }
 
         /// <summary>
@@ -475,5 +406,74 @@ namespace Ong.Friendly.FormsStandardControls
             }
         }
 
+        /// <summary>
+        /// セルコンボの選択を変更します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        /// <param name="index">インデックス。</param>
+        static void EmulateChangeCellComboSelectInTarget(DataGridView grid, int col, int row, int index)
+        {
+            EmulateChangeCurrentCellInTarget(grid, col, row);
+            grid.BeginEdit(false);
+            ((ComboBox)grid.EditingControl).SelectedIndex = index;
+            grid.EndEdit();
+        }
+
+        /// <summary>
+        /// セルボタン、セルリンクをクリックします。
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        static void EmulateClickCellContentInTarget(DataGridView grid, int col, int row)
+        {
+            EmulateChangeCurrentCellInTarget(grid, col, row);
+            grid.GetType().GetMethod("OnKeyDown", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
+            grid.GetType().GetMethod("OnKeyUp", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Space) });
+        }
+
+        /// <summary>
+        /// カレントセルを選択します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        static void EmulateChangeCurrentCellInTarget(DataGridView grid, int col, int row)
+        {
+            grid.Focus();
+            grid.Select();
+            grid.CurrentCell = grid[col, row];
+        }
+
+        /// <summary>
+        /// 選択状態を変更します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <param name="cells">選択セル情報。</param>
+        static void EmulateChangeCellSelectedInTarget(DataGridView grid, CellSelectedInfo[] cells)
+        {
+            grid.Focus();
+            grid.Select();
+            foreach (CellSelectedInfo cell in cells)
+            {
+                grid[cell.Col, cell.Row].Selected = cell.Selected;
+            }
+        }
+
+        /// <summary>
+        /// 現在の選択セルを取得します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        /// <returns>現在の選択セル。</returns>
+        static Cell GetCurrentCellInTarget(DataGridView grid)
+        {
+            if (grid.CurrentCell == null)
+            {
+                return null;
+            }
+            return new Cell(grid.CurrentCell.ColumnIndex, grid.CurrentCell.RowIndex);
+        }
     }
 }

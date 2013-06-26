@@ -4,10 +4,9 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
+
 namespace Test
 {
-    //@@@class
-
     /// <summary>
     /// DataGridViewテスト
     /// </summary>
@@ -26,6 +25,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
 
         /// <summary>
@@ -44,6 +44,28 @@ namespace Test
             }
         }
 
+        //@@@
+        //ColumnCount
+        //RowCount
+        //CurrentCell
+
+        //SelectedCells
+        //SelectedRows
+        //GetText
+        //string[][] GetText
+
+        //EmulateCellCheck
+        //EmulateChangeCellText
+        //EmulateChangeCellComboSelect
+        //EmulateClickCellContent
+        //EmulateChangeCurrentCell
+        //EmulateClearSelection
+        //EmulateChangeCellSelected
+        //EmulateChangeRowSelected
+        //EmulateDelete
+
+
+        /*
         /// <summary>
         /// 行数と列数数取得
         /// </summary>
@@ -109,6 +131,6 @@ namespace Test
             datagridview2.EmulateClickCellContent(0, 1);
             datagridview2.EmulateClickCellContent(0, 2, new Async());
             datagridview2.EmulateClickCellContent(0, 3, new Async());
-        }
+        }*/
     }
 }
