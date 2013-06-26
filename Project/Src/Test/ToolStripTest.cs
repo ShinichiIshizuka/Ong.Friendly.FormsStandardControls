@@ -6,13 +6,11 @@ using System.Diagnostics;
 
 namespace Test
 {
-    //@@@class メニューとツールストリップのテスト 名前変える。
-
     /// <summary>
     /// ContextMenuStripテスト
     /// </summary>
     [TestFixture]
-    public class ContextMenuStripTest
+    public class ToolStripTest
     {
         WindowsAppFriend app;
         WindowControl testDlg;
@@ -26,6 +24,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
         
         /// <summary>
@@ -44,6 +43,30 @@ namespace Test
             }
         }
 
+        //@@@
+        //FormsToolStripItem GetItem(params int[] indexs)
+        //FormsToolStripItem GetItem(params string[] keys)
+        //FormsToolStripItem FindItem(params string[] texts)
+
+        //通常
+        //public string Text { get { return (string)this["Text"]().Core; } }
+        //public bool Visible { get { return (bool)this["Visible"]().Core; } }
+        //public bool Enabled { get { return (bool)this["Enabled"]().Core; } }
+        //public void EmulateClick()
+        //public void EmulateClick(Async async)
+        
+        //ボタン
+        //CheckState CheckState
+        //void EmulateCheck(CheckState value)
+        //void EmulateCheck(CheckState value, Async async)
+
+        //コンボ
+        //public FormsComboBox ComboBox { get { return new FormsComboBox(App, this["ComboBox"]()); } }
+
+        //テキスト
+        //public FormsTextBox TextBox
+        
+        /*
         /// <summary>
         /// クリック
         /// </summary>
@@ -92,6 +115,6 @@ namespace Test
             menuitem1.EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(101, count);
-        }
+        }*/
     }
 }

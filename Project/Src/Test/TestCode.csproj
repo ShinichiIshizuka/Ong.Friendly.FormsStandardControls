@@ -79,7 +79,7 @@
     <Compile Include="TabControlTest.cs" />
     <Compile Include="ListViewTest.cs" />
     <Compile Include="DataGridViewTest.cs" />
-    <Compile Include="ContextMenuStripTest.cs" />
+    <Compile Include="ToolStripTest.cs" />
     <Compile Include="NumericUpDownTest.cs" />
   </ItemGroup>
   <ItemGroup>
