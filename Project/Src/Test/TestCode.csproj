@@ -75,7 +75,7 @@
     <Compile Include="TextBoxTest.cs" />
     <Compile Include="ListBoxTest.cs" />
     <Compile Include="RichTextBoxTest.cs" />
-    <Compile Include="FormsCheckedListBoxTest.cs" />
+    <Compile Include="CheckedListBoxTest.cs" />
     <Compile Include="TabControlTest.cs" />
     <Compile Include="ListViewTest.cs" />
     <Compile Include="DataGridViewTest.cs" />

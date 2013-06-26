@@ -55,7 +55,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>チェック状態</returns>
         public CheckState GetCheckState(int index)
         {
-            return (CheckState)(this["GetCheckState"](index).Core);
+            return (CheckState)(this["GetItemCheckState"](index).Core);
         }
 
         /// <summary>
