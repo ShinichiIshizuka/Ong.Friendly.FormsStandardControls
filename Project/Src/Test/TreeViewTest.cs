@@ -7,8 +7,6 @@ using System.Diagnostics;
 
 namespace Test
 {
-    //@@@class
-
     /// <summary>
     /// TreeViewテスト
     /// </summary>
@@ -27,6 +25,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
 
         /// <summary>
@@ -45,6 +44,24 @@ namespace Test
             }
         }
 
+        //@@@
+        // public FormsTreeNode SelectNode
+        //public FormsTreeNode GetItem(params int[] indexs)
+        // public FormsTreeNode GetItem(params string[] keys)
+        // public FormsTreeNode FindItem(params string[] texts)
+        //public void EmulateNodeSelect(FormsTreeNode node)
+
+        //public string Text
+        //public bool IsExpanded
+        //public bool Checked
+
+        //EmulateExpand
+        //EmulateCollapse
+
+        //EmulateEditLabel
+
+
+        /*
         /// <summary>
         /// ノードをテキストで検索して選択します
         /// </summary>
@@ -132,6 +149,6 @@ namespace Test
             Assert.IsTrue(node.Checked);
             node.EmulateCheck(false,new Async());
             Assert.IsFalse(node.Checked);
-        }
+        }*/
     }
 }

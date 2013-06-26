@@ -103,18 +103,6 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ノード名を編集します（内部）。
-        /// </summary>
-        /// <param name="treeNode">ノード。</param>
-        /// <param name="nodeText">テキスト。</param>
-        private static void EmulateEditLabelInTarget(TreeNode treeNode, string nodeText)
-        {
-            treeNode.BeginEdit();
-            treeNode.Text = nodeText;
-            treeNode.EndEdit(false);
-        }
-
-        /// <summary>
         /// チェック状態を設定します。
         /// </summary>
         /// <param name="check">true:チェック</param>
@@ -131,6 +119,18 @@ namespace Ong.Friendly.FormsStandardControls
         public void EmulateCheck(bool check, Async async)
         {
             this["Checked", async](check);
+        }
+
+        /// <summary>
+        /// ノード名を編集します（内部）。
+        /// </summary>
+        /// <param name="treeNode">ノード。</param>
+        /// <param name="nodeText">テキスト。</param>
+        private static void EmulateEditLabelInTarget(TreeNode treeNode, string nodeText)
+        {
+            treeNode.BeginEdit();
+            treeNode.Text = nodeText;
+            treeNode.EndEdit(false);
         }
     }
 }
