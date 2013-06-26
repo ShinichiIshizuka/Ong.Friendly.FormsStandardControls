@@ -5,6 +5,8 @@ using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using Codeer.Friendly;
 using System.Windows.Forms;
+using System;
+using Codeer.Friendly.Windows.NativeStandardControls;
 
 namespace Test
 {
@@ -26,6 +28,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
 
         /// <summary>
@@ -92,24 +95,64 @@ namespace Test
             Assert.AreEqual(SelectionMode.MultiSimple, listbox2.SelectionMode);
         }
 
-        //@@@EmulateChangeSelectedState
+        /// <summary>
+        /// EmulateChangeSelectedStateテスト
+        /// </summary>
+        [Test]
+        public void TestEmulateChangeSelectedState()
+        {
+            FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
+            listbox2.EmulateChangeSelectedState(4, true);
+            int[] selected1 = listbox2.SelectedIndexes;
+            Assert.AreEqual(1, selected1[0]);
+
+            // 非同期
+            app[GetType(), "ChangeSelectedIndexEvent"](listbox2.AppVar);
+            listbox2.EmulateChangeSelectedState(2, true, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            int[] selected2 = listbox2.SelectedIndexes;
+            Assert.AreEqual(1, selected2[0]);
+        }
 
         /// <summary>
         /// EmulateChangeSelectedIndexテスト
-        /// @@@Async
         /// </summary>
         [Test]
         public void TestEmulateChangeSelectedIndex()
         {
             FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
-            int[] select = new int[] { 1, 2, 4 };
-            listbox2.EmulateChangeSelectedIndex(1, new Async());
-            listbox2.EmulateChangeSelectedIndex(2, new Async());
-            listbox2.EmulateChangeSelectedIndex(4, new Async());
-            int[] selected = listbox2.SelectedIndexes;
-            Assert.AreEqual(1, selected[0]);
-            Assert.AreEqual(2, selected[1]);
-            Assert.AreEqual(4, selected[2]);
+            listbox2.EmulateChangeSelectedIndex(1);
+            listbox2.EmulateChangeSelectedIndex(2);
+            int[] selected1 = listbox2.SelectedIndexes;
+            Assert.AreEqual(1, selected1[0]);
+            Assert.AreEqual(2, selected1[1]);
+
+            // 非同期
+            app[GetType(), "ChangeSelectedIndexEvent"](listbox2.AppVar);
+            listbox2.EmulateChangeSelectedIndex(3, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            int[] selected2 = listbox2.SelectedIndexes;
+            Assert.AreEqual(1, selected2[0]);
+            Assert.AreEqual(2, selected2[1]);
+            Assert.AreEqual(3, selected2[2]);
+        }
+
+        /// <summary>
+        /// 選択変更時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="listbox">ボタン</param>
+        static void ChangeSelectedIndexEvent(ListBox listbox)
+        {
+            EventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                listbox.BeginInvoke((MethodInvoker)delegate
+                {
+                    listbox.SelectedIndexChanged -= handler;
+                });
+            };
+            listbox.SelectedIndexChanged += handler;
         }
     }
 }
