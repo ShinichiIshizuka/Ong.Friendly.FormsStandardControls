@@ -5,6 +5,8 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
+using System.Windows.Forms;
+using Codeer.Friendly.Windows.NativeStandardControls;
 namespace Test
 {
     /// <summary>
@@ -25,6 +27,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
         
         /// <summary>
@@ -45,7 +48,6 @@ namespace Test
 
         /// <summary>
         /// テキスト設定・取得をします
-        /// @@@非同期
         /// </summary>
         [Test]
         public void TestEmulateChangeText()
@@ -55,9 +57,30 @@ namespace Test
             string richtextbox1Text = richtextbox1.Text;
             Assert.AreEqual("RICHTEXTBOX1", richtextbox1Text);
 
+            // 非同期
+            app[GetType(), "ChangeTextEvent"](richtextbox1.AppVar);
             richtextbox1.EmulateChangeText("RICHTEXTBOX11", new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             richtextbox1Text = richtextbox1.Text;
             Assert.AreEqual("RICHTEXTBOX11", richtextbox1Text);
+        }
+
+        /// <summary>
+        /// テキスト変更時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="textbox">リッチテキスト</param>
+        static void ChangeTextEvent(RichTextBox textbox)
+        {
+            EventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                textbox.BeginInvoke((MethodInvoker)delegate
+                {
+                    textbox.TextChanged -= handler;
+                });
+            };
+            textbox.TextChanged += handler;
         }
     }
 }
