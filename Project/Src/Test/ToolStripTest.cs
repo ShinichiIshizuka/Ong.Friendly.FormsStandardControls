@@ -3,6 +3,10 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
+using System.Windows.Forms;
+using System;
+using Codeer.Friendly;
+using Codeer.Friendly.Windows.NativeStandardControls;
 
 namespace Test
 {
@@ -43,78 +47,174 @@ namespace Test
             }
         }
 
-        //@@@
-        //FormsToolStripItem GetItem(params int[] indexs)
-        //FormsToolStripItem GetItem(params string[] keys)
-        //FormsToolStripItem FindItem(params string[] texts)
-
-        //通常
-        //public string Text { get { return (string)this["Text"]().Core; } }
-        //public bool Visible { get { return (bool)this["Visible"]().Core; } }
-        //public bool Enabled { get { return (bool)this["Enabled"]().Core; } }
-        //public void EmulateClick()
-        //public void EmulateClick(Async async)
-        
-        //ボタン
-        //CheckState CheckState
-        //void EmulateCheck(CheckState value)
-        //void EmulateCheck(CheckState value, Async async)
-
-        //コンボ
-        //public FormsComboBox ComboBox { get { return new FormsComboBox(App, this["ComboBox"]()); } }
-
-        //テキスト
-        //public FormsTextBox TextBox
-        
-        /*
         /// <summary>
-        /// クリック
+        /// GetItem(int)のテスト
         /// </summary>
         [Test]
-        public void TestContextMenuStripClick1()
+        public void TestGetItemInt()
         {
-            FormsToolStrip contextmenustrip1 = new FormsToolStrip(app, testDlg["contextMenuStrip1"]());
-            contextmenustrip1.FindItem("MenuItem1").EmulateClick();
-            int count = (int)testDlg["async_counter"]().Core;
-            Assert.AreEqual(1, count);
+            FormsToolStrip menu = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            Assert.AreEqual("Menu001-02", menu.GetItem(0, 1).Text);
+            FormsToolStrip toolBar = new FormsToolStrip(app, testDlg["toolStrip1"]());
+            Assert.AreEqual("toolStripButton2", toolBar.GetItem(1).Text);
         }
 
         /// <summary>
-        /// クリック
+        /// GetItem(string)のテスト
         /// </summary>
         [Test]
-        public void TestContextMenuStripClick2()
+        public void TestGetItemString()
         {
-            FormsToolStrip contextmenustrip1 = new FormsToolStrip(app, testDlg["contextMenuStrip1"]());
-            contextmenustrip1.FindItem("MenuItem2").EmulateClick();
+            FormsToolStrip menu = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            Assert.AreEqual("Menu001-02", menu.GetItem("menu001ToolStripMenuItem", "menu00102ToolStripMenuItem").Text);
+            FormsToolStrip toolBar = new FormsToolStrip(app, testDlg["toolStrip1"]());
+            Assert.AreEqual("toolStripButton2", toolBar.GetItem("toolStripButton2").Text);
+            FormsToolStrip context = new FormsToolStrip(app, testDlg["contextMenuStrip1"]());
+            Assert.AreEqual("MenuItem2", context.GetItem("menuItem2ToolStripMenuItem").Text);
+        }
+
+        /// <summary>
+        /// FindItemのテスト
+        /// </summary>
+        [Test]
+        public void TestGetFindItem()
+        {
+            FormsToolStrip menu = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            Assert.AreEqual("Menu001-02", menu.FindItem("Menu001", "Menu001-02").Text);
+            FormsToolStrip toolBar = new FormsToolStrip(app, testDlg["toolStrip1"]());
+            Assert.AreEqual("toolStripButton2", toolBar.FindItem("toolStripButton2").Text);
+            FormsToolStrip context = new FormsToolStrip(app, testDlg["contextMenuStrip1"]());
+            Assert.AreEqual("MenuItem2", context.FindItem("MenuItem2").Text);
+        }
+
+        /// <summary>
+        /// FormsToolStripItemのTextテスト
+        /// </summary>
+        [Test]
+        public void TestItemText()
+        {
+            FormsToolStripItem item = new FormsToolStrip(app, testDlg["menuStrip1"]()).FindItem("Menu001", "Menu001-02");
+            Assert.AreEqual("Menu001-02", item.Text);
+        }
+
+        /// <summary>
+        /// FormsToolStripItemのVisibleテスト
+        /// </summary>
+        [Test]
+        public void TestItemVisible()
+        {
+            FormsToolStripItem item = new FormsToolStrip(app, testDlg["toolStrip1"]()).FindItem("toolStripButton2");
+            item["Visible"](false);
+            Assert.AreEqual(false, item.Visible);
+            item["Visible"](true);
+            Assert.AreEqual(true, item.Visible);
+        }
+
+        /// <summary>
+        /// FormsToolStripItemのEnabledテスト
+        /// </summary>
+        [Test]
+        public void TestItemEnabled()
+        {
+            FormsToolStripItem item = new FormsToolStrip(app, testDlg["menuStrip1"]()).FindItem("Menu001", "Menu001-02");
+            item["Enabled"](false);
+            Assert.AreEqual(false, item.Enabled);
+            item["Enabled"](true);
+            Assert.AreEqual(true, item.Enabled);
+        }
+
+        /// <summary>
+        /// FormsToolStripItemのEmulateClickテスト
+        /// </summary>
+        [Test]
+        public void TestEmulateClick()
+        {
+            FormsToolStripItem item =  new FormsToolStrip(app, testDlg["contextMenuStrip1"]()).GetItem(1);
+            item.EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
+            Assert.AreEqual(1, count);
+
+            //非同期
+            app[GetType(), "ClickEvent"](testDlg.AppVar, item.AppVar);
+            item.EmulateClick(new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(2, count);
         }
 
         /// <summary>
-        /// メニュークリック
+        /// クリック時にメッセージボックスを表示する
         /// </summary>
-        [Test]
-        public void TestMenuStripClickmenu001ToolStripMenuItem()
+        /// <param name="control">コントロール</param>
+        /// <param name="item">アイテム</param>
+        static void ClickEvent(Control control, ToolStripItem item)
         {
-            FormsToolStrip menustrip1 = new FormsToolStrip(app, testDlg["menuStrip1"]());
-            FormsToolStripItem menuitem = menustrip1.FindItem("Menu001");
-            menuitem.EmulateClick();
-            int count = (int)testDlg["async_counter"]().Core;
-            Assert.AreEqual(100, count);
+            EventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                control.BeginInvoke((MethodInvoker)delegate
+                {
+                    item.Click -= handler;
+                });
+            };
+            item.Click += handler;
         }
 
         /// <summary>
-        /// サブメニュークリック 
+        /// FormsToolStripItemのEmulateCheckとCheckStateのテスト
         /// </summary>
         [Test]
-        public void TestMenuStripClickmenu00101ToolStripMenuItem()
+        public void TestEmulateCheckAndCheckState()
         {
-            FormsToolStrip menustrip1 = new FormsToolStrip(app, testDlg["menuStrip1"]());
-            FormsToolStripItem menuitem1 = menustrip1.FindItem("Menu001", "Menu001-01");
-            menuitem1.EmulateClick();
-            int count = (int)testDlg["async_counter"]().Core;
-            Assert.AreEqual(101, count);
-        }*/
+            FormsToolStripButton item = new FormsToolStripButton(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(3));
+            item.EmulateCheck(CheckState.Checked);
+            Assert.AreEqual(CheckState.Checked, item.CheckState);
+
+            //非同期
+            app[GetType(), "CheckEvent"](testDlg.AppVar, item.AppVar);
+            item.EmulateCheck(CheckState.Unchecked, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(CheckState.Unchecked, item.CheckState);
+        }
+
+        /// <summary>
+        /// チェック時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="control">コントロール</param>
+        /// <param name="item">アイテム</param>
+        static void CheckEvent(Control control, ToolStripButton item)
+        {
+            EventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                control.BeginInvoke((MethodInvoker)delegate
+                {
+                    item.CheckedChanged -= handler;
+                });
+            };
+            item.CheckedChanged += handler;
+        }
+
+        /// <summary>
+        /// コンボボックス取得テスト
+        /// </summary>
+        [Test]
+        public void TestGetComboBox()
+        {
+            FormsToolStripComboBox item = new FormsToolStripComboBox(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(4));
+            Assert.AreEqual(typeof(ComboBox), (Type)item.ComboBox["GetType"]()["BaseType"]().Core);
+        }
+
+        /// <summary>
+        /// テキストボックス取得テスト
+        /// </summary>
+        [Test]
+        public void TestTextBox()
+        {
+            FormsToolStripTextBox item = new FormsToolStripTextBox(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(6));
+            Assert.AreEqual(typeof(TextBox), (Type)item.TextBox["GetType"]()["BaseType"]().Core);
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace Test
             Assert.AreEqual(1, count);
 
             //非同期
-            app[GetType(), "TextEvent"](button.AppVar);
+            app[GetType(), "ClickEvent"](button.AppVar);
             button.EmulateClick(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             count = (int)testDlg["async_counter"]().Core;
@@ -70,7 +70,7 @@ namespace Test
         /// クリック時にメッセージボックスを表示する
         /// </summary>
         /// <param name="button">ボタン</param>
-        static void TextEvent(Button button)
+        static void ClickEvent(Button button)
         {
             EventHandler handler = null;
             handler = delegate

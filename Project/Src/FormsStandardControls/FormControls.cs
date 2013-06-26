@@ -8,6 +8,8 @@ using System.Windows.Forms;
 
 namespace FormsStandardControls
 {
+    //@@@コントロールの名前とかリファクタリング
+
     public partial class FormControls : Form
     {
         /// <summary>
@@ -235,7 +237,7 @@ namespace FormsStandardControls
 
         private void menuItem2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            async_counter = 2;
+            async_counter++;
         }
 
         private void menu00101ToolStripMenuItem_Click(object sender, EventArgs e)
