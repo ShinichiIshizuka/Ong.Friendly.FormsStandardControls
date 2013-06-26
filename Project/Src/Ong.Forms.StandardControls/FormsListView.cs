@@ -69,6 +69,23 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
+        /// 指定したテキスト値で始まる最初のアイテムを検索します。
+        /// </summary>
+        /// <param name="itemText">テキスト。</param>
+        /// <param name="includeSubItemsInSearch">検索にサブ項目を含める場合は true。それ以外の場合は false。</param>
+        /// <param name="startIndex">検索を開始する位置の項目のインデックス。</param>
+        /// <returns>指定したテキスト値で始まる最初のアイテム</returns>
+        public FormsListViewItem FindItemWithText(string itemText, bool includeSubItemsInSearch, int startIndex)
+        {
+            AppVar returnItem = this["FindItemWithText"](itemText, includeSubItemsInSearch, startIndex);
+            if (returnItem != null)
+            {
+                return new FormsListViewItem(App, AppVar, returnItem);
+            }
+            return null;
+        }
+
+        /// <summary>
         /// 指定されたインデックスに該当するアイテムの選択状態を変更します。
         /// </summary>
         /// <param name="index">インデックス。</param>
@@ -89,23 +106,6 @@ namespace Ong.Friendly.FormsStandardControls
         {
             this["Focus", new Async()]();
             App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
-        }
-
-        /// <summary>
-        /// 指定したテキスト値で始まる最初のアイテムを検索します。
-        /// </summary>
-        /// <param name="itemText">テキスト。</param>
-        /// <param name="includeSubItemsInSearch">検索にサブ項目を含める場合は true。それ以外の場合は false。</param>
-        /// <param name="startIndex">検索を開始する位置の項目のインデックス。</param>
-        /// <returns>指定したテキスト値で始まる最初のアイテム</returns>
-        public FormsListViewItem FindItemWithText(string itemText, bool includeSubItemsInSearch, int startIndex)
-        {
-            AppVar returnItem = this["FindItemWithText"](itemText, includeSubItemsInSearch, startIndex);
-            if (returnItem != null)
-            {
-                return new FormsListViewItem(App, AppVar, returnItem);
-            }
-            return null;
         }
 
         /// <summary>
@@ -136,6 +136,5 @@ namespace Ong.Friendly.FormsStandardControls
         {
             listview.Items[index].Selected = isSelect;
         }
-
     }
 }

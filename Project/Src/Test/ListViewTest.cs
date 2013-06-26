@@ -28,6 +28,7 @@ namespace Test
             //テスト用の画面起動
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
             testDlg = WindowControl.FromZTop(app);
+            WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
 
         /// <summary>
@@ -46,6 +47,26 @@ namespace Test
             }
         }
 
+        //@@@
+        //public View ViewMode
+        //int ColumnCount
+        //int ItemCount
+        //int[] SelectIndexes
+        //FormsListViewItem GetListViewItem(int index)
+        //FormsListViewItem FindItemWithText(string itemText, bool includeSubItemsInSearch, int startIndex)
+        // void EmulateChangeSelectedState(int index, bool isSelect)
+
+        //public string Text
+        // public int ItemIndex
+        //public bool Checked
+        //public FormsListViewSubItem GetSubItem(int subitemindex)
+        //public void EmulateCheck(bool value)
+        //public void EmulateEditLabel(string text)
+
+        //public string Text
+
+
+        /*
         /// <summary>
         /// 行数と列数を取得します
         /// </summary>
@@ -119,6 +140,6 @@ namespace Test
             FormsListViewItem item1 = listView1.FindItemWithText("リンゴ", true , 0);
             FormsListViewSubItem subitem1 = item1.GetSubItem(1);
             Assert.AreEqual("果物", subitem1.Text);
-        }
+        }*/
     }
 }

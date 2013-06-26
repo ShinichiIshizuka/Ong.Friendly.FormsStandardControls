@@ -313,6 +313,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// 行列で指定した範囲のセルのテキストを取得します。
         /// </summary>
+        /// <param name="datagridview">データグリッド。</param>
         /// <param name="startCol">開始列。</param>
         /// <param name="startRow">開始行。</param>
         /// <param name="endCol">終了列。</param>

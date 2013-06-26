@@ -166,7 +166,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="hWnd">ウィンドウハンドル。</param>
         /// <param name="lParam">パラメータ。</param>
         /// <returns>検索を続けるか。</returns>
-        public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+        delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
         /// <summary>
         /// 子ウィンドウ検索。
@@ -196,6 +196,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="lpString">テキスト。</param>
         /// <returns>成否。</returns>
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern bool SetWindowText(IntPtr hWnd, string lpString);
+        static extern bool SetWindowText(IntPtr hWnd, string lpString);
     }
 }
