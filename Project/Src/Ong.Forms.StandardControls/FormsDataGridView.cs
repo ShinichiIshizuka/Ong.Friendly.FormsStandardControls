@@ -242,8 +242,6 @@ namespace Ong.Friendly.FormsStandardControls
             App[GetType(), "EmulateChangeCellSelectedInTarget", async](AppVar, cells);
         }
 
-        //@@@RowSelectとCellSelectは何かインターフェイス変。他のと統一性がない。
-
         /// <summary>
         /// 行選択状態を変更します。
         /// </summary>
