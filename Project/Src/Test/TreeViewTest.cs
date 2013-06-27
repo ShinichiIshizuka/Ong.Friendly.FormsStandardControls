@@ -245,7 +245,7 @@ namespace Test
             Assert.AreEqual(@"ChangeText", item.Text);
 
             //”ñ“¯Šú
-            app[GetType(), "TreeViewAfterCollapse"](treeView1.AppVar);
+            app[GetType(), "TreeViewAfterLabelEditEvent"](treeView1.AppVar);
             item.EmulateEditLabel(@"PPPPP", new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             Assert.AreEqual(@"PPPPP", item.Text);
