@@ -1,6 +1,7 @@
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -29,8 +30,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateClick()
         {
-            this["Focus"]();
-            this["PerformClick"]();
+            App[GetType(), "EmulateClickInTarget"](AppVar);
         }
 
         /// <summary>
@@ -40,8 +40,17 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateClick(Async async)
         {
-            this["Focus", new Async()]();
-            this["PerformClick", async]();
+            App[GetType(), "EmulateClickInTarget", async](AppVar);
+        }
+
+        /// <summary>
+        /// クリックです。
+        /// </summary>
+        /// <param name="button">ボタン。</param>
+        static void EmulateClickInTarget(Button button)
+        {
+            button.Focus();
+            button.PerformClick();
         }
     }
 }
