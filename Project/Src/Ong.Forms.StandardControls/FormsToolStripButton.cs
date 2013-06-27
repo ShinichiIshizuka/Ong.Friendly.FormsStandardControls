@@ -59,6 +59,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="value">チェック状態。</param>
         static void EmulateCheckInTarget(ToolStripButton checkButton, CheckState value)
         {
+            checkButton.Owner.Focus();
             while (checkButton.CheckState != value)
             {
                 checkButton.PerformClick();

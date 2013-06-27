@@ -1,5 +1,6 @@
 ﻿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
+using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -31,20 +32,31 @@ namespace Ong.Friendly.FormsStandardControls
         public bool Enabled { get { return (bool)this["Enabled"]().Core; } }
 
         /// <summary>
-        /// クリックをエミュレートします。
+        /// クリックです。
         /// </summary>
         public void EmulateClick()
         {
-            this["PerformClick"]();
+            App[GetType(), "EmulateClickInTarget"](AppVar);
         }
 
         /// <summary>
-        /// クリックをエミュレートします。
+        /// クリックです。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateClick(Async async)
         {
-            this["PerformClick", async]();
+            App[GetType(), "EmulateClickInTarget", async](AppVar);
+        }
+
+        /// <summary>
+        /// クリックです。
+        /// </summary>
+        /// <param name="item">アイテム。</param>
+        static void EmulateClickInTarget(ToolStripItem item)
+        {
+            item.Owner.Focus();
+            item.PerformClick();
         }
     }
 }
