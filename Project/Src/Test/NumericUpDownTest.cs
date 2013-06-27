@@ -46,6 +46,7 @@ namespace Test
             }
         }
 
+        /*
         /// <summary>
         /// クリックテスト
         /// </summary>
@@ -120,6 +121,6 @@ namespace Test
                 });
             };
             numericupdown.ValueChanged += handler;
-        }
+        }*/
     }
 }
