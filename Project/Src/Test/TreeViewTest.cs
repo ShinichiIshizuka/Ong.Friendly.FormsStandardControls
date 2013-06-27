@@ -88,7 +88,7 @@ namespace Test
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
             string[] texts = { @"Parent" };
-            FormsTreeNode item = treeView1.GetItem(texts);
+            FormsTreeNode item = treeView1.FindItem(texts);
             Assert.AreEqual(@"Parent", item.Text);
         }
 
@@ -106,11 +106,11 @@ namespace Test
 
             //”ñ“¯Šú
             app[GetType(), "TreeViewAfterSelectEvent"](treeView1.AppVar);
-            item = treeView1.FindItem("Parent");
-            treeView1.EmulateNodeSelect(item, new Async());
+            FormsTreeNode item2 = treeView1.GetItem(0, 1);
+            treeView1.EmulateNodeSelect(item2, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            selectitem = treeView1.SelectNode;
-            Assert.AreEqual("Parent", selectitem.Text);
+            FormsTreeNode selectitem2 = treeView1.SelectNode;
+            Assert.AreEqual("Child 2", selectitem2.Text);
         }
 
         /// <summary>
@@ -177,7 +177,8 @@ namespace Test
             //”ñ“¯Šú
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
             app[GetType(), "TreeViewAfterExpandEvent"](treeView1.AppVar);
-            FormsTreeNode item = treeView1.FindItem("Child 2");
+            FormsTreeNode item = treeView1.FindItem("Parent");
+            item.EmulateCollapse(new Async()); 
             item.EmulateExpand(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             Assert.AreEqual(true, item.IsExpanded);
@@ -198,7 +199,7 @@ namespace Test
                     treeView.AfterExpand -= handler;
                 });
             };
-            treeView.AfterSelect += handler;
+            treeView.AfterExpand += handler;
         }
 
         /// <summary>
@@ -247,9 +248,9 @@ namespace Test
 
             //”ñ“¯Šú
             app[GetType(), "TreeViewAfterLabelEditEvent"](treeView1.AppVar);
-            item.EmulateEditLabel(@"PPPPP", new Async());
+            item.EmulateEditLabel(@"Parent", new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            Assert.AreEqual(@"PPPPP", item.Text);
+            Assert.AreEqual(@"Parent", item.Text);
         }
 
         /// <summary>
