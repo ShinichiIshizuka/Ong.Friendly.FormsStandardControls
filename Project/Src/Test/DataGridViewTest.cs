@@ -4,6 +4,7 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Test
 {
@@ -44,6 +45,28 @@ namespace Test
             }
         }
 
+        /// <summary>
+        /// 行数と列数数取得
+        /// </summary>
+        [Test]
+        public void TestRowCount()
+        {
+            FormsDataGridView datagridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            datagridview.EmulateChangeCellText(0, 0, "a");
+            Assert.AreEqual(2, datagridview.RowCount);
+            datagridview["Rows"]()["Clear"]();
+        }
+
+        /// <summary>
+        /// 行数と列数数取得
+        /// </summary>
+        [Test]
+        public void TestColumnCount()
+        {
+            FormsDataGridView datagridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            Assert.AreEqual(5, datagridview.ColumnCount);
+        }
+
         //@@@
         //ColumnCount
         //RowCount
@@ -66,16 +89,7 @@ namespace Test
 
 
         /*
-        /// <summary>
-        /// 行数と列数数取得
-        /// </summary>
-        [Test]
-        public void TestDataGridViewRowColCount()
-        {
-            FormsDataGridView datagridview1 = new FormsDataGridView(app, testDlg["dataGridView1"]());
-            Assert.AreEqual(6, datagridview1.RowCount);
-            Assert.AreEqual(3, datagridview1.ColumnCount);
-        }
+
 
         /// <summary>
         /// 指定した行列のテキスト変更
