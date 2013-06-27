@@ -54,7 +54,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateExpand()
         {
-            this["Expand"]();
+            App[GetType(), "EmulateExpandInTarget"](AppVar);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateExpand(Async async)
         {
-            this["Expand", async]();
+            App[GetType(), "EmulateExpandInTarget", async](AppVar);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateCollapse()
         {
-            this["Collapse"]();
+            App[GetType(), "EmulateCollapseInTarget"](AppVar);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateCollapse(Async async)
         {
-            this["Collapse", async]();
+            App[GetType(), "EmulateCollapseInTarget", async](AppVar);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="check">true:チェック</param>
         public void EmulateCheck(bool check)
         {
-            this["Checked"](check);
+            App[GetType(), "EmulateCheckInTarget"](AppVar, check);
         }
 
         /// <summary>
@@ -118,7 +118,38 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期オブジェクト</param>
         public void EmulateCheck(bool check, Async async)
         {
-            this["Checked", async](check);
+            App[GetType(), "EmulateCheckInTarget", async](AppVar, check);
+        }
+
+        /// <summary>
+        /// 展開します。
+        /// </summary>
+        /// <param name="treeNode">ノード。</param>
+        private static void EmulateExpandInTarget(TreeNode treeNode)
+        {
+            treeNode.TreeView.Focus();
+            treeNode.Expand();
+        }
+
+        /// <summary>
+        /// 展開をとじます。
+        /// </summary>
+        /// <param name="treeNode">ノード。</param>
+        private static void EmulateCollapseInTarget(TreeNode treeNode)
+        {
+            treeNode.TreeView.Focus();
+            treeNode.Collapse();
+        }
+
+        /// <summary>
+        /// チェック状態を設定します。
+        /// </summary>
+        /// <param name="treeNode">ノード。</param>
+        /// <param name="check">true:チェック</param>
+        private static void EmulateCheckInTarget(TreeNode treeNode, bool check)
+        {
+            treeNode.TreeView.Focus();
+            treeNode.Checked = check;
         }
 
         /// <summary>
@@ -128,6 +159,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="nodeText">テキスト。</param>
         private static void EmulateEditLabelInTarget(TreeNode treeNode, string nodeText)
         {
+            treeNode.TreeView.Focus();
             treeNode.BeginEdit();
             treeNode.Text = nodeText;
             treeNode.EndEdit(false);

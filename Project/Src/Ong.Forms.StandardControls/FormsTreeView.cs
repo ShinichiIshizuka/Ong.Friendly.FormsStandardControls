@@ -69,7 +69,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="node">ノード。</param>
         public void EmulateNodeSelect(FormsTreeNode node)
         {
-            this["SelectedNode"](node.AppVar);
+            App[GetType(), "EmulateNodeSelectInTarget"](AppVar, node.AppVar);
         }
 
         /// <summary>
@@ -80,7 +80,19 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期オブジェクト。</param>
         public void EmulateNodeSelect(FormsTreeNode node, Async async)
         {
-            this["SelectedNode", async](node.AppVar);
+            App[GetType(), "EmulateNodeSelectInTarget", async](AppVar, node.AppVar);
+        }
+
+        /// <summary>
+        /// ノードを選択します。
+        /// 非同期で実行します。
+        /// </summary>
+        /// <param name="tree">ツリー。</param>
+        /// <param name="node">ノード。</param>
+        static void EmulateNodeSelectInTarget(TreeView tree, TreeNode node)
+        {
+            tree.Focus();
+            tree.SelectedNode = node;
         }
 
         /// <summary>
@@ -89,7 +101,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="trerview">ツリービュー。</param>
         /// <param name="indexs">インデックス。</param>
         /// <returns>アイテム</returns>
-        private static TreeNode GetItemInTarget(TreeView trerview, params int[] indexs)
+        static TreeNode GetItemInTarget(TreeView trerview, params int[] indexs)
         {
             int currentIndex = 0;
             TreeNodeCollection items = trerview.Nodes;
@@ -119,7 +131,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="trerview">ツリービュー。</param>
         /// <param name="keys">インデックス。</param>
         /// <returns>アイテム</returns>
-        private static TreeNode GetItemInTarget(TreeView trerview, params string[] keys)
+        static TreeNode GetItemInTarget(TreeView trerview, params string[] keys)
         {
             int currentIndex = 0;
             TreeNodeCollection items = trerview.Nodes;
@@ -149,7 +161,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="trerview">ツリービュー。</param>
         /// <param name="texts">表示文字列。</param>
         /// <returns>アイテム。</returns>
-        private static TreeNode FindItemInTarget(TreeView trerview, string[] texts)
+        static TreeNode FindItemInTarget(TreeView trerview, string[] texts)
         {
             int currentIndex = 0;
             TreeNodeCollection items = trerview.Nodes;
