@@ -344,7 +344,7 @@ namespace Test
             };
             grid.CellEndEdit += handler;
         }
-        /*@@@
+
         /// <summary>
         /// EmulateClickCellContentのテスト
         /// </summary>
@@ -378,11 +378,11 @@ namespace Test
             //行クリア
             dataGridview["Rows"]()["Clear"]();
         }
-        */
+
         static int _testCol;
 
         /// <summary>
-        /// セルクリック時にメッセージボックスを表示する
+        /// セルクリック時に_testColの値を表示する
         /// </summary>
         /// <param name="grid">グリッド</param>
         static void CellContentClickEvent(DataGridView grid)
@@ -396,7 +396,7 @@ namespace Test
                     grid.CellContentClick -= handler;
                 });
             };
-            grid.CellEndEdit += handler;
+            grid.CellContentClick += handler;
         }
 
         /// <summary>
@@ -415,13 +415,7 @@ namespace Test
                     grid.CellContentClick -= handler;
                 });
             };
-            grid.CellEndEdit += handler;
+            grid.CellContentClick += handler;
         }
-        //@@@
-
-        //
-        //
-        //
-        //
     }
 }
