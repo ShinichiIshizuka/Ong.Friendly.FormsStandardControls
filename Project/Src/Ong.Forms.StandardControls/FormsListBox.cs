@@ -71,22 +71,20 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// 指定されたインデックスに該当するアイテムを選択状態にします。
         /// </summary>
-        public void EmulateChangeSelectedIndex(int Index)
+        public void EmulateChangeSelectedIndex(int index)
         {
-            this["Focus"]();
-            this["SelectedIndex"](Index);
+            App[GetType(), "EmulateChangeSelectedIndexInTarget"](AppVar, index);
         }
 
         /// <summary>
         /// 指定されたインデックスに該当するアイテムを選択状態にします。
         /// 非同期に実行します。
         /// </summary>
-        /// <param name="Index">インデックス。</param>
+        /// <param name="index">インデックス。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateChangeSelectedIndex(int Index, Async async)
+        public void EmulateChangeSelectedIndex(int index, Async async)
         {
-            this["Focus", new Async()]();
-            this["SelectedIndex", async](Index);
+            App[GetType(), "EmulateChangeSelectedIndexInTarget", async](AppVar, index);
         }
 
         /// <summary>
@@ -96,7 +94,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
-            this["Focus"]();
             App[GetType(), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
         }
 
@@ -108,7 +105,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期オブジェクト</param>
         public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
-            this["Focus", new Async()]();
             App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
         }
 
@@ -128,6 +124,18 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
+        /// 非同期に実行します。
+        /// </summary>
+        /// <param name="listbox">ListBox。</param>
+        /// <param name="index">インデックス。</param>
+        static void EmulateChangeSelectedIndexInTarget(ListBox listbox, int index)
+        {
+            listbox.Focus();
+            listbox.SelectedIndex = index;
+        }
+
+        /// <summary>
         /// リストアイテムを選択します（内部）。
         /// </summary>
         /// <param name="listbox">ListBox。</param>
@@ -135,6 +143,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
         private static void EmulateChangeSelectedStateInTarget(ListBox listbox, int index, bool isSelect)
         {
+            listbox.Focus();
             listbox.SetSelected(index, isSelect);
         }
     }
