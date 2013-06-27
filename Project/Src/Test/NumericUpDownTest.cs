@@ -101,7 +101,7 @@ namespace Test
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             Assert.AreEqual(@"56", numericUpDown.Text);
 
-            numericUpDown.EmulateChangeText(@"0");
+            numericUpDown.EmulateChangeText(@"");
         }
 
         /// <summary>

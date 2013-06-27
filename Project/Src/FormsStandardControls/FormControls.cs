@@ -8,8 +8,6 @@ using System.Windows.Forms;
 
 namespace FormsStandardControls
 {
-    //@@@コントロールの名前とかリファクタリング
-
     public partial class FormControls : Form
     {
         /// <summary>
@@ -34,8 +32,6 @@ namespace FormsStandardControls
         {
             InitTreeView();
             InitListView();
-            //ToolStripMenuItem item = (ToolStripMenuItem)menustrip.Items[""];
-            //ToolStripItem a =item.DropDownItems[""];
         }
 
         /// <summary>
@@ -48,10 +44,8 @@ namespace FormsStandardControls
             treeView1.Nodes[0].Nodes.Add("Child 2");
             treeView1.Nodes[0].Nodes[1].Nodes.Add("Grandchild");
             treeView1.Nodes[0].Nodes[1].Nodes[0].Nodes.Add("Great Grandchild");
-
             TreeNode tn = treeView1.Nodes[0].Nodes[0];
             treeView1.SelectedNode = tn;
-
             treeView2.Nodes.Add("Parent");
             treeView2.Nodes[0].Nodes.Add("Child 1");
             treeView2.Nodes[0].Nodes.Add("Child 2");
@@ -142,41 +136,9 @@ namespace FormsStandardControls
         /// </summary>
         /// <param name="sender">コール元</param>
         /// <param name="e">イベントパラメタ</param>
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            async_counter = 10;
-        }
-
-        /// <summary>
-        /// ラジオボタンチェック
-        /// </summary>
-        /// <param name="sender">コール元</param>
-        /// <param name="e">イベントパラメタ</param>
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             async_counter = 11;
-        }
-
-        private void menuItem1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            async_counter = 1;
-        }
-
-        private void menuItem2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            async_counter++;
-        }
-
-        private void menu00101ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            async_counter = 101;
-        }
-
-        private void menu001ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            async_counter = 100;
-
-            ToolStripItem a = menuStrip1.Items[0];
         }
     }
 }

@@ -132,14 +132,14 @@ namespace Test
             FormsToolStripItem item =  new FormsToolStrip(app, testDlg["contextMenuStrip1"]()).GetItem(1);
             item.EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
-            Assert.AreEqual(1, count);
+            Assert.AreEqual(0, count);
 
             //”ñ“¯Šú
             app[GetType(), "ClickEvent"](testDlg.AppVar, item.AppVar);
             item.EmulateClick(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             count = (int)testDlg["async_counter"]().Core;
-            Assert.AreEqual(2, count);
+            Assert.AreEqual(0, count);
         }
 
         /// <summary>

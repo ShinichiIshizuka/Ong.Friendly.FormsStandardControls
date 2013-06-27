@@ -176,7 +176,6 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "radioButton1";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -196,7 +195,7 @@
             this.menu001ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1028, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(1028, 24);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -206,21 +205,19 @@
             this.menu00101ToolStripMenuItem,
             this.menu00102ToolStripMenuItem});
             this.menu001ToolStripMenuItem.Name = "menu001ToolStripMenuItem";
-            this.menu001ToolStripMenuItem.Size = new System.Drawing.Size(72, 22);
+            this.menu001ToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.menu001ToolStripMenuItem.Text = "Menu001";
-            this.menu001ToolStripMenuItem.Click += new System.EventHandler(this.menu001ToolStripMenuItem_Click);
             // 
             // menu00101ToolStripMenuItem
             // 
             this.menu00101ToolStripMenuItem.Name = "menu00101ToolStripMenuItem";
-            this.menu00101ToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.menu00101ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.menu00101ToolStripMenuItem.Text = "Menu001-01";
-            this.menu00101ToolStripMenuItem.Click += new System.EventHandler(this.menu00101ToolStripMenuItem_Click);
             // 
             // menu00102ToolStripMenuItem
             // 
             this.menu00102ToolStripMenuItem.Name = "menu00102ToolStripMenuItem";
-            this.menu00102ToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.menu00102ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.menu00102ToolStripMenuItem.Text = "Menu001-02";
             // 
             // toolStrip1
@@ -233,9 +230,9 @@
             this.toolStripComboBox1,
             this.toolStripComboBox2,
             this.toolStripTextBox1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 26);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1028, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(1028, 25);
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -245,7 +242,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
             // toolStripButton2
@@ -254,7 +251,7 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
             // toolStripButton3
@@ -263,7 +260,7 @@
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
             // toolStripButton4
@@ -273,7 +270,7 @@
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton4.Text = "toolStripButton4";
             // 
             // toolStripComboBox1
@@ -288,7 +285,7 @@
             "c",
             "d"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 26);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
             // 
             // toolStripComboBox2
             // 
@@ -298,12 +295,12 @@
             "b",
             "c"});
             this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 26);
+            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 25);
             // 
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 26);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
             // 
             // label1
             // 
@@ -369,14 +366,12 @@
             this.menuItem1ToolStripMenuItem.Name = "menuItem1ToolStripMenuItem";
             this.menuItem1ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.menuItem1ToolStripMenuItem.Text = "MenuItem1";
-            this.menuItem1ToolStripMenuItem.Click += new System.EventHandler(this.menuItem1ToolStripMenuItem_Click);
             // 
             // menuItem2ToolStripMenuItem
             // 
             this.menuItem2ToolStripMenuItem.Name = "menuItem2ToolStripMenuItem";
             this.menuItem2ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.menuItem2ToolStripMenuItem.Text = "MenuItem2";
-            this.menuItem2ToolStripMenuItem.Click += new System.EventHandler(this.menuItem2ToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -392,10 +387,10 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 21);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(233, 120);
+            this.tabPage1.Size = new System.Drawing.Size(233, 121);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -403,10 +398,10 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 21);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(233, 120);
+            this.tabPage2.Size = new System.Drawing.Size(233, 121);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -414,9 +409,9 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 21);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(233, 120);
+            this.tabPage3.Size = new System.Drawing.Size(233, 121);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
