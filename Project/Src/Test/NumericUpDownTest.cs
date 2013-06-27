@@ -46,63 +46,41 @@ namespace Test
             }
         }
 
-        /*
         /// <summary>
-        /// クリックテスト
+        /// EmulateChangeValueとValueのテスト
         /// </summary>
         [Test]
-        public void TestNumericUpDownButtonClick()
+        public void TestEmulateChangeValueAndValue()
         {
             FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
-            numericUpDown.EmulateUp();
-            numericUpDown.EmulateUp();
-            numericUpDown.EmulateUp();
-            Assert.AreEqual(3, int.Parse(numericUpDown.Text));
-
-            numericUpDown.EmulateDown();
-            Assert.AreEqual(2, int.Parse(numericUpDown.Text));
-            numericUpDown.EmulateDown();
-            numericUpDown.EmulateDown();
-        }
-
-        /// <summary>
-        /// EmulateUp、EmulateDown
-        /// </summary>
-        [Test]
-        public void TestNumericUpDown()
-        {
-            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
-            numericUpDown.EmulateUp(new Async());
-            numericUpDown.EmulateUp(new Async());
-            numericUpDown.EmulateUp(new Async());
-            Assert.AreEqual(3, int.Parse(numericUpDown.Text));
+            numericUpDown.EmulateChangeValue(50);
+            Assert.AreEqual(50, numericUpDown.Value);
 
             // 非同期
             app[GetType(), "ValueChangedEvent"](numericUpDown.AppVar);
-            numericUpDown.EmulateDown(new Async());
-            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK"); 
-            Assert.AreEqual(2, int.Parse(numericUpDown.Text));
-            numericUpDown.EmulateDown();
-            numericUpDown.EmulateDown();
-        }
-
-        /// <summary>
-        /// EmulateChangeTextのテスト
-        /// </summary>
-        [Test]
-        public void TestEmulateChangeText()
-        {
-            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
-            numericUpDown.EmulateChangeText(@"13");
-            Assert.AreEqual(@"13", numericUpDown.Text);
-
-            // 非同期
-            app[GetType(), "ValueChangedEvent"](numericUpDown.AppVar);
-            numericUpDown.EmulateChangeText(@"56", new Async());
+            numericUpDown.EmulateChangeValue(80, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            Assert.AreEqual(@"56", numericUpDown.Text);
+            Assert.AreEqual(80, numericUpDown.Value);
+        }
 
-            numericUpDown.EmulateChangeText(@"");
+        /// <summary>
+        /// Minimumのテスト
+        /// </summary>
+        [Test]
+        public void TestMinimum()
+        {
+            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
+            Assert.AreEqual(0, numericUpDown.Minimum);
+        }
+
+        /// <summary>
+        /// Maximumのテスト
+        /// </summary>
+        [Test]
+        public void TestMaximum()
+        {
+            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
+            Assert.AreEqual(100, numericUpDown.Maximum);
         }
 
         /// <summary>
@@ -121,6 +99,6 @@ namespace Test
                 });
             };
             numericupdown.ValueChanged += handler;
-        }*/
+        }
     }
 }
