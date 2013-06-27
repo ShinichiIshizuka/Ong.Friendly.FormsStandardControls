@@ -38,7 +38,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateChangeValue(\"" + _control.Value + "\"", new TokenAsync(CommaType.Before), ");");
+                AddSentence(new TokenName(), ".EmulateChangeValue(" + _control.Value + "", new TokenAsync(CommaType.Before), ");");
             }
         }
 
