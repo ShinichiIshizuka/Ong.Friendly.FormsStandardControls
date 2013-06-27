@@ -75,8 +75,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="value">チェック状態。</param>
         public void EmulateCheckState(int index, CheckState value)
         {
-            this["Focus"]();
-            this["SetItemCheckState"](index, value);
+            App[GetType(), "EmulateCheckStateInTarget"](AppVar, index, value);
         }
 
         /// <summary>
@@ -88,29 +87,52 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateCheckState(int index ,CheckState value, Async async)
         {
-            this["Focus", new Async()]();
-            this["SetItemCheckState", async](index, value);
+            App[GetType(), "EmulateCheckStateInTarget", async](AppVar, index, value);
         }
 
         /// <summary>
         /// 指定されたインデックスに該当するアイテムを選択状態にします。
         /// </summary>
-        public void EmulateChangeSelectedIndex(int Index)
+        /// <param name="index">インデックス。</param>
+        public void EmulateChangeSelectedIndex(int index)
         {
-            this["Focus"]();
-            this["SelectedIndex"](Index);
+            App[GetType(), "EmulateChangeSelectedIndexInTarget"](AppVar, index);
         }
 
         /// <summary>
         /// 指定されたインデックスに該当するアイテムを選択状態にします。
         /// 非同期に実行します。
         /// </summary>
-        /// <param name="Index">インデックス。</param>
+        /// <param name="index">インデックス。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateChangeSelectedIndex(int Index, Async async)
+        public void EmulateChangeSelectedIndex(int index, Async async)
         {
-            this["Focus", new Async()]();
-            this["SelectedIndex", async](Index);
+            App[GetType(), "EmulateChangeSelectedIndexInTarget", async](AppVar, index);
+        }
+
+        /// <summary>
+        /// チェック状態を設定します。
+        /// 非同期で実行します。
+        /// </summary>
+        /// <param name="checkedListBox">対象のチェックリストボックス。</param>
+        /// <param name="index">インデックス。</param>
+        /// <param name="value">チェック状態。</param>
+        static void EmulateCheckStateInTarget(CheckedListBox checkedListBox, int index, CheckState value)
+        {
+            checkedListBox.Focus();
+            checkedListBox.SetItemCheckState(index, value);
+        }
+
+        /// <summary>
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
+        /// 非同期に実行します。
+        /// </summary>
+        /// <param name="checkedListBox">対象のチェックリストボックス。</param>
+        /// <param name="index">インデックス。</param>
+        static void EmulateChangeSelectedIndexInTarget(CheckedListBox checkedListBox, int index)
+        {
+            checkedListBox.Focus();
+            checkedListBox.SelectedIndex = index;
         }
 
         /// <summary>

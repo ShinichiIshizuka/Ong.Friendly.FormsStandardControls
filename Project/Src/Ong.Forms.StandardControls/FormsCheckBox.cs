@@ -40,7 +40,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="value">チェック状態。</param>
         public void EmulateCheck(CheckState value)
         {
-            this["Focus"]();
             App[GetType(), "EmulateCheckInTarget"](AppVar, value);
         }
 
@@ -52,7 +51,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateCheck(CheckState value, Async async)
         {
-            this["Focus", new Async()]();
             App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
         }
 
@@ -63,6 +61,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="value">チェック状態。</param>
         static void EmulateCheckInTarget(CheckBox checkBox, CheckState value)
         {
+            checkBox.Focus();
             checkBox.CheckState = value;
         }
     }
