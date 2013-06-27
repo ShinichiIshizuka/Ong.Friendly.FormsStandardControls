@@ -21,6 +21,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             _control = (TreeView)ControlObject;
             _control.AfterSelect += AfterSelect;
             _control.AfterExpand += AfterExpand;
+            _control.AfterCollapse += AfterCollapse;
             _control.AfterLabelEdit += AfterLabelEdit;
             _control.AfterCheck += AfterCheck;
         }
@@ -32,6 +33,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             _control.AfterSelect -= AfterSelect;
             _control.AfterExpand -= AfterExpand;
+            _control.AfterCollapse -= AfterCollapse;
             _control.AfterLabelEdit -= AfterLabelEdit;
             _control.AfterCheck -= AfterCheck;
         }
@@ -72,6 +74,20 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             {
                 string from = GetNodePath(e.Node);
                 AddSentence(new TokenName(), from + ".EmulateExpand(", new TokenAsync(CommaType.Non), ");");
+            }
+        }
+
+        /// <summary>
+        /// 閉じたイベント
+        /// </summary>
+        /// <param name="sender">イベント送信元</param>
+        /// <param name="e">イベント内容</param>
+        void AfterCollapse(object sender, TreeViewEventArgs e)
+        {
+            if (_control.Focused)
+            {
+                string from = GetNodePath(e.Node);
+                AddSentence(new TokenName(), from + ".EmulateCollapse(", new TokenAsync(CommaType.Non), ");");
             }
         }
 
