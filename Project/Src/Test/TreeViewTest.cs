@@ -4,6 +4,8 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
+using System.Windows.Forms;
+using Codeer.Friendly.Windows.NativeStandardControls;
 
 namespace Test
 {
@@ -44,111 +46,227 @@ namespace Test
             }
         }
 
-        //@@@
-        // public FormsTreeNode SelectNode
-        //public FormsTreeNode GetItem(params int[] indexs)
-        // public FormsTreeNode GetItem(params string[] keys)
-        // public FormsTreeNode FindItem(params string[] texts)
-        //public void EmulateNodeSelect(FormsTreeNode node)
-
-        //public string Text
-        //public bool IsExpanded
-        //public bool Checked
-
-        //EmulateExpand
-        //EmulateCollapse
-
-        //EmulateEditLabel
-
-
-        /*
         /// <summary>
-        /// ノードをテキストで検索して選択します
+        /// FormsTreeNode SelectNodeのテスト
         /// </summary>
         [Test]
-        public void TestTreeViewFindNodeAndSelect()
+        public void TestFormsTreeNodeSelectNode()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
-            Assert.NotNull(node);
-            treeView1.EmulateNodeSelect(node, new Async());
-        }
-
-        /// <summary>
-        /// 現在選択されているノードのテキストを取得します
-        /// </summary>
-        [Test]
-        public void TestTreeViewSelectNodeText()
-        {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindItem("Parent","Child 1");
-            Assert.NotNull(node);
-            treeView1.EmulateNodeSelect(node, new Async());
+            FormsTreeNode node = treeView1.FindItem("Parent", "Child 1");
+            treeView1.EmulateNodeSelect(node);
             FormsTreeNode selectedNode = treeView1.SelectNode;
             Assert.AreEqual("Child 1", selectedNode.Text);
         }
 
         /// <summary>
-        /// ノードをテキストで検索して選択します
+        /// FormsTreeNode GetItem(params int[] indexs)のテスト
         /// </summary>
         [Test]
-        public void TestTreeViewFindNodeAndSelectAndExpand()
+        public void TestFormsTreeNodeGetItemIndexs()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
-            Assert.NotNull(node);
-            treeView1.EmulateNodeSelect(node, new Async());
-            node.EmulateExpand();
+            FormsTreeNode item = treeView1.GetItem(0, 1);
+            Assert.AreEqual(@"Child 2", item.Text);
         }
 
         /// <summary>
-        /// ノードをテキストで検索して展開したあと閉じます
+        /// FormsTreeNode GetItem(params string[] keys)のテスト
         /// </summary>
-        [Test]
-        public void TestTreeViewFindNodeAndSelectAndExpandCollapse()
+        public void TestFormsTreeNodeGetItemKeys()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
-            Assert.NotNull(node);
-            treeView1.EmulateNodeSelect(node, new Async());
-            node.EmulateExpand();
-            Assert.AreEqual(true, node.IsExpanded);
-            node.EmulateCollapse();
-            Assert.AreEqual(false, node.IsExpanded);
-            node.EmulateExpand(new Async());
-            Assert.AreEqual(true, node.IsExpanded);
-            node.EmulateCollapse(new Async());
-            Assert.AreEqual(false, node.IsExpanded);
+            FormsTreeNode item = treeView1.GetItem(@"Parent", @"Child 2", @"GrandChild");
+            Assert.AreEqual(@"GrandChild", item.Text);
         }
 
         /// <summary>
-        /// ノードラベルを編集します
+        /// FormsTreeNode FindItem(params string[] texts)のテスト
         /// </summary>
         [Test]
-        public void TestTreeViewEditLabel()
+        public void TestFormsTreeNodeFindItemTexts()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
-            Assert.NotNull(node);
-            node.EmulateEditLabel("ChangeText");
-            Assert.AreEqual("ChangeText", node.Text);
-            node.EmulateEditLabel("Child 2", new Async());
-            Assert.AreEqual("Child 2", node.Text);
+            string[] texts = { @"Parent" };
+            FormsTreeNode item = treeView1.GetItem(texts);
+            Assert.AreEqual(@"Parent", item.Text);
         }
 
         /// <summary>
-        /// ノードをチェックします
+        /// EmulateNodeSelect(FormsTreeNode node)のテスト
         /// </summary>
         [Test]
-        public void TestTreeViewCheck()
+        public void TestEmulateNodeSelectNode()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
-            FormsTreeNode node = treeView1.FindItem("Parent","Child 2");
-            Assert.NotNull(node);
-            node.EmulateCheck(true);
-            Assert.IsTrue(node.Checked);
-            node.EmulateCheck(false,new Async());
-            Assert.IsFalse(node.Checked);
-        }*/
+            FormsTreeNode item = treeView1.FindItem("Parent");
+            treeView1.EmulateNodeSelect(item);
+            FormsTreeNode selectitem = treeView1.SelectNode;
+            Assert.AreEqual("Parent", selectitem.Text);
+
+            //非同期
+            app[GetType(), "TreeViewAfterSelectEvent"](treeView1.AppVar);
+            item = treeView1.FindItem("Parent");
+            treeView1.EmulateNodeSelect(item, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            selectitem = treeView1.SelectNode;
+            Assert.AreEqual("Parent", selectitem.Text);
+        }
+
+        /// <summary>
+        /// 選択時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="treeView">ツリービュー</param>
+        static void TreeViewAfterSelectEvent(TreeView treeView)
+        {
+            TreeViewEventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                treeView.BeginInvoke((MethodInvoker)delegate
+                {
+                    treeView.AfterSelect -= handler;
+                });
+            };
+            treeView.AfterSelect += handler;
+        }
+
+        /// <summary>
+        /// string Textのテスト
+        /// </summary>
+        [Test]
+        public void TestStringText()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeNode item = treeView1.FindItem("Parent");
+            treeView1.EmulateNodeSelect(item);
+            FormsTreeNode selectitem = treeView1.SelectNode;
+            Assert.AreEqual("Parent", selectitem.Text);
+        }
+
+        /// <summary>
+        /// bool IsExpandedのテスト
+        /// </summary>
+        [Test]
+        public void TestIsExpanded()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeNode item = treeView1.FindItem("Parent");
+            item.EmulateExpand();
+            Assert.AreEqual(true, item.IsExpanded);
+        }
+
+        /// <summary>
+        /// bool Checkedのテスト
+        /// </summary>
+        [Test]
+        public void TestChecked()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeNode item = treeView1.FindItem("Parent");
+            item.EmulateCheck(true);
+            Assert.AreEqual(true, item.Checked);
+        }
+
+        /// <summary>
+        /// EmulateExpandのテスト
+        /// </summary>
+        [Test]
+        public void TestEmulateExpand()
+        {
+            //非同期
+            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            app[GetType(), "TreeViewAfterExpandEvent"](treeView1.AppVar);
+            FormsTreeNode item = treeView1.FindItem("Child 2");
+            item.EmulateExpand(new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(true, item.IsExpanded);
+        }
+
+        /// <summary>
+        /// Expand時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="treeView">ツリービュー</param>
+        static void TreeViewAfterExpandEvent(TreeView treeView)
+        {
+            TreeViewEventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                treeView.BeginInvoke((MethodInvoker)delegate
+                {
+                    treeView.AfterExpand -= handler;
+                });
+            };
+            treeView.AfterSelect += handler;
+        }
+
+        /// <summary>
+        /// EmulateCollapseのテスト
+        /// </summary>
+        public void TestEmulateCollapse()
+        {
+            //非同期
+            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            app[GetType(), "TreeViewAfterCollapse"](treeView1.AppVar);
+            FormsTreeNode item = treeView1.FindItem("Child 2");
+            item.EmulateCollapse(new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(false, item.IsExpanded);
+        }
+
+        /// <summary>
+        /// Expand時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="treeView">ツリービュー</param>
+        static void TreeViewAfterCollapse(TreeView treeView)
+        {
+            TreeViewEventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                treeView.BeginInvoke((MethodInvoker)delegate
+                {
+                    treeView.AfterCollapse -= handler;
+                });
+            };
+            treeView.AfterCollapse += handler;
+        }
+
+        /// <summary>
+        /// EmulateEditLabelのテスト
+        /// </summary>
+        [Test]
+        public void TestEmulateEditLabel()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeNode item = treeView1.FindItem("Parent");
+            item.EmulateEditLabel(@"ChangeText");
+            Assert.AreEqual(@"ChangeText", item.Text);
+
+            //非同期
+            app[GetType(), "TreeViewAfterCollapse"](treeView1.AppVar);
+            item.EmulateEditLabel(@"PPPPP", new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(@"PPPPP", item.Text);
+        }
+
+        /// <summary>
+        /// EditLabel時にメッセージボックスを表示する
+        /// </summary>
+        /// <param name="treeView">ツリービュー</param>
+        static void TreeViewAfterLabelEditEvent(TreeView treeView)
+        {
+            NodeLabelEditEventHandler handler = null;
+            handler = delegate
+            {
+                MessageBox.Show("");
+                treeView.BeginInvoke((MethodInvoker)delegate
+                {
+                    treeView.AfterLabelEdit -= handler;
+                });
+            };
+            treeView.AfterLabelEdit += handler;
+        }
     }
 }
