@@ -5,8 +5,6 @@ using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 
-//@@@やっぱりできるだけ、1コールで処理を完結できるようにする
-
 namespace Ong.Friendly.FormsStandardControls
 {
     /// <summary>
@@ -209,8 +207,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateClearSelection()
         {
-            this["Focus"]();
-            this["ClearSelection"]();
+            App[GetType(), "EmulateClearSelectionInTarget"](AppVar);
         }
 
         /// <summary>
@@ -219,8 +216,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateClearSelection(Async async)
         {
-            this["Focus"]();
-            this["ClearSelection", async]();
+            App[GetType(), "EmulateClearSelectionInTarget", async](AppVar);
         }
 
         /// <summary>
@@ -266,10 +262,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateDelete()
         {
-            this["Focus"]();
-            this["Select"]();
-            this["OnKeyDown"](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
-            this["OnKeyUp"](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
+            App[GetType(), "EmulateDeleteInTarget"](AppVar);
         }
 
         /// <summary>
@@ -278,10 +271,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateDelete(Async async)
         {
-            this["Focus", new Async()]();
-            this["Select", new Async()]();
-            this["OnKeyDown", new Async()](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
-            this["OnKeyUp", async](App.Dim(new NewInfo<KeyEventArgs>(Keys.Delete)));
+            App[GetType(), "EmulateDeleteInTarget", async](AppVar);
         }
 
         /// <summary>
@@ -486,6 +476,27 @@ namespace Ong.Friendly.FormsStandardControls
             {
                 grid[cell.Col, cell.Row].Selected = cell.Selected;
             }
+        }
+
+        /// <summary>
+        /// 選択状態を解除します。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        static void EmulateClearSelectionInTarget(DataGridView grid)
+        {
+            grid.Focus();
+            grid.ClearSelection();
+        }
+
+        /// <summary>
+        /// Delete操作をエミュレートします。
+        /// </summary>
+        /// <param name="grid">グリッド。</param>
+        static void EmulateDeleteInTarget(DataGridView grid)
+        {
+            grid.Focus();
+            grid.Select(); grid.GetType().GetMethod("OnKeyDown", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Delete) });
+            grid.GetType().GetMethod("OnKeyUp", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(grid, new object[] { new KeyEventArgs(Keys.Delete) });
         }
 
         /// <summary>
