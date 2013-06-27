@@ -38,7 +38,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateChangeText(\"" + _control.Value + "\"", new TokenAsync(CommaType.Before), ");");
+                AddSentence(new TokenName(), ".EmulateChangeValue(\"" + _control.Value + "\"", new TokenAsync(CommaType.Before), ");");
             }
         }
 
@@ -48,7 +48,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="list">コードリスト。</param>
         public override void Optimize(List<Sentence> code)
         {
-            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateChangeText");
+            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateChangeValue");
         }
     }
 }
