@@ -70,7 +70,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="value">チェック状態。</param>
         public void EmulateCheck(bool value)
         {
-            App[GetType(), "EmulateCheckInTarget"](AppVar, value);
+            App[GetType(), "EmulateCheckInTarget"](_listView, AppVar, value);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateCheck(bool value, Async async)
         {
-            App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
+            App[GetType(), "EmulateCheckInTarget", async](_listView, AppVar, value);
         }
 
         /// <summary>
@@ -153,10 +153,12 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// チェック状態を設定します。
         /// </summary>
+        /// <param name="listView">リストビュー。</param>
         /// <param name="listviewitem">リストビューアイテム。</param>
         /// <param name="value">チェック状態。</param>
-        static void EmulateCheckInTarget(ListViewItem listviewitem, bool value)
+        static void EmulateCheckInTarget(ListView listView, ListViewItem listviewitem, bool value)
         {
+            listView.Focus();
             listviewitem.Checked = value;
         }
 

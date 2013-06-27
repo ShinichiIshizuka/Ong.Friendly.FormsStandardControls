@@ -92,7 +92,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
-            this["Focus"]();
             App[GetType(), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
         }
 
@@ -104,7 +103,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期オブジェクト</param>
         public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
-            this["Focus", new Async()]();
             App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
         }
 
@@ -134,6 +132,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
         private static void EmulateChangeSelectedStateInTarget(ListView listview, int index, bool isSelect)
         {
+            listview.Focus();
             listview.Items[index].Selected = isSelect;
         }
     }
