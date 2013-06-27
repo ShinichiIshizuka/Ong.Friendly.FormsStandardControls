@@ -52,7 +52,7 @@ namespace Test
         [Test]
         public void TestEmulateChangeValueAndValue()
         {
-            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
+            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown"]());
             numericUpDown.EmulateChangeValue(50);
             Assert.AreEqual(50, numericUpDown.Value);
 
@@ -69,7 +69,7 @@ namespace Test
         [Test]
         public void TestMinimum()
         {
-            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
+            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown"]());
             Assert.AreEqual(0, numericUpDown.Minimum);
         }
 
@@ -79,7 +79,7 @@ namespace Test
         [Test]
         public void TestMaximum()
         {
-            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown1"]());
+            FormsNumericUpDown numericUpDown = new FormsNumericUpDown(app, testDlg["numericUpDown"]());
             Assert.AreEqual(100, numericUpDown.Maximum);
         }
 
