@@ -204,19 +204,20 @@ namespace Test
         /// <summary>
         /// EmulateCollapseのテスト
         /// </summary>
+        [Test]
         public void TestEmulateCollapse()
         {
             //非同期
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
             app[GetType(), "TreeViewAfterCollapse"](treeView1.AppVar);
-            FormsTreeNode item = treeView1.FindItem("Child 2");
+            FormsTreeNode item = treeView1.FindItem("Parent");
             item.EmulateCollapse(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             Assert.AreEqual(false, item.IsExpanded);
         }
 
         /// <summary>
-        /// Expand時にメッセージボックスを表示する
+        /// Collapse時にメッセージボックスを表示する
         /// </summary>
         /// <param name="treeView">ツリービュー</param>
         static void TreeViewAfterCollapse(TreeView treeView)
