@@ -1,6 +1,7 @@
 ﻿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -25,68 +26,48 @@ namespace Ong.Friendly.FormsStandardControls
             : base(app, appVar) { }
 
         /// <summary>
-        /// △をクリックします。
+        /// 値を取得
         /// </summary>
-        public void EmulateUp()
+        public decimal Value { get { return (decimal)this["Value"]().Core; } }
+
+        /// <summary>
+        /// 最小値を取得
+        /// </summary>
+        public decimal Minimum { get { return (decimal)this["Minimum"]().Core; } }
+
+        /// <summary>
+        /// 最大値を取得
+        /// </summary>
+        public decimal Maximum { get { return (decimal)this["Maximum"]().Core; } }
+
+        /// <summary>
+        /// 値を変更します。
+        /// </summary>
+        /// <param name="value">値。</param>
+        public void EmulateChangeValue(decimal value)
         {
-            this["Focus"]();
-            AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)1));
-            this["upDownButtons"]()["OnUpDown"](args);
+            App[GetType(), "EmulateChangeValueInTarget"](AppVar, value);
         }
 
         /// <summary>
-        /// △をクリックします。
-        /// 非同期で実行します。
+        /// 値を変更します。
         /// </summary>
+        /// <param name="value">値。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateUp(Async async)
+        public void EmulateChangeValue(decimal value, Async async)
         {
-            this["Focus", new Async()]();
-            AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)1));
-            this["upDownButtons"]()["OnUpDown", async](args);
+            App[GetType(), "EmulateChangeValueInTarget", async](AppVar, value);
         }
 
         /// <summary>
-        /// ▽をクリックします。
+        /// 値を変更します。
         /// </summary>
-        public void EmulateDown()
+        /// <param name="numeric">コントロール。</param>
+        /// <param name="value">値。</param>
+        static void EmulateChangeValueInTarget(NumericUpDown numeric, decimal value)
         {
-            this["Focus"]();
-            AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)2));
-            this["upDownButtons"]()["OnUpDown"](args);
-        }
-
-        /// <summary>
-        /// ▽をクリックします。
-        /// 非同期で実行します。
-        /// </summary>
-        /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateDown(Async async)
-        {
-            this["Focus", new Async()]();
-            AppVar args = App.Dim(new NewInfo("System.Windows.Forms.UpDownEventArgs", (int)2));
-            this["upDownButtons"]()["OnUpDown", async](args);
-        }
-
-        /// <summary>
-        /// テキストを変更します。
-        /// </summary>
-        /// <param name="text">テキスト。</param>
-        public void EmulateChangeText(string text)
-        {
-            this["Focus"]();
-            this["Text"](text);
-        }
-
-        /// <summary>
-        /// テキストを変更します。
-        /// </summary>
-        /// <param name="text">テキスト。</param>
-        /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateChangeText(string text, Async async)
-        {
-            this["Focus", new Async()]();
-            this["Text", async](text);
+            numeric.Focus();
+            numeric.Value = value;
         }
     }
 }
