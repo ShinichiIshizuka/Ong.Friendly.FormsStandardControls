@@ -209,6 +209,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         public void EmulateClearSelection()
         {
+            this["Focus"]();
             this["ClearSelection"]();
         }
 
@@ -218,6 +219,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateClearSelection(Async async)
         {
+            this["Focus"]();
             this["ClearSelection", async]();
         }
 
@@ -237,8 +239,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="cells">選択セル情報。</param>
         public void EmulateChangeCellSelected(Async async, params CellSelectedInfo[] cells)
         {
-            App[GetType(), "EmulateChangeCellSelectedInTarget"](AppVar, cells);
+            App[GetType(), "EmulateChangeCellSelectedInTarget", async](AppVar, cells);
         }
+
+        //@@@RowSelectとCellSelectは何かインターフェイス変。他のと統一性がない。
 
         /// <summary>
         /// 行選択状態を変更します。
@@ -256,7 +260,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="rows">選択行情報。</param>
         public void EmulateChangeRowSelected(Async async, params RowSelectedInfo[] rows)
         {
-            App[GetType(), "EmulateChangeRowSelectedInTarget"](AppVar, rows);
+            App[GetType(), "EmulateChangeRowSelectedInTarget", async](AppVar, rows);
         }
 
         /// <summary>
@@ -294,6 +298,7 @@ namespace Ong.Friendly.FormsStandardControls
             {
                 list.Add(element.Index);
             }
+            list.Sort();
             return list.ToArray();
         }
 
@@ -321,8 +326,8 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>テキスト配列。</returns>
         static string[][] GetTextInTarget(DataGridView datagridview, int startCol, int startRow, int endCol, int endRow)
         {
-            int colCount = endRow - startRow + 1;
-            int rowCount = endRow - endCol + 1;
+            int colCount = endCol - startCol+ 1;
+            int rowCount = endRow - startRow + 1;
             string[][] texts = new string[rowCount][];
             for (int i = 0; i < rowCount; i++)
             {
@@ -349,6 +354,28 @@ namespace Ong.Friendly.FormsStandardControls
             {
                 list.Add(new Cell(element.ColumnIndex, element.RowIndex));
             }
+
+            //Col,Rowでソート
+            list.Sort(delegate(Cell data1, Cell data2)
+            {
+                if (data1.Col < data2.Col)
+                {
+                    return -1;
+                }
+                if (data2.Col < data1.Col)
+                {
+                    return 1;
+                }
+                if (data1.Row < data2.Row)
+                {
+                    return -1;
+                }
+                if (data2.Row < data1.Row)
+                {
+                    return 1;
+                }
+                return 0;
+            });
             return list.ToArray();
         }
 

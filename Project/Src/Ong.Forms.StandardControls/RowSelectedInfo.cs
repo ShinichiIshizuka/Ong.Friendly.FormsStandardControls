@@ -24,6 +24,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// コンストラクタです。
         /// </summary>
+        public RowSelectedInfo() { }
+
+        /// <summary>
+        /// コンストラクタです。
+        /// </summary>
         /// <param name="row">列</param>
         /// <param name="selected">選択状態</param>
         public RowSelectedInfo(int row, bool selected)

@@ -30,6 +30,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// コンストラクタです。
         /// </summary>
+        public CellSelectedInfo() { }
+
+        /// <summary>
+        /// コンストラクタです。
+        /// </summary>
         /// <param name="col">行。</param>
         /// <param name="row">列。</param>
         /// <param name="selected">選択状態。</param>
