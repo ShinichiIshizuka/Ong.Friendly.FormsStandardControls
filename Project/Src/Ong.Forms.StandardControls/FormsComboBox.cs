@@ -71,8 +71,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="text">テキスト。</param>
         public void EmulateChangeText(string text)
         {
-            this["Focus"]();
-            this["Text"](text);
+            App[GetType(), "EmulateChangeTextInTarget"](AppVar, text);
         }
 
         /// <summary>
@@ -82,8 +81,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateChangeText(string text, Async async)
         {
-            this["Focus", new Async()]();
-            this["Text", async](text);
+            App[GetType(), "EmulateChangeTextInTarget", async](AppVar, text);
         }
 
         /// <summary>
@@ -92,7 +90,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="index">インデックス。</param>
         public void EmulateChangeSelect(int index)
         {
-            this["Focus"]();
             App[GetType(), "EmulateChangeSelectInTarget"](AppVar, index);
         }
 
@@ -104,8 +101,18 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateChangeSelect(int index, Async async)
         {
-            this["Focus", new Async()]();
             App[GetType(), "EmulateChangeSelectInTarget", async](AppVar, index);
+        }
+
+        /// <summary>
+        /// テキストを変更します。
+        /// </summary>
+        /// <param name="comboBox">コンボボックス。</param>
+        /// <param name="text">テキスト。</param>
+        static void EmulateChangeTextInTarget(ComboBox comboBox, string text)
+        {
+            comboBox.Focus();
+            comboBox.Text = text;
         }
 
         /// <summary>
@@ -115,6 +122,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="index">インデックス。</param>
         static void EmulateChangeSelectInTarget(ComboBox comboBox, int index)
         {
+            comboBox.Focus();
             comboBox.SelectedIndex = index;
             comboBox.GetType().GetMethod("OnSelectionChangeCommitted", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(comboBox, new object[] { EventArgs.Empty });
         }
