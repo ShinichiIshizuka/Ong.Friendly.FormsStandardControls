@@ -52,8 +52,8 @@ namespace Test
         [Test]
         public void TestTabCount()
         {
-            FormsTabControl tabcontrol1 = new FormsTabControl(app, testDlg["tabControl1"]());
-            Assert.AreEqual(3, tabcontrol1.TabCount);
+            FormsTabControl tabControl = new FormsTabControl(app, testDlg["tabControl"]());
+            Assert.AreEqual(3, tabControl.TabCount);
         }
 
         /// <summary>
@@ -62,9 +62,9 @@ namespace Test
         [Test]
         public void TestSelectedIndex()
         {
-            FormsTabControl tabcontrol1 = new FormsTabControl(app, testDlg["tabControl1"]());
-            tabcontrol1.EmulateTabSelect(2);
-            Assert.AreEqual(2, tabcontrol1.SelectedIndex);
+            FormsTabControl tabControl = new FormsTabControl(app, testDlg["tabControl"]());
+            tabControl.EmulateTabSelect(2);
+            Assert.AreEqual(2, tabControl.SelectedIndex);
         }
 
         /// <summary>
@@ -73,15 +73,15 @@ namespace Test
         [Test]
         public void TestTabSelect()
         {
-            FormsTabControl tabcontrol1 = new FormsTabControl(app, testDlg["tabControl1"]());
-            tabcontrol1.EmulateTabSelect(1);
-            Assert.AreEqual(1, tabcontrol1.SelectedIndex);
+            FormsTabControl tabControl = new FormsTabControl(app, testDlg["tabControl"]());
+            tabControl.EmulateTabSelect(1);
+            Assert.AreEqual(1, tabControl.SelectedIndex);
 
             //”ñ“¯Šú
-            app[GetType(), "TabSelectEvent"](tabcontrol1.AppVar);
-            tabcontrol1.EmulateTabSelect(2, new Async());
+            app[GetType(), "TabSelectEvent"](tabControl.AppVar);
+            tabControl.EmulateTabSelect(2, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            Assert.AreEqual(2, tabcontrol1.SelectedIndex);
+            Assert.AreEqual(2, tabControl.SelectedIndex);
         }
 
         /// <summary>

@@ -52,17 +52,17 @@ namespace Test
         [Test]
         public void TestEmulateChangeText()
         {
-            FormsRichTextBox richtextbox1 = new FormsRichTextBox(app, testDlg["richTextBox1"]());
-            richtextbox1.EmulateChangeText("RICHTEXTBOX1");
-            string richtextbox1Text = richtextbox1.Text;
-            Assert.AreEqual("RICHTEXTBOX1", richtextbox1Text);
+            FormsRichTextBox richTextBox = new FormsRichTextBox(app, testDlg["richTextBox"]());
+            richTextBox.EmulateChangeText("richTextBox");
+            string richTextBoxText = richTextBox.Text;
+            Assert.AreEqual("richTextBox", richTextBoxText);
 
             // ”ñ“¯Šú
-            app[GetType(), "ChangeTextEvent"](richtextbox1.AppVar);
-            richtextbox1.EmulateChangeText("RICHTEXTBOX11", new Async());
+            app[GetType(), "ChangeTextEvent"](richTextBox.AppVar);
+            richTextBox.EmulateChangeText("richTextBox1", new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            richtextbox1Text = richtextbox1.Text;
-            Assert.AreEqual("RICHTEXTBOX11", richtextbox1Text);
+            richTextBoxText = richTextBox.Text;
+            Assert.AreEqual("richTextBox1", richTextBoxText);
         }
 
         /// <summary>

@@ -52,17 +52,17 @@ namespace Test
         [Test]
         public void TestEmulateChangeText()
         {
-            FormsTextBox textbox1 = new FormsTextBox(app, testDlg["textBox1"]());
-            textbox1.EmulateChangeText("TEXTBOX1");
-            string textbox1Text = textbox1.Text;
-            Assert.AreEqual("TEXTBOX1", textbox1Text);
+            FormsTextBox textBox = new FormsTextBox(app, testDlg["textBox"]());
+            textBox.EmulateChangeText("textBox");
+            string textBoxText = textBox.Text;
+            Assert.AreEqual("textBox", textBoxText);
 
             // ”ñ“¯Šú
-            app[GetType(), "ChangeTextEvent"](textbox1.AppVar);
-            textbox1.EmulateChangeText("TEXTBOX11", new Async());
+            app[GetType(), "ChangeTextEvent"](textBox.AppVar);
+            textBox.EmulateChangeText("textBox1", new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            textbox1Text = textbox1.Text;
-            Assert.AreEqual("TEXTBOX11", textbox1Text);
+            textBoxText = textBox.Text;
+            Assert.AreEqual("textBox1", textBoxText);
         }
 
         /// <summary>

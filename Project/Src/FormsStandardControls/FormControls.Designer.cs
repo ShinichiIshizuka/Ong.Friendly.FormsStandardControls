@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormControls));
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button = new System.Windows.Forms.Button();
+            this.checkBox = new System.Windows.Forms.CheckBox();
             this.treeView2 = new System.Windows.Forms.TreeView();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox = new System.Windows.Forms.ComboBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -52,14 +52,14 @@
             this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItem1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -73,31 +73,31 @@
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // button
             // 
-            this.button1.Location = new System.Drawing.Point(3, 59);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 30);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button.Location = new System.Drawing.Point(3, 59);
+            this.button.Name = "button";
+            this.button.Size = new System.Drawing.Size(111, 30);
+            this.button.TabIndex = 0;
+            this.button.Text = "button";
+            this.button.UseVisualStyleBackColor = true;
+            this.button.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBox1
+            // checkBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(120, 67);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 16);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox.AutoSize = true;
+            this.checkBox.Location = new System.Drawing.Point(120, 67);
+            this.checkBox.Name = "checkBox";
+            this.checkBox.Size = new System.Drawing.Size(74, 16);
+            this.checkBox.TabIndex = 2;
+            this.checkBox.Text = "checkBox";
+            this.checkBox.UseVisualStyleBackColor = true;
+            this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // treeView2
             // 
@@ -119,17 +119,17 @@
             this.treeView1.Size = new System.Drawing.Size(112, 178);
             this.treeView1.TabIndex = 5;
             // 
-            // comboBox1
+            // comboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox.FormattingEnabled = true;
+            this.comboBox.Items.AddRange(new object[] {
             "Item-1",
             "Item-2",
             "Item-3"});
-            this.comboBox1.Location = new System.Drawing.Point(209, 65);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(114, 20);
-            this.comboBox1.TabIndex = 7;
+            this.comboBox.Location = new System.Drawing.Point(209, 65);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(114, 20);
+            this.comboBox.TabIndex = 7;
             // 
             // listBox1
             // 
@@ -311,21 +311,21 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "label1";
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(359, 364);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(155, 19);
-            this.textBox1.TabIndex = 17;
-            this.textBox1.Text = "TEXTBOX";
+            this.textBox.Location = new System.Drawing.Point(359, 364);
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(155, 19);
+            this.textBox.TabIndex = 17;
+            this.textBox.Text = "TEXTBOX";
             // 
-            // richTextBox1
+            // richTextBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(359, 324);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(156, 34);
-            this.richTextBox1.TabIndex = 18;
-            this.richTextBox1.Text = "RICHTEXTBOX";
+            this.richTextBox.Location = new System.Drawing.Point(359, 324);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(156, 34);
+            this.richTextBox.TabIndex = 18;
+            this.richTextBox.Text = "RICHTEXTBOX";
             // 
             // checkedListBox1
             // 
@@ -359,30 +359,30 @@
             this.menuItem1ToolStripMenuItem,
             this.menuItem2ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(144, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 48);
             // 
             // menuItem1ToolStripMenuItem
             // 
             this.menuItem1ToolStripMenuItem.Name = "menuItem1ToolStripMenuItem";
-            this.menuItem1ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.menuItem1ToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.menuItem1ToolStripMenuItem.Text = "MenuItem1";
             // 
             // menuItem2ToolStripMenuItem
             // 
             this.menuItem2ToolStripMenuItem.Name = "menuItem2ToolStripMenuItem";
-            this.menuItem2ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.menuItem2ToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.menuItem2ToolStripMenuItem.Text = "MenuItem2";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(550, 324);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(241, 146);
-            this.tabControl1.TabIndex = 23;
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Location = new System.Drawing.Point(550, 324);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(241, 146);
+            this.tabControl.TabIndex = 23;
             // 
             // tabPage1
             // 
@@ -480,21 +480,21 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.richTextBox);
+            this.Controls.Add(this.textBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox);
             this.Controls.Add(this.treeView2);
             this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.checkBox);
+            this.Controls.Add(this.button);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormControls";
@@ -505,7 +505,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -515,11 +515,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button;
+        private System.Windows.Forms.CheckBox checkBox;
         private System.Windows.Forms.TreeView treeView2;
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -527,18 +527,18 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.ToolStripMenuItem menu001ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menu00101ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menu00102ToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuItem1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItem2ToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;

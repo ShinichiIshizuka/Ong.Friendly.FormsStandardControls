@@ -55,7 +55,7 @@ namespace Test
         [Test]
         public void TestCheckBoxCheck()
         {
-            FormsCheckBox checkbox = new FormsCheckBox(app, testDlg["checkBox1"]());
+            FormsCheckBox checkbox = new FormsCheckBox(app, testDlg["checkBox"]());
             checkbox.EmulateCheck(CheckState.Checked);
             Assert.AreEqual(CheckState.Checked, checkbox.CheckState);
 

@@ -53,8 +53,8 @@ namespace Test
         [Test]
         public void TestItemCount()
         {
-            FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
-            int itemCount = combobox1.ItemCount;
+            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            int itemCount = comboBox.ItemCount;
             Assert.AreEqual(3, itemCount);
         }
 
@@ -64,9 +64,9 @@ namespace Test
         [Test]
         public void TestSelectedItemIndex()
         {
-            FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
-            combobox1.EmulateChangeSelect(1);
-            int selectIndex = combobox1.SelectedItemIndex;
+            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            comboBox.EmulateChangeSelect(1);
+            int selectIndex = comboBox.SelectedItemIndex;
             Assert.AreEqual(1, selectIndex);
         }
 
@@ -76,8 +76,8 @@ namespace Test
         [Test]
         public void TestFindString()
         {
-            FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
-            int findindex = combobox1.FindString("Item-2",0);
+            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            int findindex = comboBox.FindString("Item-2",0);
             Assert.AreEqual(1, findindex);
         }
 
@@ -87,9 +87,9 @@ namespace Test
         [Test]
         public void TestGetItemText()
         {
-            FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
-            string combobox1Text = combobox1.GetItemText(2);
-            Assert.AreEqual("Item-3", combobox1Text);
+            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            string comboBoxText = comboBox.GetItemText(2);
+            Assert.AreEqual("Item-3", comboBoxText);
         }
 
         /// <summary>
@@ -98,15 +98,15 @@ namespace Test
         [Test]
         public void TestEmulateChangeSelect()
         {
-            FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
-            combobox1.EmulateChangeSelect(2);
-            Assert.AreEqual(2, combobox1.SelectedItemIndex);
+            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            comboBox.EmulateChangeSelect(2);
+            Assert.AreEqual(2, comboBox.SelectedItemIndex);
 
             //”ñ“¯Šú
-            app[GetType(), "SelectEvent"](combobox1.AppVar);
-            combobox1.EmulateChangeSelect(1, new Async());
+            app[GetType(), "SelectEvent"](comboBox.AppVar);
+            comboBox.EmulateChangeSelect(1, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            Assert.AreEqual(1, combobox1.SelectedItemIndex);
+            Assert.AreEqual(1, comboBox.SelectedItemIndex);
         }
 
         /// <summary>
@@ -133,15 +133,15 @@ namespace Test
         [Test]
         public void TestEmulateChangeText()
         {
-            FormsComboBox combobox1 = new FormsComboBox(app, testDlg["comboBox1"]());
-            combobox1.EmulateChangeText("12345");
-            Assert.AreEqual("12345", combobox1.Text);
+            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            comboBox.EmulateChangeText("12345");
+            Assert.AreEqual("12345", comboBox.Text);
 
             //”ñ“¯Šú
-            app[GetType(), "TextEvent"](combobox1.AppVar);
-            combobox1.EmulateChangeText("66666",new Async());
+            app[GetType(), "TextEvent"](comboBox.AppVar);
+            comboBox.EmulateChangeText("66666",new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            Assert.AreEqual("66666", combobox1.Text);
+            Assert.AreEqual("66666", comboBox.Text);
         }
 
         /// <summary>
