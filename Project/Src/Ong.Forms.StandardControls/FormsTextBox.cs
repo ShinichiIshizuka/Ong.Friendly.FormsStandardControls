@@ -1,6 +1,7 @@
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -27,23 +28,31 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// テキストを変更します。
         /// </summary>
-        /// <param name="newText">新たなテキスト。</param>
-        public void EmulateChangeText(string newText)
+        /// <param name="text">テキスト。</param>
+        public void EmulateChangeText(string text)
         {
-            this["Focus"]();
-            this["Text"](newText);
+            App[GetType(), "EmulateChangeTextInTarget"](AppVar, text);
         }
 
         /// <summary>
         /// テキストを変更します。
-        /// 非同期で実行します。
         /// </summary>
-        /// <param name="newText">新たなテキスト。</param>
+        /// <param name="text">テキスト。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateChangeText(string newText, Async async)
+        public void EmulateChangeText(string text, Async async)
         {
-            this["Focus", new Async()]();
-            this["Text", async](newText);
+            App[GetType(), "EmulateChangeTextInTarget", async](AppVar, text);
+        }
+
+        /// <summary>
+        /// テキストを変更します。
+        /// </summary>
+        /// <param name="textBox">リッチテキストボックス。</param>
+        /// <param name="text">テキスト。</param>
+        static void EmulateChangeTextInTarget(TextBox textBox, string text)
+        {
+            textBox.Focus();
+            textBox.Text = text;
         }
     }
 }
