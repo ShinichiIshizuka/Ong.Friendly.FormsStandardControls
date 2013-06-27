@@ -1,6 +1,7 @@
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -48,8 +49,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="index">タブインデックス（０始まり）。</param>
         public void EmulateTabSelect(int index)
         {
-            this["Focus"]();
-            this["SelectedIndex"](index);
+            App[GetType(), "EmulateTabSelectInTarget"](AppVar, index);
         }
 
         /// <summary>
@@ -59,8 +59,18 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期オブジェクト。</param>
         public void EmulateTabSelect(int index, Async async)
         {
-            this["Focus", new Async()]();
-            this["SelectedIndex", async](index);
+            App[GetType(), "EmulateTabSelectInTarget", async](AppVar, index);
+        }
+
+        /// <summary>
+        /// 指定のインデックスのアイテムを選択します。
+        /// </summary>
+        /// <param name="tabControl">タブコントロール。</param>
+        /// <param name="index">インデックス。</param>
+        static void EmulateTabSelectInTarget(TabControl tabControl, int index)
+        {
+            tabControl.Focus();
+            tabControl.SelectedIndex = index;
         }
     }
 }
