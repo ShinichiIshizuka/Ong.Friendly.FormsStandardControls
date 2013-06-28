@@ -103,7 +103,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 string from = GetNodePath(e.Node);
                 AddSentence(new TokenName(), from + ".EmulateCheck(" + 
                     e.Node.Checked.ToString(CultureInfo.CurrentCulture).ToLower(CultureInfo.CurrentCulture),
-                    new TokenAsync(CommaType.Non), ");");
+                    new TokenAsync(CommaType.Before), ");");
             }
         }
 

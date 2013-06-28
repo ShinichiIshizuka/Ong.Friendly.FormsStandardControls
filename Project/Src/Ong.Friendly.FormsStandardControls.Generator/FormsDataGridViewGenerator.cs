@@ -99,7 +99,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             if ((_control[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell) ||
                 (_control[e.ColumnIndex, e.RowIndex] is DataGridViewLinkCell))
             {
-                AddSentence(new TokenName(), ".EmulateClickCellContent(" + e.ColumnIndex + ", " + e.RowIndex, new TokenAsync(CommaType.Before) + ");");
+                AddSentence(new TokenName(), ".EmulateClickCellContent(" + e.ColumnIndex + ", " + e.RowIndex, new TokenAsync(CommaType.Before), ");");
             }
         }
 
@@ -116,7 +116,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 object obj = _control[e.ColumnIndex, e.RowIndex].Value;
                 string value = (obj == null) ? string.Empty : obj.ToString();
                 AddSentence(new TokenName(), ".EmulateChangeCellText(" + e.ColumnIndex + ", " + e.RowIndex + ", " +
-                    GenerateUtility.AdjustText(value), new TokenAsync(CommaType.Before) + ");");
+                    GenerateUtility.AdjustText(value), new TokenAsync(CommaType.Before), ");");
                 return;
             }
             DataGridViewComboBoxCell comboBox = _control[e.ColumnIndex, e.RowIndex] as DataGridViewComboBoxCell;
@@ -136,7 +136,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 }
                 if (index != -1)
                 {
-                    AddSentence(new TokenName(), ".EmulateChangeCellComboSelect(" + e.ColumnIndex + ", " + e.RowIndex + ", " + index, new TokenAsync(CommaType.Before) + ");");
+                    AddSentence(new TokenName(), ".EmulateChangeCellComboSelect(" + e.ColumnIndex + ", " + e.RowIndex + ", " + index, new TokenAsync(CommaType.Before), ");");
                 }
                 return;
             }
@@ -147,7 +147,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 bool value = (obj != null && obj is bool) ? (bool)obj : false;
                 AddSentence(new TokenName(), ".EmulateCellCheck(" +
                     e.ColumnIndex + ", " + e.RowIndex + ", " + value.ToString(CultureInfo.CurrentCulture).ToLower(CultureInfo.CurrentCulture),
-                    new TokenAsync(CommaType.Before) + ");");
+                    new TokenAsync(CommaType.Before), ");");
                 return;
             }
         }
@@ -221,7 +221,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             {
                 return;
             }
-            AddSentence(new TokenName(), ".EmulateChangeCellSelected(", new TokenAsync(CommaType.After) ,args + ");");
+            AddSentence(new TokenName(), ".EmulateChangeCellSelected(", new TokenAsync(CommaType.After), args + ");");
         }
 
         /// <summary>
