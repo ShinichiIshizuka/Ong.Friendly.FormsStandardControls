@@ -55,7 +55,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="item">アイテム。</param>
         static void EmulateClickInTarget(ToolStripItem item)
         {
-            item.Owner.Focus();
+            if (item.Owner != null)
+            {
+                item.Owner.Focus();
+            }
             item.PerformClick();
         }
     }

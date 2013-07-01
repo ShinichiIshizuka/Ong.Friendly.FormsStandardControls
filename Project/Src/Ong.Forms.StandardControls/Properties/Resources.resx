@@ -120,4 +120,10 @@
   <data name="ErrorCheckSetting" xml:space="preserve">
     <value>チェック状態にできませんでした。</value>
   </data>
+  <data name="ErrorNotSetListView" xml:space="preserve">
+    <value>アイテムを保持するListViewが設定されていません。</value>
+  </data>
+  <data name="ErrorNotSetTreeView" xml:space="preserve">
+    <value>ノードを保持するTreeViewが設定されていません。</value>
+  </data>
 </root>

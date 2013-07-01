@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
+using Ong.Friendly.FormsStandardControls.Properties;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -10,18 +11,13 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
     public class FormsTreeNode : AppVarWrapper
     {
-        WindowsAppFriend _app;
-
         /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
         public FormsTreeNode(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
-        {
-            _app = app;
-        }
+            : base(app, appVar) { }
 
         /// <summary>
         /// テキストを取得します。
@@ -127,6 +123,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="treeNode">ノード。</param>
         private static void EmulateExpandInTarget(TreeNode treeNode)
         {
+            if (treeNode.TreeView == null)
+            {
+                throw new NotSupportedException(Resources.ErrorNotSetTreeView);
+            }
             treeNode.TreeView.Focus();
             treeNode.Expand();
         }
@@ -137,6 +137,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="treeNode">ノード。</param>
         private static void EmulateCollapseInTarget(TreeNode treeNode)
         {
+            if (treeNode.TreeView == null)
+            {
+                throw new NotSupportedException(Resources.ErrorNotSetTreeView);
+            }
             treeNode.TreeView.Focus();
             treeNode.Collapse();
         }
@@ -148,6 +152,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="check">true:チェック</param>
         private static void EmulateCheckInTarget(TreeNode treeNode, bool check)
         {
+            if (treeNode.TreeView == null)
+            {
+                throw new NotSupportedException(Resources.ErrorNotSetTreeView);
+            }
             treeNode.TreeView.Focus();
             treeNode.Checked = check;
         }
@@ -159,6 +167,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="nodeText">テキスト。</param>
         private static void EmulateEditLabelInTarget(TreeNode treeNode, string nodeText)
         {
+            if (treeNode.TreeView == null)
+            {
+                throw new NotSupportedException(Resources.ErrorNotSetTreeView);
+            }
             treeNode.TreeView.Focus();
             treeNode.BeginEdit();
             treeNode.Text = nodeText;

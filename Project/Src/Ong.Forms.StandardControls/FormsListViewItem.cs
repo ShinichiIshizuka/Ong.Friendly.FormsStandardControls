@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using Ong.Friendly.FormsStandardControls.Properties;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -14,19 +15,13 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
     public class FormsListViewItem : AppVarWrapper
     {
-        AppVar _listView;
-
         /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
-        /// <param name="listView">リストビュー。</param>
         /// <param name="item">アイテム。</param>
-        public FormsListViewItem(WindowsAppFriend app, AppVar listView, AppVar item)
-            : base(app, item)
-        {
-            _listView = listView;
-        }
+        public FormsListViewItem(WindowsAppFriend app, AppVar item)
+            : base(app, item) { }
     
         /// <summary>
         /// テキストを取得します。
@@ -70,7 +65,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="value">チェック状態。</param>
         public void EmulateCheck(bool value)
         {
-            App[GetType(), "EmulateCheckInTarget"](_listView, AppVar, value);
+            App[GetType(), "EmulateCheckInTarget"](AppVar, value);
         }
 
         /// <summary>
@@ -81,7 +76,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateCheck(bool value, Async async)
         {
-            App[GetType(), "EmulateCheckInTarget", async](_listView, AppVar, value);
+            App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
         }
 
         /// <summary>
@@ -90,7 +85,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="text">テキスト。</param>
         public void EmulateEditLabel(string text)
         {
-            App[GetType(), "EmulateEditLabelInTarget"](_listView, AppVar, text);
+            App[GetType(), "EmulateEditLabelInTarget"](AppVar, text);
         }
 
         /// <summary>
@@ -100,7 +95,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
         public void EmulateEditLabel(string text, Async async)
         {
-            App[GetType(), "EmulateEditLabelInTarget", async](_listView, AppVar, text);
+            App[GetType(), "EmulateEditLabelInTarget", async](AppVar, text);
         }
 
         /// <summary>
@@ -117,12 +112,16 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// テキストを編集します。
         /// </summary>
-        /// <param name="listView">リストビュー。</param>
         /// <param name="item">アイテム。</param>
         /// <param name="text">テキスト。</param>
-        static void EmulateEditLabelInTarget(ListView listView, ListViewItem item, string text)
+        static void EmulateEditLabelInTarget(ListViewItem item, string text)
         {
-            listView.Focus();
+            if (item.ListView == null)
+            {
+                throw new NotSupportedException(Resources.ErrorNotSetListView);
+            }
+
+            item.ListView.Focus();
 
             //編集開始
             item.BeginEdit();
@@ -140,26 +139,29 @@ namespace Ong.Friendly.FormsStandardControls
                 }
                 return true;
             };
-            EnumChildWindows(listView.Handle, proc, IntPtr.Zero);
+            EnumChildWindows(item.ListView.Handle, proc, IntPtr.Zero);
             GC.KeepAlive(proc);
 
             //テキスト設定
             SetWindowText(edit, text);
 
             //フォーカスをリストビューに戻し編集完了
-            listView.Focus();
+            item.ListView.Focus();
         }
 
         /// <summary>
         /// チェック状態を設定します。
         /// </summary>
-        /// <param name="listView">リストビュー。</param>
-        /// <param name="listviewitem">リストビューアイテム。</param>
+        /// <param name="item">リストビューアイテム。</param>
         /// <param name="value">チェック状態。</param>
-        static void EmulateCheckInTarget(ListView listView, ListViewItem listviewitem, bool value)
+        static void EmulateCheckInTarget(ListViewItem item, bool value)
         {
-            listView.Focus();
-            listviewitem.Checked = value;
+            if (item.ListView == null)
+            {
+                throw new NotSupportedException(Resources.ErrorNotSetListView);
+            }
+            item.ListView.Focus();
+            item.Checked = value;
         }
 
         /// <summary>
