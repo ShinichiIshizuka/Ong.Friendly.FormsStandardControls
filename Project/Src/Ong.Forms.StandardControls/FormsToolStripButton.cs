@@ -2,6 +2,8 @@
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System;
+using Ong.Friendly.FormsStandardControls.Properties;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -59,10 +61,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="value">チェック状態。</param>
         static void EmulateCheckInTarget(ToolStripButton checkButton, CheckState value)
         {
-            if (checkButton.Owner != null)
+            if (checkButton.Owner == null)
             {
-                checkButton.Owner.Focus();
+                throw new NotSupportedException(Resources.ErrorNotSetToolStrip);
             }
+            checkButton.Owner.Focus();
             while (checkButton.CheckState != value)
             {
                 checkButton.PerformClick();

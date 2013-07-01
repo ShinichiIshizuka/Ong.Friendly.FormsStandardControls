@@ -79,6 +79,15 @@ namespace Ong.Friendly.FormsStandardControls.Properties {
         }
         
         /// <summary>
+        ///   アイテムを保持するToolStripが設定されていません。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorNotSetToolStrip {
+            get {
+                return ResourceManager.GetString("ErrorNotSetToolStrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   ノードを保持するTreeViewが設定されていません。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string ErrorNotSetTreeView {

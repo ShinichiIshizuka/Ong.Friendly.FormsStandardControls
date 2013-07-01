@@ -1,6 +1,8 @@
 ﻿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using System.Windows.Forms;
+using System;
+using Ong.Friendly.FormsStandardControls.Properties;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -55,10 +57,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="item">アイテム。</param>
         static void EmulateClickInTarget(ToolStripItem item)
         {
-            if (item.Owner != null)
+            if (item.Owner == null)
             {
-                item.Owner.Focus();
+                throw new NotSupportedException(Resources.ErrorNotSetToolStrip);
             }
+            item.Owner.Focus();
             item.PerformClick();
         }
     }

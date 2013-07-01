@@ -123,6 +123,9 @@
   <data name="ErrorNotSetListView" xml:space="preserve">
     <value>アイテムを保持するListViewが設定されていません。</value>
   </data>
+  <data name="ErrorNotSetToolStrip" xml:space="preserve">
+    <value>アイテムを保持するToolStripが設定されていません。</value>
+  </data>
   <data name="ErrorNotSetTreeView" xml:space="preserve">
     <value>ノードを保持するTreeViewが設定されていません。</value>
   </data>
