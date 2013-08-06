@@ -216,5 +216,15 @@ namespace Test
             FormsToolStripTextBox item = new FormsToolStripTextBox(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(6));
             Assert.AreEqual(typeof(TextBox), (Type)item.TextBox["GetType"]()["BaseType"]().Core);
         }
+
+        /// <summary>
+        /// èâä˙âªÉeÉXÉg
+        /// </summary>
+        [Test]
+        public void TestToolStripItemInitialize()
+        {
+            FormsToolStripItem item = new FormsToolStripItem(app, testDlg["menu001ToolStripMenuItem"]());
+            item.EmulateClick();
+        }
     }
 }

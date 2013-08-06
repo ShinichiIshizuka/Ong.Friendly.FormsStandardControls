@@ -63,7 +63,9 @@
     <None Include="Properties\Ong.Friendly.FormsStandardControls.Generator.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ong.Friendly.FormsStandardControls.Generator.Plugin.xml" />
+    <Content Include="Ong.Friendly.FormsStandardControls.Generator.Plugin.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
