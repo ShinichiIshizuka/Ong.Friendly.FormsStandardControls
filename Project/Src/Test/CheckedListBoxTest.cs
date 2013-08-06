@@ -55,7 +55,7 @@ namespace Test
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
             int itemCount = checkedlistbox1.ItemCount;
-            Assert.AreEqual(6, itemCount);
+            Assert.AreEqual(8, itemCount);
         }
 
         /// <summary>
@@ -78,6 +78,39 @@ namespace Test
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
             int index = checkedlistbox1.FindListIndex(@"Item-1");
+            Assert.AreEqual(0, index);
+        }
+
+        /// <summary>
+        /// FindStringテスト
+        /// </summary>
+        [Test]
+        public void TestFindString()
+        {
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            int index = checkedlistbox1.FindString(@"Item-1");
+            Assert.AreEqual(0, index);
+        }
+
+        /// <summary>
+        /// FindStringExactテスト
+        /// </summary>
+        [Test]
+        public void TestFindStringExact()
+        {
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            int index = checkedlistbox1.FindStringExact(@"Item-11");
+            Assert.AreEqual(7, index);
+        }
+
+        /// <summary>
+        /// FindStringExactテスト
+        /// </summary>
+        [Test]
+        public void TestFindExact()
+        {
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            int index = checkedlistbox1.FindStringExact(@"Item-1");
             Assert.AreEqual(0, index);
         }
 

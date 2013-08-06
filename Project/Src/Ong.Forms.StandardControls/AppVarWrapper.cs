@@ -1,6 +1,7 @@
 ﻿using System;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
+using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -39,6 +40,7 @@ namespace Ong.Friendly.FormsStandardControls
             }
             _app = app;
             _appVar = appVar;
+            Initializer.Initialize(App, GetType());
         }
 
         /// <summary>

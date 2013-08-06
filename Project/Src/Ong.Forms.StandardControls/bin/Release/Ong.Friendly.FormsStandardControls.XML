@@ -31,21 +31,166 @@
             選択状態を取得／設定します。
             </summary>
         </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.Inside.Initializer">
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsControlBase">
             <summary>
-            初期化です。
+            FormsControlBase
             </summary>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.Inside.Initializer.Initialize(Codeer.Friendly.Windows.WindowsAppFriend,System.Type)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsControlBase.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
             <summary>
-            初期化です。対象のアプリケーションにアセンブリを読み込ませます。
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロールです。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsControlBase.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
             </summary>
             <param name="app">アプリケーション操作クラス。</param>
-            <param name="myType">タイプ。</param>
+            <param name="appVar">アプリケーション内変数。</param>
         </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsTreeNode">
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsControlBase.Text">
             <summary>
-            ツリーノードです。
+            テキストを取得します。
+            </summary>
+            <returns>テキスト。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsControlBase.Visible">
+            <summary>
+            表示/非表示を切り替えます。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsControlBase.Enabled">
+            <summary>
+            活性/非活性を切り替えます。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsTreeView">
+            <summary>
+            TypeがWindowControlがSystem.Windows.Forms.TreeViewのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロール。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItem(System.Int32[])">
+            <summary>
+            子アイテムを取得します。
+            </summary>
+            <param name="indexs">インデックス。</param>
+            <returns>子アイテム。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItem(System.String[])">
+            <summary>
+            子アイテムを取得します。
+            </summary>
+            <param name="keys">キーとなるインデックスです。</param>
+            <returns>子アイテム。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.FindItem(System.String[])">
+            <summary>
+            表示文字列からアイテムを検索します。
+            </summary>
+            <param name="texts">表示文字列。</param>
+            <returns>表示文字列。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.EmulateNodeSelect(Ong.Friendly.FormsStandardControls.FormsTreeNode)">
+            <summary>
+            ノードを選択します。
+            </summary>
+            <param name="node">ノード。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.EmulateNodeSelect(Ong.Friendly.FormsStandardControls.FormsTreeNode,Codeer.Friendly.Async)">
+            <summary>
+            ノードを選択します。
+            非同期で実行します。
+            </summary>
+            <param name="node">ノード。</param>
+            <param name="async">非同期オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.EmulateNodeSelectInTarget(System.Windows.Forms.TreeView,System.Windows.Forms.TreeNode)">
+            <summary>
+            ノードを選択します。
+            非同期で実行します。
+            </summary>
+            <param name="tree">ツリー。</param>
+            <param name="node">ノード。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItemInTarget(System.Windows.Forms.TreeView,System.Int32[])">
+            <summary>
+            アイテムを取得します。
+            </summary>
+            <param name="trerview">ツリービュー。</param>
+            <param name="indexs">インデックス。</param>
+            <returns>アイテム</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItemInTarget(System.Windows.Forms.TreeView,System.String[])">
+            <summary>
+            アイテムを取得します。
+            </summary>
+            <param name="trerview">ツリービュー。</param>
+            <param name="keys">インデックス。</param>
+            <returns>アイテム</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.FindItemInTarget(System.Windows.Forms.TreeView,System.String[])">
+            <summary>
+            表示文字列からアイテムを検索します。
+            </summary>
+            <param name="trerview">ツリービュー。</param>
+            <param name="texts">表示文字列。</param>
+            <returns>アイテム。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeView.SelectNode">
+            <summary>
+            選択しているノードを取得します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.CellSelectedInfo">
+            <summary>
+            セル選択情報です。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.CellSelectedInfo.#ctor">
+            <summary>
+            コンストラクタです。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.CellSelectedInfo.#ctor(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="col">行。</param>
+            <param name="row">列。</param>
+            <param name="selected">選択状態。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.CellSelectedInfo.Col">
+            <summary>
+            列です。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.CellSelectedInfo.Row">
+            <summary>
+            行です。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.CellSelectedInfo.Selected">
+            <summary>
+            選択状態を取得します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsListViewItem">
+            <summary>
+            リストアイテムです。
             </summary>
         </member>
         <member name="T:Ong.Friendly.FormsStandardControls.AppVarWrapper">
@@ -101,901 +246,6 @@
             <param name="operationTypeInfo">操作タイプ情報。</param>
             <param name="async">非同期実行オブジェクト。</param>
             <returns>操作実行delegate。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateExpand">
-            <summary>
-            展開します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateExpand(Codeer.Friendly.Async)">
-            <summary>
-            展開します。
-            非同期で実行します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCollapse">
-            <summary>
-            展開を閉じます。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCollapse(Codeer.Friendly.Async)">
-            <summary>
-            展開を閉じます。
-            非同期で実行します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateEditLabel(System.String)">
-            <summary>
-            ノード名を編集します。
-            </summary>
-            <param name="nodeText">テキスト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateEditLabel(System.String,Codeer.Friendly.Async)">
-            <summary>
-            ノード名を編集します(非同期)。
-            </summary>
-            <param name="nodeText">テキスト。</param>
-            <param name="async">非同期オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCheck(System.Boolean)">
-            <summary>
-            チェック状態を設定します。
-            </summary>
-            <param name="check">true:チェック</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCheck(System.Boolean,Codeer.Friendly.Async)">
-            <summary>
-            チェック状態を設定します。
-            </summary>
-            <param name="check">true:チェック</param>
-            <param name="async">非同期オブジェクト</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateExpandInTarget(System.Windows.Forms.TreeNode)">
-            <summary>
-            展開します。
-            </summary>
-            <param name="treeNode">ノード。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCollapseInTarget(System.Windows.Forms.TreeNode)">
-            <summary>
-            展開をとじます。
-            </summary>
-            <param name="treeNode">ノード。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCheckInTarget(System.Windows.Forms.TreeNode,System.Boolean)">
-            <summary>
-            チェック状態を設定します。
-            </summary>
-            <param name="treeNode">ノード。</param>
-            <param name="check">true:チェック</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateEditLabelInTarget(System.Windows.Forms.TreeNode,System.String)">
-            <summary>
-            ノード名を編集します（内部）。
-            </summary>
-            <param name="treeNode">ノード。</param>
-            <param name="nodeText">テキスト。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeNode.Text">
-            <summary>
-            テキストを取得します。
-            </summary>
-            <returns>テキスト。</returns>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeNode.IsExpanded">
-            <summary>
-            展開しているかを取得します。
-            </summary>
-            <returns>true:展開。</returns>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeNode.Checked">
-            <summary>
-            チェック状態を取得します。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsControlBase">
-            <summary>
-            FormsControlBase
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsControlBase.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロールです。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsControlBase.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsControlBase.Text">
-            <summary>
-            テキストを取得します。
-            </summary>
-            <returns>テキスト。</returns>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsControlBase.Visible">
-            <summary>
-            表示/非表示を切り替えます。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsControlBase.Enabled">
-            <summary>
-            活性/非活性を切り替えます。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsCheckBox">
-            <summary>
-            TypeがSystem.Windows.Forms.CheckBoxのウィンドウに対応した操作を提供します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロールです。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.EmulateCheck(System.Windows.Forms.CheckState)">
-            <summary>
-            チェック状態を設定します。
-            </summary>
-            <param name="value">チェック状態。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.EmulateCheck(System.Windows.Forms.CheckState,Codeer.Friendly.Async)">
-            <summary>
-            チェック状態を設定します。
-            非同期で実行します。
-            </summary>
-            <param name="value">チェック状態。</param>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.EmulateCheckInTarget(System.Windows.Forms.CheckBox,System.Windows.Forms.CheckState)">
-            <summary>
-            チェック状態を設定します。
-            </summary>
-            <param name="checkBox">チェックボックス。</param>
-            <param name="value">チェック状態。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckBox.CheckState">
-            <summary>
-            チェック状態を取得します。
-            </summary>
-            <returns>チェック状態。</returns>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsTextBox">
-            <summary>
-            TypeがWindowControlがSystem.Windows.Forms.TextBoxのウィンドウに対応した操作を提供します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロール。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.EmulateChangeText(System.String)">
-            <summary>
-            テキストを変更します。
-            </summary>
-            <param name="text">テキスト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.EmulateChangeText(System.String,Codeer.Friendly.Async)">
-            <summary>
-            テキストを変更します。
-            </summary>
-            <param name="text">テキスト。</param>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.EmulateChangeTextInTarget(System.Windows.Forms.TextBox,System.String)">
-            <summary>
-            テキストを変更します。
-            </summary>
-            <param name="textBox">リッチテキストボックス。</param>
-            <param name="text">テキスト。</param>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsButton">
-            <summary>
-            TypeがSystem.Windows.Forms.Buttonのウィンドウに対応した操作を提供します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロールです。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.EmulateClick">
-            <summary>
-            クリックです。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.EmulateClick(Codeer.Friendly.Async)">
-            <summary>
-            クリックです。
-            非同期で実行します。
-            </summary>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.EmulateClickInTarget(System.Windows.Forms.Button)">
-            <summary>
-            クリックです。
-            </summary>
-            <param name="button">ボタン。</param>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.CellSelectedInfo">
-            <summary>
-            セル選択情報です。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.CellSelectedInfo.#ctor">
-            <summary>
-            コンストラクタです。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.CellSelectedInfo.#ctor(System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="col">行。</param>
-            <param name="row">列。</param>
-            <param name="selected">選択状態。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.CellSelectedInfo.Col">
-            <summary>
-            列です。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.CellSelectedInfo.Row">
-            <summary>
-            行です。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.CellSelectedInfo.Selected">
-            <summary>
-            選択状態を取得します。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStrip">
-            <summary>
-            ツールストリップです。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロールです。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="windowHandle">ウィンドウハンドル。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItem(System.Int32[])">
-            <summary>
-            子アイテムを取得します。
-            </summary>
-            <param name="indexs">インデックス。</param>
-            <returns>子アイテム</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItem(System.String[])">
-            <summary>
-            子アイテムを取得します。
-            </summary>
-            <param name="keys">キーとなるインデックスです。</param>
-            <returns>子アイテム。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.FindItem(System.String[])">
-            <summary>
-            表示文字列からアイテムを検索します。
-            </summary>
-            <param name="texts">表示文字列。</param>
-            <returns>表示文字列。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItemInTarget(System.Windows.Forms.ToolStrip,System.Int32[])">
-            <summary>
-            アイテムを取得します。
-            </summary>
-            <param name="toolStrip">ツールストリップ。</param>
-            <param name="indexs">インデックス。</param>
-            <returns>アイテム。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItemInTarget(System.Windows.Forms.ToolStrip,System.String[])">
-            <summary>
-            アイテムを取得します。
-            </summary>
-            <param name="toolStrip">ツールストリップ。</param>
-            <param name="keys">インデックス。</param>
-            <returns>アイテム。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.FindItemInTarget(System.Windows.Forms.ToolStrip,System.String[])">
-            <summary>
-            表示文字列からアイテムを検索します。
-            </summary>
-            <param name="toolStrip">ツールストリップ。</param>
-            <param name="texts">表示文字列。</param>
-            <returns>アイテム。</returns>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsListView">
-            <summary>
-            TypeがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロール。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.GetListViewItem(System.Int32)">
-            <summary>
-            指定したインデックスのアイテムを取得します。
-            </summary>
-            <param name="index">インデックス。</param>
-            <returns>指定したインデックスのアイテム。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.FindItemWithText(System.String,System.Boolean,System.Int32)">
-            <summary>
-            指定したテキスト値で始まる最初のアイテムを検索します。
-            </summary>
-            <param name="itemText">テキスト。</param>
-            <param name="includeSubItemsInSearch">検索にサブ項目を含める場合は true。それ以外の場合は false。</param>
-            <param name="startIndex">検索を開始する位置の項目のインデックス。</param>
-            <returns>指定したテキスト値で始まる最初のアイテム</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.EmulateChangeSelectedState(System.Int32,System.Boolean)">
-            <summary>
-            指定されたインデックスに該当するアイテムの選択状態を変更します。
-            </summary>
-            <param name="index">インデックス。</param>
-            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.EmulateChangeSelectedState(System.Int32,System.Boolean,Codeer.Friendly.Async)">
-            <summary>
-            指定されたインデックスに該当するアイテムの選択状態を変更します。
-            </summary>
-            <param name="index">インデックス。</param>
-            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-            <param name="async">非同期オブジェクト</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.GetSelectedIndexesInTarget(System.Windows.Forms.ListView)">
-            <summary>
-            選択されたインデックスの一覧を取得します（内部）。
-            </summary>
-            <param name="listview">リストビュー</param>
-            <returns>選択されたインデックス一覧。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.EmulateChangeSelectedStateInTarget(System.Windows.Forms.ListView,System.Int32,System.Boolean)">
-            <summary>
-            リストビューアイテムを選択します（内部）。
-            </summary>
-            <param name="listview">リストビュー。</param>
-            <param name="index">インデックス。</param>
-            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.ViewMode">
-            <summary>
-            Viewモードを取得します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.ColumnCount">
-            <summary>
-            列数を取得します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.ItemCount">
-            <summary>
-            アイテム数を取得します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.SelectIndexes">
-            <summary>
-            選択されたインデックスの一覧を取得します。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsListBox">
-            <summary>
-            TypeがSystem.Windows.Forms.ListBoxのウィンドウに対応した操作を提供します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロール。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.FindListIndex(System.String)">
-            <summary>
-            アイテムを指定されたテキストで検索します。
-            </summary>
-            <param name="ItemText">各ノードのテキスト</param>
-            <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndex(System.Int32)">
-            <summary>
-            指定されたインデックスに該当するアイテムを選択状態にします。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndex(System.Int32,Codeer.Friendly.Async)">
-            <summary>
-            指定されたインデックスに該当するアイテムを選択状態にします。
-            非同期に実行します。
-            </summary>
-            <param name="index">インデックス。</param>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedState(System.Int32,System.Boolean)">
-            <summary>
-            指定されたインデックスに該当するアイテムを選択状態にします。
-            </summary>
-            <param name="index">インデックス。</param>
-            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedState(System.Int32,System.Boolean,Codeer.Friendly.Async)">
-            <summary>
-            指定されたインデックスに該当するアイテムを選択状態にします。
-            </summary>
-            <param name="index">インデックス。</param>
-            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-            <param name="async">非同期オブジェクト</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.GetSelectedIndexesInTarget(System.Windows.Forms.ListBox)">
-            <summary>
-            リストアイテムを選択します（内部）。
-            </summary>
-            <param name="listbox">リストボックス</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndexInTarget(System.Windows.Forms.ListBox,System.Int32)">
-            <summary>
-            指定されたインデックスに該当するアイテムを選択状態にします。
-            非同期に実行します。
-            </summary>
-            <param name="listbox">ListBox。</param>
-            <param name="index">インデックス。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedStateInTarget(System.Windows.Forms.ListBox,System.Int32,System.Boolean)">
-            <summary>
-            リストアイテムを選択します（内部）。
-            </summary>
-            <param name="listbox">ListBox。</param>
-            <param name="index">インデックス。</param>
-            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.ItemCount">
-            <summary>
-            一覧のアイテム数を取得します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.SelectedIndex">
-            <summary>
-            現在選択されているアイテムのインデックスを取得します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.SelectionMode">
-            <summary>
-            選択モードを取得します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.SelectedIndexes">
-            <summary>
-            選択状態のリスト項目一覧を取得します。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsCheckedListBox">
-            <summary>
-            TypeがSystem.Windows.Forms.CheckdListBoxのウィンドウに対応した操作を提供します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.#ctor(Ong.Friendly.FormsStandardControls.FormsControlBase)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロール。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.GetCheckState(System.Int32)">
-            <summary>
-            チェック状態を取得します。
-            </summary>
-            <returns>チェック状態</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.FindListIndex(System.String)">
-            <summary>
-            アイテムを指定されたテキストで検索します。
-            </summary>
-            <param name="ItemText">各ノードのテキスト。</param>
-            <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckState(System.Int32,System.Windows.Forms.CheckState)">
-            <summary>
-            チェック状態を設定します。
-            </summary>
-            <param name="index">インデックス。</param>
-            <param name="value">チェック状態。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckState(System.Int32,System.Windows.Forms.CheckState,Codeer.Friendly.Async)">
-            <summary>
-            チェック状態を設定します。
-            非同期で実行します。
-            </summary>
-            <param name="index">インデックス。</param>
-            <param name="value">チェック状態。</param>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateChangeSelectedIndex(System.Int32)">
-            <summary>
-            指定されたインデックスに該当するアイテムを選択状態にします。
-            </summary>
-            <param name="index">インデックス。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateChangeSelectedIndex(System.Int32,Codeer.Friendly.Async)">
-            <summary>
-            指定されたインデックスに該当するアイテムを選択状態にします。
-            非同期に実行します。
-            </summary>
-            <param name="index">インデックス。</param>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckStateInTarget(System.Windows.Forms.CheckedListBox,System.Int32,System.Windows.Forms.CheckState)">
-            <summary>
-            チェック状態を設定します。
-            非同期で実行します。
-            </summary>
-            <param name="checkedListBox">対象のチェックリストボックス。</param>
-            <param name="index">インデックス。</param>
-            <param name="value">チェック状態。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateChangeSelectedIndexInTarget(System.Windows.Forms.CheckedListBox,System.Int32)">
-            <summary>
-            指定されたインデックスに該当するアイテムを選択状態にします。
-            非同期に実行します。
-            </summary>
-            <param name="checkedListBox">対象のチェックリストボックス。</param>
-            <param name="index">インデックス。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.CheckedIndicsInTarget(System.Windows.Forms.CheckedListBox)">
-            <summary>
-            現在チェックされているアイテムのインデックスを配列で取得します(内部)。
-            </summary>
-            <param name="checkedListBox">対象のチェックリストボックス。</param>
-            <returns></returns>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.ItemCount">
-            <summary>
-            一覧のアイテム数を取得します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.SelectedItemIndex">
-            <summary>
-            現在選択されているアイテムのインデックスを取得します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.CheckedIndices">
-            <summary>
-            現在チェックされているアイテムのインデックスを配列で取得します。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox">
-            <summary>
-            ツールストリップアイテム操作クラスです。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">対象アプリ操作クラス。</param>
-            <param name="appVar">対象アプリケーション内変数操作クラス。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox.#ctor(Ong.Friendly.FormsStandardControls.FormsToolStripItem)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="item">ToolStripItem操作クラス。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox.ComboBox">
-            <summary>
-            コンボボックスを取得します。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsNumericUpDown">
-            <summary>
-            TypeがWindows.Forms.NumericUpDownのウィンドウに対応した操作を提供します
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロールです</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.EmulateChangeValue(System.Decimal)">
-            <summary>
-            値を変更します。
-            </summary>
-            <param name="value">値。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.EmulateChangeValue(System.Decimal,Codeer.Friendly.Async)">
-            <summary>
-            値を変更します。
-            </summary>
-            <param name="value">値。</param>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.EmulateChangeValueInTarget(System.Windows.Forms.NumericUpDown,System.Decimal)">
-            <summary>
-            値を変更します。
-            </summary>
-            <param name="numeric">コントロール。</param>
-            <param name="value">値。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.Value">
-            <summary>
-            値を取得
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.Minimum">
-            <summary>
-            最小値を取得
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.Maximum">
-            <summary>
-            最大値を取得
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.Properties.Resources">
-            <summary>
-              ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ResourceManager">
-            <summary>
-              このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.Culture">
-            <summary>
-              厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
-              現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorCheckSetting">
-            <summary>
-              チェック状態にできませんでした。 に類似しているローカライズされた文字列を検索します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetListView">
-            <summary>
-              アイテムを保持するListViewが設定されていません。 に類似しているローカライズされた文字列を検索します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetToolStrip">
-            <summary>
-              アイテムを保持するToolStripが設定されていません。 に類似しているローカライズされた文字列を検索します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetTreeView">
-            <summary>
-              ノードを保持するTreeViewが設定されていません。 に類似しているローカライズされた文字列を検索します。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsComboBox">
-            <summary>
-            TypeがSystem.Windows.Forms.ComboBoxのウィンドウに対応した操作を提供します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロール。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.GetItemText(System.Int32)">
-            <summary>
-            アイテムの文字列を取得します。
-            </summary>
-            <param name="index">インデックス。</param>
-            <returns>アイテム文字列。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.FindString(System.String,System.Int32)">
-            <summary>
-            指定の文字列のアイテムを検索します。
-            </summary>
-            <param name="text">テキスト。</param>
-            <param name="startIndex">検索開始インデックス。</param>
-            <returns>アイテムインデックス。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeText(System.String)">
-            <summary>
-            テキストを変更します。
-            </summary>
-            <param name="text">テキスト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeText(System.String,Codeer.Friendly.Async)">
-            <summary>
-            テキストを変更します。
-            </summary>
-            <param name="text">テキスト。</param>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeSelect(System.Int32)">
-            <summary>
-            指定のインデックスのアイテムを選択します。
-            </summary>
-            <param name="index">インデックス。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeSelect(System.Int32,Codeer.Friendly.Async)">
-            <summary>
-            指定のインデックスのアイテムを選択します。
-            非同期で実行します。
-            </summary>
-            <param name="index">インデックス。</param>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeTextInTarget(System.Windows.Forms.ComboBox,System.String)">
-            <summary>
-            テキストを変更します。
-            </summary>
-            <param name="comboBox">コンボボックス。</param>
-            <param name="text">テキスト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeSelectInTarget(System.Windows.Forms.ComboBox,System.Int32)">
-            <summary>
-            指定のインデックスのアイテムを選択します。
-            </summary>
-            <param name="comboBox">コンボボックス。</param>
-            <param name="index">インデックス。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsComboBox.ItemCount">
-            <summary>
-            一覧のアイテム数を取得します。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsComboBox.SelectedItemIndex">
-            <summary>
-            現在選択されているアイテムのインデックスを取得します。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox">
-            <summary>
-            ツールストリップアイテム操作クラスです。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripItem">
-            <summary>
-            ツールストリップアイテム操作クラスです。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">対象アプリ操作クラス。</param>
-            <param name="appVar">対象アプリケーション内変数操作クラス。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.EmulateClick">
-            <summary>
-            クリックです。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.EmulateClick(Codeer.Friendly.Async)">
-            <summary>
-            クリックです。
-            非同期で実行します。
-            </summary>
-            <param name="async">非同期実行オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.EmulateClickInTarget(System.Windows.Forms.ToolStripItem)">
-            <summary>
-            クリックです。
-            </summary>
-            <param name="item">アイテム。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripItem.Text">
-            <summary>
-            テキスト
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripItem.Visible">
-            <summary>
-            可視状態か
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripItem.Enabled">
-            <summary>
-            有効であるか
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">対象アプリ操作クラス。</param>
-            <param name="appVar">対象アプリケーション内変数操作クラス。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox.#ctor(Ong.Friendly.FormsStandardControls.FormsToolStripItem)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="item">ToolStripItem操作クラス</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox.TextBox">
-            <summary>
-            テキストボックス取得です。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsListViewItem">
-            <summary>
-            リストアイテムです。
-            </summary>
         </member>
         <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
             <summary>
@@ -1111,115 +361,221 @@
             <param name="lParam">パラメータ。</param>
             <returns>検索を続けるか。</returns>
         </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsTabControl">
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripButton">
             <summary>
-            TypeがWindowControlがSystem.Windows.Forms.TabControlのウィンドウに対応した操作を提供します。
+            ツールストリップボタン操作クラスです。
             </summary>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripItem">
+            <summary>
+            ツールストリップアイテム操作クラスです。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
             <summary>
             コンストラクタです。
             </summary>
-            <param name="src">元となるウィンドウコントロール。</param>
+            <param name="app">対象アプリ操作クラス。</param>
+            <param name="appVar">対象アプリケーション内変数操作クラス。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.EmulateClick">
             <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.EmulateTabSelect(System.Int32)">
-            <summary>
-            タブを選択します。
-            </summary>
-            <param name="index">タブインデックス（０始まり）。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.EmulateTabSelect(System.Int32,Codeer.Friendly.Async)">
-            <summary>
-            タブを選択します。
-            </summary>
-            <param name="index">タブインデックス（０始まり）。</param>
-            <param name="async">非同期オブジェクト。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.EmulateTabSelectInTarget(System.Windows.Forms.TabControl,System.Int32)">
-            <summary>
-            指定のインデックスのアイテムを選択します。
-            </summary>
-            <param name="tabControl">タブコントロール。</param>
-            <param name="index">インデックス。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsTabControl.TabCount">
-            <summary>
-            タブ数を取得します。
-            </summary>
-            <returns>タブ数。</returns>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsTabControl.SelectedIndex">
-            <summary>
-            選択されたタブインデックスを取得します。
-            </summary>
-            <returns>タブインデックス。</returns>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsListViewSubItem">
-            <summary>
-            リストビューサブアイテムです。
+            クリックです。
             </summary>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewSubItem.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.EmulateClick(Codeer.Friendly.Async)">
             <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsListViewSubItem.Text">
-            <summary>
-            テキストを取得します。
-            </summary>
-            <returns>テキスト。</returns>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsRadioButton">
-            <summary>
-            TypeがSystem.Windows.Forms.RadioButtonのウィンドウに対応した操作を提供します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="src">元となるウィンドウコントロール。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
-            <summary>
-            コンストラクタです。
-            </summary>
-            <param name="app">アプリケーション操作クラス。</param>
-            <param name="appVar">アプリケーション内変数。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.EmulateCheck">
-            <summary>
-            チェックします。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.EmulateCheck(Codeer.Friendly.Async)">
-            <summary>
-            チェックします。
-            非同期で実行します
+            クリックです。
+            非同期で実行します。
             </summary>
             <param name="async">非同期実行オブジェクト。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.EmulateCheckInTarget(System.Windows.Forms.RadioButton)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.EmulateClickInTarget(System.Windows.Forms.ToolStripItem)">
             <summary>
-            チェック状態にします。
+            クリックです。
             </summary>
-            <param name="radioButton">ラジオボタン。</param>
+            <param name="item">アイテム。</param>
         </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsRadioButton.Checked">
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripItem.Text">
+            <summary>
+            テキスト
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripItem.Visible">
+            <summary>
+            可視状態か
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripItem.Enabled">
+            <summary>
+            有効であるか
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">対象アプリ操作クラス。</param>
+            <param name="appVar">対象アプリケーション内変数操作クラス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.#ctor(Ong.Friendly.FormsStandardControls.FormsToolStripItem)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="item">ToolStripItem操作クラス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.EmulateCheck(System.Windows.Forms.CheckState)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="value">チェック状態。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.EmulateCheck(System.Windows.Forms.CheckState,Codeer.Friendly.Async)">
+            <summary>
+            チェック状態を設定します。
+            非同期で実行します。
+            </summary>
+            <param name="value">チェック状態。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.EmulateCheckInTarget(System.Windows.Forms.ToolStripButton,System.Windows.Forms.CheckState)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="checkButton">チェックボックス。</param>
+            <param name="value">チェック状態。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripButton.CheckState">
             <summary>
             チェック状態を取得します。
             </summary>
             <returns>チェック状態。</returns>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.Cell">
+            <summary>
+            セル情報です。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Cell.#ctor">
+            <summary>
+            コンストラクタです。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Cell.#ctor(System.Int32,System.Int32)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="col">行。</param>
+            <param name="row">列。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Cell.Equals(System.Object)">
+            <summary>
+            等価比較。
+            </summary>
+            <param name="obj">オブジェクト。</param>
+            <returns>比較結果。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Cell.GetHashCode">
+            <summary>
+            ハッシュコード取得。
+            </summary>
+            <returns>ハッシュコード。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Cell.Col">
+            <summary>
+            列です。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Cell.Row">
+            <summary>
+            行です。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox">
+            <summary>
+            ツールストリップアイテム操作クラスです。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">対象アプリ操作クラス。</param>
+            <param name="appVar">対象アプリケーション内変数操作クラス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox.#ctor(Ong.Friendly.FormsStandardControls.FormsToolStripItem)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="item">ToolStripItem操作クラス。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox.ComboBox">
+            <summary>
+            コンボボックスを取得します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStrip">
+            <summary>
+            ツールストリップです。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロールです。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="windowHandle">ウィンドウハンドル。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItem(System.Int32[])">
+            <summary>
+            子アイテムを取得します。
+            </summary>
+            <param name="indexs">インデックス。</param>
+            <returns>子アイテム</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItem(System.String[])">
+            <summary>
+            子アイテムを取得します。
+            </summary>
+            <param name="keys">キーとなるインデックスです。</param>
+            <returns>子アイテム。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.FindItem(System.String[])">
+            <summary>
+            表示文字列からアイテムを検索します。
+            </summary>
+            <param name="texts">表示文字列。</param>
+            <returns>表示文字列。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItemInTarget(System.Windows.Forms.ToolStrip,System.Int32[])">
+            <summary>
+            アイテムを取得します。
+            </summary>
+            <param name="toolStrip">ツールストリップ。</param>
+            <param name="indexs">インデックス。</param>
+            <returns>アイテム。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItemInTarget(System.Windows.Forms.ToolStrip,System.String[])">
+            <summary>
+            アイテムを取得します。
+            </summary>
+            <param name="toolStrip">ツールストリップ。</param>
+            <param name="keys">インデックス。</param>
+            <returns>アイテム。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.FindItemInTarget(System.Windows.Forms.ToolStrip,System.String[])">
+            <summary>
+            表示文字列からアイテムを検索します。
+            </summary>
+            <param name="toolStrip">ツールストリップ。</param>
+            <param name="texts">表示文字列。</param>
+            <returns>アイテム。</returns>
         </member>
         <member name="T:Ong.Friendly.FormsStandardControls.FormsDataGridView">
             <summary>
@@ -1521,135 +877,717 @@
             現在の選択行を取得します。
             </summary>
         </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.Cell">
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox">
             <summary>
-            セル情報です。
+            ツールストリップアイテム操作クラスです。
             </summary>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.Cell.#ctor">
-            <summary>
-            コンストラクタです。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.Cell.#ctor(System.Int32,System.Int32)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
             <summary>
             コンストラクタです。
             </summary>
-            <param name="col">行。</param>
-            <param name="row">列。</param>
+            <param name="app">対象アプリ操作クラス。</param>
+            <param name="appVar">対象アプリケーション内変数操作クラス。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.Cell.Equals(System.Object)">
-            <summary>
-            等価比較。
-            </summary>
-            <param name="obj">オブジェクト。</param>
-            <returns>比較結果。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.Cell.GetHashCode">
-            <summary>
-            ハッシュコード取得。
-            </summary>
-            <returns>ハッシュコード。</returns>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.Cell.Col">
-            <summary>
-            列です。
-            </summary>
-        </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.Cell.Row">
-            <summary>
-            行です。
-            </summary>
-        </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsTreeView">
-            <summary>
-            TypeがWindowControlがSystem.Windows.Forms.TreeViewのウィンドウに対応した操作を提供します。
-            </summary>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox.#ctor(Ong.Friendly.FormsStandardControls.FormsToolStripItem)">
             <summary>
             コンストラクタです。
             </summary>
-            <param name="src">元となるウィンドウコントロール。</param>
+            <param name="item">ToolStripItem操作クラス</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox.TextBox">
+            <summary>
+            テキストボックス取得です。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsButton">
+            <summary>
+            TypeがSystem.Windows.Forms.Buttonのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロールです。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
             <summary>
             コンストラクタです。
             </summary>
             <param name="app">アプリケーション操作クラス。</param>
             <param name="appVar">アプリケーション内変数。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItem(System.Int32[])">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.EmulateClick">
             <summary>
-            子アイテムを取得します。
+            クリックです。
             </summary>
-            <param name="indexs">インデックス。</param>
-            <returns>子アイテム。</returns>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItem(System.String[])">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.EmulateClick(Codeer.Friendly.Async)">
             <summary>
-            子アイテムを取得します。
-            </summary>
-            <param name="keys">キーとなるインデックスです。</param>
-            <returns>子アイテム。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.FindItem(System.String[])">
-            <summary>
-            表示文字列からアイテムを検索します。
-            </summary>
-            <param name="texts">表示文字列。</param>
-            <returns>表示文字列。</returns>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.EmulateNodeSelect(Ong.Friendly.FormsStandardControls.FormsTreeNode)">
-            <summary>
-            ノードを選択します。
-            </summary>
-            <param name="node">ノード。</param>
-        </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.EmulateNodeSelect(Ong.Friendly.FormsStandardControls.FormsTreeNode,Codeer.Friendly.Async)">
-            <summary>
-            ノードを選択します。
+            クリックです。
             非同期で実行します。
             </summary>
-            <param name="node">ノード。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.EmulateClickInTarget(System.Windows.Forms.Button)">
+            <summary>
+            クリックです。
+            </summary>
+            <param name="button">ボタン。</param>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsTreeNode">
+            <summary>
+            ツリーノードです。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateExpand">
+            <summary>
+            展開します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateExpand(Codeer.Friendly.Async)">
+            <summary>
+            展開します。
+            非同期で実行します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCollapse">
+            <summary>
+            展開を閉じます。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCollapse(Codeer.Friendly.Async)">
+            <summary>
+            展開を閉じます。
+            非同期で実行します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateEditLabel(System.String)">
+            <summary>
+            ノード名を編集します。
+            </summary>
+            <param name="nodeText">テキスト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateEditLabel(System.String,Codeer.Friendly.Async)">
+            <summary>
+            ノード名を編集します(非同期)。
+            </summary>
+            <param name="nodeText">テキスト。</param>
             <param name="async">非同期オブジェクト。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.EmulateNodeSelectInTarget(System.Windows.Forms.TreeView,System.Windows.Forms.TreeNode)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCheck(System.Boolean)">
             <summary>
-            ノードを選択します。
+            チェック状態を設定します。
+            </summary>
+            <param name="check">true:チェック</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCheck(System.Boolean,Codeer.Friendly.Async)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="check">true:チェック</param>
+            <param name="async">非同期オブジェクト</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateExpandInTarget(System.Windows.Forms.TreeNode)">
+            <summary>
+            展開します。
+            </summary>
+            <param name="treeNode">ノード。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCollapseInTarget(System.Windows.Forms.TreeNode)">
+            <summary>
+            展開をとじます。
+            </summary>
+            <param name="treeNode">ノード。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCheckInTarget(System.Windows.Forms.TreeNode,System.Boolean)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="treeNode">ノード。</param>
+            <param name="check">true:チェック</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateEditLabelInTarget(System.Windows.Forms.TreeNode,System.String)">
+            <summary>
+            ノード名を編集します（内部）。
+            </summary>
+            <param name="treeNode">ノード。</param>
+            <param name="nodeText">テキスト。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeNode.Text">
+            <summary>
+            テキストを取得します。
+            </summary>
+            <returns>テキスト。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeNode.IsExpanded">
+            <summary>
+            展開しているかを取得します。
+            </summary>
+            <returns>true:展開。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeNode.Checked">
+            <summary>
+            チェック状態を取得します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsCheckBox">
+            <summary>
+            TypeがSystem.Windows.Forms.CheckBoxのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロールです。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.EmulateCheck(System.Windows.Forms.CheckState)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="value">チェック状態。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.EmulateCheck(System.Windows.Forms.CheckState,Codeer.Friendly.Async)">
+            <summary>
+            チェック状態を設定します。
             非同期で実行します。
             </summary>
-            <param name="tree">ツリー。</param>
-            <param name="node">ノード。</param>
+            <param name="value">チェック状態。</param>
+            <param name="async">非同期実行オブジェクト。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItemInTarget(System.Windows.Forms.TreeView,System.Int32[])">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.EmulateCheckInTarget(System.Windows.Forms.CheckBox,System.Windows.Forms.CheckState)">
             <summary>
-            アイテムを取得します。
+            チェック状態を設定します。
             </summary>
-            <param name="trerview">ツリービュー。</param>
-            <param name="indexs">インデックス。</param>
-            <returns>アイテム</returns>
+            <param name="checkBox">チェックボックス。</param>
+            <param name="value">チェック状態。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItemInTarget(System.Windows.Forms.TreeView,System.String[])">
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckBox.CheckState">
             <summary>
-            アイテムを取得します。
+            チェック状態を取得します。
             </summary>
-            <param name="trerview">ツリービュー。</param>
-            <param name="keys">インデックス。</param>
-            <returns>アイテム</returns>
+            <returns>チェック状態。</returns>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.FindItemInTarget(System.Windows.Forms.TreeView,System.String[])">
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsListView">
             <summary>
-            表示文字列からアイテムを検索します。
+            TypeがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します。
             </summary>
-            <param name="trerview">ツリービュー。</param>
-            <param name="texts">表示文字列。</param>
-            <returns>アイテム。</returns>
         </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeView.SelectNode">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
             <summary>
-            選択しているノードを取得します。
+            コンストラクタです。
             </summary>
+            <param name="src">元となるウィンドウコントロール。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.GetListViewItem(System.Int32)">
+            <summary>
+            指定したインデックスのアイテムを取得します。
+            </summary>
+            <param name="index">インデックス。</param>
+            <returns>指定したインデックスのアイテム。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.FindItemWithText(System.String,System.Boolean,System.Int32)">
+            <summary>
+            指定したテキスト値で始まる最初のアイテムを検索します。
+            </summary>
+            <param name="itemText">テキスト。</param>
+            <param name="includeSubItemsInSearch">検索にサブ項目を含める場合は true。それ以外の場合は false。</param>
+            <param name="startIndex">検索を開始する位置の項目のインデックス。</param>
+            <returns>指定したテキスト値で始まる最初のアイテム</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.EmulateChangeSelectedState(System.Int32,System.Boolean)">
+            <summary>
+            指定されたインデックスに該当するアイテムの選択状態を変更します。
+            </summary>
+            <param name="index">インデックス。</param>
+            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.EmulateChangeSelectedState(System.Int32,System.Boolean,Codeer.Friendly.Async)">
+            <summary>
+            指定されたインデックスに該当するアイテムの選択状態を変更します。
+            </summary>
+            <param name="index">インデックス。</param>
+            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+            <param name="async">非同期オブジェクト</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.GetSelectedIndexesInTarget(System.Windows.Forms.ListView)">
+            <summary>
+            選択されたインデックスの一覧を取得します（内部）。
+            </summary>
+            <param name="listview">リストビュー</param>
+            <returns>選択されたインデックス一覧。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.EmulateChangeSelectedStateInTarget(System.Windows.Forms.ListView,System.Int32,System.Boolean)">
+            <summary>
+            リストビューアイテムを選択します（内部）。
+            </summary>
+            <param name="listview">リストビュー。</param>
+            <param name="index">インデックス。</param>
+            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.ViewMode">
+            <summary>
+            Viewモードを取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.ColumnCount">
+            <summary>
+            列数を取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.ItemCount">
+            <summary>
+            アイテム数を取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.SelectIndexes">
+            <summary>
+            選択されたインデックスの一覧を取得します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsCheckedListBox">
+            <summary>
+            TypeがSystem.Windows.Forms.CheckdListBoxのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.#ctor(Ong.Friendly.FormsStandardControls.FormsControlBase)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロール。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.GetCheckState(System.Int32)">
+            <summary>
+            チェック状態を取得します。
+            </summary>
+            <returns>チェック状態</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.FindListIndex(System.String)">
+            <summary>
+            アイテムを指定されたテキストで検索します。
+            </summary>
+            <param name="ItemText">各ノードのテキスト。</param>
+            <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckState(System.Int32,System.Windows.Forms.CheckState)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="index">インデックス。</param>
+            <param name="value">チェック状態。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckState(System.Int32,System.Windows.Forms.CheckState,Codeer.Friendly.Async)">
+            <summary>
+            チェック状態を設定します。
+            非同期で実行します。
+            </summary>
+            <param name="index">インデックス。</param>
+            <param name="value">チェック状態。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateChangeSelectedIndex(System.Int32)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            </summary>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateChangeSelectedIndex(System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            非同期に実行します。
+            </summary>
+            <param name="index">インデックス。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckStateInTarget(System.Windows.Forms.CheckedListBox,System.Int32,System.Windows.Forms.CheckState)">
+            <summary>
+            チェック状態を設定します。
+            非同期で実行します。
+            </summary>
+            <param name="checkedListBox">対象のチェックリストボックス。</param>
+            <param name="index">インデックス。</param>
+            <param name="value">チェック状態。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateChangeSelectedIndexInTarget(System.Windows.Forms.CheckedListBox,System.Int32)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            非同期に実行します。
+            </summary>
+            <param name="checkedListBox">対象のチェックリストボックス。</param>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.CheckedIndicsInTarget(System.Windows.Forms.CheckedListBox)">
+            <summary>
+            現在チェックされているアイテムのインデックスを配列で取得します(内部)。
+            </summary>
+            <param name="checkedListBox">対象のチェックリストボックス。</param>
+            <returns></returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.ItemCount">
+            <summary>
+            一覧のアイテム数を取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.SelectedItemIndex">
+            <summary>
+            現在選択されているアイテムのインデックスを取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.CheckedIndices">
+            <summary>
+            現在チェックされているアイテムのインデックスを配列で取得します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsTextBox">
+            <summary>
+            TypeがWindowControlがSystem.Windows.Forms.TextBoxのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロール。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.EmulateChangeText(System.String)">
+            <summary>
+            テキストを変更します。
+            </summary>
+            <param name="text">テキスト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.EmulateChangeText(System.String,Codeer.Friendly.Async)">
+            <summary>
+            テキストを変更します。
+            </summary>
+            <param name="text">テキスト。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.EmulateChangeTextInTarget(System.Windows.Forms.TextBox,System.String)">
+            <summary>
+            テキストを変更します。
+            </summary>
+            <param name="textBox">リッチテキストボックス。</param>
+            <param name="text">テキスト。</param>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsRadioButton">
+            <summary>
+            TypeがSystem.Windows.Forms.RadioButtonのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロール。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.EmulateCheck">
+            <summary>
+            チェックします。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.EmulateCheck(Codeer.Friendly.Async)">
+            <summary>
+            チェックします。
+            非同期で実行します
+            </summary>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.EmulateCheckInTarget(System.Windows.Forms.RadioButton)">
+            <summary>
+            チェック状態にします。
+            </summary>
+            <param name="radioButton">ラジオボタン。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsRadioButton.Checked">
+            <summary>
+            チェック状態を取得します。
+            </summary>
+            <returns>チェック状態。</returns>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsListBox">
+            <summary>
+            TypeがSystem.Windows.Forms.ListBoxのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロール。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.FindListIndex(System.String)">
+            <summary>
+            アイテムを指定されたテキストで検索します。
+            </summary>
+            <param name="ItemText">各ノードのテキスト</param>
+            <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndex(System.Int32)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndex(System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            非同期に実行します。
+            </summary>
+            <param name="index">インデックス。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedState(System.Int32,System.Boolean)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            </summary>
+            <param name="index">インデックス。</param>
+            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedState(System.Int32,System.Boolean,Codeer.Friendly.Async)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            </summary>
+            <param name="index">インデックス。</param>
+            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+            <param name="async">非同期オブジェクト</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.GetSelectedIndexesInTarget(System.Windows.Forms.ListBox)">
+            <summary>
+            リストアイテムを選択します（内部）。
+            </summary>
+            <param name="listbox">リストボックス</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndexInTarget(System.Windows.Forms.ListBox,System.Int32)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            非同期に実行します。
+            </summary>
+            <param name="listbox">ListBox。</param>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedStateInTarget(System.Windows.Forms.ListBox,System.Int32,System.Boolean)">
+            <summary>
+            リストアイテムを選択します（内部）。
+            </summary>
+            <param name="listbox">ListBox。</param>
+            <param name="index">インデックス。</param>
+            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.ItemCount">
+            <summary>
+            一覧のアイテム数を取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.SelectedIndex">
+            <summary>
+            現在選択されているアイテムのインデックスを取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.SelectionMode">
+            <summary>
+            選択モードを取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.SelectedIndexes">
+            <summary>
+            選択状態のリスト項目一覧を取得します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.Inside.Initializer">
+            <summary>
+            初期化です。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Inside.Initializer.Initialize(Codeer.Friendly.Windows.WindowsAppFriend,System.Type)">
+            <summary>
+            初期化です。対象のアプリケーションにアセンブリを読み込ませます。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="myType">タイプ。</param>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsComboBox">
+            <summary>
+            TypeがSystem.Windows.Forms.ComboBoxのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロール。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.GetItemText(System.Int32)">
+            <summary>
+            アイテムの文字列を取得します。
+            </summary>
+            <param name="index">インデックス。</param>
+            <returns>アイテム文字列。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.FindString(System.String,System.Int32)">
+            <summary>
+            指定の文字列のアイテムを検索します。
+            </summary>
+            <param name="text">テキスト。</param>
+            <param name="startIndex">検索開始インデックス。</param>
+            <returns>アイテムインデックス。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeText(System.String)">
+            <summary>
+            テキストを変更します。
+            </summary>
+            <param name="text">テキスト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeText(System.String,Codeer.Friendly.Async)">
+            <summary>
+            テキストを変更します。
+            </summary>
+            <param name="text">テキスト。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeSelect(System.Int32)">
+            <summary>
+            指定のインデックスのアイテムを選択します。
+            </summary>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeSelect(System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            指定のインデックスのアイテムを選択します。
+            非同期で実行します。
+            </summary>
+            <param name="index">インデックス。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeTextInTarget(System.Windows.Forms.ComboBox,System.String)">
+            <summary>
+            テキストを変更します。
+            </summary>
+            <param name="comboBox">コンボボックス。</param>
+            <param name="text">テキスト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeSelectInTarget(System.Windows.Forms.ComboBox,System.Int32)">
+            <summary>
+            指定のインデックスのアイテムを選択します。
+            </summary>
+            <param name="comboBox">コンボボックス。</param>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsComboBox.ItemCount">
+            <summary>
+            一覧のアイテム数を取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsComboBox.SelectedItemIndex">
+            <summary>
+            現在選択されているアイテムのインデックスを取得します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsTabControl">
+            <summary>
+            TypeがWindowControlがSystem.Windows.Forms.TabControlのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロール。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.EmulateTabSelect(System.Int32)">
+            <summary>
+            タブを選択します。
+            </summary>
+            <param name="index">タブインデックス（０始まり）。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.EmulateTabSelect(System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            タブを選択します。
+            </summary>
+            <param name="index">タブインデックス（０始まり）。</param>
+            <param name="async">非同期オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.EmulateTabSelectInTarget(System.Windows.Forms.TabControl,System.Int32)">
+            <summary>
+            指定のインデックスのアイテムを選択します。
+            </summary>
+            <param name="tabControl">タブコントロール。</param>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTabControl.TabCount">
+            <summary>
+            タブ数を取得します。
+            </summary>
+            <returns>タブ数。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTabControl.SelectedIndex">
+            <summary>
+            選択されたタブインデックスを取得します。
+            </summary>
+            <returns>タブインデックス。</returns>
         </member>
         <member name="T:Ong.Friendly.FormsStandardControls.FormsRichTextBox">
             <summary>
@@ -1689,50 +1627,112 @@
             <param name="textBox">リッチテキストボックス。</param>
             <param name="text">テキスト。</param>
         </member>
-        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripButton">
+        <member name="T:Ong.Friendly.FormsStandardControls.Properties.Resources">
             <summary>
-            ツールストリップボタン操作クラスです。
+              ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
             </summary>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ResourceManager">
+            <summary>
+              このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.Culture">
+            <summary>
+              厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+              現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorCheckSetting">
+            <summary>
+              チェック状態にできませんでした。 に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetListView">
+            <summary>
+              アイテムを保持するListViewが設定されていません。 に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetToolStrip">
+            <summary>
+              アイテムを保持するToolStripが設定されていません。 に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetTreeView">
+            <summary>
+              ノードを保持するTreeViewが設定されていません。 に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsListViewSubItem">
+            <summary>
+            リストビューサブアイテムです。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewSubItem.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
             <summary>
             コンストラクタです。
             </summary>
-            <param name="app">対象アプリ操作クラス。</param>
-            <param name="appVar">対象アプリケーション内変数操作クラス。</param>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.#ctor(Ong.Friendly.FormsStandardControls.FormsToolStripItem)">
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListViewSubItem.Text">
+            <summary>
+            テキストを取得します。
+            </summary>
+            <returns>テキスト。</returns>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsNumericUpDown">
+            <summary>
+            TypeがWindows.Forms.NumericUpDownのウィンドウに対応した操作を提供します
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
             <summary>
             コンストラクタです。
             </summary>
-            <param name="item">ToolStripItem操作クラス。</param>
+            <param name="src">元となるウィンドウコントロールです</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.EmulateCheck(System.Windows.Forms.CheckState)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
             <summary>
-            チェック状態を設定します。
+            コンストラクタです。
             </summary>
-            <param name="value">チェック状態。</param>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.EmulateCheck(System.Windows.Forms.CheckState,Codeer.Friendly.Async)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.EmulateChangeValue(System.Decimal)">
             <summary>
-            チェック状態を設定します。
-            非同期で実行します。
+            値を変更します。
             </summary>
-            <param name="value">チェック状態。</param>
+            <param name="value">値。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.EmulateChangeValue(System.Decimal,Codeer.Friendly.Async)">
+            <summary>
+            値を変更します。
+            </summary>
+            <param name="value">値。</param>
             <param name="async">非同期実行オブジェクト。</param>
         </member>
-        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.EmulateCheckInTarget(System.Windows.Forms.ToolStripButton,System.Windows.Forms.CheckState)">
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.EmulateChangeValueInTarget(System.Windows.Forms.NumericUpDown,System.Decimal)">
             <summary>
-            チェック状態を設定します。
+            値を変更します。
             </summary>
-            <param name="checkButton">チェックボックス。</param>
-            <param name="value">チェック状態。</param>
+            <param name="numeric">コントロール。</param>
+            <param name="value">値。</param>
         </member>
-        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripButton.CheckState">
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.Value">
             <summary>
-            チェック状態を取得します。
+            値を取得
             </summary>
-            <returns>チェック状態。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.Minimum">
+            <summary>
+            最小値を取得
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.Maximum">
+            <summary>
+            最大値を取得
+            </summary>
         </member>
     </members>
 </doc>

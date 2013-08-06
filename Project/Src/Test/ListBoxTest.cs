@@ -55,7 +55,7 @@ namespace Test
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
             int itemCount = listbox1.ItemCount;
-            Assert.AreEqual(5, itemCount);
+            Assert.AreEqual(7, itemCount);
         }
 
         /// <summary>
@@ -70,6 +70,30 @@ namespace Test
             Assert.AreEqual(3, listbox1.SelectedIndex);
         }
 
+        /// <summary>
+        /// FindStringテスト
+        /// </summary>
+        [Test]
+        public void TestFindString()
+        {
+            FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
+            int findIndex = listbox1.FindString("Item-11");
+            listbox1.EmulateChangeSelectedIndex(findIndex);
+            Assert.AreEqual(5, listbox1.SelectedIndex);
+        }
+
+        /// <summary>
+        /// FindStringExactテスト
+        /// </summary>
+        [Test]
+        public void TestFindExact()
+        {
+            FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
+            int findIndex = listbox1.FindStringExact("Item-11");
+            listbox1.EmulateChangeSelectedIndex(findIndex);
+            Assert.AreEqual(6, listbox1.SelectedIndex);
+        }
+        
         /// <summary>
         /// SelectedIndextテスト
         /// </summary>

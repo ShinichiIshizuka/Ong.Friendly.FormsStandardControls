@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
+using System;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -63,11 +64,32 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="ItemText">各ノードのテキスト。</param>
         /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        [Obsolete("次のいずれかを使用してください。FindString, FindStringExact", false)]
         public int FindListIndex(string ItemText)
         {
             return (int)(this["FindString"](ItemText).Core);
         }
 
+        /// <summary>
+        /// 指定した文字列で始まる最初のアイテムを検索します。指定した開始インデックスから検索が開始します。
+        /// </summary>
+        /// <param name="ItemText">各ノードのテキスト</param>
+        /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        public int FindString(string ItemText)
+        {
+            return (int)(this["FindString"](ItemText).Core);
+        }
+
+        /// <summary>
+        /// 指定した文字列と正確に一致する最初のアイテムを検索します。指定した開始インデックスから検索が開始します。
+        /// </summary>
+        /// <param name="ItemText">各ノードのテキスト</param>
+        /// <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        public int FindStringExact(string ItemText)
+        {
+            return (int)(this["FindStringExact"](ItemText).Core);
+        }
+        
         /// <summary>
         /// チェック状態を設定します。
         /// </summary>

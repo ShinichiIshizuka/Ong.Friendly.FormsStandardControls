@@ -125,7 +125,9 @@
             this.comboBox.Items.AddRange(new object[] {
             "Item-1",
             "Item-2",
-            "Item-3"});
+            "Item-3",
+            "Item-1122",
+            "Item-11"});
             this.comboBox.Location = new System.Drawing.Point(209, 65);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(114, 20);
@@ -140,7 +142,9 @@
             "Item-2",
             "Item-3",
             "Item-4",
-            "Item-5"});
+            "Item-5",
+            "Item-1122",
+            "Item-11"});
             this.listBox1.Location = new System.Drawing.Point(235, 134);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 88);
@@ -159,7 +163,9 @@
             "Item-6",
             "Item-7",
             "Item-8",
-            "Item-9"});
+            "Item-9",
+            "Item-1122",
+            "Item-11"});
             this.listBox2.Location = new System.Drawing.Point(235, 224);
             this.listBox2.Name = "listBox2";
             this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -336,7 +342,9 @@
             "Item-3",
             "Item-4",
             "Item-5",
-            "Item-6"});
+            "Item-6",
+            "Item-1122",
+            "Item-11"});
             this.checkedListBox1.Location = new System.Drawing.Point(368, 134);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(112, 172);

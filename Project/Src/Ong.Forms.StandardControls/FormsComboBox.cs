@@ -55,7 +55,7 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// 指定の文字列のアイテムを検索します。
+        /// 指定の文字列のアイテムを部分一致検索します。
         /// </summary>
         /// <param name="text">テキスト。</param>
         /// <param name="startIndex">検索開始インデックス。</param>
@@ -63,6 +63,17 @@ namespace Ong.Friendly.FormsStandardControls
         public int FindString(string text, int startIndex)
         {
             return (int)this["FindString"](text, startIndex).Core;
+        }
+
+        /// <summary>
+        /// 指定の文字列のアイテムを完全一致検索します。
+        /// </summary>
+        /// <param name="text">テキスト。</param>
+        /// <param name="startIndex">検索開始インデックス。</param>
+        /// <returns>アイテムインデックス。</returns>
+        public int FindStringExact(string text, int startIndex)
+        {
+            return (int)this["FindStringExact"](text, startIndex).Core;
         }
 
         /// <summary>

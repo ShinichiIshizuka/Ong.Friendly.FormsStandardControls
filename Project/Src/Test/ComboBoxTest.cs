@@ -55,7 +55,7 @@ namespace Test
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
             int itemCount = comboBox.ItemCount;
-            Assert.AreEqual(3, itemCount);
+            Assert.AreEqual(5, itemCount);
         }
 
         /// <summary>
@@ -77,8 +77,19 @@ namespace Test
         public void TestFindString()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
-            int findindex = comboBox.FindString("Item-2",0);
+            int findindex = comboBox.FindString("Item-2", 0);
             Assert.AreEqual(1, findindex);
+        }
+
+        /// <summary>
+        /// FindStringExact‚ÌƒeƒXƒg
+        /// </summary>
+        [Test]
+        public void TestFindExact()
+        {
+            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            int findindex = comboBox.FindStringExact("Item-11", 0);
+            Assert.AreEqual(4, findindex);
         }
 
         /// <summary>
