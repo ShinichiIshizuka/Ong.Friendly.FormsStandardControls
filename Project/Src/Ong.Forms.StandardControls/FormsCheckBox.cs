@@ -2,6 +2,9 @@ using System.Windows.Forms;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System.Reflection;
+using System;
+using Ong.Friendly.FormsStandardControls.Properties;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -62,7 +65,16 @@ namespace Ong.Friendly.FormsStandardControls
         static void EmulateCheckInTarget(CheckBox checkBox, CheckState value)
         {
             checkBox.Focus();
-            checkBox.CheckState = value;
+            int tryCount = 0;
+            while (checkBox.CheckState != value)
+            {
+                tryCount++;
+                checkBox.GetType().GetMethod("OnClick", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(checkBox, new object[] { EventArgs.Empty });
+                if (tryCount == 2)
+                {
+                    throw new NotSupportedException(Resources.ErrorCheckSetting);
+                }
+            }
         }
     }
 }
