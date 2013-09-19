@@ -140,5 +140,15 @@ namespace FormsStandardControls
         {
             async_counter = 11;
         }
+
+        /// <summary>
+        /// リンクラベルクリック
+        /// </summary>
+        /// <param name="sender">コール元</param>
+        /// <param name="e">イベントパラメタ</param>
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            async_counter = 12;
+        }
     }
 }

@@ -70,6 +70,10 @@
             this.columnCombo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.columnButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.columnLink = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.linkLabel = new System.Windows.Forms.LinkLabel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -386,7 +390,7 @@
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
-            this.tabControl.Location = new System.Drawing.Point(550, 324);
+            this.tabControl.Location = new System.Drawing.Point(775, 302);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(241, 146);
@@ -480,11 +484,47 @@
             this.columnLink.Text = "link";
             this.columnLink.UseColumnTextForLinkValue = true;
             // 
+            // linkLabel
+            // 
+            this.linkLabel.AutoSize = true;
+            this.linkLabel.Location = new System.Drawing.Point(437, 395);
+            this.linkLabel.Name = "linkLabel";
+            this.linkLabel.Size = new System.Drawing.Size(56, 12);
+            this.linkLabel.TabIndex = 27;
+            this.linkLabel.TabStop = true;
+            this.linkLabel.Text = "linkLabel1";
+            this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(439, 410);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(166, 14);
+            this.progressBar.TabIndex = 29;
+            this.progressBar.Value = 50;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(627, 303);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 30;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(442, 430);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(163, 19);
+            this.dateTimePicker1.TabIndex = 31;
+            // 
             // FormControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 470);
+            this.ClientSize = new System.Drawing.Size(1028, 464);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.progressBar);
+            this.Controls.Add(this.linkLabel);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.numericUpDown);
             this.Controls.Add(this.listView1);
@@ -563,6 +603,10 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn columnCombo;
         private System.Windows.Forms.DataGridViewButtonColumn columnButton;
         private System.Windows.Forms.DataGridViewLinkColumn columnLink;
+        private System.Windows.Forms.LinkLabel linkLabel;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 
