@@ -68,5 +68,13 @@
       <TargetType>System.Windows.Forms.TreeView</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsTreeView</PluginType>
     </PluginClassPair>
+    <PluginClassPair>
+      <TargetType>System.Windows.Forms.ProgressBar</TargetType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsProgressBar</PluginType>
+    </PluginClassPair>
+    <PluginClassPair>
+      <TargetType>System.Windows.Forms.LinkLabel</TargetType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsLinkLabel</PluginType>
+    </PluginClassPair>
   </NetTypePairs>
 </PluginInfo>
