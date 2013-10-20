@@ -81,8 +81,8 @@
       <PluginType>Ong.Friendly.FormsStandardControls.FormsDateTimePicker</PluginType>
     </PluginClassPair>
     <PluginClassPair>
-      <TargetType>System.Windows.Forms.MonthCalender</TargetType>
-      <PluginType>Ong.Friendly.FormsStandardControls.FormsMonthCalender</PluginType>
+      <TargetType>System.Windows.Forms.MonthCalendar</TargetType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsMonthCalendar</PluginType>
     </PluginClassPair>
   </NetTypePairs>
 </PluginInfo>

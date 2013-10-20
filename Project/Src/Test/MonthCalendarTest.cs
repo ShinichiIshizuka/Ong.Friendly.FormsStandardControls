@@ -52,8 +52,8 @@ namespace Test
         [Test]
         public void FirstDayOfWeekTest()
         {
-            FormsMonthCalendar monthcalender = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
-            Day day = monthcalender.FirstDayOfWeek;
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            Day day = monthcalendar.FirstDayOfWeek;
             Assert.AreEqual(Day.Default, day);
         }
 
@@ -63,8 +63,8 @@ namespace Test
         [Test]
         public void MaxSelectionCountTest()
         {
-            FormsMonthCalendar monthcalender = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
-            int maxcount = monthcalender.MaxSelectionCount;
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            int maxcount = monthcalendar.MaxSelectionCount;
             Assert.AreEqual(7, maxcount);
         }
 
@@ -74,10 +74,10 @@ namespace Test
         [Test]
         public void SelectedDayTest()
         {
-            FormsMonthCalendar monthcalender = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
-            monthcalender.EmulateSelectDay(new DateTime(2013, 10, 22));
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 22));
 
-            DateTime datetime = monthcalender.SelectedDay;
+            DateTime datetime = monthcalendar.SelectedDay;
             Assert.AreEqual(new DateTime(2013, 10, 22), datetime);
         }
 
@@ -87,8 +87,8 @@ namespace Test
         [Test]
         public void TodayTest()
         {
-            FormsMonthCalendar monthcalender = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
-            DateTime datetime = monthcalender.Today;
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            DateTime datetime = monthcalendar.Today;
             Assert.AreEqual(DateTime.Today, datetime);
         }
 
@@ -98,35 +98,34 @@ namespace Test
         [Test]
         public void EmulateSelectDayTest()
         {
-                FormsMonthCalendar monthcalender = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
-                monthcalender.EmulateSelectDay(new DateTime(2013, 10, 30));
-                DateTime datetime = monthcalender.SelectedDay;
-                Assert.AreEqual(new DateTime(2013, 10, 30), datetime);
-
-                // 非同期
-                app[GetType (), "ChangeDateTimeEvent"] (monthcalender.AppVar );
-                monthcalender.EmulateSelectDay(new DateTime(2013, 10, 25), new Async());
-                new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-                datetime = monthcalender.SelectedDay;
-                Assert.AreEqual(new DateTime(2013, 10, 25), datetime);
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 30));
+            DateTime datetime = monthcalendar.SelectedDay;
+            Assert.AreEqual(new DateTime(2013, 10, 30), datetime);
+            // 非同期
+            app[GetType(), "ChangeDateTimeEvent"](monthcalendar.AppVar);
+            monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 25), new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            datetime = monthcalendar.SelectedDay;
+            Assert.AreEqual(new DateTime(2013, 10, 25), datetime);
         }
 
         /// <summary>
         /// テキスト変更時にメッセージボックスを表示する
         /// </summary>
         /// <param name="textbox">ボタン</param>
-        static void ChangeDateTimeEvent(MonthCalendar monthcalender)
+        static void ChangeDateTimeEvent(MonthCalendar monthcalendar)
         {
             DateRangeEventHandler handler = null;
             handler = delegate
             {
                 MessageBox.Show("");
-                monthcalender.BeginInvoke((MethodInvoker)delegate
+                monthcalendar.BeginInvoke((MethodInvoker)delegate
                 {
-                    monthcalender.DateChanged -= handler;
+                    monthcalendar.DateChanged -= handler;
                 });
             };
-            monthcalender.DateChanged += handler;
+            monthcalendar.DateChanged += handler;
         }
 
         /// <summary>
@@ -135,10 +134,10 @@ namespace Test
         [Test]
         public void GetSelectionRangeTest()
         {
-            FormsMonthCalendar monthcalender = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
             DateTime datetimeStart = new DateTime();
             DateTime datetimeEnd = new DateTime();
-            monthcalender.GetSelectionRange(ref datetimeStart, ref datetimeEnd);
+            monthcalendar.GetSelectionRange(ref datetimeStart, ref datetimeEnd);
             Assert.AreEqual(new DateTime(2013, 10, 25), datetimeStart);
             Assert.AreEqual(new DateTime(2013, 10, 25), datetimeEnd);
         }

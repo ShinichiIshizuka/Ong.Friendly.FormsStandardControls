@@ -81,11 +81,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// 現在の選択日付を設定します。
         /// </summary>
-        /// <param name="monthcalender">MonthCalender。</param>
+        /// <param name="monthcalendar">MonthCalender。</param>
         /// <param name="date">日付。</param>
-        static void EmulateSelectDayInTarget(MonthCalendar monthcalender, DateTime date)
+        static void EmulateSelectDayInTarget(MonthCalendar monthcalendar, DateTime date)
         {
-            monthcalender.SelectionRange = new SelectionRange(date, date);
+            monthcalendar.SelectionRange = new SelectionRange(date, date);
         }
 
         /// <summary>

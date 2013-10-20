@@ -68,7 +68,7 @@
     <Compile Include="ButtonTest.cs" />
     <Compile Include="CheckBoxTest.cs" />
     <Compile Include="DateTimePickerTest.cs" />
-    <Compile Include="FormsMonthCalendarTest.cs" />
+    <Compile Include="MonthCalendarTest.cs" />
     <Compile Include="LinkLabelTest.cs" />
     <Compile Include="ProgressBarTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

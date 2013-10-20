@@ -1848,7 +1848,7 @@
             <summary>
             現在の選択日付を設定します。
             </summary>
-            <param name="monthcalender">MonthCalender。</param>
+            <param name="monthcalendar">MonthCalender。</param>
             <param name="date">日付。</param>
         </member>
         <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.GetSelectionRange(System.DateTime@,System.DateTime@)">
