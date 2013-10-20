@@ -37,29 +37,31 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// 現在時間を設定します。
         /// </summary>
-        public void EmulateSelectDay(DateTime day)
+        /// <param name="datetime">時間。</param>
+        public void EmulateSelectDay(DateTime datetime)
         {
-            App[GetType(), "EmulateSelectDayInTarget"](AppVar,day);
+            App[GetType(), "EmulateSelectDayInTarget"](AppVar, datetime);
         }
 
         /// <summary>
         /// 現在時間を設定します。
         /// 非同期で実行します。
         /// </summary>
-        /// <param name="day">非同期実行オブジェクト。</param>
+        /// <param name="datetime">時間。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
-        public void EmulateSelectDay(DateTime day, Async async)
+        public void EmulateSelectDay(DateTime datetime, Async async)
         {
-            App[GetType(), "EmulateSelectDayInTarget", async](AppVar, day);
+            App[GetType(), "EmulateSelectDayInTarget", async](AppVar, datetime);
         }
 
         /// <summary>
         /// 現在時間を設定します。
         /// </summary>
-        /// <param name="datetimepicker">DateTimePicker</param>
-        static void EmulateSelectDayInTarget(DateTimePicker datetimepicker,DateTime day)
+        /// <param name="datetimepicker">DateTimePicker。</param>
+        /// <param name="datetime">時間。</param>
+        static void EmulateSelectDayInTarget(DateTimePicker datetimepicker, DateTime datetime)
         {
-            datetimepicker.Value = day;
+            datetimepicker.Value = datetime;
         }
     }
 }

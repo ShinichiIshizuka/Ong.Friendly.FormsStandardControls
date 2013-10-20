@@ -76,5 +76,13 @@
       <TargetType>System.Windows.Forms.LinkLabel</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsLinkLabel</PluginType>
     </PluginClassPair>
+    <PluginClassPair>
+      <TargetType>System.Windows.Forms.DateTimePicker</TargetType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsDateTimePicker</PluginType>
+    </PluginClassPair>
+    <PluginClassPair>
+      <TargetType>System.Windows.Forms.MonthCalender</TargetType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsMonthCalender</PluginType>
+    </PluginClassPair>
   </NetTypePairs>
 </PluginInfo>

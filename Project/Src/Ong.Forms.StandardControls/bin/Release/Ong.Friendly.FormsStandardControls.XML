@@ -1084,6 +1084,39 @@
             </summary>
             <returns>チェック状態。</returns>
         </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsProgressBar">
+            <summary>
+            TypeがWindowControlがSystem.Windows.Forms.TextBoxのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsProgressBar.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロール。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsProgressBar.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsProgressBar.Min">
+            <summary>
+            最小値です。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsProgressBar.Max">
+            <summary>
+            最大値です。 
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsProgressBar.Pos">
+            <summary>
+            現在位置です。  
+            </summary>
+        </member>
         <member name="T:Ong.Friendly.FormsStandardControls.FormsListView">
             <summary>
             TypeがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します。
@@ -1197,6 +1230,20 @@
             アイテムを指定されたテキストで検索します。
             </summary>
             <param name="ItemText">各ノードのテキスト。</param>
+            <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.FindString(System.String)">
+            <summary>
+            指定した文字列で始まる最初のアイテムを検索します。指定した開始インデックスから検索が開始します。
+            </summary>
+            <param name="ItemText">各ノードのテキスト</param>
+            <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.FindStringExact(System.String)">
+            <summary>
+            指定した文字列と正確に一致する最初のアイテムを検索します。指定した開始インデックスから検索が開始します。
+            </summary>
+            <param name="ItemText">各ノードのテキスト</param>
             <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
         </member>
         <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckState(System.Int32,System.Windows.Forms.CheckState)">
@@ -1373,6 +1420,20 @@
             <param name="ItemText">各ノードのテキスト</param>
             <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
         </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.FindString(System.String)">
+            <summary>
+            指定した文字列で始まる最初のアイテムを検索します。指定した開始インデックスから検索が開始します。
+            </summary>
+            <param name="ItemText">各ノードのテキスト</param>
+            <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.FindStringExact(System.String)">
+            <summary>
+            指定した文字列と正確に一致する最初のアイテムを検索します。指定した開始インデックスから検索が開始します。
+            </summary>
+            <param name="ItemText">各ノードのテキスト</param>
+            <returns>検索されたノードのアイテムハンドル。未発見時はnullが返ります。</returns>
+        </member>
         <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndex(System.Int32)">
             <summary>
             指定されたインデックスに該当するアイテムを選択状態にします。
@@ -1443,6 +1504,42 @@
             選択状態のリスト項目一覧を取得します。
             </summary>
         </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsLinkLabel">
+            <summary>
+            TypeがSystem.Windows.Forms.LinkLabelのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロールです。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.EmulateLinkClick">
+            <summary>
+            クリックです。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.EmulateLinkClick(Codeer.Friendly.Async)">
+            <summary>
+            クリックです。
+            非同期で実行します。
+            </summary>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.EmulateLinkClickInTarget(System.Windows.Forms.LinkLabel)">
+            <summary>
+            クリックです。
+            </summary>
+            <param name="linklabel">リンクラベル。</param>
+        </member>
         <member name="T:Ong.Friendly.FormsStandardControls.Inside.Initializer">
             <summary>
             初期化です。
@@ -1482,7 +1579,15 @@
         </member>
         <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.FindString(System.String,System.Int32)">
             <summary>
-            指定の文字列のアイテムを検索します。
+            指定の文字列のアイテムを部分一致検索します。
+            </summary>
+            <param name="text">テキスト。</param>
+            <param name="startIndex">検索開始インデックス。</param>
+            <returns>アイテムインデックス。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.FindStringExact(System.String,System.Int32)">
+            <summary>
+            指定の文字列のアイテムを完全一致検索します。
             </summary>
             <param name="text">テキスト。</param>
             <param name="startIndex">検索開始インデックス。</param>
@@ -1627,6 +1732,50 @@
             <param name="textBox">リッチテキストボックス。</param>
             <param name="text">テキスト。</param>
         </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsDateTimePicker">
+            <summary>
+            TypeがSystem.Windows.Forms.DateTimePickerのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロールです。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.EmulateSelectDay(System.DateTime)">
+            <summary>
+            現在時間を設定します。
+            </summary>
+            <param name="datetime">時間。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.EmulateSelectDay(System.DateTime,Codeer.Friendly.Async)">
+            <summary>
+            現在時間を設定します。
+            非同期で実行します。
+            </summary>
+            <param name="datetime">時間。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.EmulateSelectDayInTarget(System.Windows.Forms.DateTimePicker,System.DateTime)">
+            <summary>
+            現在時間を設定します。
+            </summary>
+            <param name="datetimepicker">DateTimePicker。</param>
+            <param name="datetime">時間。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.SelectedDay">
+            <summary>
+            現在時間を取得します。
+            </summary>
+        </member>
         <member name="T:Ong.Friendly.FormsStandardControls.Properties.Resources">
             <summary>
               ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
@@ -1661,6 +1810,73 @@
         <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetTreeView">
             <summary>
               ノードを保持するTreeViewが設定されていません。 に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsMonthCalendar">
+            <summary>
+            TypeがSystem.Windows.Forms.FormsMonthCalendarのウィンドウに対応した操作を提供します。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="src">元となるウィンドウコントロールです。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="appVar">アプリケーション内変数。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDay(System.DateTime)">
+            <summary>
+            現在の選択日付を設定します。
+            </summary>
+            <param name="date">日付</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDay(System.DateTime,Codeer.Friendly.Async)">
+            <summary>
+            現在の選択日付を設定します。
+            非同期で実行します。
+            </summary>
+            <param name="date">日付。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDayInTarget(System.Windows.Forms.MonthCalendar,System.DateTime)">
+            <summary>
+            現在の選択日付を設定します。
+            </summary>
+            <param name="monthcalender">MonthCalender。</param>
+            <param name="date">日付。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.GetSelectionRange(System.DateTime@,System.DateTime@)">
+            <summary>
+            ユーザーによって現在選択されている日付範囲を取得します。 複数選択の場合に使用します。 
+            </summary>
+            <param name="min">最小日付。</param>
+            <param name="max">最大日付。</param>
+            <returns>成否。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.FirstDayOfWeek">
+            <summary>
+            カレンダーの左端の列に表示される曜日を取得します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.MaxSelectionCount">
+            <summary>
+            選択できる最大日数です。 
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.SelectedDay">
+            <summary>
+            現在の選択日時です。 
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.Today">
+            <summary>
+            今日の日付です。 
             </summary>
         </member>
         <member name="T:Ong.Friendly.FormsStandardControls.FormsListViewSubItem">
