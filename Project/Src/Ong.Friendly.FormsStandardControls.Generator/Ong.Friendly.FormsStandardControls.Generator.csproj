@@ -47,6 +47,7 @@
     <Compile Include="FormsCheckedListBoxGenerator.cs" />
     <Compile Include="FormsComboBoxGenerator.cs" />
     <Compile Include="FormsDataGridViewGenerator.cs" />
+    <Compile Include="FormsDateTimePickerGenerator.cs" />
     <Compile Include="FormsListBoxGenerator.cs" />
     <Compile Include="FormsListViewGenerator.cs" />
     <Compile Include="FormsNumericUpDownGenerator.cs" />

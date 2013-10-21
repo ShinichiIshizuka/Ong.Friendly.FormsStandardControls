@@ -76,5 +76,17 @@
       <TargetType>System.Windows.Forms.TreeView</TargetType>
       <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsTreeViewGenerator</GeneratorType>
     </PluginClassPair>
+    <PluginClassPair>
+      <TargetType>System.Windows.Forms.LinkLabel</TargetType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsLinkLabelGenerator</GeneratorType>
+    </PluginClassPair>
+    <PluginClassPair>
+      <TargetType>System.Windows.Forms.DateTimePicker</TargetType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsDateTimePickerGenerator</GeneratorType>
+    </PluginClassPair>
+    <PluginClassPair>
+      <TargetType>System.Windows.Forms.MonthCalendar</TargetType>
+      <GeneratorType>Ong.Friendly.FormsStandardControls.Generator.FormsMonthCalendarGenerator</GeneratorType>
+    </PluginClassPair>
   </NetTypePairs>
 </PluginInfo>
