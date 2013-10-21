@@ -8,18 +8,17 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// <summary>
     /// コード生成
     /// </summary>
-    public class FormsDateTimePickerGenerator : GeneratorBase
+    public class FormsLinkLabelGenerator :GeneratorBase
     {
-        DateTimePicker _control;
+        LinkLabel _control;
 
         /// <summary>
         /// アタッチ。
         /// </summary>
         protected override void Attach()
         {
-            _control = (DateTimePicker)ControlObject;
-            _control.ValueChanged += DateTimeValueChanged;
-            _control.CloseUp += DateTimeValueChanged;
+            _control = (LinkLabel)ControlObject;
+            _control.LinkClicked += LinkLabelClicked;
         }
 
         /// <summary>
@@ -27,20 +26,19 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// </summary>
         protected override void Detach()
         {
-            _control.ValueChanged -= DateTimeValueChanged;
-            _control.CloseUp -= DateTimeValueChanged;
+            _control.LinkClicked -= LinkLabelClicked;
         }
 
         /// <summary>
-        /// 日付変更
+        /// リンククリック
         /// </summary>
         /// <param name="sender">イベント送信元</param>
         /// <param name="e">イベント内容</param>
-        void DateTimeValueChanged(object sender, EventArgs e)
+        void LinkLabelClicked(object sender, EventArgs e)
         {
             if (_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", _control.Value.Year , "," , _control.Value.Month , "," ,_control.Value.Day , "));");
+                AddSentence(new TokenName(), ".EmulateLinkClick(", new TokenAsync(CommaType.Non), ");");
             }
         }
     }

@@ -8,18 +8,17 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// <summary>
     /// コード生成
     /// </summary>
-    public class FormsDateTimePickerGenerator : GeneratorBase
+    public class FormsMonthCalendarGenerator :GeneratorBase
     {
-        DateTimePicker _control;
+        MonthCalendar _control;
 
         /// <summary>
         /// アタッチ。
         /// </summary>
         protected override void Attach()
         {
-            _control = (DateTimePicker)ControlObject;
-            _control.ValueChanged += DateTimeValueChanged;
-            _control.CloseUp += DateTimeValueChanged;
+            _control = (MonthCalendar)ControlObject;
+            _control.DateChanged += MonthCalendarDateChanged;
         }
 
         /// <summary>
@@ -27,8 +26,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// </summary>
         protected override void Detach()
         {
-            _control.ValueChanged -= DateTimeValueChanged;
-            _control.CloseUp -= DateTimeValueChanged;
+            _control.DateChanged -= MonthCalendarDateChanged;
         }
 
         /// <summary>
@@ -36,11 +34,12 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// </summary>
         /// <param name="sender">イベント送信元</param>
         /// <param name="e">イベント内容</param>
-        void DateTimeValueChanged(object sender, EventArgs e)
+        void MonthCalendarDateChanged(object sender, EventArgs e)
         {
-            if (_control.Focused)
+            if(_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", _control.Value.Year , "," , _control.Value.Month , "," ,_control.Value.Day , "));");
+                DateTime selection = _control.SelectionStart;
+                AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", selection.Year, ",", selection.Month, ",", selection.Day, "));");
             }
         }
     }

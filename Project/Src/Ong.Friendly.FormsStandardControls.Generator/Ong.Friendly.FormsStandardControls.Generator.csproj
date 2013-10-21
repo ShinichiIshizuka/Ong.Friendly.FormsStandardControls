@@ -48,8 +48,10 @@
     <Compile Include="FormsComboBoxGenerator.cs" />
     <Compile Include="FormsDataGridViewGenerator.cs" />
     <Compile Include="FormsDateTimePickerGenerator.cs" />
+    <Compile Include="FormsLinkLabelGenerator.cs" />
     <Compile Include="FormsListBoxGenerator.cs" />
     <Compile Include="FormsListViewGenerator.cs" />
+    <Compile Include="FormsMonthCalendarGenerator.cs" />
     <Compile Include="FormsNumericUpDownGenerator.cs" />
     <Compile Include="FormsRadioButtonGenerator.cs" />
     <Compile Include="FormsRichTextBoxGenerator.cs" />
