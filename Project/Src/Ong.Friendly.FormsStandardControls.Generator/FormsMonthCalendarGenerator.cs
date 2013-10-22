@@ -39,7 +39,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             if(_control.Focused)
             {
                 DateTime selection = _control.SelectionStart;
-                AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", selection.Year, ",", selection.Month, ",", selection.Day, "));");
+                AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", selection.Year, ", ", selection.Month, ", ", selection.Day, ")", new TokenAsync(CommaType.Before), ");");
             }
         }
     }

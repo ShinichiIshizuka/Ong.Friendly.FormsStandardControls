@@ -19,7 +19,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             _control = (DateTimePicker)ControlObject;
             _control.ValueChanged += DateTimeValueChanged;
-            _control.CloseUp += DateTimeValueChanged;
         }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         protected override void Detach()
         {
             _control.ValueChanged -= DateTimeValueChanged;
-            _control.CloseUp -= DateTimeValueChanged;
         }
 
         /// <summary>
@@ -38,10 +36,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="e">イベント内容</param>
         void DateTimeValueChanged(object sender, EventArgs e)
         {
-            if (_control.Focused)
-            {
-                AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", _control.Value.Year , "," , _control.Value.Month , "," ,_control.Value.Day , "));");
-            }
+            AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", _control.Value.Year , ", " , _control.Value.Month , ", " ,_control.Value.Day , ")", new TokenAsync(CommaType.Before),");");
         }
     }
 }
