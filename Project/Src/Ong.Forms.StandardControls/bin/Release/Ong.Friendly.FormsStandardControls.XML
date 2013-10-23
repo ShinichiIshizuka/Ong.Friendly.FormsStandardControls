@@ -1834,7 +1834,7 @@
             <summary>
             現在の選択日付を設定します。
             </summary>
-            <param name="date">日付</param>
+            <param name="date">日付。</param>
         </member>
         <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDay(System.DateTime,Codeer.Friendly.Async)">
             <summary>
@@ -1850,6 +1850,30 @@
             </summary>
             <param name="monthcalendar">MonthCalender。</param>
             <param name="date">日付。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDay(System.DateTime,System.DateTime)">
+            <summary>
+            現在の選択日付(範囲)を設定します。
+            </summary>
+            <param name="min">最小日付。</param>
+            <param name="max">最大日付。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDay(System.DateTime,System.DateTime,Codeer.Friendly.Async)">
+            <summary>
+            現在の選択日付(範囲)を設定します。
+            非同期で実行します。
+            </summary>
+            <param name="min">最小日付。</param>
+            <param name="max">最大日付。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDaysInTarget(System.Windows.Forms.MonthCalendar,System.DateTime,System.DateTime)">
+            <summary>
+            現在の選択日付(範囲)を設定します。
+            </summary>
+            <param name="monthcalendar">MonthCalender。</param>
+            <param name="min">最小日付。</param>
+            <param name="max">最大日付。</param>
         </member>
         <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.GetSelectionRange(System.DateTime@,System.DateTime@)">
             <summary>

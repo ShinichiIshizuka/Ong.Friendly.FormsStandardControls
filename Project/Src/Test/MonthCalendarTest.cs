@@ -111,6 +111,28 @@ namespace Test
         }
 
         /// <summary>
+        /// 現在の選択日付(範囲)を設定します。
+        /// </summary>
+        [Test]
+        public void EmulateSelectDaysTest()
+        {
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 28), new DateTime(2013, 10, 31));
+            DateTime min = new DateTime();
+            DateTime max = new DateTime(); 
+            monthcalendar.GetSelectionRange(ref min, ref max);
+            Assert.AreEqual(new DateTime(2013, 10, 28), min);
+            Assert.AreEqual(new DateTime(2013, 10, 31), max);
+            // 非同期
+            app[GetType(), "ChangeDateTimeEvent"](monthcalendar.AppVar);
+            monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 25), new DateTime(2013, 10, 27), new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            monthcalendar.GetSelectionRange(ref min, ref max);
+            Assert.AreEqual(new DateTime(2013, 10, 25), min);
+            Assert.AreEqual(new DateTime(2013, 10, 27), max);
+        }
+
+        /// <summary>
         /// テキスト変更時にメッセージボックスを表示する
         /// </summary>
         /// <param name="textbox">ボタン</param>

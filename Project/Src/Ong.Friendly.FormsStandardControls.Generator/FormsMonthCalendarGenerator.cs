@@ -38,8 +38,27 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if(_control.Focused)
             {
-                DateTime selection = _control.SelectionStart;
-                AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", selection.Year, ", ", selection.Month, ", ", selection.Day, ")", new TokenAsync(CommaType.Before), ");");
+                DateTime selectionStart = _control.SelectionStart;
+                DateTime selectionEnd = _control.SelectionEnd;
+                if(selectionStart == selectionEnd)
+                {
+                    AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(",
+                        selectionStart.Year, ", ",
+                        selectionStart.Month, ", ",
+                        selectionStart.Day, ")",
+                        new TokenAsync(CommaType.Before), ");");
+                }
+                else
+                {
+                    AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(",
+                        selectionStart.Year, ", ",
+                        selectionStart.Month, ", ",
+                        selectionStart.Day, "), new DateTime(",
+                        selectionEnd.Year, ", ",
+                        selectionEnd.Month, ", ",
+                        selectionEnd.Day, ")",
+                        new TokenAsync(CommaType.Before), ");");
+                }
             }
         }
     }

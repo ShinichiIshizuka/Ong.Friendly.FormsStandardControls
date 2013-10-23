@@ -61,6 +61,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="datetime">時間。</param>
         static void EmulateSelectDayInTarget(DateTimePicker datetimepicker, DateTime datetime)
         {
+            datetimepicker.Focus();
             datetimepicker.Value = datetime;
         }
     }
