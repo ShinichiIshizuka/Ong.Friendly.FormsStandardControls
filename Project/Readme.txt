@@ -13,7 +13,7 @@
 
 ソフトウェア使用許諾契約
 	onigiri-soft（以下、「弊社」といいます。）は、お客様が以下のソフトウェア使用許諾契約（以下「本契約」といいます。）
-	に同意いただける場合にかぎり、Ong.Friendly.FormsStandardControl_V1.6βにてインストールされる全てのソフトウェア
+	に同意いただける場合にかぎり、Ong.Friendly.FormsStandardControl_V1.7.1にてインストールされる全てのソフトウェア
 	（以下、「本ソフトウェア」といいます。）の使用を許諾いたします。
 
 	①本ソフトウェアは商用利用可能です。
@@ -24,10 +24,10 @@
 	⑥本契約は、日本国法に準拠するものとします。
 
 事前にGAC登録の必要があるもの
-	Codeer.Friendly.dll(1.6.0.0)
-	Codeer.Friendly.Windows.dll(1.6.0.0)
-	Codeer.Friendly.Windows.Grasp.dll(1.6.0.0)	
-	（CodeerFriendlyAndToolsV1.6をインストールしていれば、GAC登録されています。)
+	Codeer.Friendly.dll(1.7.1.0)
+	Codeer.Friendly.Windows.dll(1.7.1.0)
+	Codeer.Friendly.Windows.Grasp.dll(1.7.1.0)	
+	（CodeerFriendlyAndToolsV1.7.1をインストールしていれば、GAC登録されています。)
 
 動作環境
 	対応OS
@@ -46,17 +46,17 @@
 	setup.exeを起動してインストールしてください。
 
 TestAssistantへのプラグイン方法
-	このインストーラではTestAssistant1.6にプラグインも実施します。
+	このインストーラではTestAssistant1.7.1にプラグインも実施します。
 	しかし、TestAssistantをデフォルト以外のフォルダにインストールされているお客様に関しては正しくプラグインされない可能性があります。
 	その場合は、手動でTestAssistantのインストールフォルダに以下のファイルをコピーしてください。
 	プラグインに関する詳細はCodeer.Friendly提供元のサイト情報を参照お願いします。
 	http://www.codeer.co.jp/
 
 	・Ong.Friendly.FormsStandardControls.dll
-		\Codeer\TestAssistant\v1.6.0.0\Ong.Friendly.FormsStandardControls.dll
+		\Codeer\TestAssistant\v1.7.1.0\Ong.Friendly.FormsStandardControls.dll
 	・Codeer.Friendly.FormsStandardControls.Plugin.xml
-		\Codeer\TestAssistant\v1.6.0.0\Plugin\Ong.Friendly.FormsStandardControls.Plugin.xml
+		\Codeer\TestAssistant\v1.7.1.0\Plugin\Ong.Friendly.FormsStandardControls.Plugin.xml
 
 
 アンインストール方法
-	『プログラムの追加と削除』からOng.Friendly.FormsStandardControl_V1.6βを削除してください。
+	『プログラムの追加と削除』からOng.Friendly.FormsStandardControl_V1.7.1を削除してください。
