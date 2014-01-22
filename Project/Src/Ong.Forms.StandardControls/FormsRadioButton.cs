@@ -5,51 +5,92 @@ using Ong.Friendly.FormsStandardControls.Properties;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
 {
+#if ENG
+    /// <summary>
+    /// Provides operations on controls of type System.Windows.Forms.RadioButton.
+    /// </summary>
+#else
     /// <summary>
     /// TypeがSystem.Windows.Forms.RadioButtonのウィンドウに対応した操作を提供します。
     /// </summary>
+#endif
     public class FormsRadioButton : FormsControlBase
     {
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="src">WindowControl object for the underlying control.</param>
+#else
         /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="src">元となるウィンドウコントロール。</param>
+#endif
         public FormsRadioButton(WindowControl src)
             : base(src) { }
 
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="app">Application manipulation object.</param>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
         /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
+#endif
         public FormsRadioButton(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar) { }
 
+#if ENG
+        /// <summary>
+        /// Returns the checked state state.
+        /// </summary>
+#else
         /// <summary>
         /// チェック状態を取得します。
         /// </summary>
-        /// <returns>チェック状態。</returns>
+#endif
         public bool Checked
         {
             get { return (bool)(this["Checked"]().Core); }
         }
 
+#if ENG
+        /// <summary>
+        /// Checks this control.
+        /// </summary>
+#else
         /// <summary>
         /// チェックします。
         /// </summary>
+#endif
         public void EmulateCheck()
         {
             App[GetType(), "EmulateCheckInTarget"](AppVar);
         }
 
+#if ENG
+        /// <summary>
+        /// Checks this control.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// チェックします。
-        /// 非同期で実行します
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateCheck(Async async)
         {
             App[GetType(), "EmulateCheckInTarget", async](AppVar);
@@ -69,7 +110,7 @@ namespace Ong.Friendly.FormsStandardControls
                 radioButton.GetType().GetMethod("OnClick", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(radioButton, new object[] { EventArgs.Empty });
                 if (tryCount == 2)
                 {
-                    throw new NotSupportedException(Resources.ErrorCheckSetting);
+                    throw new NotSupportedException(ResourcesLocal.Instance.ErrorCheckSetting);
                 }
             }
         }

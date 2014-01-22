@@ -50,13 +50,34 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Eng|AnyCPU'">
+    <OutputPath>bin\Release-Eng\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Codeer.Friendly, Version=1.7.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL" />
-    <Reference Include="Codeer.Friendly.Windows, Version=1.7.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL" />
-    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=1.7.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL" />
-    <Reference Include="Codeer.Friendly.Windows.NativeStandardControls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=90759bf0c8b8639e, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.Friendly, Version=2.0.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.2.0.0\lib\net20\Codeer.Friendly.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows, Version=2.0.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.Windows.2.0.0\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.0.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows.NativeStandardControls, Version=2.0.0.0, Culture=neutral, PublicKeyToken=90759bf0c8b8639e, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.Windows.NativeStandardControls.2.0.0\lib\net20\Codeer.Friendly.Windows.NativeStandardControls.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Ong.Friendly.FormsStandardControls, Version=2.0.0.0, Culture=neutral, PublicKeyToken=ee7fcdb5644bd140, processorArchitecture=MSIL">
+      <HintPath>packages\Ong.Friendly.FormsStandardControls.2.0.0\lib\net20\Ong.Friendly.FormsStandardControls.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -87,12 +108,6 @@
     <Compile Include="NumericUpDownTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ong.Forms.StandardControls\Ong.Friendly.FormsStandardControls.csproj">
-      <Project>{1CA63B58-74E7-4780-8C76-98B9082820E6}</Project>
-      <Name>Ong.Friendly.FormsStandardControls</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -108,6 +123,9 @@
       <ProductName>Windows インストーラー 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

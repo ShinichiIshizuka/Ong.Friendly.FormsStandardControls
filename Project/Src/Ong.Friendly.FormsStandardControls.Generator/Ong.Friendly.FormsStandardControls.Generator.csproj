@@ -36,8 +36,20 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Properties\Ong.Friendly.FormsStandardControls.Generator.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Eng|AnyCPU'">
+    <OutputPath>bin\Release-Eng\</OutputPath>
+    <DefineConstants>TRACE;ENG</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Codeer.TestAssistant.GeneratorToolKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f7af39ab9bcf13fe, processorArchitecture=MSIL" />
+    <Reference Include="Codeer.TestAssistant.GeneratorToolKit">
+      <HintPath>..\packages\Codeer.TestAssistant.GeneratorToolKit.1.0.0\lib\net20\Codeer.TestAssistant.GeneratorToolKit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
@@ -63,6 +75,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\Ong.Friendly.FormsStandardControls.Generator.snk" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +84,10 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release Copy "$(TargetPath)" "../../../ReleaseBinary/$(TargetFileName)"
+if $(ConfigurationName) == Release Copy "$(ProjectDir)$(TargetName).plugin.xml" "../../../ReleaseBinary/plugin/$(TargetName).plugin.xml"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -77,8 +77,14 @@ namespace Test
         public void TestFindString()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
-            int findindex = comboBox.FindString("Item-2", 0);
+            int findindex = comboBox.FindString("Item-2");
             Assert.AreEqual(1, findindex);
+            comboBox["Items"]()["Add"](@"dmy");
+            comboBox["Items"]()["Add"](@"Item-2");
+            findindex = comboBox.FindString(@"Item-2", 2);
+            Assert.AreEqual(comboBox.ItemCount - 1, findindex);
+            comboBox["Items"]()["RemoveAt"](comboBox.ItemCount - 1);
+            comboBox["Items"]()["RemoveAt"](comboBox.ItemCount - 1);
         }
 
         /// <summary>
@@ -88,8 +94,14 @@ namespace Test
         public void TestFindExact()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
-            int findindex = comboBox.FindStringExact("Item-11", 0);
+            int findindex = comboBox.FindStringExact("Item-11");
             Assert.AreEqual(4, findindex);
+            comboBox["Items"]()["Add"](@"dmy");
+            comboBox["Items"]()["Add"](@"Item-11");
+            findindex = comboBox.FindStringExact(@"Item-11", 5);
+            Assert.AreEqual(comboBox.ItemCount - 1, findindex);
+            comboBox["Items"]()["RemoveAt"](comboBox.ItemCount - 1);
+            comboBox["Items"]()["RemoveAt"](comboBox.ItemCount - 1);
         }
 
         /// <summary>

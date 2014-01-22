@@ -78,8 +78,13 @@ namespace Test
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
             int findIndex = listbox1.FindString("Item-11");
-            listbox1.EmulateChangeSelectedIndex(findIndex);
-            Assert.AreEqual(5, listbox1.SelectedIndex);
+            Assert.AreEqual(5, findIndex);
+            listbox1["Items"]()["Add"](@"dmy");
+            listbox1["Items"]()["Add"](@"Item-11");
+            findIndex = listbox1.FindString(@"Item-11", 6);
+            Assert.AreEqual(listbox1.ItemCount - 1, findIndex);
+            listbox1["Items"]()["RemoveAt"](listbox1.ItemCount - 1);
+            listbox1["Items"]()["RemoveAt"](listbox1.ItemCount - 1);
         }
 
         /// <summary>
@@ -90,8 +95,13 @@ namespace Test
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
             int findIndex = listbox1.FindStringExact("Item-11");
-            listbox1.EmulateChangeSelectedIndex(findIndex);
-            Assert.AreEqual(6, listbox1.SelectedIndex);
+            Assert.AreEqual(6, findIndex);
+            listbox1["Items"]()["Add"](@"dmy");
+            listbox1["Items"]()["Add"](@"Item-11");
+            findIndex = listbox1.FindStringExact(@"Item-11", 7);
+            Assert.AreEqual(listbox1.ItemCount - 1, findIndex);
+            listbox1["Items"]()["RemoveAt"](listbox1.ItemCount - 1);
+            listbox1["Items"]()["RemoveAt"](listbox1.ItemCount - 1);
         }
         
         /// <summary>

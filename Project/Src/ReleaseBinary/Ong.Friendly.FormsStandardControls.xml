@@ -1,0 +1,2064 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ong.Friendly.FormsStandardControls</name>
+    </assembly>
+    <members>
+        <member name="T:Ong.Friendly.FormsStandardControls.RowSelectedInfo">
+            <summary>
+            TContains information about row selection.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.RowSelectedInfo.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.RowSelectedInfo.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="row">Row number.</param>
+            <param name="selected">Selection state.</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.RowSelectedInfo.Row">
+            <summary>
+            Gets or sets the row number.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.RowSelectedInfo.Selected">
+            <summary>
+            Gets or sets the selection state.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.Inside.Initializer">
+            <summary>
+            初期化です。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Inside.Initializer.Initialize(Codeer.Friendly.Windows.WindowsAppFriend,System.Type)">
+            <summary>
+            初期化です。対象のアプリケーションにアセンブリを読み込ませます。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="myType">タイプ。</param>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsTreeNode">
+            <summary>
+            Provides operations on tree nodes.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.AppVarWrapper">
+            <summary>
+            This is the base class of AppVar wrappers.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.AppVarWrapper.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            コンストラクタです。
+            </summary>
+            <param name="app">対象アプリ操作クラス。</param>
+            <param name="appVar">対象アプリ内変数操作クラス。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.AppVarWrapper.App">
+            <summary>
+            Application manipulation object.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.AppVarWrapper.AppVar">
+            <summary>
+            Variable manipulation object within the target application.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.AppVarWrapper.Item(System.String)">
+            <summary>
+            Returns a delegate to invoke static operations in the test application.
+            </summary>
+            <param name="operation">The operation name.</param>
+            <returns>Delegate to invoke static operations in the application.</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.AppVarWrapper.Item(System.String,Codeer.Friendly.Async)">
+            <summary>
+            Returns a delegate to invoke static operations in the test application.
+            </summary>
+            <param name="operation">The operation name.</param>
+            <param name="async">Asynchronous execution.</param>
+            <returns>Delegate to invoke static operations in the application.</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.AppVarWrapper.Item(System.String,Codeer.Friendly.OperationTypeInfo)">
+            <summary>
+            Returns a delegate to invoke static operations in the test application.
+            </summary>
+            <param name="operation">The operation name.</param>
+            <param name="operationTypeInfo">
+            Operation type information. 
+            Used when there is more than one overload for the operation or you want to call an operation by the same name in a parent class. 
+            Often the operation can be resolved based on its parameters without specifying the operation type info.
+            </param>
+            <returns>Delegate to invoke static operations in the application.</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.AppVarWrapper.Item(System.String,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Async)">
+            <summary>
+            Returns a delegate to invoke static operations in the test application.
+            </summary>
+            <param name="operation">The operation name.</param>
+            <param name="operationTypeInfo">
+            Operation type information. 
+            Used when there is more than one overload for the operation or you want to call an operation by the same name in a parent class. 
+            Often the operation can be resolved based on its parameters without specifying the operation type info.
+            </param>
+            <param name="async">Asynchronous execution.</param>
+            <returns>Delegate to invoke static operations in the application.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateExpand">
+            <summary>
+            Expands the node.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateExpand(Codeer.Friendly.Async)">
+            <summary>
+            Expands the node.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCollapse">
+            <summary>
+            Collapses the node.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCollapse(Codeer.Friendly.Async)">
+            <summary>
+            Collapses the node.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateEditLabel(System.String)">
+            <summary>
+            Modifies the node's text.
+            </summary>
+            <param name="nodeText">New text to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateEditLabel(System.String,Codeer.Friendly.Async)">
+            <summary>
+            Modifies the node's text.
+            Executes asynchronously. 
+            </summary>
+            <param name="nodeText">New text to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCheck(System.Boolean)">
+            <summary>
+            Sets the node's checked state.
+            </summary>
+            <param name="check">true to set the node as checked.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCheck(System.Boolean,Codeer.Friendly.Async)">
+            <summary>
+            Sets the node's checked state.
+            Executes asynchronously. 
+            </summary>
+            <param name="check">true to set the node as checked.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateExpandInTarget(System.Windows.Forms.TreeNode)">
+            <summary>
+            展開します。
+            </summary>
+            <param name="treeNode">ノード。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCollapseInTarget(System.Windows.Forms.TreeNode)">
+            <summary>
+            展開をとじます。
+            </summary>
+            <param name="treeNode">ノード。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateCheckInTarget(System.Windows.Forms.TreeNode,System.Boolean)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="treeNode">ノード。</param>
+            <param name="check">true:チェック</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeNode.EmulateEditLabelInTarget(System.Windows.Forms.TreeNode,System.String)">
+            <summary>
+            ノード名を編集します（内部）。
+            </summary>
+            <param name="treeNode">ノード。</param>
+            <param name="nodeText">テキスト。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeNode.Text">
+            <summary>
+            Returns the node's text.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeNode.IsExpanded">
+            <summary>
+            Returns true if the node is expanded.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeNode.Checked">
+            <summary>
+            Returns true if the node is currently checked.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsControlBase">
+            <summary>
+            This is the base class for classes that operate on basic controls in System.Windows.Forms.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsControlBase.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsControlBase.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsControlBase.Text">
+            <summary>
+            Returns the control's text.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsControlBase.Visible">
+            <summary>
+            Returns true if the item is set to visible.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsControlBase.Enabled">
+            <summary>
+            Returns true if the control is enabled.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsMonthCalendar">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.MonthCalendar.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDay(System.DateTime)">
+            <summary>
+            Sets selected day.
+            </summary>
+            <param name="date">day.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDay(System.DateTime,Codeer.Friendly.Async)">
+            <summary>
+            Sets selected day.
+            Executes asynchronously. 
+            </summary>
+            <param name="date">day.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDayInTarget(System.Windows.Forms.MonthCalendar,System.DateTime)">
+            <summary>
+            現在の選択日付を設定します。
+            </summary>
+            <param name="monthcalendar">MonthCalender。</param>
+            <param name="date">日付。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDay(System.DateTime,System.DateTime)">
+            <summary>
+            Sets selected day range.
+            </summary>
+            <param name="min">maximum.</param>
+            <param name="max">minimum.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDay(System.DateTime,System.DateTime,Codeer.Friendly.Async)">
+            <summary>
+            Sets selected day range.
+            Executes asynchronously. 
+            </summary>
+            <param name="min">maximum.</param>
+            <param name="max">minimum.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.EmulateSelectDaysInTarget(System.Windows.Forms.MonthCalendar,System.DateTime,System.DateTime)">
+            <summary>
+            現在の選択日付(範囲)を設定します。
+            </summary>
+            <param name="monthcalendar">MonthCalender。</param>
+            <param name="min">最小日付。</param>
+            <param name="max">最大日付。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.GetSelectionRange(System.DateTime@,System.DateTime@)">
+            <summary>
+            Gets selected day range.
+            </summary>
+            <param name="min">maximum.</param>
+            <param name="max">minimum.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.FirstDayOfWeek">
+            <summary>
+            Gets the first day of the week as displayed in the month calendar.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.MaxSelectionCount">
+            <summary>
+            Max of selection count.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.SelectedDay">
+            <summary>
+            Gets the maximum number of days that can be selected in a month calendar control.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsMonthCalendar.Today">
+            <summary>
+            Today. 
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsCheckBox">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.CheckBox.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.EmulateCheck(System.Windows.Forms.CheckState)">
+            <summary>
+            Sets the control's check state.
+            </summary>
+            <param name="value">Check state.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.EmulateCheck(System.Windows.Forms.CheckState,Codeer.Friendly.Async)">
+            <summary>
+            Sets the control's check state.
+            Executes asynchronously. 
+            </summary>
+            <param name="value">Check state.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckBox.EmulateCheckInTarget(System.Windows.Forms.CheckBox,System.Windows.Forms.CheckState)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="checkBox">チェックボックス。</param>
+            <param name="value">チェック状態。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckBox.CheckState">
+            <summary>
+            Returns the control's check state.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsTextBox">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.TextBox.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.EmulateChangeText(System.String)">
+            <summary>
+            Sets the control's text.
+            </summary>
+            <param name="text">Text to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.EmulateChangeText(System.String,Codeer.Friendly.Async)">
+            <summary>
+            Sets the control's text.
+            Executes asynchronously. 
+            </summary>
+            <param name="text">Text to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTextBox.EmulateChangeTextInTarget(System.Windows.Forms.TextBox,System.String)">
+            <summary>
+            テキストを変更します。
+            </summary>
+            <param name="textBox">リッチテキストボックス。</param>
+            <param name="text">テキスト。</param>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsButton">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.Button.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.EmulateClick">
+            <summary>
+            Performs a click.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.EmulateClick(Codeer.Friendly.Async)">
+            <summary>
+            Performs a click.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsButton.EmulateClickInTarget(System.Windows.Forms.Button)">
+            <summary>
+            クリックです。
+            </summary>
+            <param name="button">ボタン。</param>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.CellSelectedInfo">
+            <summary>
+            Contains information about cell selection.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.CellSelectedInfo.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.CellSelectedInfo.#ctor(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="col">Column number.</param>
+            <param name="row">Row number.</param>
+            <param name="selected">Selection state.</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.CellSelectedInfo.Col">
+            <summary>
+            Returns the column number.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.CellSelectedInfo.Row">
+            <summary>
+            Returns the row number.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.CellSelectedInfo.Selected">
+            <summary>
+            Returns the selection state.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStrip">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.ToolStrip.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItem(System.Int32[])">
+            <summary>
+            Retrieves the item matching the specified series of key indices values.
+            </summary>
+            <param name="indexes">Series of indices leading to the item to retrieve.</param>
+            <returns>Found child item.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItem(System.String[])">
+            <summary>
+            Retrieves the item matching the specified series of key values.
+            </summary>
+            <param name="keys">Key values.</param>
+            <returns>Found child item.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.FindItem(System.String[])">
+            <summary>
+            Retrieves the item matching the specified series of display values.
+            </summary>
+            <param name="texts">Display values.</param>
+            <returns>Found child item.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItemInTarget(System.Windows.Forms.ToolStrip,System.Int32[])">
+            <summary>
+            アイテムを取得します。
+            </summary>
+            <param name="toolStrip">ツールストリップ。</param>
+            <param name="indexes">インデックス。</param>
+            <returns>アイテム。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.GetItemInTarget(System.Windows.Forms.ToolStrip,System.String[])">
+            <summary>
+            アイテムを取得します。
+            </summary>
+            <param name="toolStrip">ツールストリップ。</param>
+            <param name="keys">インデックス。</param>
+            <returns>アイテム。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStrip.FindItemInTarget(System.Windows.Forms.ToolStrip,System.String[])">
+            <summary>
+            表示文字列からアイテムを検索します。
+            </summary>
+            <param name="toolStrip">ツールストリップ。</param>
+            <param name="texts">表示文字列。</param>
+            <returns>アイテム。</returns>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsListView">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.ListView.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.GetListViewItem(System.Int32)">
+            <summary>
+            Retrieves the item at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>Item at the specified index.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.FindItemWithText(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Finds the first item whose text begins with the specified value.
+            </summary>
+            <param name="itemText">Text to search for.</param>
+            <param name="includeSubItemsInSearch">True to include sub-items in the search. Otherwise, false.</param>
+            <param name="startIndex">The index of the item at which to start the search.</param>
+            <returns>The first found item whose text begins with the specified text value.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.EmulateChangeSelectedState(System.Int32,System.Boolean)">
+            <summary>
+            Sets the selection state of the item with the specified index.
+            </summary>
+            <param name="index">Index of the item to change.</param>
+            <param name="isSelect">The selection state (true to select).</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.EmulateChangeSelectedState(System.Int32,System.Boolean,Codeer.Friendly.Async)">
+            <summary>
+            Sets the selection state of the item with the specified index.
+            Executes asynchronously. 
+            </summary>
+            <param name="index">Index of the item to change.</param>
+            <param name="isSelect">The selection state (true to select).</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.GetSelectedIndexesInTarget(System.Windows.Forms.ListView)">
+            <summary>
+            選択されたインデックスの一覧を取得します（内部）。
+            </summary>
+            <param name="listview">リストビュー</param>
+            <returns>選択されたインデックス一覧。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListView.EmulateChangeSelectedStateInTarget(System.Windows.Forms.ListView,System.Int32,System.Boolean)">
+            <summary>
+            リストビューアイテムを選択します（内部）。
+            </summary>
+            <param name="listview">リストビュー。</param>
+            <param name="index">インデックス。</param>
+            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.ViewMode">
+            <summary>
+            Returns the control's View Mode.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.ColumnCount">
+            <summary>
+            Returns the number of columns.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.ItemCount">
+            <summary>
+            Returns the number of items.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListView.SelectIndexes">
+            <summary>
+            Returns a list of the selected index.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsListBox">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.ListBox.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.FindListIndex(System.String)">
+            <summary>
+            Finds an item with the indicated text.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <returns>Index of the found item. Returns -1 if the item could not be found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.FindString(System.String)">
+            <summary>
+            Finds an item with the indicated text.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <returns>Index of the found item. Returns -1 if the item could not be found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.FindString(System.String,System.Int32)">
+            <summary>
+            Finds the first item that starts with the specified string. The search starts at a specific starting index.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <param name="startIndex">Index of the item before the first item to be searched. Set to -1 to search from the beginning. </param>
+            <returns>Index of the found item. Returns -1 if the item could not be found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.FindStringExact(System.String)">
+            <summary>
+            Finds the first item that exactly matches the specified string.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <returns>Index of the first item found; returns -1 if no match is found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.FindStringExact(System.String,System.Int32)">
+            <summary>
+            Finds the first item that exactly matches the specified string. The search starts at a specific starting index.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <param name="startIndex">Index of the item before the first item to be searched. Set to -1 to search from the beginning. </param>
+            <returns>Index of the first item found; returns -1 if no match is found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndex(System.Int32)">
+            <summary>
+            I want to select an item state corresponding to the specified index.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndex(System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            I want to select an item state corresponding to the specified index.
+            Executes asynchronously. 
+            </summary>
+            <param name="index">Index.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedState(System.Int32,System.Boolean)">
+            <summary>
+            I want to select an item state corresponding to the specified index.
+            </summary>
+            <param name="index">Index.</param>
+            <param name="isSelect">Set true to the selected state.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedState(System.Int32,System.Boolean,Codeer.Friendly.Async)">
+            <summary>
+            I want to select an item state corresponding to the specified index.
+            Executes asynchronously. 
+            </summary>
+            <param name="index">Index.</param>
+            <param name="isSelect">Set true to the selected state.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.GetSelectedIndexesInTarget(System.Windows.Forms.ListBox)">
+            <summary>
+            リストアイテムを選択します（内部）。
+            </summary>
+            <param name="listbox">リストボックス</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedIndexInTarget(System.Windows.Forms.ListBox,System.Int32)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            非同期に実行します。
+            </summary>
+            <param name="listbox">ListBox。</param>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListBox.EmulateChangeSelectedStateInTarget(System.Windows.Forms.ListBox,System.Int32,System.Boolean)">
+            <summary>
+            リストアイテムを選択します（内部）。
+            </summary>
+            <param name="listbox">ListBox。</param>
+            <param name="index">インデックス。</param>
+            <param name="isSelect">選択状態にする場合はtrueを設定します。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.ItemCount">
+            <summary>
+            I get the number of items in the list.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.SelectedIndex">
+            <summary>
+            I get the index of the currently selected item.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.SelectionMode">
+            <summary>
+            I get the selection mode.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListBox.SelectedIndexes">
+            <summary>
+            I get a list item list in the selected state.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsCheckedListBox">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.CheckedListBox.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.#ctor(Ong.Friendly.FormsStandardControls.FormsControlBase)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.GetCheckState(System.Int32)">
+            <summary>
+            Returns the control's check state.
+            </summary>
+            <returns>The check state.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.FindListIndex(System.String)">
+            <summary>
+            Finds an item with the indicated text.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <returns>Index of the found item. Returns -1 if the item could not be found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.FindString(System.String)">
+            <summary>
+            Finds an item with the indicated text.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <returns>Index of the found item. Returns -1 if the item could not be found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.FindString(System.String,System.Int32)">
+            <summary>
+            Finds the first item that starts with the specified string. The search starts at a specific starting index.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <param name="startIndex">Index of the item before the first item to be searched. Set to -1 to search from the beginning. </param>
+            <returns>Index of the found item. Returns -1 if the item could not be found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.FindStringExact(System.String)">
+            <summary>
+            Finds the first item that exactly matches the specified string.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <returns>Index of the first item found; returns -1 if no match is found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.FindStringExact(System.String,System.Int32)">
+            <summary>
+            Finds the first item that exactly matches the specified string. The search starts at a specific starting index.
+            </summary>
+            <param name="itemText">Text of the item.</param>
+            <param name="startIndex">Index of the item before the first item to be searched. Set to -1 to search from the beginning. </param>
+            <returns>Index of the first item found; returns -1 if no match is found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckState(System.Int32,System.Windows.Forms.CheckState)">
+            <summary>
+            Sets the check state of a certain item.
+            </summary>
+            <param name="index">Index of the item.</param>
+            <param name="value">Check state.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckState(System.Int32,System.Windows.Forms.CheckState,Codeer.Friendly.Async)">
+            <summary>
+            Sets the check state of a certain item.
+            Executes asynchronously. 
+            </summary>
+            <param name="index">Index of the item.</param>
+            <param name="value">Check state.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateChangeSelectedIndex(System.Int32)">
+            <summary>
+            Sets the currently selected index.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateChangeSelectedIndex(System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            Sets the currently selected index.
+            Executes asynchronously. 
+            </summary>
+            <param name="index">The index.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateCheckStateInTarget(System.Windows.Forms.CheckedListBox,System.Int32,System.Windows.Forms.CheckState)">
+            <summary>
+            チェック状態を設定します。
+            非同期で実行します。
+            </summary>
+            <param name="checkedListBox">対象のチェックリストボックス。</param>
+            <param name="index">インデックス。</param>
+            <param name="value">チェック状態。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.EmulateChangeSelectedIndexInTarget(System.Windows.Forms.CheckedListBox,System.Int32)">
+            <summary>
+            指定されたインデックスに該当するアイテムを選択状態にします。
+            非同期に実行します。
+            </summary>
+            <param name="checkedListBox">対象のチェックリストボックス。</param>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.CheckedIndicsInTarget(System.Windows.Forms.CheckedListBox)">
+            <summary>
+            現在チェックされているアイテムのインデックスを配列で取得します(内部)。
+            </summary>
+            <param name="checkedListBox">対象のチェックリストボックス。</param>
+            <returns></returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.ItemCount">
+            <summary>
+            Returns the number of items in the list.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.SelectedItemIndex">
+            <summary>
+            Returns the index of the currently selected item.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsCheckedListBox.CheckedIndices">
+            <summary>
+            Returns an array of the indices that are currently checked.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox">
+            <summary>
+            Provides operations on tool strip combo boxes.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox.#ctor(Ong.Friendly.FormsStandardControls.FormsToolStripItem)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="item">ToolStripItem manipulation object.</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripComboBox.ComboBox">
+            <summary>
+            Returns a FormsComboBox object for the underlying combo box.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsNumericUpDown">
+            <summary>
+            Provides operations on controls of type Windows.Forms.NumericUpDown.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.EmulateChangeValue(System.Decimal)">
+            <summary>
+            Sets the current value.
+            </summary>
+            <param name="value">Value to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.EmulateChangeValue(System.Decimal,Codeer.Friendly.Async)">
+            <summary>
+            Sets the current value.
+            Executes asynchronously. 
+            </summary>
+            <param name="value">Value to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.EmulateChangeValueInTarget(System.Windows.Forms.NumericUpDown,System.Decimal)">
+            <summary>
+            値を変更します。
+            </summary>
+            <param name="numeric">コントロール。</param>
+            <param name="value">値。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.Value">
+            <summary>
+            Returns the current value.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.Minimum">
+            <summary>
+            Returns the minimum value.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsNumericUpDown.Maximum">
+            <summary>
+            Returns the maximum value.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.Properties.Resources">
+            <summary>
+              ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ResourceManager">
+            <summary>
+              このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.Culture">
+            <summary>
+              厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+              現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorCheckSetting">
+            <summary>
+              It was not possible to check the state. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetListView">
+            <summary>
+              ListView that holds the item has not been set. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetToolStrip">
+            <summary>
+              ToolStrip that holds the item has not been set. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Properties.Resources.ErrorNotSetTreeView">
+            <summary>
+              TreeView that holds the item has not been set. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsComboBox">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.ComboBox.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">Window control object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.GetItemText(System.Int32)">
+            <summary>
+            Returns the text for an item in the list.
+            </summary>
+            <param name="index">Index of the item.</param>
+            <returns>The item's text.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.FindString(System.String)">
+            <summary>
+            Returns the index of the first item in the ComboBox that starts with the specified string.
+            </summary>
+            <param name="text">Text of item.</param>
+            <returns>Index of the first item found; returns -1 if no match is found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.FindString(System.String,System.Int32)">
+            <summary>
+            Returns the index of the first item in the ComboBox beyond the specified index that contains the specified string. The search is not case sensitive.
+            </summary>
+            <param name="text">Text of item.</param>
+            <param name="startIndex">Index of the item before the first item to be searched. Set to -1 to search from the beginning of the control. </param>
+            <returns>Index of the first item found; returns -1 if no match is found.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.FindStringExact(System.String)">
+            <summary>
+            Finds the first item in the combo box that matches the specified string.
+            </summary>
+            <param name="text">Text of item.</param>
+            <returns>Index of the first item found; returns -1 if no match is found, or 0 if the s parameter specifies Empty.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.FindStringExact(System.String,System.Int32)">
+            <summary>
+            Finds the first item after the specified index that matches the specified string.
+            </summary>
+            <param name="text">Text of item.</param>
+            <param name="startIndex">Index of the item before the first item to be searched. Set to -1 to search from the beginning of the control. </param>
+            <returns>Index of the first item found; returns -1 if no match is found, or 0 if the s parameter specifies Empty.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeText(System.String)">
+            <summary>
+            Modifies the control's text.
+            </summary>
+            <param name="text">Text to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeText(System.String,Codeer.Friendly.Async)">
+            <summary>
+            Modifies the control's text.
+            Executes asynchronously. 
+            </summary>
+            <param name="text">Text to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeSelect(System.Int32)">
+            <summary>
+            Selects the item with the specified index.
+            </summary>
+            <param name="index">Item index.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeSelect(System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            Selects the item with the specified index.
+            Executes asynchronously. 
+            </summary>
+            <param name="index">Item index.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeTextInTarget(System.Windows.Forms.ComboBox,System.String)">
+            <summary>
+            テキストを変更します。
+            </summary>
+            <param name="comboBox">コンボボックス。</param>
+            <param name="text">テキスト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsComboBox.EmulateChangeSelectInTarget(System.Windows.Forms.ComboBox,System.Int32)">
+            <summary>
+            指定のインデックスのアイテムを選択します。
+            </summary>
+            <param name="comboBox">コンボボックス。</param>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsComboBox.ItemCount">
+            <summary>
+            Returns the number of items in the list.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsComboBox.SelectedItemIndex">
+            <summary>
+            Returns the index of the currently selected item.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox">
+            <summary>
+            Provides operations on tool strip textboxes.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripItem">
+            <summary>
+            Provides operations on tool strip items.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.EmulateClick">
+            <summary>
+            Performs a click on the item.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.EmulateClick(Codeer.Friendly.Async)">
+            <summary>
+            Performs a click on the item.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripItem.EmulateClickInTarget(System.Windows.Forms.ToolStripItem)">
+            <summary>
+            クリックです。
+            </summary>
+            <param name="item">アイテム。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripItem.Text">
+            <summary>
+            Returns the item's text.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripItem.Visible">
+            <summary>
+            Returns true if the item is visible.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripItem.Enabled">
+            <summary>
+            Returns true if the control is enabled.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox.#ctor(Ong.Friendly.FormsStandardControls.FormsToolStripItem)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="item">ToolStripItem操作クラス</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripTextBox.TextBox">
+            <summary>
+            Returns a FormsTextBox object for the underlying text box.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsListViewItem">
+            <summary>
+            Represtnts a list item.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="item">AppVar referencing the target control object.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.GetSubItem(System.Int32)">
+            <summary>
+            Retrieves a sub item.
+            </summary>
+            <param name="subitemindex">Index of the sub-item to retrieve.</param>
+            <returns>The indicated item.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.EmulateCheck(System.Boolean)">
+            <summary>
+            Sets the item's checked state.
+            </summary>
+            <param name="value">Check state to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.EmulateCheck(System.Boolean,Codeer.Friendly.Async)">
+            <summary>
+            Sets the item's checked state.
+            Executes asynchronously. 
+            </summary>
+            <param name="value">Check state to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.EmulateEditLabel(System.String)">
+            <summary>
+            Sets the item's text.
+            </summary>
+            <param name="text">Text to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.EmulateEditLabel(System.String,Codeer.Friendly.Async)">
+            <summary>
+            Sets the item's text.
+            Executes asynchronously. 
+            </summary>
+            <param name="text">Text to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.GetSubItemInTarget(System.Windows.Forms.ListViewItem,System.Int32)">
+            <summary>
+            サブアイテムを取得します(内部)。
+            </summary>
+            <param name="listviewitem">リストビューアイテム。</param>
+            <param name="subitemindex">リストビューサブアイテムインデックス。</param>
+            <returns>FormsListViewSubItem</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.EmulateEditLabelInTarget(System.Windows.Forms.ListViewItem,System.String)">
+            <summary>
+            テキストを編集します。
+            </summary>
+            <param name="item">アイテム。</param>
+            <param name="text">テキスト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.EmulateCheckInTarget(System.Windows.Forms.ListViewItem,System.Boolean)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="item">リストビューアイテム。</param>
+            <param name="value">チェック状態。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.EnumChildWindows(System.IntPtr,Ong.Friendly.FormsStandardControls.FormsListViewItem.EnumWindowsProc,System.IntPtr)">
+            <summary>
+            子ウィンドウ検索。
+            </summary>
+            <param name="parent">親ウィンドウハンドル。</param>
+            <param name="lpEnumFunc">検索プロック。</param>
+            <param name="lParam">パラメータ。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.GetClassName(System.IntPtr,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            ウィンドウクラス名称取得。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <param name="lpClassName">クラス名称格納バッファ。</param>
+            <param name="nMaxCount">最大数。</param>
+            <returns>文字数。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewItem.SetWindowText(System.IntPtr,System.String)">
+            <summary>
+            テキストの設定。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <param name="lpString">テキスト。</param>
+            <returns>成否。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListViewItem.Text">
+            <summary>
+            Returns the item's text.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListViewItem.ItemIndex">
+            <summary>
+            Returns the item's index.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListViewItem.Checked">
+            <summary>
+            Returns the item's check state.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsListViewItem.EnumWindowsProc">
+            <summary>
+            ウィンドウ検索プロック。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <param name="lParam">パラメータ。</param>
+            <returns>検索を続けるか。</returns>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsLinkLabel">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.LinkLabel.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.EmulateLinkClick">
+            <summary>
+            Performs a click.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.EmulateLinkClick(Codeer.Friendly.Async)">
+            <summary>
+            Performs a click.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsLinkLabel.EmulateLinkClickInTarget(System.Windows.Forms.LinkLabel)">
+            <summary>
+            クリックです。
+            </summary>
+            <param name="linklabel">リンクラベル。</param>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsDateTimePicker">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.DateTimePicker.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.EmulateSelectDay(System.DateTime)">
+            <summary>
+            Set current selected DateTime.
+            </summary>
+            <param name="datetime">DateTime.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.EmulateSelectDay(System.DateTime,Codeer.Friendly.Async)">
+            <summary>
+            Set current selected DateTime.
+            Executes asynchronously. 
+            </summary>
+            <param name="datetime">DateTime.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.EmulateSelectDayInTarget(System.Windows.Forms.DateTimePicker,System.DateTime)">
+            <summary>
+            現在時間を設定します。
+            </summary>
+            <param name="datetimepicker">DateTimePicker。</param>
+            <param name="datetime">時間。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsDateTimePicker.SelectedDay">
+            <summary>
+            Get current selected DateTime.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsProgressBar">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.TextBox.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsProgressBar.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsProgressBar.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsProgressBar.Min">
+            <summary>
+            Minimum.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsProgressBar.Max">
+            <summary>
+            Maximum.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsProgressBar.Pos">
+            <summary>
+            Current value.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsTabControl">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.TabControl.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.EmulateTabSelect(System.Int32)">
+            <summary>
+            Selects a certain tab.
+            </summary>
+            <param name="index">Index (0-based) of the tab to select.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.EmulateTabSelect(System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            Selects a certain tab.
+            Executes asynchronously. 
+            </summary>
+            <param name="index">Index (0-based) of the tab to select.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTabControl.EmulateTabSelectInTarget(System.Windows.Forms.TabControl,System.Int32)">
+            <summary>
+            指定のインデックスのアイテムを選択します。
+            </summary>
+            <param name="tabControl">タブコントロール。</param>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTabControl.TabCount">
+            <summary>
+            Returns the number of tabs.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTabControl.SelectedIndex">
+            <summary>
+            Returns the currently selected index.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsListViewSubItem">
+            <summary>
+            Represents a sub-item in a list view.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsListViewSubItem.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsListViewSubItem.Text">
+            <summary>
+            Returns the sub-item's text.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsRadioButton">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.RadioButton.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.EmulateCheck">
+            <summary>
+            Checks this control.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.EmulateCheck(Codeer.Friendly.Async)">
+            <summary>
+            Checks this control.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRadioButton.EmulateCheckInTarget(System.Windows.Forms.RadioButton)">
+            <summary>
+            チェック状態にします。
+            </summary>
+            <param name="radioButton">ラジオボタン。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsRadioButton.Checked">
+            <summary>
+            Returns the checked state state.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsDataGridView">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.DataGridView.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.GetText(System.Int32,System.Int32)">
+            <summary>
+            Returns the text of a cell in the table.
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+            <returns>The cell's text.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.GetText(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns the text of the table cells in the specified range.
+            </summary>
+            <param name="startCol">Starting column number.</param>
+            <param name="startRow">Starting row number.</param>
+            <param name="endCol">Ending column number.</param>
+            <param name="endRow">Ending row number.</param>
+            <returns>Cell values.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateCellCheck(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sets the checked state state of a cell.
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+            <param name="isChecked">Checked state to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateCellCheck(System.Int32,System.Int32,System.Boolean,Codeer.Friendly.Async)">
+            <summary>
+            Sets the checked state state of a cell.
+            Executes asynchronously. 
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+            <param name="isChecked">Checked state to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCellText(System.Int32,System.Int32,System.String)">
+            <summary>
+            Modifies the text of a cell.
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+            <param name="text">The text to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCellText(System.Int32,System.Int32,System.String,Codeer.Friendly.Async)">
+            <summary>
+            Modifies the text of a cell.
+            Executes asynchronously. 
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+            <param name="text">The text to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCellComboSelect(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the selected value of a combo box cell.
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+            <param name="index">The index to select.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCellComboSelect(System.Int32,System.Int32,System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            Sets the selected value of a combo box cell.
+            Executes asynchronously. 
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+            <param name="index">The index to select.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateClickCellContent(System.Int32,System.Int32)">
+            <summary>
+            Performs a click in a cell.
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateClickCellContent(System.Int32,System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            Performs a click in a cell.
+            Executes asynchronously. 
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCurrentCell(System.Int32,System.Int32)">
+            <summary>
+            Sets the currently selected cell.
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCurrentCell(System.Int32,System.Int32,Codeer.Friendly.Async)">
+            <summary>
+            Sets the currently selected cell.
+            Executes asynchronously. 
+            </summary>
+            <param name="col">Column number of the cell.</param>
+            <param name="row">Row number of the cell.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateClearSelection">
+            <summary>
+            Clears any selections.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateClearSelection(Codeer.Friendly.Async)">
+            <summary>
+            Clears any selections.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCellSelected(Ong.Friendly.FormsStandardControls.CellSelectedInfo[])">
+            <summary>
+            Changes the cell selected state of cells.
+            </summary>
+            <param name="cells">Cell selection information.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCellSelected(Codeer.Friendly.Async,Ong.Friendly.FormsStandardControls.CellSelectedInfo[])">
+            <summary>
+            Changes the cell selected state of cells.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+            <param name="cells">Cell selection information.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeRowSelected(Ong.Friendly.FormsStandardControls.RowSelectedInfo[])">
+            <summary>
+            Sets the currently selected rows.
+            </summary>
+            <param name="rows">Row selection information.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeRowSelected(Codeer.Friendly.Async,Ong.Friendly.FormsStandardControls.RowSelectedInfo[])">
+            <summary>
+            Sets the currently selected rows.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+            <param name="rows">Row selection information.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateDelete">
+            <summary>
+            Emulates a row deletion operation.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateDelete(Codeer.Friendly.Async)">
+            <summary>
+            Emulates a row deletion operation.
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.GetSelectedRowsInTarget(System.Windows.Forms.DataGridView)">
+            <summary>
+            現在の選択行を取得します。
+            </summary>
+            <param name="grid">グリッド。</param>
+            <returns>現在の選択行。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.GetTextInTarget(System.Windows.Forms.DataGridView,System.Int32,System.Int32)">
+            <summary>
+            行列で指定したセルのテキストを取得します(内部)。
+            </summary>
+            <param name="datagridview">データグリッドビュー。</param>
+            <param name="col">列。</param>
+            <param name="row">行。</param>
+            <returns>テキスト。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.GetTextInTarget(System.Windows.Forms.DataGridView,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            行列で指定した範囲のセルのテキストを取得します。
+            </summary>
+            <param name="datagridview">データグリッド。</param>
+            <param name="startCol">開始列。</param>
+            <param name="startRow">開始行。</param>
+            <param name="endCol">終了列。</param>
+            <param name="endRow">終了行。</param>
+            <returns>テキスト配列。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.GetSelectedCellsInTarget(System.Windows.Forms.DataGridView)">
+            <summary>
+            現在の選択セルを取得します。
+            </summary>
+            <param name="grid">グリッド。</param>
+            <returns>現在の選択セル。</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateCellCheckInTarget(System.Windows.Forms.DataGridView,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            セルのチェック状態を変更します。
+            </summary>
+            <param name="grid">グリッド。</param>
+            <param name="col">列。</param>
+            <param name="row">行。</param>
+            <param name="isChecked">チェック状態。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCellTextInTarget(System.Windows.Forms.DataGridView,System.Int32,System.Int32,System.String)">
+            <summary>
+            セルのテキストを変更します。
+            </summary>
+            <param name="grid">グリッド。</param>
+            <param name="col">列。</param>
+            <param name="row">行。</param>
+            <param name="text">テキスト。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeRowSelectedInTarget(System.Windows.Forms.DataGridView,Ong.Friendly.FormsStandardControls.RowSelectedInfo[])">
+            <summary>
+            行選択状態を変更します。
+            </summary>
+            <param name="grid">グリッド。</param>
+            <param name="rows">選択行情報。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCellComboSelectInTarget(System.Windows.Forms.DataGridView,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            セルコンボの選択を変更します。
+            </summary>
+            <param name="grid">グリッド。</param>
+            <param name="col">列。</param>
+            <param name="row">行。</param>
+            <param name="index">インデックス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateClickCellContentInTarget(System.Windows.Forms.DataGridView,System.Int32,System.Int32)">
+            <summary>
+            セルボタン、セルリンクをクリックします。
+            </summary>
+            <param name="grid"></param>
+            <param name="col">列。</param>
+            <param name="row">行。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCurrentCellInTarget(System.Windows.Forms.DataGridView,System.Int32,System.Int32)">
+            <summary>
+            カレントセルを選択します。
+            </summary>
+            <param name="grid">グリッド。</param>
+            <param name="col">列。</param>
+            <param name="row">行。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateChangeCellSelectedInTarget(System.Windows.Forms.DataGridView,Ong.Friendly.FormsStandardControls.CellSelectedInfo[])">
+            <summary>
+            選択状態を変更します。
+            </summary>
+            <param name="grid">グリッド。</param>
+            <param name="cells">選択セル情報。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateClearSelectionInTarget(System.Windows.Forms.DataGridView)">
+            <summary>
+            選択状態を解除します。
+            </summary>
+            <param name="grid">グリッド。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.EmulateDeleteInTarget(System.Windows.Forms.DataGridView)">
+            <summary>
+            Delete操作をエミュレートします。
+            </summary>
+            <param name="grid">グリッド。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsDataGridView.GetCurrentCellInTarget(System.Windows.Forms.DataGridView)">
+            <summary>
+            現在の選択セルを取得します。
+            </summary>
+            <param name="grid">グリッド。</param>
+            <returns>現在の選択セル。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsDataGridView.ColumnCount">
+            <summary>
+            Returns the number of columns in the data grid.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsDataGridView.RowCount">
+            <summary>
+            Returns the number of rows in the data grid.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsDataGridView.CurrentCell">
+            <summary>
+            Returns the currently selected cell.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsDataGridView.SelectedCells">
+            <summary>
+            Returns the currently selected cells.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsDataGridView.SelectedRows">
+            <summary>
+            Returns the currently selected row numbers.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.Cell">
+            <summary>
+            Provides information about a table cell.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Cell.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Cell.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="col">Column number.</param>
+            <param name="row">Row number.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Cell.Equals(System.Object)">
+            <summary>
+            Determines whether this is equal to another object.
+            </summary>
+            <param name="obj">Object to compare against.</param>
+            <returns>Comparison result.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Cell.GetHashCode">
+            <summary>
+            Returns a hash code for this cell.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Cell.Col">
+            <summary>
+            Returns the cell's column number.
+            </summary>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.Cell.Row">
+            <summary>
+            Returns the cell's row number.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.Inside.ResourcesLocal">
+            <summary>
+            ローカライズ済みリソース。
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Inside.ResourcesLocal.Initialize(Codeer.Friendly.Windows.WindowsAppFriend)">
+            <summary>
+            初期化。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.Inside.ResourcesLocal.Initialize">
+            <summary>
+            コンストラクタ。
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsTreeView">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.TreeView.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItem(System.Int32[])">
+            <summary>
+            I get the child items.
+            </summary>
+            <param name="indexes">Index.</param>
+            <returns>Child items.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItem(System.String[])">
+            <summary>
+            I get the child items.
+            </summary>
+            <param name="keys">A string of the key.</param>
+            <returns>Child items.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.FindItem(System.String[])">
+            <summary>
+            Searches for items with the indicated display strings.
+            </summary>
+            <param name="texts">Display strings.</param>
+            <returns>Child items.</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.EmulateNodeSelect(Ong.Friendly.FormsStandardControls.FormsTreeNode)">
+            <summary>
+            Selects a certain node.
+            </summary>
+            <param name="node">Node to select.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.EmulateNodeSelect(Ong.Friendly.FormsStandardControls.FormsTreeNode,Codeer.Friendly.Async)">
+            <summary>
+            Selects a certain node.
+            Executes asynchronously. 
+            </summary>
+            <param name="node">Node to select.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.EmulateNodeSelectInTarget(System.Windows.Forms.TreeView,System.Windows.Forms.TreeNode)">
+            <summary>
+            ノードを選択します。
+            非同期で実行します。
+            </summary>
+            <param name="tree">ツリー。</param>
+            <param name="node">ノード。</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItemInTarget(System.Windows.Forms.TreeView,System.Int32[])">
+            <summary>
+            アイテムを取得します。
+            </summary>
+            <param name="trerview">ツリービュー。</param>
+            <param name="indexes">インデックス。</param>
+            <returns>アイテム</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.GetItemInTarget(System.Windows.Forms.TreeView,System.String[])">
+            <summary>
+            アイテムを取得します。
+            </summary>
+            <param name="trerview">ツリービュー。</param>
+            <param name="keys">インデックス。</param>
+            <returns>アイテム</returns>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsTreeView.FindItemInTarget(System.Windows.Forms.TreeView,System.String[])">
+            <summary>
+            表示文字列からアイテムを検索します。
+            </summary>
+            <param name="trerview">ツリービュー。</param>
+            <param name="texts">表示文字列。</param>
+            <returns>アイテム。</returns>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsTreeView.SelectNode">
+            <summary>
+            Returns the currently selected node.
+            </summary>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsRichTextBox">
+            <summary>
+            Provides operations on controls of type System.Windows.Forms.RichTextBox.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRichTextBox.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">WindowControl object for the underlying control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRichTextBox.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRichTextBox.EmulateChangeText(System.String)">
+            <summary>
+            Sets the control's text.
+            </summary>
+            <param name="text">Text to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRichTextBox.EmulateChangeText(System.String,Codeer.Friendly.Async)">
+            <summary>
+            Sets the control's text.
+            Executes asynchronously. 
+            </summary>
+            <param name="text">Text to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsRichTextBox.EmulateChangeTextInTarget(System.Windows.Forms.RichTextBox,System.String)">
+            <summary>
+            テキストを変更します。
+            </summary>
+            <param name="textBox">リッチテキストボックス。</param>
+            <param name="text">テキスト。</param>
+        </member>
+        <member name="T:Ong.Friendly.FormsStandardControls.FormsToolStripButton">
+            <summary>
+            Provides operations on tool strip buttons.
+            </summary>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="appVar">Application variable object for the control.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.#ctor(Ong.Friendly.FormsStandardControls.FormsToolStripItem)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="item">ToolStripItem manipulation object.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.EmulateCheck(System.Windows.Forms.CheckState)">
+            <summary>
+            Sets the button's check state.
+            </summary>
+            <param name="value">Check state to use.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.EmulateCheck(System.Windows.Forms.CheckState,Codeer.Friendly.Async)">
+            <summary>
+            Sets the button's check state.
+            Executes asynchronously. 
+            </summary>
+            <param name="value">Check state to use.</param>
+            <param name="async">Asynchronous execution.</param>
+        </member>
+        <member name="M:Ong.Friendly.FormsStandardControls.FormsToolStripButton.EmulateCheckInTarget(System.Windows.Forms.ToolStripButton,System.Windows.Forms.CheckState)">
+            <summary>
+            チェック状態を設定します。
+            </summary>
+            <param name="checkButton">チェックボックス。</param>
+            <param name="value">チェック状態。</param>
+        </member>
+        <member name="P:Ong.Friendly.FormsStandardControls.FormsToolStripButton.CheckState">
+            <summary>
+            Returns the button's check state.
+            </summary>
+        </member>
+    </members>
+</doc>

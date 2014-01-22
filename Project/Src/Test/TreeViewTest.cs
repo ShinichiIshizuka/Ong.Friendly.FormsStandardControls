@@ -60,7 +60,7 @@ namespace Test
         }
 
         /// <summary>
-        /// FormsTreeNode GetItem(params int[] indexs)のテスト
+        /// FormsTreeNode GetItem(params int[] indexes)のテスト
         /// </summary>
         [Test]
         public void TestFormsTreeNodeGetItemIndexs()

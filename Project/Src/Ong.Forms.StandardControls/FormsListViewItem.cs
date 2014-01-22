@@ -7,92 +7,164 @@ using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls.Properties;
+using Ong.Friendly.FormsStandardControls.Inside;
 
 namespace Ong.Friendly.FormsStandardControls
 {
+#if ENG
+    /// <summary>
+    /// Represtnts a list item.
+    /// </summary>
+#else
     /// <summary>
     /// リストアイテムです。
     /// </summary>
+#endif
     public class FormsListViewItem : AppVarWrapper
     {
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="app">Application manipulation object.</param>
+        /// <param name="item">AppVar referencing the target control object.</param>
+#else
         /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="item">アイテム。</param>
+#endif
         public FormsListViewItem(WindowsAppFriend app, AppVar item)
             : base(app, item) { }
-    
+
+#if ENG
+        /// <summary>
+        /// Returns the item's text.
+        /// </summary>
+#else
         /// <summary>
         /// テキストを取得します。
         /// </summary>
-        /// <returns>テキスト。</returns>
+#endif
         public string Text
         {
             get { return (string)this["Text"]().Core; }
         }
 
+#if ENG
+        /// <summary>
+        /// Returns the item's index.
+        /// </summary>
+#else
         /// <summary>
         /// アイテムインデックスを取得します。
         /// </summary>
-        /// <returns>行番号。</returns>
+#endif
         public int ItemIndex
         {
             get { return (int)this["Index"]().Core; }
         }
 
+#if ENG
+        /// <summary>
+        /// Returns the item's check state.
+        /// </summary>
+#else
         /// <summary>
         /// チェック状態を取得します。
         /// </summary>
+#endif
         public bool Checked
         {
             get { return (bool)this["Checked"]().Core; }
         }
 
+#if ENG
+        /// <summary>
+        /// Retrieves a sub item.
+        /// </summary>
+        /// <param name="subitemindex">Index of the sub-item to retrieve.</param>
+        /// <returns>The indicated item.</returns>
+#else
         /// <summary>
         /// サブアイテムを取得します。
         /// </summary>
         /// <param name="subitemindex">サブアイテムインデックス。</param>
-        /// <returns></returns>
+        /// <returns>サブアイテム。</returns>
+#endif
         public FormsListViewSubItem GetSubItem(int subitemindex)
         {
             return new FormsListViewSubItem(App, App[GetType(), "GetSubItemInTarget"](AppVar, subitemindex));
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the item's checked state.
+        /// </summary>
+        /// <param name="value">Check state to use.</param>
+#else
         /// <summary>
         /// チェック状態を設定します。
         /// </summary>
         /// <param name="value">チェック状態。</param>
+#endif
         public void EmulateCheck(bool value)
         {
             App[GetType(), "EmulateCheckInTarget"](AppVar, value);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the item's checked state.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="value">Check state to use.</param>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// チェック状態を設定します。
         /// 非同期で実行します。
         /// </summary>
         /// <param name="value">チェック状態。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateCheck(bool value, Async async)
         {
             App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the item's text.
+        /// </summary>
+        /// <param name="text">Text to use.</param>
+#else
         /// <summary>
         /// テキストを編集します。
         /// </summary>
         /// <param name="text">テキスト。</param>
+#endif
         public void EmulateEditLabel(string text)
         {
             App[GetType(), "EmulateEditLabelInTarget"](AppVar, text);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the item's text.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="text">Text to use.</param>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// テキストを編集します。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="text">テキスト。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateEditLabel(string text, Async async)
         {
             App[GetType(), "EmulateEditLabelInTarget", async](AppVar, text);
@@ -118,7 +190,7 @@ namespace Ong.Friendly.FormsStandardControls
         {
             if (item.ListView == null)
             {
-                throw new NotSupportedException(Resources.ErrorNotSetListView);
+                throw new NotSupportedException(ResourcesLocal.Instance.ErrorNotSetListView);
             }
 
             item.ListView.Focus();
@@ -158,7 +230,7 @@ namespace Ong.Friendly.FormsStandardControls
         {
             if (item.ListView == null)
             {
-                throw new NotSupportedException(Resources.ErrorNotSetListView);
+                throw new NotSupportedException(ResourcesLocal.Instance.ErrorNotSetListView);
             }
             item.ListView.Focus();
             item.Checked = value;

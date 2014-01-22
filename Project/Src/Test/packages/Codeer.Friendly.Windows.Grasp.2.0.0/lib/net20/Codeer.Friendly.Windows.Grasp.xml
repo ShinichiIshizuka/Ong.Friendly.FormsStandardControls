@@ -1,0 +1,1143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Codeer.Friendly.Windows.Grasp</name>
+    </assembly>
+    <members>
+        <member name="T:Codeer.Friendly.Windows.Grasp.WindowIdentifyException">
+            <summary>
+            Inherits Exception.
+            Thrown when window identification fails.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowIdentifyException.#ctor">
+            <summary>
+            Constractor.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowIdentifyException.#ctor(System.String)">
+            <summary>
+            Constractor.
+            </summary>
+            <param name="message">message.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowIdentifyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constractor.
+            </summary>
+            <param name="message">message.</param>
+            <param name="innerException">Internal Exception.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowIdentifyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constractor.
+            </summary>
+            <param name="info">Serialize Infomation.</param>
+            <param name="context">Context.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowIdentifyException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialize.
+            </summary>
+            <param name="info">Serialize Infomation.</param>
+            <param name="context">Context.</param>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer">
+            <summary>
+            ウィンドウ解析。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer.FromHandle(System.IntPtr)">
+            <summary>
+            ウィンドウハンドルからオブジェクトを取得。
+            </summary>
+            <param name="windowHandle">ウィンドウハンドル。</param>
+            <returns>オブジェクト。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer.GetHandle(System.Object)">
+            <summary>
+            オブジェクトからウィンドウハンドル取得。
+            </summary>
+            <param name="obj">オブジェクト。</param>
+            <returns>ウィンドウハンドル。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer.Analyze(System.IntPtr)">
+            <summary>
+            解析。
+            </summary>
+            <param name="handle">ハンドル。</param>
+            <returns>解析結果。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer.GetFromTypeFullName(Codeer.Friendly.Windows.Grasp.Inside.WindowInfo,System.String)">
+            <summary>
+            .Netのタイプ名称が一致するウィンドウを全て取得。
+            </summary>
+            <param name="root">ウィンドウ情報。</param>
+            <param name="typeFullName">タイプフルネーム。</param>
+            <returns>オブジェクト配列。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer.FindWindow(Codeer.Friendly.Windows.Grasp.Inside.WindowInfo,System.Collections.Generic.List{System.Object},Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer.IsHit)">
+            <summary>
+            ウィンドウ検索。
+            </summary>
+            <param name="info">ウィンドウ情報。</param>
+            <param name="hitWindows">ヒットウィンドウ格納バッファ。</param>
+            <param name="checkHit">ヒット確認デリゲート。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer.IdentifyFromLogicalTreeIndex(Codeer.Friendly.Windows.Grasp.Inside.WindowInfo,System.Int32[])">
+            <summary>
+            ロジカルツリーインデックスからオブジェクトを取得。
+            </summary>
+            <param name="info">情報。</param>
+            <param name="logicalTreeIndex">ロジカルツリーインデックス。</param>
+            <returns>オブジェクト。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer.GetWindowInfo(System.Drawing.Point,Codeer.Friendly.Windows.Grasp.Inside.WindowInfo,System.Collections.Generic.List{System.IntPtr},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            ウィンドウ情報取得。
+            </summary>
+            <param name="pos">ルートウィンドウの左上座標。</param>
+            <param name="info">ウィンドウ情報格納バッファ。</param>
+            <param name="children">子ウィンドウハンドル。</param>
+            <param name="zIndex">Zインデックス。</param>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.InApp.WindowAnalyzer.IsHit">
+            <summary>
+            WindowInfoヒットチェック。
+            </summary>
+            <param name="info">ウィンドウ情報。</param>
+            <returns>ヒットしたか。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.WindowControl">
+            <summary>
+            Allows basic manipulation and identification of windows and their child windows.
+            Also supports WPF.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,System.IntPtr)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="windowHandle">Window handle of the window to manipulate using the WindowControl.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.#ctor(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="windowObject">AppVar for a window variable within the application, pertaining to the window to manipulate.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.#ctor(Codeer.Friendly.Windows.Grasp.WindowControl)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="src">Source.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.FromZTop(Codeer.Friendly.Windows.WindowsAppFriend)">
+            <summary>
+            Creates a WindowControl for the window closest to the foreground.
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <returns>WindowControl to manipulate the accessed window.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetTopLevelWindows(Codeer.Friendly.Windows.WindowsAppFriend)">
+            <summary>
+            Acquires all of the active top-level windows in the target process. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <returns>Window manipulation objects for all of the active top-level windows of the target process. </returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromWindowText(Codeer.Friendly.Windows.WindowsAppFriend,System.String)">
+            <summary>
+            Identifies a top-level window based on the string value returned from the Windows Api's GetWindowText. 
+            Fails when two or more windows match the same condition. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="text">Window text.</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromTypeFullName(Codeer.Friendly.Windows.WindowsAppFriend,System.String)">
+            <summary>
+            Identifies a top-level window based on its full .Net type name. 
+            Fails when two or more windows match the same condition. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="typeFullName">Full .Net type name.</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromWindowClass(Codeer.Friendly.Windows.WindowsAppFriend,System.String)">
+            <summary>
+            Identifies a window based its window class name. 
+            Fails when two or more windows match the same criteria. 
+            Window class name can be easily investigated with TestAssistant.
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="className">Window class name.</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForIdentifyFromWindowText(Codeer.Friendly.Windows.WindowsAppFriend,System.String)">
+            <summary>
+            Waits until a top-level window returning the specified string via the GetWindowText Windows API is found. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="text">Window text.</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForIdentifyFromWindowText(Codeer.Friendly.Windows.WindowsAppFriend,System.String,Codeer.Friendly.Async)">
+            <summary>
+            Waits until a top-level window returning the specified string via the GetWindowText Windows API is found. 
+            Also returns if the indicated asynchronous operation completes before a window can be found. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="text">Window text.</param>
+            <param name="async">Asynchronous object.</param>
+            <returns>
+            Window manipulation object.
+            Returns null if the Async operation completes before Identify window.
+            </returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForIdentifyFromTypeFullName(Codeer.Friendly.Windows.WindowsAppFriend,System.String)">
+            <summary>
+            Waits until a top-level window with the indicated full .Net name is found. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="typeFullName">Full .Net type name</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForIdentifyFromTypeFullName(Codeer.Friendly.Windows.WindowsAppFriend,System.String,Codeer.Friendly.Async)">
+            <summary>
+            Waits until a top-level window with the indicated full .Net name is found. 
+            Also returns if the indicated asynchronous operation completes before a window can be found. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="typeFullName">Full .Net type name</param>
+            <param name="async">Asynchronous object.</param>
+            <returns>
+            Window manipulation object.
+            Returns null if the Async operation completes before Identify window.
+            </returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForIdentifyFromWindowClass(Codeer.Friendly.Windows.WindowsAppFriend,System.String)">
+            <summary>
+            Waits until a top-level window with the indicated window class is found. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="className">Window class name.</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForIdentifyFromWindowClass(Codeer.Friendly.Windows.WindowsAppFriend,System.String,Codeer.Friendly.Async)">
+            <summary>
+            Waits until a top-level window with the indicated window class is found. 
+            Also returns if the indicated asynchronous operation completes before a window can be found. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="className">Window class name.</param>
+            <param name="async">Asynchronous object.</param>
+            <returns>
+            Window manipulation object.
+            Returns null if the Async operation completes before Identify window.
+            </returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForIdentifyWindow(Codeer.Friendly.Windows.WindowsAppFriend,Codeer.Friendly.Windows.Grasp.WindowControl.FindTopLevelWindow,Codeer.Friendly.Async)">
+            <summary>
+            ウィンドウ特定待ち。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="find">ウィンドウ検索ロジック。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+            <returns>特定されたウィンドウ。(特定前に、非同期処理が終了した場合はnull)</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetFromWindowText(Codeer.Friendly.Windows.WindowsAppFriend,System.String)">
+            <summary>
+            Retrieves all top-level windows matching the indicated window text. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="text">Window text.</param>
+            <returns>Window manipulation objects.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetFromTypeFullName(Codeer.Friendly.Windows.WindowsAppFriend,System.String)">
+            <summary>
+            Retrieves all top-level windows matching the indicated full .Net type name. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="typeFullName">Full .NET type name.</param>
+            <returns>Window manipulation objects.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetFromWindowClass(Codeer.Friendly.Windows.WindowsAppFriend,System.String)">
+            <summary>
+            Retrieves all top-level windows matching the indicated window class type name. 
+            </summary>
+            <param name="app">Application manipulation object. </param>
+            <param name="className">Window class name.</param>
+            <returns>Window manipulation objects.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.Refresh">
+            <summary>
+            Updates the stored child window tree. 
+            Child windows are obtained based on information retrieved when Refresh() is called. 
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.RefreshAuto">
+            <summary>
+            内部的に保持する子ウィンドウのツリーを更新します。
+            以降はこの時点の情報に従って、子ウィンドウの取得、特定が可能となります。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromLogicalTreeIndex(System.Int32[])">
+            <summary>
+            For WPF windows.
+            Specifies GUI elements based on the indicated logical tree index.
+            The logical tree index is decided by the order of acquisition of LogicalTreeHelper.GetChildren.
+            This is easy to probe using TestAssistant.
+            </summary>
+            <param name="logicalTreeIndex">Logical tree index array.</param>
+            <returns>AppVar for a variable within the application.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromZIndex(System.Int32[])">
+            <summary>
+            Retrieves the child window with indicated Z-index. 
+            The Windows API's GetWindow is used to determine the Z-order. 
+            Note that MFC dialogs are sorted in the opposite order. 
+            Z-index can be easily investigated with TestAssistant. 
+            </summary>
+            <param name="zindex">Z-index array</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromDialogId(System.Int32[])">
+            <summary>
+            Identifies a window based its dialog ID. 
+            Dialog ID can be easily investigated with TestAssistant. 
+            </summary>
+            <param name="id">Dialog ID.</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromWindowText(System.String)">
+            <summary>
+            Identifies a top-level window based on the string value returned from the Windows Api's GetWindowText. 
+            Fails when two or more windows match the same condition. 
+            </summary>
+            <param name="text">Window text.</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromBounds(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Identifies a window matching the indicated rectangle. 
+            Fails when two or more windows match the same criteria. 
+            A rectangle can be easily investigated with TestAssistant. 
+            </summary>
+            <param name="x">x point.</param>
+            <param name="y">y point.</param>
+            <param name="width">width.</param>
+            <param name="height">height.</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromTypeFullName(System.String)">
+            <summary>
+            Identifies a window based its full .Net type name. 
+            Fails when two or more windows match the same criteria. 
+            Full type name can be easily investigated with TestAssistant. 
+            </summary>
+            <param name="typeFullName">Full .NET type name.</param>
+            <returns>AppVar for a variable within the application.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyFromWindowClass(System.String)">
+            <summary>
+            Identifies a window based its window class name. 
+            Fails when two or more windows match the same criteria. 
+            Window class name can be easily investigated with TestAssistant.
+            </summary>
+            <param name="className">Window class name.</param>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetFromWindowText(System.String)">
+            <summary>
+            Retrieves all windows corresponding to the indicated window text.
+            </summary>
+            <param name="text">Window text.</param>
+            <returns>Window manipulation objects.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetFromBounds(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            It acquires all the windows matching the indicated bounds.
+            </summary>
+            <param name="x">x point.</param>
+            <param name="y">y point.</param>
+            <param name="width">width.</param>
+            <param name="height">height.</param>
+            <returns>Window manipulation objects.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetFromTypeFullName(System.String)">
+            <summary>
+            Retrieves all windows with the indicated full .Net type name.
+            </summary>
+            <param name="typeFullName">Full .NET type name.</param>
+            <returns>AppVars for variables in the target application.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetFromWindowClass(System.String)">
+            <summary>
+            Retrieves all windows with the indicated window class.
+            </summary>
+            <param name="className">Window class name.</param>
+            <returns>Window manipulation objects.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForNextZTop">
+            <summary>
+            Currently deprecated. 
+            Use is not recommended since several modal dialogs can be shown asynchronously and cause confusion. 
+            Please use one of the following: 
+            WaitForNextModal, WaitForIdentifyFromWindowText, WaitForIdentifyFromTypeFullName, WaitForIdentifyFromWindowClass。
+            It waits for the next window besides itself to become the frontmost window in the application. 
+            Used to synchronously wait for the next window to be shown when windows are
+            displayed asynchronously. 
+            </summary>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForNextZTop(Codeer.Friendly.Async)">
+            <summary>
+            Currently deprecated. 
+            Use is not recommended since several modal dialogs can be shown asynchronously and cause confusion. 
+            Please use one of the following: 
+            WaitForNextModal, WaitForIdentifyFromWindowText, WaitForIdentifyFromTypeFullName, WaitForIdentifyFromWindowClass。
+            It waits for the next window besides itself to become the frontmost window in the application. 
+            Used to synchronously wait for the next window to be shown when windows are
+            displayed asynchronously. 
+            Also returns if the indicated asynchronous operation completes before a window moves to the front. 
+            </summary>
+            <param name="async">Asynchronous object.</param>
+            <returns>
+            Window manipulation object.
+            Returns null if the Async operation completes before a window moves to the front.
+            </returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForNextModal">
+            <summary>
+            Used to synchronously wait for the next window to be shown when modal dialogs are displayed asynchronously. 
+            Returns when its own window enters the Disable state and another window becomes the application's only top-level window. 
+            </summary>
+            <returns>Window manipulation object.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForNextModal(Codeer.Friendly.Async)">
+            <summary>
+            Used to synchronously wait for the next window to be shown when modal dialogs are displayed asynchronously. 
+            Returns when its own window enters the Disable state and another window becomes the application's only top-level window. 
+            Also returns if the indicated asynchronous operation completes before a window moves to the front. 
+            </summary>
+            <param name="async">Asynchronous object.</param>
+            <returns>
+            Window manipulation object.
+            Returns null if the Async operation completes before a window moves to the front.
+            </returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForDestroy">
+            <summary>
+            Waits for the window to be destroyed. 
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.WaitForDestroy(Codeer.Friendly.Async)">
+            <summary>
+            Waits for the window to be destroyed. 
+            Also returns if the indicated asynchronous operation completes before the window is destroyed. 
+            </summary>
+            <param name="async">Asynchronous object.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IsWindow">
+            <summary>
+            Check Window Valid.
+            </summary>
+            <returns>Window Valid.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.SetWindowText(System.String)">
+            <summary>
+            Set's the window's text.
+            Executed in the target thread of the target application.
+            </summary>
+            <param name="text">Window text.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetWindowText">
+            <summary>
+            Retrieves the window's text
+            Executed in the target thread of the target application.
+            </summary>
+            <returns>Window text.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.SetFocus">
+            <summary>
+            Sets focus to this window.
+            Executed in the target thread of the target application.
+            </summary>
+            <returns>Window handle for the window that had focus before SetFocus() was called.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.SendMessage(System.Int32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Sends a message to the window.
+            Executed in the target thread of the target application.
+            </summary>
+            <param name="message">Message.</param>
+            <param name="wparam">WPARAM.</param>
+            <param name="lparam">LPARAM.</param>
+            <returns>Result.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.SendMessage(System.Int32,System.IntPtr,System.IntPtr,Codeer.Friendly.Async)">
+            <summary>
+            Sends a message to the window.
+            Executed in the target thread of the target application.
+            Executes SendMessage asynchronously since PostMessage can fail. 
+            </summary>
+            <param name="message">Message.</param>
+            <param name="wparam">WPARAM.</param>
+            <param name="lparam">LPARAM.</param>
+            <param name="async">Asynchronous object.</param>
+            <returns>Result. AppVar is IntPtr in target process.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.SequentialMessage(Codeer.Friendly.Windows.Grasp.MessageInfo[])">
+            <summary>
+            Calls SendMessage multiple times in the target application's thread. 
+            </summary>
+            <param name="info">Array of message information.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.SequentialMessage(Codeer.Friendly.Async,Codeer.Friendly.Windows.Grasp.MessageInfo[])">
+            <summary>
+            Calls SendMessage multiple times in the target application's thread. 
+            Executes asynchronously. 
+            </summary>
+            <param name="async">Asynchronous object.</param>
+            <param name="info">Array of message information.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.GetWindowTextInTarget(System.IntPtr)">
+            <summary>
+            ウィンドウテキスト取得。
+            対象プロセスの指定のスレッドで実行します。
+            </summary>
+            <param name="handle">ウィンドウハンドル。</param>
+            <returns>ウィンドウテキスト。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.FindWindow(Codeer.Friendly.Windows.Grasp.Inside.WindowInfo,System.Collections.Generic.List{Codeer.Friendly.Windows.Grasp.WindowControl},Codeer.Friendly.Windows.Grasp.WindowControl.IsHit)">
+            <summary>
+            ウィンドウ検索。
+            </summary>
+            <param name="info">ウィンドウ情報。</param>
+            <param name="hitWindows">ヒットウィンドウ格納バッファ。</param>
+            <param name="checkHit">ヒット確認デリゲート。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.Identify``1(``0[])">
+            <summary>
+            特定できたかチェック。
+            出来ていない場合はユーザーに分かりやすい例外を投げる。
+            </summary>
+            <param name="controls">ウィンドウコントロール配列。</param>
+            <returns>特定されたウィンドウコントロール。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IdentifyTopLevelWindow``1(``0[])">
+            <summary>
+            特定できたかチェック。
+            出来ていない場合はユーザーに分かりやすい例外を投げる。
+            </summary>
+            <param name="controls">ウィンドウコントロール配列。</param>
+            <returns>特定されたウィンドウコントロール。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IsTopLevelWindow">
+            <summary>
+            トップレベルウィンドウであるか。
+            </summary>
+            <returns>トップレベルウィンドウであるか。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.IsTopLevelWindowInTarget(System.IntPtr)">
+            <summary>
+            トップレベルウィンドウであるか。
+            </summary>
+            <param name="handle">ウィンドウハンドル。</param>
+            <returns>トップレベルウィンドウであるか。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.InitializeFromaHandle(Codeer.Friendly.Windows.WindowsAppFriend,System.IntPtr)">
+            <summary>
+            ウィンドウハンドルから初期化。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="windowHandle">ウィンドウハンドル。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.CheckApplicationConnection(System.Int32)">
+            <summary>
+            アプリケーションとの通信状態の確認。
+            </summary>
+            <param name="id">対象アプリケーションプロセスID</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.WindowControl.ToErrorWidthWindowInfo(System.String)">
+            <summary>
+            ウィンドウ情報を付加したメッセージに変更します。
+            </summary>
+            <param name="message">メッセージ。</param>
+            <returns>ウィンドウ情報を付加したエラーメッセージ。</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.App">
+            <summary>
+            Returns the associated application manipulation object.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.Handle">
+            <summary>
+            Returns the window's handle.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.AutoRefresh">
+            <summary>
+            Controls auto-refresh. 
+            True by default. 
+            When true, Refresh() is automatically called to update the window tree for accessing child windows. 
+            When false, WindowControl stores the window tree from the last time it was updated. 
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.AppVar">
+            <summary>
+            Returns an AppVar for a .NET object for the corresponding window.
+            Can be used only when a corresponding window is a .Net object. 
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.DialogId">
+            <summary>
+            Returns the window's dialog ID. 
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.WindowClassName">
+            <summary>
+            Returns the window's full type name. 
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.TypeFullName">
+            <summary>
+            Returns the .net full type name. 
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.ParentWindow">
+            <summary>
+            Returns a WindowControl for the window's parent window. 
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.Item(System.String)">
+            <summary>
+            It acquires delegates to call operations on variables in the test target application.
+            Can be used only when the corresponding window is a .Net object. 
+            </summary>
+            <param name="operation">Name of the operation.</param>
+            <returns>Operation delegate.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.Item(System.String,Codeer.Friendly.Async)">
+            <summary>
+            It acquires delegates to call operations on variables in the test target application.
+            Can be used only when the corresponding window is a .Net object. 
+            </summary>
+            <param name="operation">Name of the operation.</param>
+            <param name="async">Asynchronous execution object.</param>
+            <returns>Operation delegate.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.Item(System.String,Codeer.Friendly.OperationTypeInfo)">
+            <summary>
+            It acquires delegates to call operations on variables in the test target application.
+            Can be used only when the corresponding window is a .Net object. 
+            </summary>
+            <param name="operation">Name of the operation.</param>
+            <param name="operationTypeInfo">
+            Operation type information
+            Used to call operation of the same name of a parent class when two or more overloads exist for the indicated operation. 
+            In many cases, overloads can be resolved based on the passed arguments without using OperationTypeInfo.
+            </param>
+            <returns>Operation delegate.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.WindowControl.Item(System.String,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Async)">
+            <summary>
+            It acquires delegates to call operations on variables in the test target application.
+            Can be used only when the corresponding window is a .Net object. 
+            </summary>
+            <param name="operation">Name of the operation.</param>
+            <param name="operationTypeInfo">
+            Operation type information
+            Used to call operation of the same name of a parent class when two or more overloads exist for the indicated operation. 
+            In many cases, overloads can be resolved based on the passed arguments without using OperationTypeInfo.
+            </param>
+            <param name="async">Asynchronous execution object.</param>
+            <returns>Operation delegate.</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.WindowControl.FindTopLevelWindow">
+            <summary>
+            ウィンドウ検索ロジック。
+            </summary>
+            <returns>検索結果。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.WindowControl.IsHit">
+            <summary>
+            WindowInfoヒットチェック。
+            </summary>
+            <param name="info">ウィンドウ情報。</param>
+            <returns>ヒットしたか。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.MessageInfo">
+            <summary>
+            Information for sending messages.
+            Used for arguments to SequentialMessage() in WindowControl.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.MessageInfo.#ctor(System.Int32,System.Int64,System.Int64)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="message">message.</param>
+            <param name="wparam">wparam.</param>
+            <param name="lparam">lparam.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.MessageInfo.#ctor(System.Int32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="message">message.</param>
+            <param name="wparam">wparam.</param>
+            <param name="lparam">lparam.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.MessageInfo.LongToIntPtr(System.Int64)">
+            <summary>
+            longからIntPtrに変換。
+            </summary>
+            <param name="value">long値。</param>
+            <returns>IntPtr値。</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.MessageInfo.Message">
+            <summary>
+            message.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.MessageInfo.WParam">
+            <summary>
+            wparam.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.MessageInfo.LParam">
+            <summary>
+            lparam.
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.InApp.MessageUtility">
+            <summary>
+            メッセージユーティリティー。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.MessageUtility.SendMessage(System.IntPtr,Codeer.Friendly.Windows.Grasp.MessageInfo[])">
+            <summary>
+            メッセージを連続送信。
+            </summary>
+            <param name="windowHandle">ウィンドウハンドル。</param>
+            <param name="info">メッセージ情報。</param>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.WindowPositionUtility">
+            <summary>
+            ウィンドウ位置に関するユーティリティー。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.WindowPositionUtility.GetZTopHandle">
+            <summary>
+            Zインデックスで最前面のウィンドウハンドルを取得。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.WindowPositionUtility.GetTopLevelWindows">
+            <summary>
+            トップレベルウィンドウの取得。
+            </summary>
+            <returns>トップレベルウィンドウ。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.WindowPositionUtility.SortByZIndex(System.IntPtr[])">
+            <summary>
+            Zインデックスでソート。
+            </summary>
+            <param name="handles">ハンドル。</param>
+            <returns>ソート結果。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Properties.Resources">
+            <summary>
+              ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.ResourceManager">
+            <summary>
+              このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.Culture">
+            <summary>
+              厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+              現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.ErrorAppCommunication">
+             <summary>
+               Communication with the application failed.
+            The target applcation may be unreachable or you may be trying to send
+            data that cannot be serialized. に類似しているローカライズされた文字列を検索します。
+             </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.ManyFoundDialogId">
+             <summary>
+               More than one window with the specified dialog ID were found on the same level.
+            The window could not be identified. に類似しているローカライズされた文字列を検索します。
+             </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.NotHaveWindowHandle">
+             <summary>
+               Since the selected GUI element does not have a Window handle, the specified method or a constructor cannot be used.
+            Please use a different acquisition method. に類似しているローカライズされた文字列を検索します。
+             </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.TopLevelOnly">
+            <summary>
+              The appointed operation can only be performed in a top-level window. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.WindowAppVarAccessDisable">
+            <summary>
+              Access by AppVar is not allowed for the specified window. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.WindowInfoAffirmationFormat">
+             <summary>
+               It was used on a window with the following information.
+            Is this the intended window?
+            WindowText [{0}]
+            TypeFullName (.NET) [{1}]
+            WindowClass [{2}] に類似しているローカライズされた文字列を検索します。
+             </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.WindowManyFound">
+            <summary>
+              More than one matching windows were found and a single matching window could not be identified. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.WindowNotFound">
+            <summary>
+              The specified window could not be found. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Properties.Resources.WpfAnalyzer">
+             <summary>
+               #define CODE_ANALYSIS
+            using System;
+            using System.Windows;
+            using System.Windows.Interop;
+            using System.Windows.Controls;
+            using System.Drawing;
+            using Codeer.Friendly.Windows.Grasp.Inside.InApp;
+            using Codeer.Friendly.Windows.Grasp;
+            using System.Collections.Generic;
+            using System.Runtime.InteropServices;
+            using Codeer.Friendly.Windows.Grasp.Inside;
+            using System.Diagnostics.CodeAnalysis;
+            
+            namespace Codeer.Friendly.Windows.Wpf.Grasp
+            {
+                /// &lt;summary&gt;
+                /// WPF解析。
+                /// &lt;/summary&gt;
+            	public clas [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+             </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.InApp.IOtherSystemWindowAnalyzer">
+            <summary>
+            別システムのウィンドウ解析。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.IOtherSystemWindowAnalyzer.FromHandle(System.IntPtr)">
+            <summary>
+            ウィンドウハンドルからオブジェクト取得。
+            </summary>
+            <param name="windowHandle">ウィンドウハンドル。</param>
+            <returns>オブジェクト。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.IOtherSystemWindowAnalyzer.Analyze(System.IntPtr)">
+            <summary>
+            解析。
+            </summary>
+            <param name="windowHandle">ウィンドウハンドル。</param>
+            <returns>ウィンドウ情報。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.IOtherSystemWindowAnalyzer.GetHandle(System.Object)">
+            <summary>
+            オブジェクトからウィンドウハンドル取得。
+            </summary>
+            <param name="obj">オブジェクト。</param>
+            <returns>ウィンドウハンドル。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.TargetAppInitializer">
+            <summary>
+            対象アプリケーション初期化。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.TargetAppInitializer.Initialize(Codeer.Friendly.Windows.WindowsAppFriend)">
+            <summary>
+            対象アプリケーション初期化。
+            </summary>
+            <param name="app">アプリケーションクラス。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.TargetAppInitializer.InstallWpfInApp">
+            <summary>
+            WPFモジュールのインストール
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo">
+            <summary>
+            ウィンドウ情報。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.Handle">
+            <summary>
+            ウィンドウハンドル。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.Text">
+            <summary>
+            ウィンドウテキスト。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.TypeFullName">
+            <summary>
+            .Netタイプフルネーム。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.DotNetFieldPath">
+            <summary>
+            .Netの場合、この変数を取得するためのフルパス。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.DialogId">
+            <summary>
+            ダイアログID。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.ZIndex">
+            <summary>
+            ZIndex。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.LogicalTreeIndex">
+            <summary>
+            LogicalTreeで取得した順番Index。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.ClassName">
+            <summary>
+            ウィンドウクラス名称。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.Children">
+            <summary>
+            子ウィンドウ。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.Bounds">
+            <summary>
+            スクリーン座標での矩形。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Windows.Grasp.Inside.WindowInfo.TargetObject">
+            <summary>
+            対象オブジェクト。
+            シリアライズ対象外。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods">
+            <summary>
+            WindowsApi。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetWindow(System.IntPtr,System.UInt32)">
+            <summary>
+            ウィンドウ取得。
+            </summary>
+            <param name="hwd">元ウィンドウハンドル。</param>
+            <param name="uCmd">関係性。</param>
+            <returns>ウィンドウ。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.SendMessage(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
+            <summary>
+            メッセージ送信。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <param name="msg">メッセージ。</param>
+            <param name="wParam">wParam。</param>
+            <param name="lParam">lParam。</param>
+            <returns>結果。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.EnumWindows(Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.EnumWindowsDelegate,System.IntPtr)">
+            <summary>
+            ウィンドウ列挙。
+            </summary>
+            <param name="lpEnumFunc">列挙コールバック。</param>
+            <param name="lParam">パラメータ。</param>
+            <returns>結果。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.EnumChildWindows(System.IntPtr,Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.EnumWindowsDelegate,System.IntPtr)">
+            <summary>
+            子ウィンドウ列挙。
+            </summary>
+            <param name="hWndParent">親ウィンドウ。</param>
+            <param name="lpEnumFunc">列挙コールバック。</param>
+            <param name="lParam">パラメータ。</param>
+            <returns>結果。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.IsWindow(System.IntPtr)">
+            <summary>
+            指定のウィンドウハンドルが存在するか。
+            </summary>
+            <param name="hWnd">ハンドル。</param>
+            <returns>存在するか。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.IsWindowVisible(System.IntPtr)">
+            <summary>
+            可視状態であるか。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <returns>可視状態であるか。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.IsWindowEnabled(System.IntPtr)">
+            <summary>
+            有効なウィンドウであるか。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <returns>有効なウィンドウであるか。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetWindowThreadProcessId(System.IntPtr,System.Int32@)">
+            <summary>
+            指定のウィンドウハンドルの所属するスレッドとプロセスの取得。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <param name="lpdwProcessId">プロセスID。</param>
+            <returns>スレッドID。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetWindowText(System.IntPtr,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Window文字列取得。
+            </summary>
+            <param name="hWnd">ハンドル。</param>
+            <param name="lpString">文字列格納バッファ。</param>
+            <param name="nMaxCount">最大文字列。</param>
+            <returns>結果。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetWindowTextLength(System.IntPtr)">
+            <summary>
+            ウィンドウテキストの長さを取得する。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <returns>ウィンドウテキストの長さ。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.SetWindowText(System.IntPtr,System.String)">
+            <summary>
+            ウィンドウテキストの設定。
+            </summary>
+            <param name="hwnd">ウィンドウハンドル。</param>
+            <param name="lpString">設定文字列。</param>
+            <returns>成否。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetDlgCtrlID(System.IntPtr)">
+            <summary>
+            ダイアログIDの取得。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <returns>ダイアログID。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetParent(System.IntPtr)">
+            <summary>
+            親ウィンドウを取得する。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <returns>親ウィンドウ。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetWindowRect(System.IntPtr,Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.RECT@)">
+            <summary>
+            ウィンドウ矩形の取得。
+            </summary>
+            <param name="hwnd">ウィンドウハンドル。</param>
+            <param name="lpRect">矩形。</param>
+            <returns>成否。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetClassName(System.IntPtr,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            クラス名称を取得。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <param name="lpClassName">クラス名称格納バッファ。</param>
+            <param name="nMaxCount">最大文字数。</param>
+            <returns>文字サイズ。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.SetFocus(System.IntPtr)">
+            <summary>
+            フォーカスの設定。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <returns>前のフォーカスウィンドウハンドル。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetCurrentThreadId">
+            <summary>
+            現在のスレッドIDを取得。
+            </summary>
+            <returns>現在のスレッドID。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.GetWindowCmd">
+            <summary>
+            GetWindow関数のコマンド。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.CWPSTRUCT">
+            <summary>
+            WndProcメッセージ情報。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.MSG">
+            <summary>
+            メッセージ情報。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.RECT">
+            <summary>
+            矩形。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.NativeMethods.EnumWindowsDelegate">
+            <summary>
+            ウィンドウ列挙時のハンドラ。
+            </summary>
+            <param name="hWnd">ウィンドウハンドル。</param>
+            <param name="lParam">パラメータ。</param>
+            <returns>0を返すと列挙終了。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.CspCompiler">
+            <summary>
+            C#コンパイラ
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.CspCompiler.Compile(System.String[],System.String)">
+            <summary>
+            コンパイル。
+            </summary>
+            <param name="reference">参照DLL。</param>
+            <param name="code">コード。</param>
+            <returns>コンパイル結果。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Windows.Grasp.Inside.InApp.OtherSystemWindowAnalyzerRegister">
+            <summary>
+            別システムのウィンドウ解析。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Windows.Grasp.Inside.InApp.OtherSystemWindowAnalyzerRegister._analyzer">
+            <summary>
+            ウィンドウ解析登録バッファ。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.OtherSystemWindowAnalyzerRegister.GetAnalyzer">
+            <summary>
+            ウィンドウ解析。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Windows.Grasp.Inside.InApp.OtherSystemWindowAnalyzerRegister.Entry(Codeer.Friendly.Windows.Grasp.Inside.InApp.IOtherSystemWindowAnalyzer)">
+            <summary>
+            登録。
+            </summary>
+            <param name="analyzer">ウィンドウ解析。</param>
+        </member>
+    </members>
+</doc>

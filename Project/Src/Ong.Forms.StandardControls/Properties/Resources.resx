@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ErrorCheckSetting" xml:space="preserve">
-    <value>チェック状態にできませんでした。</value>
+    <value>It was not possible to check the state.</value>
   </data>
   <data name="ErrorNotSetListView" xml:space="preserve">
-    <value>アイテムを保持するListViewが設定されていません。</value>
+    <value>ListView that holds the item has not been set.</value>
   </data>
   <data name="ErrorNotSetToolStrip" xml:space="preserve">
-    <value>アイテムを保持するToolStripが設定されていません。</value>
+    <value>ToolStrip that holds the item has not been set.</value>
   </data>
   <data name="ErrorNotSetTreeView" xml:space="preserve">
-    <value>ノードを保持するTreeViewが設定されていません。</value>
+    <value>TreeView that holds the item has not been set.</value>
   </data>
 </root>

@@ -25,6 +25,7 @@ namespace Ong.Friendly.FormsStandardControls.Inside
             {
                 //身初期化の場合はアセンブリを読み込ませます。
                 WindowsAppExpander.LoadAssemblyFromFile(app, myType.Assembly.Location);
+                ResourcesLocal.Initialize(app);
                 app.AddAppControlInfo(key, true);
             }
         }

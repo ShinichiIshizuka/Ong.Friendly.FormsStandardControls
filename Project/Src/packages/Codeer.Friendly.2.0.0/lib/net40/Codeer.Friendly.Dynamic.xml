@@ -1,0 +1,462 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Codeer.Friendly.Dynamic</name>
+    </assembly>
+    <members>
+        <member name="T:Codeer.Friendly.Dynamic.Properties.Resources">
+            <summary>
+              ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Dynamic.Properties.Resources.ResourceManager">
+            <summary>
+              このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Dynamic.Properties.Resources.Culture">
+            <summary>
+              厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+              現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Dynamic.Properties.Resources.ErrorAsyncArgument">
+            <summary>
+              Multiple Async arguments were found. Only one Async argument can be specified per call. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Dynamic.Properties.Resources.ErrorInstanceCreateCantUseAsync">
+            <summary>
+              Async cannot be used when instantiating an object. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Dynamic.Properties.Resources.ErrorOperationTypeInfoArgument">
+            <summary>
+              Multiple OperationTypeInfo arguments were found. Only one OperationTypeInfo argument can be specified per call. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Dynamic.Inside.TypeChahe">
+            <summary>
+            タイプキャッシュ。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.Inside.TypeChahe.#ctor(Codeer.Friendly.AppFriend)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="app">アプリケーション操作クラス</param>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.Inside.TypeChahe.IsTypeName(Codeer.Friendly.AppFriend,System.String,System.Boolean)">
+            <summary>
+            タイプ名称か。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="name">名前。</param>
+            <param name="cacheNotType">タイプ名称でなくてもキャッシュするか。</param>
+            <returns>タイプ名称か。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Dynamic.AppVarExtensions">
+            <summary>
+            AppVar extension methods to provide dynamic functionality.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.AppVarExtensions.Dynamic(Codeer.Friendly.AppVar)">
+            <summary>
+            Helper method to convert an AppVar to a DynamicAppVar and convert it into a dynamic type.
+            </summary>
+            <param name="src">AppVar.</param>
+            <returns>DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.AppVarExtensions.Dynamic(Codeer.Friendly.IAppVarOwner)">
+            <summary>
+            Helper method to convert an AppVar to a DynamicAppVar and convert it into a dynamic type.
+            </summary>
+            <param name="src">AppVar Owner.</param>
+            <returns>DynamicAppVar.</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Dynamic.DynamicAppVar">
+            <summary>
+            Wrapper class to allow using the dynamic keyword to access objects'
+            methods, properties and fields just like ordinary class members.
+            One limitation is that you it is not possible to access members that have the same name as those
+            defined in the DynamicObject class.
+            And it is not possible to access member the name CodeerFriendlyAppVar.
+            In the case that you need to access such members, please use the FriendlyObject APIs.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.#ctor(Codeer.Friendly.AppVar)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="appVar">AppVar to wrap.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.op_Implicit(Codeer.Friendly.Dynamic.DynamicAppVar)~Codeer.Friendly.AppVar">
+            <summary>
+            Casts a DynamicAppVar to an AppVar.
+            </summary>
+            <param name="src">DynamicAppVar.</param>
+            <returns>AppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.op_Implicit(Codeer.Friendly.AppVar)~Codeer.Friendly.Dynamic.DynamicAppVar">
+            <summary>
+            Casts an AppVar to a DynamicAppVar.
+            </summary>
+            <param name="src">AppVar.</param>
+            <returns>DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.TryConvert(System.Dynamic.ConvertBinder,System.Object@)">
+            <summary>
+            Allows dynamic resolution for other types of casts.
+            Serializes the value from the target application and retrieves it.
+            Special cases
+            • When casting to IDisposable, an internal AppVar is returned.
+            · When casting to an IEnumerable, an IEnumerable＜dynamic＞ is returned. The dynamic object in this case is a DynamicAppVar.
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="result">Cast result.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.TryGetIndex(System.Dynamic.GetIndexBinder,System.Object[],System.Object@)">
+            <summary>
+            Provides dynamic resolution of get indexes.
+            Cannot be used asynchronously.
+            If you need asynchronous access, please cast the object to an AppVar and use
+            a FriendlyOperation, or access the index via its method name (.get_Item() for
+            object indexers and .Get() for array indices).    
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="indexes">Index access arguments.</param>
+            <param name="result">Result.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.TrySetIndex(System.Dynamic.SetIndexBinder,System.Object[],System.Object)">
+            <summary>
+            Provides dynamic resolution of set indexes.
+            Cannot be used asynchronously.
+            By casting AppVar, you can use the FriendlyOperation If you need asynchronous execution by all means,
+            Please execute the method call format.
+            Please use the (set_Item definition Set, in the object array aliases) index access method name.
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="indexes">Index access argument.</param>
+            <param name="value">Value to be set.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            Provides dynamic resolution of properties and fields.
+            Cannot be used asynchronously.
+            If you need asynchronous access, please cast the object to an AppVar
+            and use a FriendlyOperation, or call it in the form of a method by specifying a
+            method name equal to the property name.
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="result">Return value.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">
+            <summary>
+            Provides dynamic resolution of properties and fields.
+            Cannot be used asynchronously.
+            If you need asynchronous access, please cast the object to an AppVar
+            and use a FriendlyOperation, or call it in the form of a method by specifying a
+            method name equal to the property name.
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="value">Value to set.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+            <summary>
+            Provides dynamic resolution of method calls.
+            To specify Async and/or OperationTypeInfo, please pass these as arguments.
+            They can be included in any order.
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="args">Arguments.</param>
+            <param name="result">Return value.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.Equals(System.Object)">
+            <summary>
+            Equality. Returns the result of carrying out the equality operation inside the target application.
+            </summary>
+            <param name="obj">Object to compare.</param>
+            <returns>Comparison result.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.GetHashCode">
+            <summary>
+            Hash code access. Returns the result of the GetHashCode() operation within the target application.
+            </summary>
+            <returns>Hash code.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.ToString">
+            <summary>
+            String conversion. Returns the result of the ToString() operation carried out within the target application.
+            </summary>
+            <returns>String.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.GetType">
+            <summary>
+            Type retrieval. Returns the result of the GetType() operation carried out within the target application.
+            </summary>
+            <returns>Type object wrapped in a DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.MemberwiseClone">
+            <summary>
+            Creates a shallow copy. Returns the result of the MemberwiseClone() carried out within the target application.
+            </summary>
+            <returns>Shallow copy wrapped in a DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppVar.GetIndexAccessOperation(System.Int32)">
+            <summary>
+            インデックス操作文字列取得。
+            </summary>
+            <param name="indexCount">インデックス数</param>
+            <returns>インデックス操作文字列。</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Dynamic.DynamicAppVar.CodeerFriendlyAppVar">
+            <summary>
+            AppVar to wrap.
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Dynamic.DynamicAppType">
+            <summary>
+            Allows accessing type-specific operations in the target application.
+            Allows using the dynamic keyword to access static FriendlyOperations in a class just as you would access ordinary methods, properties, and fields.
+            Also allows creating objects in the target application by using their class name.
+            One limitation is that it is not possible to call static methods with the same name as those defined in the DynamicObject class.
+            If you absolutely need to be able to do so, please use the FriendlyOperation APIs.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.#ctor(Codeer.Friendly.AppFriend)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.#ctor(Codeer.Friendly.AppFriend,System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="name">Type full name.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            Dynamically resolves get access to properties and fields.
+            Cannot be used asynchorously.
+            If you need asynchronous access, please cast the object to an AppVar
+            and use a FriendlyOperation, or call it in the form of a method by specifying a
+            method name equal to the property name.
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="result">Retrieved result.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">
+            <summary>
+            Dynamically resolves set access to properties and fields.
+            Cannot be used asynchronously.
+            If you need asynchronous access, please cast the object to an AppVar
+            and use a FriendlyOperation, or call it in the form of a method by specifying a
+            method name equal to the property name.
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="value">Value to set.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+            <summary>
+            Dynamically resolves method calls
+            To specify Async and/or OperationTypeInfo, please pass these as arguments.
+            They can be included in any order.
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="args">Arguments.</param>
+            <param name="result">Return value.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.TryInvoke(System.Dynamic.InvokeBinder,System.Object[],System.Object@)">
+            <summary>
+            Dynamically resolves delegate types.
+            When called on this class, calls the constructor in the target application and creates a class instance.
+            </summary>
+            <param name="binder">Binder.</param>
+            <param name="args">Arguments.</param>
+            <param name="result">Return value.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.Equals(System.Object)">
+            <summary>
+            Calls the static Equals() method, if one is defined.
+            </summary>
+            <param name="obj">Object.</param>
+            <returns>Returned as a DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.GetHashCode">
+            <summary>
+            Calls the static GetHashCode() method, if it is defined.
+            </summary>
+            <returns>Returned as a DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.ToString">
+            <summary>
+            Calls the static ToString() method, if it is defined.
+            </summary>
+            <returns>Returned as a DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.GetType">
+            <summary>
+            Calls the static GetType() method, if it is defined.
+            </summary>
+            <returns>Type object returned as a DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.MemberwiseClone">
+            <summary>
+            Calls the static MemberwiseClone() method, if it is defined.
+            </summary>
+            <returns>Returned as a DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.InvokeMember(System.String,System.Object[])">
+            <summary>
+            メソッド実行の動的解決です。
+            AsyncとOperationTypeInfoを指定する場合は、引数に渡してください。
+            その順番はどこでも構いません。
+            </summary>
+            <param name="name">名前。</param>
+            <param name="args">引数。</param>
+            <returns>戻り値。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.NewAppVar(Codeer.Friendly.AppFriend,System.String,System.Object[])">
+            <summary>
+            対象アプリケーション内にインスタンス生成。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="typeFullName">生成する型のフルネーム。</param>
+            <param name="args">引数。</param>
+            <returns>生成したインスタンスを操作するためのDynamicAppVar。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.JointName(System.String,System.String)">
+            <summary>
+            名前の結合。
+            </summary>
+            <param name="name1">名前1。</param>
+            <param name="name2">名前2。</param>
+            <returns>結合された名前。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.DynamicAppType.IsTypeName(Codeer.Friendly.AppFriend,System.String,System.Boolean)">
+            <summary>
+            タイプの名前であるか。
+            </summary>
+            <param name="app">アプリケーション操作クラス。</param>
+            <param name="name">名前。</param>
+            <param name="cacheNotType">タイプでなくてもキャッシュする。</param>
+            <returns>タイプの名前であるか。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Dynamic.Inside.DynamicFriendlyOperationUtility">
+            <summary>
+            DynamicでFriendlyOperationを実行するためのユーティリティー。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.Inside.DynamicFriendlyOperationUtility.GetFriendlyOperation(Codeer.Friendly.AppVar,System.String,Codeer.Friendly.Async,Codeer.Friendly.OperationTypeInfo)">
+            <summary>
+            FriendlyOperationを取得。
+            </summary>
+            <param name="target">対象。</param>
+            <param name="name">操作名称。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+            <param name="typeInfo">操作タイプ情報。</param>
+            <returns>FriendlyOperation。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.Inside.DynamicFriendlyOperationUtility.GetFriendlyOperation(Codeer.Friendly.AppFriend,System.String,Codeer.Friendly.Async,Codeer.Friendly.OperationTypeInfo)">
+            <summary>
+            FriendlyOperationを取得。
+            </summary>
+            <param name="target">対象。</param>
+            <param name="name">操作名称。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+            <param name="typeInfo">操作タイプ情報。</param>
+            <returns>FriendlyOperation。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.Inside.DynamicFriendlyOperationUtility.ResolveArguments(System.Object[],Codeer.Friendly.Async@,Codeer.Friendly.OperationTypeInfo@)">
+            <summary>
+            引数を解決する。
+            </summary>
+            <param name="srcArgs">元引数。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+            <param name="typeInfo">操作タイプ情報。</param>
+            <returns>解決した後の引数。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.Inside.DynamicFriendlyOperationUtility.AddSetterValue(System.Object[],System.Object)">
+            <summary>
+            setter時に引数に値を加える。
+            </summary>
+            <param name="argsSrc">元引数。</param>
+            <param name="value">setする値。</param>
+            <returns>加えた後の引数。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.Inside.DynamicFriendlyOperationUtility.ResolveAsyncAndTypeInfo(System.Object[],Codeer.Friendly.Async@,Codeer.Friendly.OperationTypeInfo@)">
+            <summary>
+            非同期実行オブジェクトと操作タイプ情報に関して引数を解決する。
+            </summary>
+            <param name="srcArgs">元引数。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+            <param name="typeInfo">操作タイプ情報。</param>
+            <returns>解決した後の引数。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Dynamic.AppFriendExtensions">
+            <summary>
+            AppFriend extension methods to provide dynamic functionality.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.AppFriendExtensions.Type``1(Codeer.Friendly.AppFriend)">
+            <summary>
+            Helper method for generating a DynamicAppType for the specified type.
+            </summary>
+            <example>
+            dynamic controlType = app.Type＜Control＞();
+            </example>
+            <typeparam name="T">Type.</typeparam>
+            <param name="app">Application manipulation object.</param>
+            <returns>DynamicAppType.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.AppFriendExtensions.Type(Codeer.Friendly.AppFriend,System.String)">
+            <summary>
+            Helper method for generating a DynamicAppType for the specified type.
+            </summary>
+            <example>
+            dynamic controlType = app.Type("System.Windows.Forms.Control");
+            </example>
+            <param name="app">Application manipulation object.</param>
+            <param name="name">Name space or TypeFullName.</param>
+            <returns>DynamicAppType.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.AppFriendExtensions.Type(Codeer.Friendly.AppFriend)">
+            <summary>
+            Helper method to generate an empty DynamicAppType.
+            You should follow a call to Type() with the fully qualified namespace and classname of the type you want to access.
+            </summary>
+            <example>
+            app.Type().System.Windows.Forms.Control.FromHandle(handle);
+            </example>      
+            <param name="app">Application manipulation object.</param>
+            <returns>DynamicAppType。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.AppFriendExtensions.Copy(Codeer.Friendly.AppFriend,System.Object)">
+            <summary>
+            Copies indicated object into the target application and returns a DynamicAppVar to access it.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <param name="obj">Object to be sent (must be serializable, AppVar, or DynamicAppVar).</param>
+            <returns>DynamicAppVar.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Dynamic.AppFriendExtensions.Null(Codeer.Friendly.AppFriend)">
+            <summary>
+            Declares a null variable in the target application and returns a DynamicAppVar to access it.
+            </summary>
+            <param name="app">Application manipulation object.</param>
+            <returns>DynamicAppVar.</returns>
+        </member>
+    </members>
+</doc>

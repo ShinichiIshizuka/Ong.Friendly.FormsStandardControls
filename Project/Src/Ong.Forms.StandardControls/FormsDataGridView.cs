@@ -7,77 +7,147 @@ using Codeer.Friendly.Windows.Grasp;
 
 namespace Ong.Friendly.FormsStandardControls
 {
+#if ENG
+    /// <summary>
+    /// Provides operations on controls of type System.Windows.Forms.DataGridView.
+    /// </summary>
+#else
     /// <summary>
     /// TypeがSystem.Windows.Forms.DataGridViewのウィンドウに対応した操作を提供します。
     /// </summary>
+#endif
     public class FormsDataGridView : FormsControlBase
     {
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="src">WindowControl object for the underlying control.</param>
+#else
         /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="src">元となるウィンドウコントロール。</param>
+#endif
         public FormsDataGridView(WindowControl src)
             : base(src) { }
 
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="app">Application manipulation object.</param>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
         /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
+#endif
         public FormsDataGridView(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar) { }
 
+#if ENG
+        /// <summary>
+        /// Returns the number of columns in the data grid.
+        /// </summary>
+#else
         /// <summary>
         /// 列数を取得します。
         /// </summary>
+#endif
         public int ColumnCount
         {
             get { return (int)(this["ColumnCount"]().Core); }
         }
 
+#if ENG
+        /// <summary>
+        /// Returns the number of rows in the data grid.
+        /// </summary>
+#else
         /// <summary>
         /// 行数を取得します。
         /// </summary>
+#endif
         public int RowCount
         {
             get { return (int)(this["RowCount"]().Core); }
         }
 
+#if ENG
+        /// <summary>
+        /// Returns the currently selected cell.
+        /// </summary>
+#else
         /// <summary>
         /// 現在の選択セルを取得します。
         /// </summary>
+#endif
         public Cell CurrentCell
         {
             get { return (Cell)(App[GetType(), "GetCurrentCellInTarget"](AppVar).Core); }
         }
 
+#if ENG
+        /// <summary>
+        /// Returns the currently selected cells.
+        /// </summary>
+#else
         /// <summary>
         /// 現在の選択セルを取得します。
         /// </summary>
+#endif
         public Cell[] SelectedCells
         {
             get { return (Cell[])(App[GetType(), "GetSelectedCellsInTarget"](AppVar).Core); }
         }
 
+#if ENG
+        /// <summary>
+        /// Returns the currently selected row numbers.
+        /// </summary>
+#else
         /// <summary>
         /// 現在の選択行を取得します。
         /// </summary>
+#endif
         public int[] SelectedRows
         {
             get { return (int[])(App[GetType(), "GetSelectedRowsInTarget"](AppVar).Core); }
         }
 
+#if ENG
+        /// <summary>
+        /// Returns the text of a cell in the table.
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <returns>The cell's text.</returns>
+#else
         /// <summary>
         /// 行列で指定したセルのテキストを取得します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
         /// <returns>テキスト。</returns>
+#endif
         public string GetText(int col, int row)
         {
             return (string)(App[GetType(), "GetTextInTarget"](AppVar, col, row).Core);
         }
 
+#if ENG
+        /// <summary>
+        /// Returns the text of the table cells in the specified range.
+        /// </summary>
+        /// <param name="startCol">Starting column number.</param>
+        /// <param name="startRow">Starting row number.</param>
+        /// <param name="endCol">Ending column number.</param>
+        /// <param name="endRow">Ending row number.</param>
+        /// <returns>Cell values.</returns>
+#else
         /// <summary>
         /// 行列で指定した範囲のセルのテキストを取得します。
         /// </summary>
@@ -86,189 +156,355 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="endCol">終了列。</param>
         /// <param name="endRow">終了行。</param>
         /// <returns>テキスト配列。</returns>
+#endif
         public string[][] GetText(int startCol, int startRow, int endCol, int endRow)
         {
             return (string[][])(App[GetType(), "GetTextInTarget"](AppVar, startCol, startRow, endCol, endRow).Core);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the checked state state of a cell.
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <param name="isChecked">Checked state to use.</param>
+#else
         /// <summary>
         /// セルのチェック状態を変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
         /// <param name="isChecked">チェック状態。</param>
+#endif
         public void EmulateCellCheck(int col, int row, bool isChecked)
         {
             App[GetType(), "EmulateCellCheckInTarget"](AppVar, col, row, isChecked);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the checked state state of a cell.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <param name="isChecked">Checked state to use.</param>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// セルのチェック状態を変更します。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
         /// <param name="isChecked">チェック状態。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateCellCheck(int col, int row, bool isChecked, Async async)
         {
             App[GetType(), "EmulateCellCheckInTarget", async](AppVar, col, row, isChecked);
         }
 
+#if ENG
+        /// <summary>
+        /// Modifies the text of a cell.
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <param name="text">The text to use.</param>
+#else
         /// <summary>
         /// セルのテキストを変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
         /// <param name="text">テキスト。</param>
+#endif
         public void EmulateChangeCellText(int col, int row, string text)
         {
             App[GetType(), "EmulateChangeCellTextInTarget"](AppVar, col, row, text);
         }
 
+#if ENG
+        /// <summary>
+        /// Modifies the text of a cell.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <param name="text">The text to use.</param>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// セルのテキストを変更します。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
         /// <param name="text">テキスト。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateChangeCellText(int col, int row, string text, Async async)
         {
             App[GetType(), "EmulateChangeCellTextInTarget", async](AppVar, col, row, text);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the selected value of a combo box cell.
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <param name="index">The index to select.</param>
+#else
         /// <summary>
         /// セルコンボの選択を変更します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
         /// <param name="index">インデックス。</param>
+#endif
         public void EmulateChangeCellComboSelect(int col, int row, int index)
         {
             App[GetType(), "EmulateChangeCellComboSelectInTarget"](AppVar, col, row, index);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the selected value of a combo box cell.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <param name="index">The index to select.</param>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// セルコンボの選択を変更します。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
         /// <param name="index">インデックス。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateChangeCellComboSelect(int col, int row, int index, Async async)
         {
             App[GetType(), "EmulateChangeCellComboSelectInTarget", async](AppVar, col, row, index);
         }
 
+#if ENG
+        /// <summary>
+        /// Performs a click in a cell.
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+#else
         /// <summary>
         /// セルボタン、セルリンクをクリックします。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
+#endif
         public void EmulateClickCellContent(int col, int row)
         {
             App[GetType(), "EmulateClickCellContentInTarget"](AppVar, col, row);
         }
 
+#if ENG
+        /// <summary>
+        /// Performs a click in a cell.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// セルボタン、セルリンクをクリックします。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
-        /// <param name="async"></param>
+        /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateClickCellContent(int col, int row, Async async)
         {
             App[GetType(), "EmulateClickCellContentInTarget", async](AppVar, col, row);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the currently selected cell.
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+#else
         /// <summary>
         /// カレントセルを選択します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
+#endif
         public void EmulateChangeCurrentCell(int col, int row)
         {
             App[GetType(), "EmulateChangeCurrentCellInTarget"](AppVar, col, row);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the currently selected cell.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// カレントセルを選択します。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="col">列。</param>
         /// <param name="row">行。</param>
         /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateChangeCurrentCell(int col, int row, Async async)
         {
             App[GetType(), "EmulateChangeCurrentCellInTarget", async](AppVar, col, row);
         }
 
+#if ENG
+        /// <summary>
+        /// Clears any selections.
+        /// </summary>
+#else
         /// <summary>
         /// 選択状態を解除します。
         /// </summary>
+#endif
         public void EmulateClearSelection()
         {
             App[GetType(), "EmulateClearSelectionInTarget"](AppVar);
         }
 
+#if ENG
+        /// <summary>
+        /// Clears any selections.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// 選択状態を解除します。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateClearSelection(Async async)
         {
             App[GetType(), "EmulateClearSelectionInTarget", async](AppVar);
         }
 
+#if ENG
+        /// <summary>
+        /// Changes the cell selected state of cells.
+        /// </summary>
+        /// <param name="cells">Cell selection information.</param>
+#else
         /// <summary>
         /// 選択状態を変更します。
         /// </summary>
         /// <param name="cells">選択セル情報。</param>
+#endif
         public void EmulateChangeCellSelected(params CellSelectedInfo[] cells)
         {
             App[GetType(), "EmulateChangeCellSelectedInTarget"](AppVar, cells);
         }
 
+#if ENG
+        /// <summary>
+        /// Changes the cell selected state of cells.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="async">Asynchronous execution.</param>
+        /// <param name="cells">Cell selection information.</param>
+#else
         /// <summary>
         /// 選択状態を変更します。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
         /// <param name="cells">選択セル情報。</param>
+#endif
         public void EmulateChangeCellSelected(Async async, params CellSelectedInfo[] cells)
         {
             App[GetType(), "EmulateChangeCellSelectedInTarget", async](AppVar, cells);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the currently selected rows.
+        /// </summary>
+        /// <param name="rows">Row selection information.</param>
+#else
         /// <summary>
         /// 行選択状態を変更します。
         /// </summary>
         /// <param name="rows">選択行情報。</param>
+#endif
         public void EmulateChangeRowSelected(params RowSelectedInfo[] rows)
         {
             App[GetType(), "EmulateChangeRowSelectedInTarget"](AppVar, rows);
         }
 
+#if ENG
+        /// <summary>
+        /// Sets the currently selected rows.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="async">Asynchronous execution.</param>
+        /// <param name="rows">Row selection information.</param>
+#else
         /// <summary>
         /// 行選択状態を変更します。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
         /// <param name="rows">選択行情報。</param>
+#endif
         public void EmulateChangeRowSelected(Async async, params RowSelectedInfo[] rows)
         {
             App[GetType(), "EmulateChangeRowSelectedInTarget", async](AppVar, rows);
         }
 
+#if ENG
+        /// <summary>
+        /// Emulates a row deletion operation.
+        /// </summary>
+#else
         /// <summary>
         /// Delete操作をエミュレートします。
         /// </summary>
+#endif
         public void EmulateDelete()
         {
             App[GetType(), "EmulateDeleteInTarget"](AppVar);
         }
 
+#if ENG
+        /// <summary>
+        /// Emulates a row deletion operation.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// Delete操作をエミュレートします。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="async">非同期実行オブジェクト。</param>
+#endif
         public void EmulateDelete(Async async)
         {
             App[GetType(), "EmulateDeleteInTarget", async](AppVar);

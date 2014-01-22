@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Codeer.TestAssistant.GeneratorToolKit</id>
+    <version>1.0.0</version>
+    <title>TestAssistant.GeneratorToolKit</title>
+    <authors>Codeer</authors>
+    <owners>Codeer</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>http://www.english.codeer.co.jp/test-automation/api-reference/codeer-testassistant-generatortoolkit-dll</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>You can make plugin for Test.Assistant</description>
+    <tags>Friendly TestAssistant Testing Windows WPF WinForms Win32 Automation</tags>
+  </metadata>
+</package>

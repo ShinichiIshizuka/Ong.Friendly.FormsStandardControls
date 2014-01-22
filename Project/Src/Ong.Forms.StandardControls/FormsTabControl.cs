@@ -5,58 +5,106 @@ using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
 {
+#if ENG
     /// <summary>
-    /// TypeがWindowControlがSystem.Windows.Forms.TabControlのウィンドウに対応した操作を提供します。
+    /// Provides operations on controls of type System.Windows.Forms.TabControl.
     /// </summary>
+#else
+    /// <summary>
+    /// TypeがSystem.Windows.Forms.TabControlのウィンドウに対応した操作を提供します。
+    /// </summary>
+#endif
     public class FormsTabControl : FormsControlBase
     {
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="src">WindowControl object for the underlying control.</param>
+#else
         /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="src">元となるウィンドウコントロール。</param>
+#endif
         public FormsTabControl(WindowControl src)
             : base(src) { }
 
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="app">Application manipulation object.</param>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
         /// <summary>
         /// コンストラクタです。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
+#endif
         public FormsTabControl(WindowsAppFriend app, AppVar appVar)
             : base(app, appVar) { }
 
+#if ENG
+        /// <summary>
+        /// Returns the number of tabs.
+        /// </summary>
+#else
         /// <summary>
         /// タブ数を取得します。
         /// </summary>
-        /// <returns>タブ数。</returns>
+#endif
         public int TabCount
         {
             get { return (int)this["TabCount"]().Core; }
         }
 
+#if ENG
+        /// <summary>
+        /// Returns the currently selected index.
+        /// </summary>
+#else
         /// <summary>
         /// 選択されたタブインデックスを取得します。
         /// </summary>
-        /// <returns>タブインデックス。</returns>
+#endif
         public int SelectedIndex
         {
             get { return (int)this["SelectedIndex"]().Core; }
         }
 
+#if ENG
+        /// <summary>
+        /// Selects a certain tab.
+        /// </summary>
+        /// <param name="index">Index (0-based) of the tab to select.</param>
+#else
         /// <summary>
         /// タブを選択します。
         /// </summary>
         /// <param name="index">タブインデックス（０始まり）。</param>
+#endif
         public void EmulateTabSelect(int index)
         {
             App[GetType(), "EmulateTabSelectInTarget"](AppVar, index);
         }
 
+#if ENG
+        /// <summary>
+        /// Selects a certain tab.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="index">Index (0-based) of the tab to select.</param>
+        /// <param name="async">Asynchronous execution.</param>
+#else
         /// <summary>
         /// タブを選択します。
+        /// 非同期で実行します。
         /// </summary>
         /// <param name="index">タブインデックス（０始まり）。</param>
         /// <param name="async">非同期オブジェクト。</param>
+#endif
         public void EmulateTabSelect(int index, Async async)
         {
             App[GetType(), "EmulateTabSelectInTarget", async](AppVar, index);

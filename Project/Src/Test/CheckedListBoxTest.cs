@@ -88,8 +88,14 @@ namespace Test
         public void TestFindString()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
-            int index = checkedlistbox1.FindString(@"Item-1");
-            Assert.AreEqual(0, index);
+            int index = checkedlistbox1.FindString(@"Item-2");
+            Assert.AreEqual(1, index);
+            checkedlistbox1["Items"]()["Add"](@"dmy");
+            checkedlistbox1["Items"]()["Add"](@"Item-2");
+            index = checkedlistbox1.FindString(@"Item-2", 2);
+            Assert.AreEqual(checkedlistbox1.ItemCount - 1, index);
+            checkedlistbox1["Items"]()["RemoveAt"](checkedlistbox1.ItemCount - 1);
+            checkedlistbox1["Items"]()["RemoveAt"](checkedlistbox1.ItemCount - 1);
         }
 
         /// <summary>
@@ -101,6 +107,12 @@ namespace Test
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
             int index = checkedlistbox1.FindStringExact(@"Item-11");
             Assert.AreEqual(7, index);
+            checkedlistbox1["Items"]()["Add"](@"dmy");
+            checkedlistbox1["Items"]()["Add"](@"Item-11");
+            index = checkedlistbox1.FindStringExact(@"Item-11", 8);
+            Assert.AreEqual(checkedlistbox1.ItemCount - 1, index);
+            checkedlistbox1["Items"]()["RemoveAt"](checkedlistbox1.ItemCount - 1);
+            checkedlistbox1["Items"]()["RemoveAt"](checkedlistbox1.ItemCount - 1);
         }
 
         /// <summary>

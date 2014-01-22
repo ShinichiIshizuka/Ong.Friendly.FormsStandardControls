@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Codeer.TestAssistant.GeneratorToolKit</name>
+    </assembly>
+    <members>
+        <member name="T:Codeer.TestAssistant.GeneratorToolKit.CommaType">
+            <summary>
+            カンマ付加時のタイプ。
+            </summary>
+        </member>
+        <member name="F:Codeer.TestAssistant.GeneratorToolKit.CommaType.Non">
+            <summary>
+            なし。
+            </summary>
+        </member>
+        <member name="F:Codeer.TestAssistant.GeneratorToolKit.CommaType.Before">
+            <summary>
+            前。
+            </summary>
+        </member>
+        <member name="F:Codeer.TestAssistant.GeneratorToolKit.CommaType.After">
+            <summary>
+            後。
+            </summary>
+        </member>
+        <member name="T:Codeer.TestAssistant.GeneratorToolKit.Sentence">
+            <summary>
+            生成コードの関連する一つの塊です。
+            一つのセンテンスは複数のトークンからなります。
+            トークンはobject型で表されるので、すべてのクラス、値、構造体を入れることができます。
+            ToString()した値がコードとなります。
+            ただ、特殊な意味合いを持たせたものがあります。TokenAsyn、TokenName、TokenSeparatorです。
+            </summary>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.Sentence.#ctor(Codeer.TestAssistant.GeneratorToolKit.GeneratorBase,System.Object[])">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="owner">センテンスを生成したジェネレータ。</param>
+            <param name="tokens">トークン。</param>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.Sentence.Equals(System.Object)">
+            <summary>
+            等価比較。
+            </summary>
+            <param name="obj">比較対象。</param>
+            <returns>比較結果。</returns>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.Sentence.GetHashCode">
+            <summary>
+            ハッシュコード取得。
+            </summary>
+            <returns>ハッシュコード。</returns>
+        </member>
+        <member name="P:Codeer.TestAssistant.GeneratorToolKit.Sentence.Owner">
+            <summary>
+            センテンスを生成したジェネレータ。
+            </summary>
+        </member>
+        <member name="P:Codeer.TestAssistant.GeneratorToolKit.Sentence.Tokens">
+            <summary>
+            トークン。
+            </summary>
+        </member>
+        <member name="T:Codeer.TestAssistant.GeneratorToolKit.TokenAsync">
+            <summary>
+            非同期トークン。
+            これを入れておくと、非同期が必要と判断された場合、そこにAsyncオブジェクトが挿入されます。
+            ジェネレータ実装時のテスト時にこのトークンに関する動作確認をする場合はDebugModeクラスを使用してください。
+            </summary>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.TokenAsync.#ctor(Codeer.TestAssistant.GeneratorToolKit.CommaType)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="comma">カンマ。</param>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.TokenAsync.ToString">
+            <summary>
+            文字列化。
+            </summary>
+            <returns>トークン文字列。</returns>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.TokenAsync.Equals(System.Object)">
+            <summary>
+            等価比較。
+            </summary>
+            <param name="obj">比較対象。</param>
+            <returns>比較結果。</returns>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.TokenAsync.GetHashCode">
+            <summary>
+            ハッシュコード取得。
+            </summary>
+            <returns>ハッシュコード。</returns>
+        </member>
+        <member name="P:Codeer.TestAssistant.GeneratorToolKit.TokenAsync.Name">
+            <summary>
+            名前。
+            </summary>
+        </member>
+        <member name="T:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase">
+            <summary>
+            ジェネレータ基本クラス。
+            </summary>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.Finalize">
+            <summary>
+            Finalizer
+            </summary>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.Dispose">
+            <summary>
+            破棄。
+            </summary>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.Dispose(System.Boolean)">
+            <summary>
+            破棄。
+            </summary>
+            <param name="disposing">破棄フラグ。</param>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.Initialize(System.String,System.IntPtr,System.Object,System.Collections.Generic.List{Codeer.TestAssistant.GeneratorToolKit.Sentence})">
+            <summary>
+            初期化。
+            </summary>
+            <param name="name">名前。</param>
+            <param name="windowHandle">ウィンドウハンドル。</param>
+            <param name="controlObject">コントロールのオブジェクト。</param>
+            <param name="currentCode">コードバッファ。</param>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.AddSentence(System.Object[])">
+            <summary>
+            センテンスの追加。
+            </summary>
+            <param name="tokens">センテンスに含めるトークン。</param>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.AddSentence(Codeer.TestAssistant.GeneratorToolKit.Sentence)">
+            <summary>
+            センテンスの追加。
+            </summary>
+            <param name="sentence">センテンスに含めるトークン。</param>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.Optimize(System.Collections.Generic.List{Codeer.TestAssistant.GeneratorToolKit.Sentence})">
+            <summary>
+            最適化。
+            </summary>
+            <param name="code">コード。</param>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.Attach">
+            <summary>
+            アタッチ。
+            </summary>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.Detach">
+            <summary>
+            ディタッチ。
+            </summary>
+        </member>
+        <member name="P:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.WindowHandle">
+            <summary>
+            ウィンドウハンドル。
+            </summary>
+        </member>
+        <member name="P:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.ControlObject">
+            <summary>
+            コントロールオブジェクト。
+            </summary>
+        </member>
+        <member name="P:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.Name">
+            <summary>
+            名前。
+            </summary>
+        </member>
+        <member name="P:Codeer.TestAssistant.GeneratorToolKit.GeneratorBase.CurrentCode">
+            <summary>
+            現在のコード。
+            </summary>
+        </member>
+        <member name="T:Codeer.TestAssistant.GeneratorToolKit.DebugMode">
+            <summary>
+            デバッグモード。
+            </summary>
+        </member>
+        <member name="P:Codeer.TestAssistant.GeneratorToolKit.DebugMode.IsAllAsync">
+            <summary>
+            全てを非同期モードで生成するためのテストフラグ。
+            </summary>
+        </member>
+        <member name="T:Codeer.TestAssistant.GeneratorToolKit.TokenSeparator">
+            <summary>
+            セパレータトークンです。
+            これのみをSentenceとして入れておくと、空行を挿入できます。
+            また、TokenSeparatorが重複した場合は、一行に最適化されます。
+            </summary>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.TokenSeparator.ToString">
+            <summary>
+            文字列化。
+            </summary>
+            <returns>文字列。</returns>
+        </member>
+        <member name="T:Codeer.TestAssistant.GeneratorToolKit.TokenName">
+            <summary>
+            名前トークン。
+            </summary>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.TokenName.ToString">
+            <summary>
+            文字列化。
+            </summary>
+            <returns>トークン文字列。</returns>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.TokenName.Equals(System.Object)">
+            <summary>
+            等価比較。
+            </summary>
+            <param name="obj">比較対象。</param>
+            <returns>比較結果。</returns>
+        </member>
+        <member name="M:Codeer.TestAssistant.GeneratorToolKit.TokenName.GetHashCode">
+            <summary>
+            ハッシュコード取得。
+            </summary>
+            <returns>ハッシュコード。</returns>
+        </member>
+        <member name="P:Codeer.TestAssistant.GeneratorToolKit.TokenName.Name">
+            <summary>
+            名前。
+            </summary>
+        </member>
+    </members>
+</doc>
