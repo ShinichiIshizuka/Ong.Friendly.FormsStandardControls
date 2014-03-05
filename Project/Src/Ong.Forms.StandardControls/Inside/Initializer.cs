@@ -24,7 +24,7 @@ namespace Ong.Friendly.FormsStandardControls.Inside
             if (!app.TryGetAppControlInfo(key, out isInit))
             {
                 //身初期化の場合はアセンブリを読み込ませます。
-                WindowsAppExpander.LoadAssemblyFromFile(app, myType.Assembly.Location);
+                WindowsAppExpander.LoadAssembly(app, myType.Assembly);
                 ResourcesLocal.Initialize(app);
                 app.AddAppControlInfo(key, true);
             }
