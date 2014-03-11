@@ -22,6 +22,8 @@ Debug/
 DebugUnicode/
 Release/
 Project/Src/packages
+Project/Src/ReleaseBinary
+!Project/Src/ReleaseBinary/empty
 !Project/Src/Ong.Forms.StandardControls/bin/
 !Project/Src/Ong.Forms.StandardControls/bin/Release/
 !Project/Src/Ong.Forms.StandardControls/bin/Release/Help/
