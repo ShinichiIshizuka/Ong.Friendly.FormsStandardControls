@@ -18,6 +18,7 @@
 *.bak
 *.opensdf
 bin/
+obj/
 Debug/
 DebugUnicode/
 Release/
