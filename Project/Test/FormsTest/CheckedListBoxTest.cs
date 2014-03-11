@@ -1,5 +1,5 @@
 using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -8,12 +8,12 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.NativeStandardControls;
 
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// ListBoxテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class CheckedListBoxTest
     {
         WindowsAppFriend app;
@@ -22,11 +22,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -34,7 +34,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -50,7 +50,7 @@ namespace Test
         /// <summary>
         /// ItemCountテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemCount()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
@@ -61,7 +61,7 @@ namespace Test
         /// <summary>
         /// GetCheckStateテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetCheckState()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
@@ -73,7 +73,7 @@ namespace Test
         /// <summary>
         /// FindListIndexテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindListIndex()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
@@ -84,7 +84,7 @@ namespace Test
         /// <summary>
         /// FindStringテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindString()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
@@ -101,7 +101,7 @@ namespace Test
         /// <summary>
         /// FindStringExactテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindStringExact()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
@@ -118,7 +118,7 @@ namespace Test
         /// <summary>
         /// FindStringExactテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindExact()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
@@ -129,7 +129,7 @@ namespace Test
         /// <summary>
         /// CheckedIndicesテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestCheckedIndices()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
@@ -142,7 +142,7 @@ namespace Test
         /// <summary>
         /// SelectedItemIndexテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestSelectedItemIndex()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
@@ -156,7 +156,7 @@ namespace Test
         /// <summary>
         /// EmulateChangeSelectedIndexテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeSelectedIndex()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
@@ -193,7 +193,7 @@ namespace Test
         /// <summary>
         /// EmulateCheckStateテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateCheckState()
         {
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());

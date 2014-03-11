@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -7,12 +7,12 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System;
 using Codeer.Friendly.Windows.NativeStandardControls;
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// TabControlテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class TabControlTest
     {
         WindowsAppFriend app;
@@ -21,11 +21,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -33,7 +33,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -49,7 +49,7 @@ namespace Test
         /// <summary>
         /// TabCountテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestTabCount()
         {
             FormsTabControl tabControl = new FormsTabControl(app, testDlg["tabControl"]());
@@ -59,7 +59,7 @@ namespace Test
         /// <summary>
         /// SelectedIndexテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestSelectedIndex()
         {
             FormsTabControl tabControl = new FormsTabControl(app, testDlg["tabControl"]());
@@ -70,7 +70,7 @@ namespace Test
         /// <summary>
         /// EmulateTabSelect
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestTabSelect()
         {
             FormsTabControl tabControl = new FormsTabControl(app, testDlg["tabControl"]());

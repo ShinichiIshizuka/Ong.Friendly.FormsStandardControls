@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -7,12 +7,12 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.NativeStandardControls;
 
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// TreeViewテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class TreeViewTest
     {
         WindowsAppFriend app;
@@ -21,11 +21,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -33,7 +33,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -49,7 +49,7 @@ namespace Test
         /// <summary>
         /// FormsTreeNode SelectNodeのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFormsTreeNodeSelectNode()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
@@ -62,7 +62,7 @@ namespace Test
         /// <summary>
         /// FormsTreeNode GetItem(params int[] indexes)のテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFormsTreeNodeGetItemIndexs()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
@@ -83,7 +83,7 @@ namespace Test
         /// <summary>
         /// FormsTreeNode FindItem(params string[] texts)のテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFormsTreeNodeFindItemTexts()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
@@ -95,7 +95,7 @@ namespace Test
         /// <summary>
         /// EmulateNodeSelect(FormsTreeNode node)のテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateNodeSelectNode()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
@@ -134,7 +134,7 @@ namespace Test
         /// <summary>
         /// string Textのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestStringText()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
@@ -147,7 +147,7 @@ namespace Test
         /// <summary>
         /// bool IsExpandedのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestIsExpanded()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
@@ -159,7 +159,7 @@ namespace Test
         /// <summary>
         /// bool Checkedのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestChecked()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
@@ -171,7 +171,7 @@ namespace Test
         /// <summary>
         /// EmulateExpandのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateExpand()
         {
             //非同期
@@ -205,7 +205,7 @@ namespace Test
         /// <summary>
         /// EmulateCollapseのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateCollapse()
         {
             //非同期
@@ -238,7 +238,7 @@ namespace Test
         /// <summary>
         /// EmulateEditLabelのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateEditLabel()
         {
             FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());

@@ -1,19 +1,19 @@
 using System;
-using NUnit.Framework;
-using Codeer.Friendly;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Codeer.Friendly;
 using Codeer.Friendly.Windows.NativeStandardControls;
-namespace Test
+namespace FormsTest
 {
     /// <summary>
-    /// TextBoxテスト
+    /// CheckBoxテスト
     /// </summary>
-    [TestFixture]
-    public class TextBoxTest
+    [TestClass]
+    public class CheckBoxTest
     {
         WindowsAppFriend app;
         WindowControl testDlg;
@@ -21,19 +21,19 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
-        
+
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -47,40 +47,41 @@ namespace Test
         }
 
         /// <summary>
-        /// テキスト設定・取得をします
+        /// チェックテスト
+        /// EmulateCheck
+        /// CheckState
+        /// の両方をテスト
         /// </summary>
-        [Test]
-        public void TestEmulateChangeText()
+        [TestMethod]
+        public void TestCheckBoxCheck()
         {
-            FormsTextBox textBox = new FormsTextBox(app, testDlg["textBox"]());
-            textBox.EmulateChangeText("textBox");
-            string textBoxText = textBox.Text;
-            Assert.AreEqual("textBox", textBoxText);
+            FormsCheckBox checkbox = new FormsCheckBox(app, testDlg["checkBox"]());
+            checkbox.EmulateCheck(CheckState.Checked);
+            Assert.AreEqual(CheckState.Checked, checkbox.CheckState);
 
-            // 非同期
-            app[GetType(), "ChangeTextEvent"](textBox.AppVar);
-            textBox.EmulateChangeText("textBox1", new Async());
+            //非同期
+            app[GetType(), "CheckedChangeEvent"](checkbox.AppVar);
+            checkbox.EmulateCheck(CheckState.Unchecked, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            textBoxText = textBox.Text;
-            Assert.AreEqual("textBox1", textBoxText);
+            Assert.AreEqual(CheckState.Unchecked, checkbox.CheckState);
         }
 
         /// <summary>
-        /// テキスト変更時にメッセージボックスを表示する
+        /// 状態変更時にメッセージボックスを表示する
         /// </summary>
-        /// <param name="textbox">ボタン</param>
-        static void ChangeTextEvent(TextBox textbox)
+        /// <param name="checkBox">チェックボックス</param>
+        static void CheckedChangeEvent(CheckBox checkBox)
         {
             EventHandler handler = null;
             handler = delegate
             {
                 MessageBox.Show("");
-                textbox.BeginInvoke((MethodInvoker)delegate
+                checkBox.BeginInvoke((MethodInvoker)delegate
                 {
-                    textbox.TextChanged -= handler;
+                    checkBox.CheckedChanged -= handler;
                 });
             };
-            textbox.TextChanged += handler;
+            checkBox.CheckedChanged += handler;
         }
     }
 }

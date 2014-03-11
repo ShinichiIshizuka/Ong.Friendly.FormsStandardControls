@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
@@ -8,12 +8,12 @@ using System.Windows.Forms;
 using System;
 using Codeer.Friendly.Windows.NativeStandardControls;
 
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// ListBoxテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class ListBoxTest
     {
         WindowsAppFriend app;
@@ -22,11 +22,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -34,7 +34,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -50,7 +50,7 @@ namespace Test
         /// <summary>
         /// ItemCountテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemCount()
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
@@ -61,7 +61,7 @@ namespace Test
         /// <summary>
         /// FindListIndexテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindListIndex()
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
@@ -73,7 +73,7 @@ namespace Test
         /// <summary>
         /// FindStringテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindString()
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
@@ -90,7 +90,7 @@ namespace Test
         /// <summary>
         /// FindStringExactテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindExact()
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
@@ -107,20 +107,20 @@ namespace Test
         /// <summary>
         /// SelectedIndextテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestSelectIndexes()
         {
             FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
             int[] select = new int[]{5};
             listbox2.EmulateChangeSelectedIndex(5,new Async());
             int selected = listbox2.SelectedIndex;
-            Assert.AreEqual(1, selected);
+            Assert.AreEqual(5, selected);
         }
 
         /// <summary>
         /// SelectionModeテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestSelectionMode()
         {
             FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
@@ -132,26 +132,28 @@ namespace Test
         /// <summary>
         /// EmulateChangeSelectedStateテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeSelectedState()
         {
             FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
             listbox2.EmulateChangeSelectedState(4, true);
             int[] selected1 = listbox2.SelectedIndexes;
-            Assert.AreEqual(1, selected1[0]);
+            Assert.AreEqual(1, selected1.Length);
+            Assert.AreEqual(4, selected1[0]);
 
             // 非同期
             app[GetType(), "ChangeSelectedIndexEvent"](listbox2.AppVar);
             listbox2.EmulateChangeSelectedState(2, true, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(1, selected1.Length);
             int[] selected2 = listbox2.SelectedIndexes;
-            Assert.AreEqual(1, selected2[0]);
+            Assert.AreEqual(2, selected2[0]);
         }
 
         /// <summary>
         /// EmulateChangeSelectedIndexテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeSelectedIndex()
         {
             FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());

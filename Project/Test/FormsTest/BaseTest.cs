@@ -1,15 +1,15 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows;
 using System.Diagnostics;
 using Ong.Friendly.FormsStandardControls;
 
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// Buttonテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class BaseTest
     {
         WindowsAppFriend app;
@@ -18,11 +18,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -30,7 +30,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -46,7 +46,7 @@ namespace Test
         /// <summary>
         /// Textのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestText()
         {
             FormsButton button = new FormsButton(app, testDlg["button"]());
@@ -57,7 +57,7 @@ namespace Test
         /// <summary>
         /// Visibleのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestVisible()
         {
             FormsButton button = new FormsButton(app, testDlg["button"]());
@@ -70,7 +70,7 @@ namespace Test
         /// <summary>
         /// Enabledのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEnabled()
         {
             FormsButton button = new FormsButton(app, testDlg["button"]());

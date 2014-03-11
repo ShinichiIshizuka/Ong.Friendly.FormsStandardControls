@@ -1,5 +1,5 @@
 ﻿using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -7,12 +7,12 @@ using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.NativeStandardControls;
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// MonthCalenderテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class MonthCalenderTest
     {
         WindowsAppFriend app;
@@ -21,11 +21,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp ()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend ( Process.Start ( Settings.TestApplicationPath ), "2.0" );
+            app = new WindowsAppFriend ( Process.Start ( Settings.TestApplicationPath ));
             testDlg = WindowControl.FromZTop ( app );
             WindowsAppExpander.LoadAssemblyFromFile ( app, GetType ().Assembly.Location );
         }
@@ -33,7 +33,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown ()
         {
             //終了処理
@@ -49,7 +49,7 @@ namespace Test
         /// <summary>
         /// カレンダーの左端の列に表示される曜日を取得します。 
         /// </summary>
-        [Test]
+        [TestMethod]
         public void FirstDayOfWeekTest()
         {
             FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
@@ -60,7 +60,7 @@ namespace Test
         /// <summary>
         /// 選択できる最大日数を取得します。 
         /// </summary>
-        [Test]
+        [TestMethod]
         public void MaxSelectionCountTest()
         {
             FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
@@ -71,7 +71,7 @@ namespace Test
         /// <summary>
         /// 現在の選択日時を取得します。 
         /// </summary>
-        [Test]
+        [TestMethod]
         public void SelectedDayTest()
         {
             FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
@@ -84,7 +84,7 @@ namespace Test
         /// <summary>
         /// 今日を取得します。 
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TodayTest()
         {
             FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
@@ -95,7 +95,7 @@ namespace Test
         /// <summary>
         /// 現在の選択日付を設定します。
         /// </summary>
-        [Test]
+        [TestMethod]
         public void EmulateSelectDayTest()
         {
             FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
@@ -113,7 +113,7 @@ namespace Test
         /// <summary>
         /// 現在の選択日付(範囲)を設定します。
         /// </summary>
-        [Test]
+        [TestMethod]
         public void EmulateSelectDaysTest()
         {
             FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
@@ -153,12 +153,13 @@ namespace Test
         /// <summary>
         /// 選択範囲を取得します。 
         /// </summary>
-        [Test]
+        [TestMethod]
         public void GetSelectionRangeTest()
         {
             FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
             DateTime datetimeStart = new DateTime();
             DateTime datetimeEnd = new DateTime();
+            monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 25));
             monthcalendar.GetSelectionRange(ref datetimeStart, ref datetimeEnd);
             Assert.AreEqual(new DateTime(2013, 10, 25), datetimeStart);
             Assert.AreEqual(new DateTime(2013, 10, 25), datetimeEnd);

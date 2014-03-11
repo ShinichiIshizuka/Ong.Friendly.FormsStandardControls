@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
@@ -8,12 +8,12 @@ using System;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows.NativeStandardControls;
 
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// ContextMenuStripテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class ToolStripTest
     {
         WindowsAppFriend app;
@@ -22,11 +22,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -34,7 +34,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -50,7 +50,7 @@ namespace Test
         /// <summary>
         /// GetItem(int)のテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetItemInt()
         {
             FormsToolStrip menu = new FormsToolStrip(app, testDlg["menuStrip1"]());
@@ -62,7 +62,7 @@ namespace Test
         /// <summary>
         /// GetItem(string)のテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetItemString()
         {
             FormsToolStrip menu = new FormsToolStrip(app, testDlg["menuStrip1"]());
@@ -76,7 +76,7 @@ namespace Test
         /// <summary>
         /// FindItemのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetFindItem()
         {
             FormsToolStrip menu = new FormsToolStrip(app, testDlg["menuStrip1"]());
@@ -90,7 +90,7 @@ namespace Test
         /// <summary>
         /// FormsToolStripItemのTextテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemText()
         {
             FormsToolStripItem item = new FormsToolStrip(app, testDlg["menuStrip1"]()).FindItem("Menu001", "Menu001-02");
@@ -100,7 +100,7 @@ namespace Test
         /// <summary>
         /// FormsToolStripItemのVisibleテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemVisible()
         {
             FormsToolStripItem item = new FormsToolStrip(app, testDlg["toolStrip1"]()).FindItem("toolStripButton2");
@@ -113,7 +113,7 @@ namespace Test
         /// <summary>
         /// FormsToolStripItemのEnabledテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemEnabled()
         {
             FormsToolStripItem item = new FormsToolStrip(app, testDlg["menuStrip1"]()).FindItem("Menu001", "Menu001-02");
@@ -126,7 +126,7 @@ namespace Test
         /// <summary>
         /// FormsToolStripItemのEmulateClickテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateClick()
         {
             FormsToolStripItem item =  new FormsToolStrip(app, testDlg["contextMenuStrip1"]()).GetItem(1);
@@ -164,7 +164,7 @@ namespace Test
         /// <summary>
         /// FormsToolStripItemのEmulateCheckとCheckStateのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateCheckAndCheckState()
         {
             FormsToolStripButton item = new FormsToolStripButton(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(3));
@@ -200,7 +200,7 @@ namespace Test
         /// <summary>
         /// コンボボックス取得テスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetComboBox()
         {
             FormsToolStripComboBox item = new FormsToolStripComboBox(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(4));
@@ -210,7 +210,7 @@ namespace Test
         /// <summary>
         /// テキストボックス取得テスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestTextBox()
         {
             FormsToolStripTextBox item = new FormsToolStripTextBox(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(6));
@@ -220,7 +220,7 @@ namespace Test
         /// <summary>
         /// 初期化テスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestToolStripItemInitialize()
         {
             FormsToolStripItem item = new FormsToolStripItem(app, testDlg["menu001ToolStripMenuItem"]());

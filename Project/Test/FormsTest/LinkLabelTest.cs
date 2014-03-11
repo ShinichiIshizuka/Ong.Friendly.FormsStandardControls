@@ -1,43 +1,42 @@
-using System;
-using NUnit.Framework;
+ï»¿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
-using Codeer.Friendly.Windows.NativeStandardControls;
 using System.Windows.Forms;
-
-namespace Test
+using Codeer.Friendly.Windows.NativeStandardControls;
+namespace FormsTest
 {
     /// <summary>
-    /// ButtonƒeƒXƒg
+    /// LinkLabelãƒ†ã‚¹ãƒˆ
     /// </summary>
-    [TestFixture]
-    public class ButtonTest
+    [TestClass]
+    public class LinkLabelTest
     {
         WindowsAppFriend app;
         WindowControl testDlg;
 
         /// <summary>
-        /// ‰Šú‰»
+        /// åˆæœŸåŒ–
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
-            //ƒeƒXƒg—p‚Ì‰æ–Ê‹N“®
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            //ãƒ†ã‚¹ãƒˆç”¨ã®ç”»é¢èµ·å‹•
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
-        
+
         /// <summary>
-        /// I—¹
+        /// çµ‚äº†
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
-            //I—¹ˆ—
+            //çµ‚äº†å‡¦ç†
             if (app != null)
             {
                 app.Dispose();
@@ -48,40 +47,39 @@ namespace Test
         }
 
         /// <summary>
-        /// EmulateClick‚ÌƒeƒXƒg
+        /// ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚
         /// </summary>
-        [Test]
-        public void TestButtonClick()
+        [TestMethod]
+        public void TestLinkClick()
         {
-            FormsButton button = new FormsButton(app, testDlg["button"]());
-            button.EmulateClick();
+            FormsLinkLabel linklabel = new FormsLinkLabel(app, testDlg["linkLabel"]());
+            linklabel.EmulateLinkClick();
             int count = (int)testDlg["async_counter"]().Core;
-            Assert.AreEqual(1, count);
-
-            //”ñ“¯Šú
-            app[GetType(), "ClickEvent"](button.AppVar);
-            button.EmulateClick(new Async());
+            Assert.AreEqual(12, count);
+            //éåŒæœŸ
+            app[GetType(), "LinkClickEvent"](linklabel.AppVar);
+            linklabel.EmulateLinkClick(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             count = (int)testDlg["async_counter"]().Core;
-            Assert.AreEqual(2, count);
+            Assert.AreEqual(12, count);
         }
 
         /// <summary>
-        /// ƒNƒŠƒbƒN‚ÉƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚ğ•\¦‚·‚é
+        /// ã‚¯ãƒªãƒƒã‚¯æ™‚ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="button">ƒ{ƒ^ƒ“</param>
-        static void ClickEvent(Button button)
+        /// <param name="linklabel">ãƒœã‚¿ãƒ³</param>
+        static void LinkClickEvent(LinkLabel linklabel)
         {
-            EventHandler handler = null;
+            LinkLabelLinkClickedEventHandler handler = null;
             handler = delegate
             {
                 MessageBox.Show("");
-                button.BeginInvoke((MethodInvoker)delegate
+                linklabel.BeginInvoke((MethodInvoker)delegate
                 {
-                    button.Click -= handler;
+                    linklabel.LinkClicked -= handler;
                 });
             };
-            button.Click += handler;
+            linklabel.LinkClicked += handler;
         }
     }
 }

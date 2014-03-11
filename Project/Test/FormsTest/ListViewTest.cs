@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -8,12 +8,12 @@ using System.Windows.Forms;
 using System;
 using Codeer.Friendly.Windows.NativeStandardControls;
 
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// ListViewテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class ListViewTest
     {
         WindowsAppFriend app;
@@ -22,11 +22,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -34,7 +34,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -50,7 +50,7 @@ namespace Test
         /// <summary>
         /// ItemCountのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemCount()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
@@ -60,7 +60,7 @@ namespace Test
         /// <summary>
         /// ColumnCountのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestColumnCount()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());
@@ -70,7 +70,7 @@ namespace Test
         /// <summary>
         /// ViewModeのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestViewMode()
         {
             FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
@@ -81,7 +81,7 @@ namespace Test
         /// <summary>
         /// SelectIndexesのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestSelectIndexes()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());
@@ -94,13 +94,13 @@ namespace Test
 
             listView.EmulateChangeSelectedState(0, true);
             listView.EmulateChangeSelectedState(2, true);
-            Assert.AreEqual(new int[]{0, 2}, listView.SelectIndexes);
+            AssertEx.AreEqual(new int[] { 0, 2 }, listView.SelectIndexes);
         }
 
         /// <summary>
         /// GetListViewItemのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetListViewItem()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());
@@ -110,7 +110,7 @@ namespace Test
         /// <summary>
         /// FindItemWithTextのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindItemWithText()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());
@@ -121,7 +121,7 @@ namespace Test
         /// <summary>
         /// EmulateChangeSelectedStateのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeSelectedState()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());
@@ -133,13 +133,13 @@ namespace Test
             }
 
             listView.EmulateChangeSelectedState(0, true);
-            Assert.AreEqual(new int[] { 0 }, listView.SelectIndexes);
+            AssertEx.AreEqual(new int[] { 0 }, listView.SelectIndexes);
 
             //非同期
             app[GetType(), "SelectEvent"](listView.AppVar);
             listView.EmulateChangeSelectedState(2, true, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            Assert.AreEqual(new int[] { 0, 2 }, listView.SelectIndexes);
+            AssertEx.AreEqual(new int[] { 0, 2 }, listView.SelectIndexes);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Test
         /// <summary>
         /// ListViewItemのTextのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemText()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());
@@ -173,7 +173,7 @@ namespace Test
         /// <summary>
         /// ListViewItemのItemIndexのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemIndex()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());
@@ -183,7 +183,7 @@ namespace Test
         /// <summary>
         /// GetSubItemとSubItemのTextのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetSubItemAndSubItemText()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());
@@ -193,7 +193,7 @@ namespace Test
         /// <summary>
         /// ListViewItemのEmulateCheckとCheckedのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemEmulateCheckAndChecked()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());
@@ -229,7 +229,7 @@ namespace Test
         /// <summary>
         /// EmulateEditLabelのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemEmulateEditLabel()
         {
             FormsListView listView = new FormsListView(app, testDlg["listView1"]());

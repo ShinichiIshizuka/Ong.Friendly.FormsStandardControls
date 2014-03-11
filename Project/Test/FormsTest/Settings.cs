@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Test
+namespace FormsTest
 {
     public static class Settings
     {

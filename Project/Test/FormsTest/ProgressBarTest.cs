@@ -1,5 +1,5 @@
 ﻿using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -7,12 +7,12 @@ using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.NativeStandardControls;
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// Progressテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class ProgressBarTest
     {
         WindowsAppFriend app;
@@ -21,11 +21,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -33,7 +33,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -49,7 +49,7 @@ namespace Test
         /// <summary>
         /// 最大値を取得をします
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetMaximun()
         {
             FormsProgressBar progress = new FormsProgressBar(app, testDlg["progressBar"]());
@@ -60,7 +60,7 @@ namespace Test
         /// <summary>
         /// 最小値を取得をします
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetMinimun()
         {
             FormsProgressBar progress = new FormsProgressBar(app, testDlg["progressBar"]());
@@ -71,7 +71,7 @@ namespace Test
         /// <summary>
         /// 現在値を取得をします
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetPos()
         {
             FormsProgressBar progress = new FormsProgressBar(app, testDlg["progressBar"]());

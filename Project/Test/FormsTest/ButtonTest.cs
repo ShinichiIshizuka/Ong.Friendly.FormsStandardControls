@@ -1,19 +1,20 @@
 using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls;
 using System.Diagnostics;
-using System.Windows.Forms;
 using Codeer.Friendly.Windows.NativeStandardControls;
-namespace Test
+using System.Windows.Forms;
+
+namespace FormsTest
 {
     /// <summary>
-    /// RadioButtonテスト
+    /// Buttonテスト
     /// </summary>
-    [TestFixture]
-    public class RadioButtonTest
+    [TestClass]
+    public class ButtonTest
     {
         WindowsAppFriend app;
         WindowControl testDlg;
@@ -21,19 +22,19 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
-
+        
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -47,43 +48,40 @@ namespace Test
         }
 
         /// <summary>
-        /// チェックテスト
-        /// EmulateCheck
-        /// Checked
-        /// の両方をテスト
+        /// EmulateClickのテスト
         /// </summary>
-        [Test]
-        public void TestCheckBoxCheck()
+        [TestMethod]
+        public void TestButtonClick()
         {
-            FormsRadioButton radiobutton1 = new FormsRadioButton(app, testDlg["radioButton1"]());
-            radiobutton1.EmulateCheck();
-            Assert.AreEqual(true, radiobutton1.Checked);
+            FormsButton button = new FormsButton(app, testDlg["button"]());
+            button.EmulateClick();
+            int count = (int)testDlg["async_counter"]().Core;
+            Assert.AreEqual(1, count);
 
             //非同期
-            FormsRadioButton radiobutton2 = new FormsRadioButton(app, testDlg["radioButton2"]());
-            app[GetType(), "CheckedChangeEvent"](radiobutton2.AppVar);
-            radiobutton2.EmulateCheck(new Async());
+            app[GetType(), "ClickEvent"](button.AppVar);
+            button.EmulateClick(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            int count = (int)testDlg["async_counter"]().Core;
-            Assert.AreEqual(11, count);
+            count = (int)testDlg["async_counter"]().Core;
+            Assert.AreEqual(2, count);
         }
 
         /// <summary>
-        /// 状態変更時にメッセージボックスを表示する
+        /// クリック時にメッセージボックスを表示する
         /// </summary>
-        /// <param name="radioButton">チェックボックス</param>
-        static void CheckedChangeEvent(RadioButton radioButton)
+        /// <param name="button">ボタン</param>
+        static void ClickEvent(Button button)
         {
             EventHandler handler = null;
             handler = delegate
             {
                 MessageBox.Show("");
-                radioButton.BeginInvoke((MethodInvoker)delegate
+                button.BeginInvoke((MethodInvoker)delegate
                 {
-                    radioButton.CheckedChanged -= handler;
+                    button.Click -= handler;
                 });
             };
-            radioButton.CheckedChanged += handler;
+            button.Click += handler;
         }
     }
 }

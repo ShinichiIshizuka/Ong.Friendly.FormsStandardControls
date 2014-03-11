@@ -1,5 +1,5 @@
 using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -8,12 +8,12 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.NativeStandardControls;
 
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// CheckBoxテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class ComboBoxTest
     {
         WindowsAppFriend app;
@@ -22,11 +22,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -34,7 +34,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -50,7 +50,7 @@ namespace Test
         /// <summary>
         /// ItemCountのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestItemCount()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
@@ -61,7 +61,7 @@ namespace Test
         /// <summary>
         /// SelectedItemIndexのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestSelectedItemIndex()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
@@ -73,7 +73,7 @@ namespace Test
         /// <summary>
         /// FindStringのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindString()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
@@ -90,7 +90,7 @@ namespace Test
         /// <summary>
         /// FindStringExactのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestFindExact()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
@@ -107,7 +107,7 @@ namespace Test
         /// <summary>
         /// GetItemTextのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetItemText()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
@@ -118,7 +118,7 @@ namespace Test
         /// <summary>
         /// EmulateChangeSelectのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeSelect()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
@@ -153,7 +153,7 @@ namespace Test
         /// <summary>
         /// EmulateChangeTextのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeText()
         {
             FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());

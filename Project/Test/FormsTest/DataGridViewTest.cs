@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -8,12 +8,12 @@ using System.Windows.Forms;
 using System;
 using Codeer.Friendly.Windows.NativeStandardControls;
 
-namespace Test
+namespace FormsTest
 {
     /// <summary>
     /// DataGridViewテスト
     /// </summary>
-    [TestFixture]
+    [TestClass]
     public class DataGridViewTest
     {
         WindowsAppFriend app;
@@ -22,11 +22,11 @@ namespace Test
         /// <summary>
         /// 初期化
         /// </summary>
-        [TestFixtureSetUp]
+        [TestInitialize]
         public void SetUp()
         {
             //テスト用の画面起動
-            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath), "2.0");
+            app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
@@ -34,7 +34,7 @@ namespace Test
         /// <summary>
         /// 終了
         /// </summary>
-        [TestFixtureTearDown]
+        [TestCleanup]
         public void TearDown()
         {
             //終了処理
@@ -50,7 +50,7 @@ namespace Test
         /// <summary>
         /// RowCountのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestRowCount()
         {
             FormsDataGridView datagridview = new FormsDataGridView(app, testDlg["dataGridView"]());
@@ -62,7 +62,7 @@ namespace Test
         /// <summary>
         /// ColumnCountのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestColumnCount()
         {
             FormsDataGridView datagridview = new FormsDataGridView(app, testDlg["dataGridView"]());
@@ -72,7 +72,7 @@ namespace Test
         /// <summary>
         /// EmulateChangeCurrentCellとCurrentCellのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeCurrentCellAndCurrentCell()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
@@ -107,25 +107,25 @@ namespace Test
         /// <summary>
         /// EmulateChangeCellSelectedとSelectedCellsのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeCellSelectedAndSelectedCells()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
             dataGridview.EmulateClearSelection();
             dataGridview.EmulateChangeCellSelected(new CellSelectedInfo(1, 0, true), new CellSelectedInfo(2, 0, true));
-            Assert.AreEqual(new Cell[] { new Cell(1, 0), new Cell(2, 0) }, dataGridview.SelectedCells);
+            AssertEx.AreEqual(new Cell[] { new Cell(1, 0), new Cell(2, 0) }, dataGridview.SelectedCells);
 
             //非同期
             app[GetType(), "SelectionChangedEvent"](dataGridview.AppVar);
             dataGridview.EmulateChangeCellSelected(new Async(), new CellSelectedInfo(1, 0, false));
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            Assert.AreEqual(new Cell[] { new Cell(2, 0) }, dataGridview.SelectedCells);
+            AssertEx.AreEqual(new Cell[] { new Cell(2, 0) }, dataGridview.SelectedCells);
         }
 
         /// <summary>
         /// EmulateChangeRowSelectedとSelectedRowsのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeRowSelectedSelectedRows()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
@@ -138,13 +138,13 @@ namespace Test
             //行選択テスト
             dataGridview.EmulateClearSelection();
             dataGridview.EmulateChangeRowSelected(new RowSelectedInfo(1,true), new RowSelectedInfo(2, true));
-            Assert.AreEqual(new int[] { 1, 2 }, dataGridview.SelectedRows);
+            AssertEx.AreEqual(new int[] { 1, 2 }, dataGridview.SelectedRows);
 
             //非同期
             app[GetType(), "SelectionChangedEvent"](dataGridview.AppVar);
             dataGridview.EmulateChangeRowSelected(new Async(), new RowSelectedInfo(1, false));
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            Assert.AreEqual(new int[] { 2 }, dataGridview.SelectedRows);
+            AssertEx.AreEqual(new int[] { 2 }, dataGridview.SelectedRows);
 
             //行クリア
             dataGridview["Rows"]()["Clear"]();
@@ -153,20 +153,20 @@ namespace Test
         /// <summary>
         /// EmulateClearSelectionのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateClearSelection()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
             dataGridview.EmulateChangeCellSelected(new CellSelectedInfo(1, 0, true), new CellSelectedInfo(2, 0, true));
             dataGridview.EmulateClearSelection();
-            Assert.AreEqual(new Cell[] {}, dataGridview.SelectedCells);
+            AssertEx.AreEqual(new Cell[] { }, dataGridview.SelectedCells);
 
             //非同期
             dataGridview.EmulateChangeCellSelected(new CellSelectedInfo(1, 0, true), new CellSelectedInfo(2, 0, true));
             app[GetType(), "SelectionChangedEvent"](dataGridview.AppVar);
             dataGridview.EmulateClearSelection(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
-            Assert.AreEqual(new Cell[] { }, dataGridview.SelectedCells);
+            AssertEx.AreEqual(new Cell[] { }, dataGridview.SelectedCells);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Test
         /// <summary>
         /// GetTextのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestGetText()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
@@ -203,7 +203,7 @@ namespace Test
             dataGridview.EmulateCellCheck(1, 2, true);
 
             Assert.AreEqual("b", dataGridview.GetText(0, 1));
-            Assert.AreEqual(new string[][] { new string[] { "a", true.ToString() }, 
+            AssertEx.AreEqual(new string[][] { new string[] { "a", true.ToString() }, 
                 new string[] { "b", string.Empty }, 
                 new string[] { "c", true.ToString() } }, dataGridview.GetText(0, 0, 1, 2));
 
@@ -215,7 +215,7 @@ namespace Test
         /// <summary>
         /// EmulateDeleteのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateDelete()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
@@ -264,7 +264,7 @@ namespace Test
         /// <summary>
         /// EmulateCellCheckのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateCellCheck()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
@@ -286,7 +286,7 @@ namespace Test
         /// <summary>
         /// EmulateChangeCellTextのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeCellText()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
@@ -308,7 +308,7 @@ namespace Test
         /// <summary>
         /// EmulateChangeCellComboSelectのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateChangeCellComboSelect()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
@@ -348,7 +348,7 @@ namespace Test
         /// <summary>
         /// EmulateClickCellContentのテスト
         /// </summary>
-        [Test]
+        [TestMethod]
         public void TestEmulateClickCellContent()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
