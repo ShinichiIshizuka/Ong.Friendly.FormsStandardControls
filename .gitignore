@@ -21,12 +21,7 @@ bin/
 Debug/
 DebugUnicode/
 Release/
+ReleaseBinary/
+Release-Eng/
 Project/Src/packages
-Project/Src/ReleaseBinary
-!Project/Src/ReleaseBinary/empty
 Project/Test/FormsTest/packages
-!Project/Src/Ong.Forms.StandardControls/bin/
-!Project/Src/Ong.Forms.StandardControls/bin/Release/
-!Project/Src/Ong.Forms.StandardControls/bin/Release/Help/
-!Project/Src/Ong.Forms.StandardControls/bin/Release/doc.shfbproj
-!Project/Src/Ong.Forms.StandardControls/bin/Release/Help/Documentation.chm
