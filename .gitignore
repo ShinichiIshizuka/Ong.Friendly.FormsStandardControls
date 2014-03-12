@@ -17,6 +17,8 @@
 *.aps
 *.bak
 *.opensdf
+*.nupkg
+
 bin/
 obj/
 Debug/
