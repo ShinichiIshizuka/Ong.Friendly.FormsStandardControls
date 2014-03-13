@@ -1,0 +1,1081 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Codeer.Friendly</name>
+    </assembly>
+    <members>
+        <member name="T:Codeer.Friendly.Inside.InternalException">
+            <summary>
+            内部例外。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InternalException.#ctor">
+            <summary>
+            コンストラクタ。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InternalException.#ctor(System.String)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="message">メッセージ。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InternalException.#ctor(System.String,System.Exception)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="message">メッセージ。</param>
+            <param name="innerException">内部例外。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InternalException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="info">シリアライズ情報。</param>
+            <param name="context">コンテキスト。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InternalException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            シリアライズ。
+            </summary>
+            <param name="info">シリアライズ情報。</param>
+            <param name="context">コンテキスト。</param>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.Protocol.VarAddress">
+            <summary>
+            変数アドレス。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.Protocol.VarAddress.#ctor(System.Int32)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="core">コア。</param>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.VarAddress.Core">
+            <summary>
+            コア。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.OperationTalker">
+            <summary>
+            操作通信
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.OperationTalker.SendAndReceive(Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,System.String,System.Object[])">
+            <summary>
+            戻り値をAppVarで取得する通信。
+            </summary>
+            <param name="protocolType">通信タイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="operation">操作名称。</param>
+            <param name="arguments">引数。</param>
+            <returns>変数。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.OperationTalker.SendAndValueReceive(Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,System.String,System.Object[])">
+            <summary>
+            戻り値を値で取得する通信処理。
+            </summary>
+            <param name="protocolType">通信タイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="operation">操作名称。</param>
+            <param name="arguments">引数。</param>
+            <returns>値。</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.OperationTalker.FriendlyConnector">
+            <summary>
+            アプリケーションとの接続者。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Enumerate">
+            <summary>
+            When the variable in application corresponds to repetition processing, repetitive processing by foreach can be executed. (in .Net, when IEnumerator is inherited).
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Enumerate.#ctor(Codeer.Friendly.AppVar)">
+            <summary>
+            Constractor.
+            </summary>
+            <param name="enumerable">An enumerable variable in the application.</param>
+        </member>
+        <member name="M:Codeer.Friendly.Enumerate.GetEnumerator">
+            <summary>
+            Produces an enumerator for the provided variable. 
+            </summary>
+            <returns>An enumerator that allows iterative processing on the variable.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Enumerate.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Produces an enumerator for the provided variable. 
+            </summary>
+            <returns>An enumerator that allows iterative processing on the variable.</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.Protocol.ProtocolType">
+            <summary>
+            通信タイプ。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.VarInitialize">
+            <summary>
+            変数初期化。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.VarNew">
+            <summary>
+            変数生成。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.BinOff">
+            <summary>
+            変数を捨てる。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.GetValue">
+            <summary>
+            値を設定。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.SetValue">
+            <summary>
+            値を取得。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.GetElements">
+            <summary>
+            要素取得。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.Operation">
+            <summary>
+            操作。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.IsEmptyVar">
+            <summary>
+            空変数であるかチェック。
+            非同期実行中に使用されるので可能な限り高速に処理を戻すこと。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.AsyncResultVarInitialize">
+            <summary>
+            非同期結果格納バッファ初期化。
+            </summary>
+        </member>
+        <member name="F:Codeer.Friendly.Inside.Protocol.ProtocolType.AsyncOperation">
+            <summary>
+            非同期操作。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.OperationTypeInfo">
+            <summary>
+            Used to specify parameters for a FriendlyOperation when there is a need to resolve overloads or call an operation on a parent class.
+            Please refer to samples.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.OperationTypeInfo.#ctor(System.String,System.String[])">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="target">The full class name of the target type for the target operation.</param>
+            <param name="arguments">The full class names of the the target operation's parameters.</param>
+        </member>
+        <member name="P:Codeer.Friendly.OperationTypeInfo.Target">
+            <summary>
+            Returns the full class name of the target type for the target operation.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.OperationTypeInfo.Arguments">
+            <summary>
+            Returns an array of the full class names of the target operation's parameters.
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.InformationException">
+            <summary>
+            情報通知用例外。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InformationException.#ctor">
+            <summary>
+            コンストラクタ。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InformationException.#ctor(System.String)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="message">メッセージ。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InformationException.#ctor(System.String,System.Exception)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="message">メッセージ。</param>
+            <param name="innerException">内部例外。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InformationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="info">シリアライズ情報。</param>
+            <param name="context">コンテキスト。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.InformationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            シリアライズ。
+            </summary>
+            <param name="info">シリアライズ情報。</param>
+            <param name="context">コンテキスト。</param>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.Protocol.ProtocolInfo">
+            <summary>
+            通信情報。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.Protocol.ProtocolInfo.#ctor(Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Inside.Protocol.VarAddress,System.String,System.String,System.Object[])">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="protocolType">通信タイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="varAddress">変数アドレス。</param>
+            <param name="typeFullName">タイプフルネーム。</param>
+            <param name="operation">操作名称。</param>
+            <param name="arguments">引数。</param>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ProtocolInfo.ProtocolType">
+            <summary>
+            通信タイプ。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ProtocolInfo.OperationTypeInfo">
+            <summary>
+            操作タイプ情報。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ProtocolInfo.VarAddress">
+            <summary>
+            変数アドレス。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ProtocolInfo.TypeFullName">
+            <summary>
+            タイプフルネーム。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ProtocolInfo.Operation">
+            <summary>
+            操作名称。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ProtocolInfo.Arguments">
+            <summary>
+            引数。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.StaticOperationTalker">
+            <summary>
+            Static操作通信
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.StaticOperationTalker.#ctor(Codeer.Friendly.Inside.Protocol.IFriendlyConnector,System.String)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="friendlyConnector">操作送信者。</param>
+            <param name="typeFullName">タイプフルネーム。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.StaticOperationTalker.SendAndReceive(Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,System.String,System.Object[])">
+            <summary>
+            戻り値をAppVarで取得する通信。
+            </summary>
+            <param name="protocolType">通信タイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="operation">操作名称。</param>
+            <param name="arguments">引数。</param>
+            <returns>変数。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.StaticOperationTalker.SendAndValueReceive(Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,System.String,System.Object[])">
+            <summary>
+            戻り値を値で取得する通信処理。
+            </summary>
+            <param name="protocolType">通信タイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="operation">操作名称。</param>
+            <param name="arguments">引数。</param>
+            <returns>値。</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.StaticOperationTalker.FriendlyConnector">
+            <summary>
+            アプリケーションとの接続者。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.StaticOperationTalker.Item(System.String,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Async)">
+            <summary>
+            操作取得。
+            </summary>
+            <param name="operation">操作名称。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+            <returns>操作</returns>
+        </member>
+        <member name="T:Codeer.Friendly.NewInfo">
+            <summary>
+            Used to provide information when instantiating an object in an application.
+            Stores generation information and constructor parameters.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.NewInfo.#ctor(System.String,System.Object[])">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="typeFullName">Fully qualified type name of the generated object.</param>
+            <param name="arguments">
+            Arguments to be passed to the object's constructor.
+            Can be AppVars or serializable objects.
+            </param>
+        </member>
+        <member name="M:Codeer.Friendly.NewInfo.#ctor(System.Type,System.Object[])">
+            <summary>
+            Constractor.
+            </summary>
+            <param name="type">The type of the object to create.</param>
+            <param name="args">
+            Arguments to be passed to the object's constructor.
+            Can be AppVars or serializable objects.
+            </param>
+        </member>
+        <member name="P:Codeer.Friendly.NewInfo.TypeFullName">
+            <summary>
+            Returns the type's full name.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.NewInfo.Arguments">
+            <summary>
+            Returns the set of constructor parameters.
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.NewInfo`1">
+            <summary>
+            Used to provide information when instantiating an object in an application.
+            Stores generation information and constructor parameters.
+            </summary>
+        </member>
+        <!-- 正しくない形式の XML コメントがメンバー "M:Codeer.Friendly.NewInfo`1.#ctor(System.Object[])" で無視されました -->
+        <member name="T:Codeer.Friendly.Inside.FriendlyOperationOwner">
+            <summary>
+            操作保持クラス。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.FriendlyOperationOwner.#ctor(Codeer.Friendly.Inside.OperationTalker,Codeer.Friendly.OperationTypeInfo,System.String)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="talker">操作通信社</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="operation">操作名称。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.FriendlyOperationOwner.FriendlyOperation(System.Object[])">
+            <summary>
+            操作実行。
+            </summary>
+            <param name="arguments">引数。</param>
+            <returns>戻り値。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.FriendlyTalker">
+            <summary>
+            コミュニケーター。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.FriendlyTalker.SendAndVarReceive(System.Object,Codeer.Friendly.Inside.Protocol.IFriendlyConnector,Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Inside.Protocol.VarAddress,System.String,System.String,System.Object[])">
+            <summary>
+            戻り値をAppVarで取得する通信。
+            </summary>
+            <param name="invoker">呼び出し元。</param>
+            <param name="friendlyConnector">アプリケーションとの接続者。</param>
+            <param name="protocolType">通信タイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="varAddress">変数アドレス。</param>
+            <param name="typeFullName">タイプフルネーム。</param>
+            <param name="operation">操作名称。</param>
+            <param name="arguments">引数。</param>
+            <returns>変数。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.FriendlyTalker.SendAndValueReceive(System.Object,Codeer.Friendly.Inside.Protocol.IFriendlyConnector,Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Inside.Protocol.VarAddress,System.String,System.String,System.Object[])">
+            <summary>
+            戻り値を値で取得する通信処理。
+            通信基本形。
+            </summary>
+            <param name="invoker">呼び出し元。</param>
+            <param name="friendlyConnector">アプリケーションとの接続者。</param>
+            <param name="protocolType">通信タイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="varAddress">変数アドレス。</param>
+            <param name="typeFullName">タイプフルネーム。</param>
+            <param name="operation">操作名称。</param>
+            <param name="arguments">引数。</param>
+            <returns>値。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.FriendlyTalker.AdjustArrayArgs(System.Object[])">
+            <summary>
+            object[]以外の場合はobject[]でくるんでやる
+            </summary>
+            <param name="arguments">引数</param>
+            <returns>調整した引数</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.FriendlyTalker.ConvertAppVar(Codeer.Friendly.Inside.Protocol.IFriendlyConnector,System.Object[])">
+            <summary>
+            AppVarがあれば、Varハンドルに変換。
+            </summary>
+            <param name="friendlyConnector">アプリケーションとの接続者。</param>
+            <param name="arguments">引数。</param>
+            <returns>変換結果。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.FriendlyTalker.ConvertAppVar(Codeer.Friendly.Inside.Protocol.IFriendlyConnector,System.Object,System.Int32)">
+            <summary>
+            AppVarであれば、Varハンドルに変換。
+            </summary>
+            <param name="friendlyConnector">アプリケーションとの接続者。</param>
+            <param name="index">引数のインデックス。</param>
+            <param name="arg">引数。</param>
+            <returns>変換結果。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.Protocol.ReturnInfo">
+            <summary>
+            戻り値情報。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.Protocol.ReturnInfo.#ctor">
+            <summary>
+            コンストラクタ。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.Protocol.ReturnInfo.#ctor(System.Object)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="returnValue">戻り値。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.Protocol.ReturnInfo.#ctor(Codeer.Friendly.Inside.Protocol.ExceptionInfo)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="exception">例外情報。</param>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ReturnInfo.ReturnValue">
+            <summary>
+            戻り値。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ReturnInfo.Exception">
+            <summary>
+            例外。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.AsyncFriendlyOperationOwner">
+            <summary>
+            非同期操作保持クラス。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.AsyncFriendlyOperationOwner.#ctor(Codeer.Friendly.Async,Codeer.Friendly.OperationTypeInfo,System.String)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="async">非同期実行クラス。</param>
+            <param name="operationTypeInfo">操作タイプ情報。（オーバーロードの解決等に使用します。）</param>
+            <param name="operation">操作名称。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.AsyncFriendlyOperationOwner.FriendlyOperation(System.Object[])">
+            <summary>
+            操作呼び出し。
+            </summary>
+            <param name="args">引数。</param>
+            <returns>戻り値。</returns>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.Protocol.IFriendlyConnector">
+            <summary>
+            接続者。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.Protocol.IFriendlyConnector.SendAndReceive(Codeer.Friendly.Inside.Protocol.ProtocolInfo)">
+            <summary>
+            送受信。
+            </summary>
+            <param name="info">通信情報。</param>
+            <returns>戻り値。</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.IFriendlyConnector.Identity">
+            <summary>
+            接続者を区別するためのユニークなオブジェクト。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Properties.Resources">
+            <summary>
+              ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Properties.Resources.ResourceManager">
+            <summary>
+              このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Properties.Resources.Culture">
+            <summary>
+              厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+              現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Properties.Resources.ErrorAsyncDuplicativeCall">
+            <summary>
+              This has already been executed. An Async object can only be used once. To call an operation more than once, create a new Async object. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Properties.Resources.ErrorDefinitionArgument">
+            <summary>
+              Argument number {0} is incorrect. The namespace or class name could be a likely cause. Please double-check the syntax used for creating the argument. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Properties.Resources.ErrorDifferentAppFriendVar">
+            <summary>
+              Argument number {0} is incorrect. The specified AppVar belongs to a separate AppFriend&apos;s variable pool. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Properties.Resources.ErrorDisposedObject">
+            <summary>
+              It is the object that has been disposed already. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Properties.Resources.ErrorInvalidCompleted">
+            <summary>
+              Invalid completion specification. This method should not generally be called. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Properties.Resources.ErrorInvalidStaticCall">
+            <summary>
+              Illegal static function call. Operation information requires a type. に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Properties.Resources.ExceptionInfoFormat">
+             <summary>
+               An exception occurred inside the target application.
+            [Message]
+            {0}
+            [Exception type]
+            {1}
+            [Error cause]
+            {2}
+            [Stack trace]
+            {3}
+            [Help]
+            {4} に類似しているローカライズされた文字列を検索します。
+             </summary>
+        </member>
+        <member name="T:Codeer.Friendly.IDefinition">
+            <summary>
+            定義であることの識別子。
+            ライブラリ内で使います。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.IAppVarOwner">
+            <summary>
+            Demonstrating interface keeping the AppVar therein.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.IAppVarOwner.AppVar">
+            <summary>
+            Variable in the application.
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.IAppVarSelf">
+            <summary>
+            Show that it is equivalent to him.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.IAppVarSelf.CodeerFriendlyAppVar">
+            <summary>
+            Variable in the application
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.FriendlyInfoAttribute">
+            <summary>
+            Friendly情報。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.FriendlyInfoAttribute.#ctor(System.String)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="info">情報。</param>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.FriendlyInfoAttribute.Info">
+            <summary>
+            情報。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Inside.Protocol.ExceptionInfo">
+            <summary>
+            例外情報。
+            例外クラスは場合によっては、シリアライズ不可能なので、必要なデータのみ抜粋し、保持する。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Inside.Protocol.ExceptionInfo.#ctor(System.Exception)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="exception">例外。</param>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ExceptionInfo.ExceptionType">
+            <summary>
+            例外のタイプ文字列。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ExceptionInfo.HelpLink">
+            <summary>
+            例外に関連付けられているヘルプ ファイルへのリンク。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ExceptionInfo.Message">
+            <summary>
+            現在の例外を説明するメッセージ。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ExceptionInfo.Source">
+            <summary>
+            エラーの原因となったアプリケーションまたはオブジェクトの名前。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Inside.Protocol.ExceptionInfo.StackTrace">
+            <summary>
+            現在の例外がスローされたときにコール スタック。
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.FriendlyOperationException">
+            <summary>
+            Inherits the Exception class
+            An exception thrown while a FriendlyOperation executes within the target application.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.FriendlyOperationException.#ctor">
+            <summary>
+            Constractor.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.FriendlyOperationException.#ctor(System.String)">
+            <summary>
+            Constractor.
+            </summary>
+            <param name="message">Message.</param>
+        </member>
+        <member name="M:Codeer.Friendly.FriendlyOperationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constractor.
+            </summary>
+            <param name="message">Constractor.</param>
+            <param name="innerException">Internal Exception.</param>
+        </member>
+        <member name="M:Codeer.Friendly.FriendlyOperationException.#ctor(Codeer.Friendly.Inside.Protocol.ExceptionInfo)">
+            <summary>
+            Constractor.。
+            </summary>
+            <param name="info">Infomation</param>
+        </member>
+        <member name="M:Codeer.Friendly.FriendlyOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constractor.
+            </summary>
+            <param name="info">Serialize Infomation.</param>
+            <param name="context">Serialize Context.</param>
+        </member>
+        <member name="M:Codeer.Friendly.FriendlyOperationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialize.
+            </summary>
+            <param name="info">Serialize Infomation.</param>
+            <param name="context">Serialize Context.</param>
+        </member>
+        <member name="M:Codeer.Friendly.FriendlyOperationException.ExceptionInfoMessageFormat(Codeer.Friendly.Inside.Protocol.ExceptionInfo)">
+            <summary>
+            例外情報をメッセージ文字列にするフォーマット。
+            </summary>
+            <param name="info">例外情報。</param>
+            <returns>メッセージ文字列。</returns>
+        </member>
+        <member name="P:Codeer.Friendly.FriendlyOperationException.ExceptionInfo">
+            <summary>
+            Infomation.
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.Async">
+            <summary>
+            Class for executing asynchronous operations in the target application of AppVar and AppFriends. 
+            When the operation has a return value or ref or out arguments, the values for these are stored in this class' object after the operation has finished.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Async.#ctor">
+            <summary>
+            Constractor.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Async.WaitForCompletion">
+            <summary>
+            Waits until the operation has finished.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Async.SetCompleted">
+            <summary>
+            Marks the operation as complete. 
+            Should not typically be used. 
+            Used by implementations of this class or by libraries. 
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.Async.Initialize(Codeer.Friendly.Inside.OperationTalker)">
+            <summary>
+            初期化。
+            </summary>
+            <param name="operationTalker">操作通信クラス。</param>
+        </member>
+        <member name="M:Codeer.Friendly.Async.Invoke(Codeer.Friendly.OperationTypeInfo,System.String,System.Object[])">
+            <summary>
+            非同期操作呼び出し。
+            </summary>
+            <param name="operationTypeInfo">操作タイプ情報。（オーバーロードの解決等に使用します。）</param>
+            <param name="operation">操作。</param>
+            <param name="arguments">引数。</param>
+            <returns>戻り値。</returns>
+        </member>
+        <member name="P:Codeer.Friendly.Async.IsCompleted">
+            <summary>
+            Indicates whether the operation has finished.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.Async.ExecutingException">
+            <summary>
+            Provides any exception that occurred during the execution. 
+            Returns null if the operation has not yet completed or if there was no exception. 
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.FriendlyOperation">
+            <summary>
+            A delegate to call operations within the target application.
+            </summary>
+            <param name="args">Parameters corresponding to the operation. Can be null, a serializable objecr, or an AppVar.</param>
+            <returns>
+            When the operation has a return value, the result is stored in a variable declared within the target class, and an object for manipulating that variable is returned. 
+            When there is no return value, returns null.
+            </returns>
+        </member>
+        <member name="T:Codeer.Friendly.AppVar">
+            <summary>
+            Represents variables in the target application.
+            Operates properies, fields, methods.
+            Can acquire variable values from the test process, and set values to the test process.
+            When the variables in application support iterative processes (In case of .Net, it inherits IEnumerator）,
+            can use foreach to iterate through them.
+            As long as an instance of this class remains in the test process, the underlying object in the target application will not be marked for garbage collection.
+            Timing of the garbage collection within the test process is not affected by the memory state of the product process.
+            If needed, use methods such as System.GC's Collect() or WaitForPendingFinalizers() to trigger garbage collection and delete instances from the test process.
+            You can also use Dispose() to release a resource immediately.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.AppVar.#ctor(Codeer.Friendly.Inside.Protocol.IFriendlyConnector,Codeer.Friendly.Inside.Protocol.VarAddress)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="friendlyConnector">アプリケーションとの接続クラス。</param>
+            <param name="varAddress">変数アドレス</param>
+        </member>
+        <member name="M:Codeer.Friendly.AppVar.Finalize">
+            <summary>
+            ファイナライザ。
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.AppVar.Dispose">
+            <summary>
+            Releases the application's variable from management. 
+            After calling this method, the variable of this AppVar cannot be accessed. 
+            In many cases, it is not necessary to call this explicitly.
+            If needed, please use methods such as System.GC's Collect() or WaitForPendingFinalizers()
+            to trigger garbage collection. 
+            Please use this, for example, when the variable inside the application uses a lot of memory.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.AppVar.Dispose(System.Boolean)">
+            <summary>
+            Despose.
+            </summary>
+            <param name="disposing">flag.</param>
+        </member>
+        <member name="M:Codeer.Friendly.AppVar.Equals(System.Object)">
+            <summary>
+            Equivalence comparison. 
+            Carries out an equivalence comparison against the variable in the application.
+            </summary>
+            <param name="obj">
+            A candidate for the comparison. 
+            AppVar can also be specified. 
+            Please refer to sample code. 
+            </param>
+            <returns>true is returned when the values are equal. </returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppVar.GetHashCode">
+            <summary>
+            Acquires a hash code of the variable in the application.
+            </summary>
+            <returns>Hash code of the variable in the application.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppVar.ToString">
+            <summary>
+            Produces a string value for the object in the application.
+            </summary>
+            <returns>String representing the object in the application.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppVar.SendAndReceive(Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,System.String,System.Object[])">
+            <summary>
+            戻り値をAppVarで取得する通信。
+            </summary>
+            <param name="protocolType">通信タイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="operation">操作名称。</param>
+            <param name="arguments">引数。</param>
+            <returns>変数。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppVar.SendAndValueReceive(Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,System.String,System.Object[])">
+            <summary>
+            戻り値を値で取得する通信処理。
+            </summary>
+            <param name="protocolType">通信タイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。</param>
+            <param name="operation">操作名称。</param>
+            <param name="arguments">引数。</param>
+            <returns>値。</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppVar.VarAddress">
+            <summary>
+            変数アドレス。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.AppVar.FriendlyConnector">
+            <summary>
+            アプリケーションとの接続クラス。
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.AppVar.Item(System.String)">
+            <summary>
+            Acquires a delegate which can call operations on variables in the test target application.
+            </summary>
+            <param name="operation">Operation name.</param>
+            <returns>Delegate for executing operations.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppVar.Item(System.String,Codeer.Friendly.Async)">
+            <summary>
+            Acquires a delegate which can call operations on variables in the test target application.
+            </summary>
+            <param name="operation">Operation name.</param>
+            <param name="async">Object for asynchronous execution. </param>
+            <returns>Delegate for executing operations.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppVar.Item(System.String,Codeer.Friendly.OperationTypeInfo)">
+            <summary>
+            Acquires a delegate which can call operations on variables in the test target application.
+            </summary>
+            <param name="operation">Operation name.</param>
+            <param name="operationTypeInfo">
+            Operation type information.
+            Used to differentiate between multiple overloads or to target an operation with the same name within a parent class. 
+            Overloads can often be resolved by their parameters without specifying an OperationTypeInfo.
+            </param>
+            <returns>Delegate for executing operations.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppVar.Item(System.String,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Async)">
+            <summary>
+            Acquires a delegate which can call operations on variables in the test target application.
+            </summary>
+            <param name="operation">Operation name.</param>
+            <param name="operationTypeInfo">
+            Operation type information.
+            Used to differentiate between multiple overloads or to target an operation with the same name within a parent class. 
+            Overloads can often be resolved by their parameters without specifying an OperationTypeInfo.
+            </param>
+            <param name="async">Object for asynchronous execution. </param>
+            <returns>Delegate for executing operations.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppVar.Core">
+            <summary>
+            Serializes a variable and passes it to the application under test or sends a value to it. 
+            Can only be used when the object can be serialized. 
+            AppVar can also be assigned to the setter.
+            </summary>
+        </member>
+        <member name="T:Codeer.Friendly.AppFriend">
+            <summary>
+            It's a class for manipulating applications that have been Friendly enabled.
+            Can declare variables and call static methods.
+            Inherited classes are provided for each connection type.
+            </summary>
+        </member>
+        <member name="M:Codeer.Friendly.AppFriend.Dim">
+            <summary>
+            Declares null variables in test target applications.
+            </summary>
+            <returns>Variable in the application.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppFriend.Dim(System.Object)">
+            <summary>
+            Declares a variable initialized with the specified object in the application under test.
+            The reference of the selected object is serialized, transmitted, and deserialized, stored in the variable declared as an initial value, rather than being declaring a reference to the specified object within the application.
+            </summary>
+            <param name="obj">
+            The initial value of the variable to be declared inside the application.
+            It is necessary to be a type which can be serialized, or null.
+            </param>
+            <returns>Variable in the application.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppFriend.Dim(Codeer.Friendly.NewInfo)">
+            <summary>
+            Declares a variable within the application under test using the specified information.
+            </summary>
+            <param name="newInfo">Object generation information</param>
+            <returns>Variable in the application.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppFriend.Dim(Codeer.Friendly.NewInfo,Codeer.Friendly.OperationTypeInfo)">
+            <summary>
+            Declares a variable within the application under test using the specified information.
+            </summary>
+            <param name="newInfo">Variable in the application</param>
+            <param name="operationTypeInfo">
+            Operation type information.
+            Used to call operation of the same name of a parent class when two or more overloads exist for the indicated operation.
+            In many cases, an overload can be resolved using the parameters without specifying an OperationTypeInfo.
+            </param>
+            <returns>Variable in the application.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppFriend.AddAppControlInfo(System.String,System.Object)">
+            <summary>
+            Add Application Control Infomation.
+            Should not typically be used. 
+            Used by implementations of this class or by libraries. 
+            This Method is Thread Safe.
+            </summary>
+            <param name="key">Key.</param>
+            <param name="value">Value.</param>
+        </member>
+        <member name="M:Codeer.Friendly.AppFriend.TryGetAppControlInfo(System.String,System.Object@)">
+            <summary>
+            Get Application Control Infomation.
+            Should not typically be used. 
+            Used by implementations of this class or by libraries. 
+            This Method is Thread Safe.
+            </summary>
+            <param name="key">Key.</param>
+            <param name="value">Value.</param>
+            <returns>Success or failure.</returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppFriend.Invoke(Codeer.Friendly.Inside.Protocol.ProtocolType,Codeer.Friendly.OperationTypeInfo,System.String,System.Object[])">
+            <summary>
+            実行。
+            </summary>
+            <param name="protocolType">プロトコルタイプ。</param>
+            <param name="operationTypeInfo">操作タイプ情報。（オーバーロードの解決等に使用します。）</param>
+            <param name="typeFullName">タイプフルネーム。</param>
+            <param name="args">引数。</param>
+            <returns>変数。</returns>
+        </member>
+        <member name="M:Codeer.Friendly.AppFriend.CreateFullNameFriendlyOperation(System.String,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Async)">
+            <summary>
+            static呼び出しで型名称から操作名称までフルネームのFriendlyOperation生成。
+            </summary>
+            <param name="staticOperation">スタティック操作。</param>
+            <param name="operationTypeInfo">操作タイプ確定情報。</param>
+            <param name="async">非同期実行オブジェクト。</param>
+            <returns>FriendlyOperation</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppFriend.FriendlyConnector">
+            <summary>
+            To Connect with Application.
+            </summary>
+        </member>
+        <member name="P:Codeer.Friendly.AppFriend.Item(System.String)">
+            <summary>
+            Acquires delegates for calling static operations in test target application.
+            </summary>
+            <param name="staticOperation">Selects by Namespace.Class.OperationName(Method, Property, Field)</param>
+            <returns>A delegate for calling static operation in the application.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppFriend.Item(System.String,Codeer.Friendly.Async)">
+            <summary>
+            Acquires delegates for calling static operations in test target application.
+            </summary>
+            <param name="staticOperation">Selects by Namespace.Class.OperationName(Method, Property, Field)</param>
+            <param name="async">An asynchronous execution.</param>
+            <returns>A delegate for calling static operation in the application.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppFriend.Item(System.String,Codeer.Friendly.OperationTypeInfo)">
+            <summary>
+            Acquires delegates for calling static operations in test target application.
+            </summary>
+            <param name="staticOperation">Selects by Namespace.Class.OperationName(Method, Property, Field)</param>
+            <param name="operationTypeInfo">
+            Operation type information.
+            Used to call operation of the same name of a parent class when two or more overloads exist for the indicated operation.
+            In many cases, an overload can be resolved using the parameters without specifying an OperationTypeInfo.
+            </param>
+            <returns>A delegate for calling static operation in the application.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppFriend.Item(System.String,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Async)">
+            <summary>
+            Acquires delegates for calling static operations in test target application.
+            </summary>
+            <param name="staticOperation">Selects by Namespace.Class.OperationName(Method, Property, Field)</param>
+            <param name="operationTypeInfo">
+            Operation type information.
+            Used to call operation of the same name of a parent class when two or more overloads exist for the indicated operation.
+            In many cases, an overload can be resolved using the parameters without specifying an OperationTypeInfo.
+            </param>
+            <param name="async">An asynchronous execution.</param>
+            <returns>A delegate for calling static operation in the application.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppFriend.Item(System.Type,System.String)">
+            <summary>
+            Acquires delegates for calling static operations in test target application.
+            </summary>
+            <param name="type">Type information storing a static call.</param>
+            <param name="operation">Name of the operation.</param>
+            <returns>A delegate for calling static operation in the application.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppFriend.Item(System.Type,System.String,Codeer.Friendly.Async)">
+            <summary>
+            Acquires delegates for calling static operations in test target application.
+            </summary>
+            <param name="type">Type information storing a static call.</param>
+            <param name="operation">Name of the operation.</param>
+            <param name="async">An asynchronous execution.</param>
+            <returns>A delegate for calling static operation in the application.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppFriend.Item(System.Type,System.String,Codeer.Friendly.OperationTypeInfo)">
+            <summary>
+            Acquires delegates for calling static operations in test target application.
+            </summary>
+            <param name="type">Type information storing a static call.</param>
+            <param name="operation">Name of the operation.</param>
+            <param name="operationTypeInfo">
+            Operation type information.
+            Used to call operation of the same name of a parent class when two or more overloads exist for the indicated operation.
+            In many cases, an overload can be resolved using the parameters without specifying an OperationTypeInfo.
+            </param>
+            <returns>A delegate for calling static operation in the application.</returns>
+        </member>
+        <member name="P:Codeer.Friendly.AppFriend.Item(System.Type,System.String,Codeer.Friendly.OperationTypeInfo,Codeer.Friendly.Async)">
+            <summary>
+            Acquires delegates for calling static operations in test target application.
+            </summary>
+            <param name="type">Type information storing a static call.</param>
+            <param name="operation">Name of the operation.</param>
+            <param name="operationTypeInfo">
+            Operation type information.
+            Used to call operation of the same name of a parent class when two or more overloads exist for the indicated operation.
+            In many cases, an overload can be resolved using the parameters without specifying an OperationTypeInfo.
+            </param>
+            <param name="async">An asynchronous execution.</param>
+            <returns>A delegate for calling static operation in the application.</returns>
+        </member>
+    </members>
+</doc>
