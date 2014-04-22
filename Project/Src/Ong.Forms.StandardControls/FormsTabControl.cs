@@ -1,6 +1,7 @@
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System;
 using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
@@ -32,19 +33,36 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsTabControl(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// コンストラクタです。
+        /// 現在非推奨です。
+        /// FormsTabControl(AppVar windowObject)を使用してください。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
 #endif
+        [Obsolete("Please use FormsTabControl(AppVar windowObject).", false)]
         public FormsTabControl(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar) { }
+            : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
+        /// コンストラクタです。
+        /// </summary>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        public FormsTabControl(AppVar appVar)
+            : base(appVar) { }
 
 #if ENG
         /// <summary>

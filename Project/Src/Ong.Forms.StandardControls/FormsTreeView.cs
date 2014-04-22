@@ -2,6 +2,7 @@ using System.Windows.Forms;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -32,19 +33,36 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsTreeView(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// コンストラクタです。
+        /// 現在非推奨です。
+        /// FormsTreeView(AppVar windowObject)を使用してください。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
 #endif
+        [Obsolete("Please use FormsTreeView(AppVar windowObject).", false)]
         public FormsTreeView(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar) { }
+            : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
+        /// コンストラクタです。
+        /// </summary>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        public FormsTreeView(AppVar appVar)
+            : base(appVar) { }
 
 #if ENG
         /// <summary>
@@ -57,7 +75,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsTreeNode SelectNode
         {
-            get { return new FormsTreeNode(App, this["SelectedNode"]()); }
+            get { return new FormsTreeNode(this["SelectedNode"]()); }
         }
 
 #if ENG
@@ -75,7 +93,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsTreeNode GetItem(params int[] indexes)
         {
-            return new FormsTreeNode(App, App[GetType(), "GetItemInTarget"](AppVar, indexes));
+            return new FormsTreeNode(App[GetType(), "GetItemInTarget"](AppVar, indexes));
         }
 
 #if ENG
@@ -93,7 +111,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsTreeNode GetItem(params string[] keys)
         {
-            return new FormsTreeNode(App, App[GetType(), "GetItemInTarget"](AppVar, keys));
+            return new FormsTreeNode(App[GetType(), "GetItemInTarget"](AppVar, keys));
         }
 
 #if ENG
@@ -111,7 +129,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsTreeNode FindItem(params string[] texts)
         {
-            return new FormsTreeNode(App, App[GetType(), "FindItemInTarget"](AppVar, texts));
+            return new FormsTreeNode(App[GetType(), "FindItemInTarget"](AppVar, texts));
         }
 
 #if ENG

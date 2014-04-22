@@ -20,18 +20,36 @@ namespace Ong.Friendly.FormsStandardControls
     {
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsToolStripItem(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
+        /// 現在非推奨です。
+        /// FormsToolStripItem(AppVar windowObject)を使用してください。
+        /// </summary>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        [Obsolete("Please use FormsToolStripItem(AppVar windowObject).", false)]
+        public FormsToolStripItem(WindowsAppFriend app, AppVar appVar)
+            : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
         /// コンストラクタです。
         /// </summary>
-        /// <param name="app">対象アプリ操作クラス。</param>
-        /// <param name="appVar">対象アプリケーション内変数操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
 #endif
-        public FormsToolStripItem(WindowsAppFriend app, AppVar appVar) : base(app, appVar) { }
+        public FormsToolStripItem(AppVar appVar)
+            : base(appVar) { }
 
 #if ENG
         /// <summary>

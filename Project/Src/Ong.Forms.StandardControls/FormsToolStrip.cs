@@ -2,6 +2,7 @@ using System.Windows.Forms;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -32,19 +33,36 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsToolStrip(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// コンストラクタです。
-		/// </summary>
+        /// 現在非推奨です。
+        /// FormsToolStrip(AppVar windowObject)を使用してください。
+        /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
 #endif
+        [Obsolete("Please use FormsToolStrip(AppVar windowObject).", false)]
         public FormsToolStrip(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar) { }
+            : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
+        /// コンストラクタです。
+        /// </summary>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        public FormsToolStrip(AppVar appVar)
+            : base(appVar) { }
 
 #if ENG
         /// <summary>
@@ -61,7 +79,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsToolStripItem GetItem(params int[] indexes)
         {
-            return new FormsToolStripItem(App, App[GetType(), "GetItemInTarget"](AppVar, indexes));
+            return new FormsToolStripItem(App[GetType(), "GetItemInTarget"](AppVar, indexes));
         }
 
 #if ENG
@@ -79,7 +97,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsToolStripItem GetItem(params string[] keys)
         {
-            return new FormsToolStripItem(App, App[GetType(), "GetItemInTarget"](AppVar, keys));
+            return new FormsToolStripItem(App[GetType(), "GetItemInTarget"](AppVar, keys));
         }
 
 #if ENG
@@ -97,7 +115,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsToolStripItem FindItem(params string[] texts)
         {
-            return new FormsToolStripItem(App, App[GetType(), "FindItemInTarget"](AppVar, texts));
+            return new FormsToolStripItem(App[GetType(), "FindItemInTarget"](AppVar, texts));
         }
 
         /// <summary>

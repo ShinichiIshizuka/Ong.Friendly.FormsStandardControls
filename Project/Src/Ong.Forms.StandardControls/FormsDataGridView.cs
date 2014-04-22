@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -34,19 +35,36 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsDataGridView(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// コンストラクタです。
+        /// 現在非推奨です。
+        /// FormsDataGridView(AppVar windowObject)を使用してください。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
 #endif
+        [Obsolete("Please use FormsDataGridView(AppVar windowObject).", false)]
         public FormsDataGridView(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar) { }
+            : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
+        /// コンストラクタです。
+        /// </summary>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        public FormsDataGridView(AppVar appVar)
+            : base(appVar) { }
 
 #if ENG
         /// <summary>

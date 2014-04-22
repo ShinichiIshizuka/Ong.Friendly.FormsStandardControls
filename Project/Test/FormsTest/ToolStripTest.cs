@@ -53,9 +53,9 @@ namespace FormsTest
         [TestMethod]
         public void TestGetItemInt()
         {
-            FormsToolStrip menu = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            FormsToolStrip menu = new FormsToolStrip(testDlg["menuStrip1"]());
             Assert.AreEqual("Menu001-02", menu.GetItem(0, 1).Text);
-            FormsToolStrip toolBar = new FormsToolStrip(app, testDlg["toolStrip1"]());
+            FormsToolStrip toolBar = new FormsToolStrip(testDlg["toolStrip1"]());
             Assert.AreEqual("toolStripButton2", toolBar.GetItem(1).Text);
         }
 
@@ -65,11 +65,11 @@ namespace FormsTest
         [TestMethod]
         public void TestGetItemString()
         {
-            FormsToolStrip menu = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            FormsToolStrip menu = new FormsToolStrip(testDlg["menuStrip1"]());
             Assert.AreEqual("Menu001-02", menu.GetItem("menu001ToolStripMenuItem", "menu00102ToolStripMenuItem").Text);
-            FormsToolStrip toolBar = new FormsToolStrip(app, testDlg["toolStrip1"]());
+            FormsToolStrip toolBar = new FormsToolStrip(testDlg["toolStrip1"]());
             Assert.AreEqual("toolStripButton2", toolBar.GetItem("toolStripButton2").Text);
-            FormsToolStrip context = new FormsToolStrip(app, testDlg["contextMenuStrip1"]());
+            FormsToolStrip context = new FormsToolStrip(testDlg["contextMenuStrip1"]());
             Assert.AreEqual("MenuItem2", context.GetItem("menuItem2ToolStripMenuItem").Text);
         }
 
@@ -79,11 +79,11 @@ namespace FormsTest
         [TestMethod]
         public void TestGetFindItem()
         {
-            FormsToolStrip menu = new FormsToolStrip(app, testDlg["menuStrip1"]());
+            FormsToolStrip menu = new FormsToolStrip(testDlg["menuStrip1"]());
             Assert.AreEqual("Menu001-02", menu.FindItem("Menu001", "Menu001-02").Text);
-            FormsToolStrip toolBar = new FormsToolStrip(app, testDlg["toolStrip1"]());
+            FormsToolStrip toolBar = new FormsToolStrip(testDlg["toolStrip1"]());
             Assert.AreEqual("toolStripButton2", toolBar.FindItem("toolStripButton2").Text);
-            FormsToolStrip context = new FormsToolStrip(app, testDlg["contextMenuStrip1"]());
+            FormsToolStrip context = new FormsToolStrip(testDlg["contextMenuStrip1"]());
             Assert.AreEqual("MenuItem2", context.FindItem("MenuItem2").Text);
         }
 
@@ -93,7 +93,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemText()
         {
-            FormsToolStripItem item = new FormsToolStrip(app, testDlg["menuStrip1"]()).FindItem("Menu001", "Menu001-02");
+            FormsToolStripItem item = new FormsToolStrip(testDlg["menuStrip1"]()).FindItem("Menu001", "Menu001-02");
             Assert.AreEqual("Menu001-02", item.Text);
         }
 
@@ -103,7 +103,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemVisible()
         {
-            FormsToolStripItem item = new FormsToolStrip(app, testDlg["toolStrip1"]()).FindItem("toolStripButton2");
+            FormsToolStripItem item = new FormsToolStrip(testDlg["toolStrip1"]()).FindItem("toolStripButton2");
             item["Visible"](false);
             Assert.AreEqual(false, item.Visible);
             item["Visible"](true);
@@ -116,7 +116,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemEnabled()
         {
-            FormsToolStripItem item = new FormsToolStrip(app, testDlg["menuStrip1"]()).FindItem("Menu001", "Menu001-02");
+            FormsToolStripItem item = new FormsToolStrip(testDlg["menuStrip1"]()).FindItem("Menu001", "Menu001-02");
             item["Enabled"](false);
             Assert.AreEqual(false, item.Enabled);
             item["Enabled"](true);
@@ -129,7 +129,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateClick()
         {
-            FormsToolStripItem item =  new FormsToolStrip(app, testDlg["contextMenuStrip1"]()).GetItem(1);
+            FormsToolStripItem item =  new FormsToolStrip(testDlg["contextMenuStrip1"]()).GetItem(1);
             item.EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(0, count);
@@ -167,7 +167,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateCheckAndCheckState()
         {
-            FormsToolStripButton item = new FormsToolStripButton(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(3));
+            FormsToolStripButton item = new FormsToolStripButton(new FormsToolStrip(testDlg["toolStrip1"]()).GetItem(3));
             item.EmulateCheck(CheckState.Checked);
             Assert.AreEqual(CheckState.Checked, item.CheckState);
 
@@ -203,7 +203,7 @@ namespace FormsTest
         [TestMethod]
         public void TestGetComboBox()
         {
-            FormsToolStripComboBox item = new FormsToolStripComboBox(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(4));
+            FormsToolStripComboBox item = new FormsToolStripComboBox(new FormsToolStrip(testDlg["toolStrip1"]()).GetItem(4));
             Assert.AreEqual(typeof(ComboBox), (Type)item.ComboBox["GetType"]()["BaseType"]().Core);
         }
 
@@ -213,7 +213,7 @@ namespace FormsTest
         [TestMethod]
         public void TestTextBox()
         {
-            FormsToolStripTextBox item = new FormsToolStripTextBox(new FormsToolStrip(app, testDlg["toolStrip1"]()).GetItem(6));
+            FormsToolStripTextBox item = new FormsToolStripTextBox(new FormsToolStrip(testDlg["toolStrip1"]()).GetItem(6));
             Assert.AreEqual(typeof(TextBox), (Type)item.TextBox["GetType"]()["BaseType"]().Core);
         }
 
@@ -223,7 +223,7 @@ namespace FormsTest
         [TestMethod]
         public void TestToolStripItemInitialize()
         {
-            FormsToolStripItem item = new FormsToolStripItem(app, testDlg["menu001ToolStripMenuItem"]());
+            FormsToolStripItem item = new FormsToolStripItem(testDlg["menu001ToolStripMenuItem"]());
             item.EmulateClick();
         }
     }

@@ -52,7 +52,7 @@ namespace FormsTest
         [TestMethod]
         public void FirstDayOfWeekTest()
         {
-            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(testDlg["monthCalendar1"]());
             Day day = monthcalendar.FirstDayOfWeek;
             Assert.AreEqual(Day.Default, day);
         }
@@ -63,7 +63,7 @@ namespace FormsTest
         [TestMethod]
         public void MaxSelectionCountTest()
         {
-            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(testDlg["monthCalendar1"]());
             int maxcount = monthcalendar.MaxSelectionCount;
             Assert.AreEqual(7, maxcount);
         }
@@ -74,7 +74,7 @@ namespace FormsTest
         [TestMethod]
         public void SelectedDayTest()
         {
-            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(testDlg["monthCalendar1"]());
             monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 22));
 
             DateTime datetime = monthcalendar.SelectedDay;
@@ -87,7 +87,7 @@ namespace FormsTest
         [TestMethod]
         public void TodayTest()
         {
-            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(testDlg["monthCalendar1"]());
             DateTime datetime = monthcalendar.Today;
             Assert.AreEqual(DateTime.Today, datetime);
         }
@@ -98,7 +98,7 @@ namespace FormsTest
         [TestMethod]
         public void EmulateSelectDayTest()
         {
-            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(testDlg["monthCalendar1"]());
             monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 30));
             DateTime datetime = monthcalendar.SelectedDay;
             Assert.AreEqual(new DateTime(2013, 10, 30), datetime);
@@ -116,7 +116,7 @@ namespace FormsTest
         [TestMethod]
         public void EmulateSelectDaysTest()
         {
-            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(testDlg["monthCalendar1"]());
             monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 28), new DateTime(2013, 10, 31));
             DateTime min = new DateTime();
             DateTime max = new DateTime(); 
@@ -156,7 +156,7 @@ namespace FormsTest
         [TestMethod]
         public void GetSelectionRangeTest()
         {
-            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(app, testDlg["monthCalendar1"]());
+            FormsMonthCalendar monthcalendar = new FormsMonthCalendar(testDlg["monthCalendar1"]());
             DateTime datetimeStart = new DateTime();
             DateTime datetimeEnd = new DateTime();
             monthcalendar.EmulateSelectDay(new DateTime(2013, 10, 25));

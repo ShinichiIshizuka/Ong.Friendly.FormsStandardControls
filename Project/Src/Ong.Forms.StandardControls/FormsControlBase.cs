@@ -36,21 +36,41 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsControlBase(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// コンストラクタです。
+        /// 現在非推奨です。
+        /// FormsControlBase(AppVar windowObject)を使用してください。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
 #endif
+        [Obsolete("Please use FormsControlBase(AppVar windowObject).", false)]
         public FormsControlBase(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar)
+            : this(appVar)
         {
             Initializer.Initialize(app, GetType());
+        }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
+        /// コンストラクタです。
+        /// </summary>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        public FormsControlBase(AppVar appVar)
+            : base(appVar)
+        {
+            Initializer.Initialize((WindowsAppFriend)appVar.App, GetType());
         }
 
 #if ENG

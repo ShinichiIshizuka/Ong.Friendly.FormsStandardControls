@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
+using System;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -33,19 +34,36 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsListView(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// コンストラクタです。
+        /// 現在非推奨です。
+        /// FormsListView(AppVar windowObject)を使用してください。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
         /// <param name="appVar">アプリケーション内変数。</param>
 #endif
+        [Obsolete("Please use FormsListView(AppVar windowObject).", false)]
         public FormsListView(WindowsAppFriend app, AppVar appVar)
-            : base(app, appVar) { }
+            : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
+        /// コンストラクタです。
+        /// </summary>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        public FormsListView(AppVar appVar)
+            : base(appVar) { }
 
 #if ENG
         /// <summary>
@@ -118,7 +136,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsListViewItem GetListViewItem(int index)
         {
-            return new FormsListViewItem(App, this["Items"]()["[]"](index));
+            return new FormsListViewItem(this["Items"]()["[]"](index));
         }
 
 #if ENG
@@ -145,7 +163,7 @@ namespace Ong.Friendly.FormsStandardControls
             {
                 return null;
             }
-            return new FormsListViewItem(App, returnItem);
+            return new FormsListViewItem(returnItem);
         }
 
 #if ENG

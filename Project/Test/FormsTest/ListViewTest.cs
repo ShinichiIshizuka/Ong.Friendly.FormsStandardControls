@@ -53,7 +53,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemCount()
         {
-            FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView1 = new FormsListView(testDlg["listView1"]());
             Assert.AreEqual(4, listView1.ItemCount);
         }
 
@@ -63,7 +63,7 @@ namespace FormsTest
         [TestMethod]
         public void TestColumnCount()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
             Assert.AreEqual(3, listView.ColumnCount);
         }
 
@@ -73,7 +73,7 @@ namespace FormsTest
         [TestMethod]
         public void TestViewMode()
         {
-            FormsListView listView1 = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView1 = new FormsListView(testDlg["listView1"]());
             View viewStyle = listView1.ViewMode;
             Assert.AreEqual(View.Details, viewStyle);
         }
@@ -84,7 +84,7 @@ namespace FormsTest
         [TestMethod]
         public void TestSelectIndexes()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
 
             //初期化
             for (int i = 0; i < listView.ItemCount; i++)
@@ -103,7 +103,7 @@ namespace FormsTest
         [TestMethod]
         public void TestGetListViewItem()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
             Assert.AreEqual("ピーマン", listView.GetListViewItem(1).Text);
         }
 
@@ -113,7 +113,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFindItemWithText()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
             Assert.AreEqual("ピーマン", listView.FindItemWithText("ピーマン", true, 0).Text);
             Assert.IsNull(listView.FindItemWithText("ピーマン", true, 2));
         }
@@ -124,7 +124,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeSelectedState()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
 
             //初期化
             for (int i = 0; i < listView.ItemCount; i++)
@@ -166,7 +166,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemText()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
             Assert.AreEqual("ピーマン", listView.GetListViewItem(1).Text);
         }
 
@@ -176,7 +176,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemIndex()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
             Assert.AreEqual(1, listView.GetListViewItem(1).ItemIndex);
         }
 
@@ -186,7 +186,7 @@ namespace FormsTest
         [TestMethod]
         public void TestGetSubItemAndSubItemText()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
             Assert.AreEqual("野菜", listView.GetListViewItem(1).GetSubItem(1).Text);
         }
 
@@ -196,7 +196,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemEmulateCheckAndChecked()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
             FormsListViewItem item = listView.GetListViewItem(1);
             item.EmulateCheck(true);
             Assert.AreEqual(true, item.Checked);
@@ -232,7 +232,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemEmulateEditLabel()
         {
-            FormsListView listView = new FormsListView(app, testDlg["listView1"]());
+            FormsListView listView = new FormsListView(testDlg["listView1"]());
             FormsListViewItem item = listView.GetListViewItem(1);
             string bk = item.Text;
             item.EmulateEditLabel("abc");

@@ -53,7 +53,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemCount()
         {
-            FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
+            FormsListBox listbox1 = new FormsListBox(testDlg["listBox1"]());
             int itemCount = listbox1.ItemCount;
             Assert.AreEqual(7, itemCount);
         }
@@ -62,9 +62,10 @@ namespace FormsTest
         /// FindListIndexƒeƒXƒg
         /// </summary>
         [TestMethod]
+        [Obsolete("", false)]
         public void TestFindListIndex()
         {
-            FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
+            FormsListBox listbox1 = new FormsListBox(testDlg["listBox1"]());
             int findIndex = listbox1.FindListIndex("Item-4");
             listbox1.EmulateChangeSelectedIndex(findIndex);
             Assert.AreEqual(3, listbox1.SelectedIndex);
@@ -76,7 +77,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFindString()
         {
-            FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
+            FormsListBox listbox1 = new FormsListBox(testDlg["listBox1"]());
             int findIndex = listbox1.FindString("Item-11");
             Assert.AreEqual(5, findIndex);
             listbox1["Items"]()["Add"](@"dmy");
@@ -93,7 +94,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFindExact()
         {
-            FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
+            FormsListBox listbox1 = new FormsListBox(testDlg["listBox1"]());
             int findIndex = listbox1.FindStringExact("Item-11");
             Assert.AreEqual(6, findIndex);
             listbox1["Items"]()["Add"](@"dmy");
@@ -110,7 +111,7 @@ namespace FormsTest
         [TestMethod]
         public void TestSelectIndexes()
         {
-            FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
+            FormsListBox listbox2 = new FormsListBox(testDlg["listBox2"]());
             int[] select = new int[]{5};
             listbox2.EmulateChangeSelectedIndex(5,new Async());
             int selected = listbox2.SelectedIndex;
@@ -123,8 +124,8 @@ namespace FormsTest
         [TestMethod]
         public void TestSelectionMode()
         {
-            FormsListBox listbox1 = new FormsListBox(app, testDlg["listBox1"]());
-            FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
+            FormsListBox listbox1 = new FormsListBox(testDlg["listBox1"]());
+            FormsListBox listbox2 = new FormsListBox(testDlg["listBox2"]());
             Assert.AreEqual(SelectionMode.One, listbox1.SelectionMode);
             Assert.AreEqual(SelectionMode.MultiSimple, listbox2.SelectionMode);
         }
@@ -135,7 +136,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeSelectedState()
         {
-            FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
+            FormsListBox listbox2 = new FormsListBox(testDlg["listBox2"]());
             listbox2.EmulateChangeSelectedState(4, true);
             int[] selected1 = listbox2.SelectedIndexes;
             Assert.AreEqual(1, selected1.Length);
@@ -156,7 +157,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeSelectedIndex()
         {
-            FormsListBox listbox2 = new FormsListBox(app, testDlg["listBox2"]());
+            FormsListBox listbox2 = new FormsListBox(testDlg["listBox2"]());
             listbox2.EmulateChangeSelectedIndex(1);
             listbox2.EmulateChangeSelectedIndex(2);
             int[] selected1 = listbox2.SelectedIndexes;

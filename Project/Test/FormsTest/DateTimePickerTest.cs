@@ -53,7 +53,7 @@ namespace FormsTest
         [TestMethod]
         public void TestSelectDay()
         {
-            FormsDateTimePicker datetimepicker = new FormsDateTimePicker(app, testDlg["dateTimePicker1"]());
+            FormsDateTimePicker datetimepicker = new FormsDateTimePicker(testDlg["dateTimePicker1"]());
             datetimepicker.EmulateSelectDay(new DateTime(2013,10,17));
             DateTime datetime = (DateTime)datetimepicker.SelectedDay;
             Assert.AreEqual(new DateTime(2013,10,17), datetime);

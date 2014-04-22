@@ -53,7 +53,7 @@ namespace FormsTest
         [TestMethod]
         public void TestRowCount()
         {
-            FormsDataGridView datagridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView datagridview = new FormsDataGridView(testDlg["dataGridView"]());
             datagridview.EmulateChangeCellText(0, 0, "a");
             Assert.AreEqual(2, datagridview.RowCount);
             datagridview["Rows"]()["Clear"]();
@@ -65,7 +65,7 @@ namespace FormsTest
         [TestMethod]
         public void TestColumnCount()
         {
-            FormsDataGridView datagridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView datagridview = new FormsDataGridView(testDlg["dataGridView"]());
             Assert.AreEqual(5, datagridview.ColumnCount);
         }
 
@@ -75,7 +75,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeCurrentCellAndCurrentCell()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
             dataGridview.EmulateChangeCurrentCell(2, 0);
             Assert.AreEqual(new Cell(2, 0), dataGridview.CurrentCell);
 
@@ -110,7 +110,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeCellSelectedAndSelectedCells()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
             dataGridview.EmulateClearSelection();
             dataGridview.EmulateChangeCellSelected(new CellSelectedInfo(1, 0, true), new CellSelectedInfo(2, 0, true));
             AssertEx.AreEqual(new Cell[] { new Cell(1, 0), new Cell(2, 0) }, dataGridview.SelectedCells);
@@ -128,7 +128,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeRowSelectedSelectedRows()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
             //行追加
             dataGridview.EmulateCellCheck(1, 0, true);
@@ -156,7 +156,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateClearSelection()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
             dataGridview.EmulateChangeCellSelected(new CellSelectedInfo(1, 0, true), new CellSelectedInfo(2, 0, true));
             dataGridview.EmulateClearSelection();
             AssertEx.AreEqual(new Cell[] { }, dataGridview.SelectedCells);
@@ -193,7 +193,7 @@ namespace FormsTest
         [TestMethod]
         public void TestGetText()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
             //テストデータ
             dataGridview.EmulateChangeCellText(0, 0, "a");
@@ -218,7 +218,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateDelete()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
             //行追加
             dataGridview.EmulateCellCheck(1, 0, true);
@@ -267,7 +267,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateCellCheck()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
             //チェック
             dataGridview.EmulateCellCheck(1, 0, true);
@@ -289,7 +289,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeCellText()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
             //テキスト変更
             dataGridview.EmulateChangeCellText(0, 0, "abc");
@@ -311,7 +311,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeCellComboSelect()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
             //テキスト変更
             dataGridview.EmulateChangeCellComboSelect(2, 0, 2);
@@ -351,7 +351,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateClickCellContent()
         {
-            FormsDataGridView dataGridview = new FormsDataGridView(app, testDlg["dataGridView"]());
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
             //行追加
             dataGridview.EmulateCellCheck(1, 0, true);

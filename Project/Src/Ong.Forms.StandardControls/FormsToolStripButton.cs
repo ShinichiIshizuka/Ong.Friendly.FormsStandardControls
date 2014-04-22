@@ -21,18 +21,36 @@ namespace Ong.Friendly.FormsStandardControls
     {
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsToolStripButton(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
+        /// 現在非推奨です。
+        /// FormsToolStripButton(AppVar windowObject)を使用してください。
+        /// </summary>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        [Obsolete("Please use FormsToolStripButton(AppVar windowObject).", false)]
+        public FormsToolStripButton(WindowsAppFriend app, AppVar appVar)
+            : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
         /// コンストラクタです。
         /// </summary>
-        /// <param name="app">対象アプリ操作クラス。</param>
-        /// <param name="appVar">対象アプリケーション内変数操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
 #endif
-        public FormsToolStripButton(WindowsAppFriend app, AppVar appVar) : base(app, appVar) { }
+        public FormsToolStripButton(AppVar appVar)
+            : base(appVar) { }
 
 #if ENG
         /// <summary>
@@ -45,7 +63,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="item">ToolStripItem操作クラス。</param>
 #endif
-        public FormsToolStripButton(FormsToolStripItem item) : base(item.App, item.AppVar) { }
+        public FormsToolStripButton(FormsToolStripItem item) : base(item.AppVar) { }
 
 #if ENG
         /// <summary>

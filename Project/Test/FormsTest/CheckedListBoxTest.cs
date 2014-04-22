@@ -53,7 +53,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemCount()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             int itemCount = checkedlistbox1.ItemCount;
             Assert.AreEqual(8, itemCount);
         }
@@ -64,7 +64,7 @@ namespace FormsTest
         [TestMethod]
         public void TestGetCheckState()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateCheckState(0, CheckState.Checked);
             CheckState state = checkedlistbox1.GetCheckState(0);
             Assert.AreEqual(CheckState.Checked, state);
@@ -74,9 +74,10 @@ namespace FormsTest
         /// FindListIndexƒeƒXƒg
         /// </summary>
         [TestMethod]
+        [Obsolete("", false)]
         public void TestFindListIndex()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             int index = checkedlistbox1.FindListIndex(@"Item-1");
             Assert.AreEqual(0, index);
         }
@@ -87,7 +88,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFindString()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             int index = checkedlistbox1.FindString(@"Item-2");
             Assert.AreEqual(1, index);
             checkedlistbox1["Items"]()["Add"](@"dmy");
@@ -104,7 +105,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFindStringExact()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             int index = checkedlistbox1.FindStringExact(@"Item-11");
             Assert.AreEqual(7, index);
             checkedlistbox1["Items"]()["Add"](@"dmy");
@@ -121,7 +122,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFindExact()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             int index = checkedlistbox1.FindStringExact(@"Item-1");
             Assert.AreEqual(0, index);
         }
@@ -132,7 +133,7 @@ namespace FormsTest
         [TestMethod]
         public void TestCheckedIndices()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateCheckState(1, CheckState.Checked);
 
             int[] list = checkedlistbox1.CheckedIndices;
@@ -145,7 +146,7 @@ namespace FormsTest
         [TestMethod]
         public void TestSelectedItemIndex()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateChangeSelectedIndex(4);
             Assert.AreEqual(4, checkedlistbox1.SelectedItemIndex);
 
@@ -159,7 +160,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeSelectedIndex()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateChangeSelectedIndex(4);
             string checkedlistbox1Text = checkedlistbox1.Text;
             Assert.AreEqual("Item-5", checkedlistbox1Text);
@@ -196,7 +197,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateCheckState()
         {
-            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(app, testDlg["checkedListBox1"]());
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateCheckState(0, CheckState.Checked);
 
             int[] list = checkedlistbox1.CheckedIndices;

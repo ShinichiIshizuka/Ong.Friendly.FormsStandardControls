@@ -49,7 +49,7 @@ namespace FormsTest
         [TestMethod]
         public void TestText()
         {
-            FormsButton button = new FormsButton(app, testDlg["button"]());
+            FormsButton button = new FormsButton(testDlg["button"]());
             button["Text"]("abc");
             Assert.AreEqual("abc", button.Text);
         }
@@ -60,7 +60,7 @@ namespace FormsTest
         [TestMethod]
         public void TestVisible()
         {
-            FormsButton button = new FormsButton(app, testDlg["button"]());
+            FormsButton button = new FormsButton(testDlg["button"]());
             button["Visible"](false);
             Assert.IsFalse(button.Visible);
             button["Visible"](true);
@@ -73,7 +73,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEnabled()
         {
-            FormsButton button = new FormsButton(app, testDlg["button"]());
+            FormsButton button = new FormsButton(testDlg["button"]());
             button["Enabled"](false);
             Assert.IsFalse(button.Enabled);
             button["Enabled"](true);

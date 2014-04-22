@@ -53,7 +53,7 @@ namespace FormsTest
         [TestMethod]
         public void TestButtonClick()
         {
-            FormsButton button = new FormsButton(app, testDlg["button"]());
+            FormsButton button = new FormsButton(testDlg["button"]());
             button.EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(1, count);

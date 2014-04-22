@@ -53,7 +53,7 @@ namespace FormsTest
         [TestMethod]
         public void TestItemCount()
         {
-            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            FormsComboBox comboBox = new FormsComboBox(testDlg["comboBox"]());
             int itemCount = comboBox.ItemCount;
             Assert.AreEqual(5, itemCount);
         }
@@ -64,7 +64,7 @@ namespace FormsTest
         [TestMethod]
         public void TestSelectedItemIndex()
         {
-            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            FormsComboBox comboBox = new FormsComboBox(testDlg["comboBox"]());
             comboBox.EmulateChangeSelect(1);
             int selectIndex = comboBox.SelectedItemIndex;
             Assert.AreEqual(1, selectIndex);
@@ -76,7 +76,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFindString()
         {
-            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            FormsComboBox comboBox = new FormsComboBox(testDlg["comboBox"]());
             int findindex = comboBox.FindString("Item-2");
             Assert.AreEqual(1, findindex);
             comboBox["Items"]()["Add"](@"dmy");
@@ -93,7 +93,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFindExact()
         {
-            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            FormsComboBox comboBox = new FormsComboBox(testDlg["comboBox"]());
             int findindex = comboBox.FindStringExact("Item-11");
             Assert.AreEqual(4, findindex);
             comboBox["Items"]()["Add"](@"dmy");
@@ -110,7 +110,7 @@ namespace FormsTest
         [TestMethod]
         public void TestGetItemText()
         {
-            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            FormsComboBox comboBox = new FormsComboBox(testDlg["comboBox"]());
             string comboBoxText = comboBox.GetItemText(2);
             Assert.AreEqual("Item-3", comboBoxText);
         }
@@ -121,7 +121,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeSelect()
         {
-            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            FormsComboBox comboBox = new FormsComboBox(testDlg["comboBox"]());
             comboBox.EmulateChangeSelect(2);
             Assert.AreEqual(2, comboBox.SelectedItemIndex);
 
@@ -156,7 +156,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeText()
         {
-            FormsComboBox comboBox = new FormsComboBox(app, testDlg["comboBox"]());
+            FormsComboBox comboBox = new FormsComboBox(testDlg["comboBox"]());
             comboBox.EmulateChangeText("12345");
             Assert.AreEqual("12345", comboBox.Text);
 

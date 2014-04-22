@@ -52,7 +52,7 @@ namespace FormsTest
         [TestMethod]
         public void TestTabCount()
         {
-            FormsTabControl tabControl = new FormsTabControl(app, testDlg["tabControl"]());
+            FormsTabControl tabControl = new FormsTabControl(testDlg["tabControl"]());
             Assert.AreEqual(3, tabControl.TabCount);
         }
 
@@ -62,7 +62,7 @@ namespace FormsTest
         [TestMethod]
         public void TestSelectedIndex()
         {
-            FormsTabControl tabControl = new FormsTabControl(app, testDlg["tabControl"]());
+            FormsTabControl tabControl = new FormsTabControl(testDlg["tabControl"]());
             tabControl.EmulateTabSelect(2);
             Assert.AreEqual(2, tabControl.SelectedIndex);
         }
@@ -73,7 +73,7 @@ namespace FormsTest
         [TestMethod]
         public void TestTabSelect()
         {
-            FormsTabControl tabControl = new FormsTabControl(app, testDlg["tabControl"]());
+            FormsTabControl tabControl = new FormsTabControl(testDlg["tabControl"]());
             tabControl.EmulateTabSelect(1);
             Assert.AreEqual(1, tabControl.SelectedIndex);
 

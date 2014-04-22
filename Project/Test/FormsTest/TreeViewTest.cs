@@ -52,7 +52,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFormsTreeNodeSelectNode()
         {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             FormsTreeNode node = treeView1.FindItem("Parent", "Child 1");
             treeView1.EmulateNodeSelect(node);
             FormsTreeNode selectedNode = treeView1.SelectNode;
@@ -65,7 +65,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFormsTreeNodeGetItemIndexs()
         {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             FormsTreeNode item = treeView1.GetItem(0, 1);
             Assert.AreEqual(@"Child 2", item.Text);
         }
@@ -75,7 +75,7 @@ namespace FormsTest
         /// </summary>
         public void TestFormsTreeNodeGetItemKeys()
         {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             FormsTreeNode item = treeView1.GetItem(@"Parent", @"Child 2", @"GrandChild");
             Assert.AreEqual(@"GrandChild", item.Text);
         }
@@ -86,7 +86,7 @@ namespace FormsTest
         [TestMethod]
         public void TestFormsTreeNodeFindItemTexts()
         {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             string[] texts = { @"Parent" };
             FormsTreeNode item = treeView1.FindItem(texts);
             Assert.AreEqual(@"Parent", item.Text);
@@ -98,7 +98,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateNodeSelectNode()
         {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             FormsTreeNode item = treeView1.FindItem("Parent");
             treeView1.EmulateNodeSelect(item);
             FormsTreeNode selectitem = treeView1.SelectNode;
@@ -137,7 +137,7 @@ namespace FormsTest
         [TestMethod]
         public void TestStringText()
         {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             FormsTreeNode item = treeView1.FindItem("Parent");
             treeView1.EmulateNodeSelect(item);
             FormsTreeNode selectitem = treeView1.SelectNode;
@@ -150,7 +150,7 @@ namespace FormsTest
         [TestMethod]
         public void TestIsExpanded()
         {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             FormsTreeNode item = treeView1.FindItem("Parent");
             item.EmulateExpand();
             Assert.AreEqual(true, item.IsExpanded);
@@ -162,7 +162,7 @@ namespace FormsTest
         [TestMethod]
         public void TestChecked()
         {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             FormsTreeNode item = treeView1.FindItem("Parent");
             item.EmulateCheck(true);
             Assert.AreEqual(true, item.Checked);
@@ -175,7 +175,7 @@ namespace FormsTest
         public void TestEmulateExpand()
         {
             //”ñ“¯Šú
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             app[GetType(), "TreeViewAfterExpandEvent"](treeView1.AppVar);
             FormsTreeNode item = treeView1.FindItem("Parent");
             item.EmulateCollapse(new Async()); 
@@ -209,7 +209,7 @@ namespace FormsTest
         public void TestEmulateCollapse()
         {
             //”ñ“¯Šú
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             app[GetType(), "TreeViewAfterCollapse"](treeView1.AppVar);
             FormsTreeNode item = treeView1.FindItem("Parent");
             item.EmulateCollapse(new Async());
@@ -241,7 +241,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateEditLabel()
         {
-            FormsTreeView treeView1 = new FormsTreeView(app, testDlg["treeView1"]());
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
             FormsTreeNode item = treeView1.FindItem("Parent");
             item.EmulateEditLabel(@"ChangeText");
             Assert.AreEqual(@"ChangeText", item.Text);

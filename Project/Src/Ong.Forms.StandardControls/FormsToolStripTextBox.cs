@@ -1,5 +1,6 @@
 ﻿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
+using System;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -16,18 +17,36 @@ namespace Ong.Friendly.FormsStandardControls
     {
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsToolStripTextBox(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
+        /// 現在非推奨です。
+        /// FormsToolStripTextBox(AppVar windowObject)を使用してください。
+        /// </summary>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        [Obsolete("Please use FormsToolStripTextBox(AppVar windowObject).", false)]
+        public FormsToolStripTextBox(WindowsAppFriend app, AppVar appVar)
+            : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
         /// コンストラクタです。
         /// </summary>
-        /// <param name="app">対象アプリ操作クラス。</param>
-        /// <param name="appVar">対象アプリケーション内変数操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
 #endif
-        public FormsToolStripTextBox(WindowsAppFriend app, AppVar appVar) : base(app, appVar) { }
+        public FormsToolStripTextBox(AppVar appVar)
+            : base(appVar) { }
 
 #if ENG
         /// <summary>
@@ -40,7 +59,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
         /// <param name="item">ToolStripItem操作クラス</param>
 #endif
-        public FormsToolStripTextBox(FormsToolStripItem item) : base(item.App, item.AppVar) { }
+        public FormsToolStripTextBox(FormsToolStripItem item) : base(item.AppVar) { }
 
 #if ENG
         /// <summary>
@@ -51,6 +70,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// テキストボックス取得です。
         /// </summary>
 #endif
-        public FormsTextBox TextBox { get { return new FormsTextBox(App, this["TextBox"]()); } }
+        public FormsTextBox TextBox { get { return new FormsTextBox(this["TextBox"]()); } }
     }
 }

@@ -24,19 +24,36 @@ namespace Ong.Friendly.FormsStandardControls
     {
 #if ENG
         /// <summary>
-        /// Constructor.
+        /// Currently deprecated. 
+        /// Please use FormsListViewItem(AppVar windowObject).
         /// </summary>
         /// <param name="app">Application manipulation object.</param>
-        /// <param name="item">AppVar referencing the target control object.</param>
+        /// <param name="appVar">Application variable object for the control.</param>
+#else
+        /// <summary>
+        /// 現在非推奨です。
+        /// FormsListViewItem(AppVar windowObject)を使用してください。
+        /// </summary>
+        /// <param name="app">アプリケーション操作クラス。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
+#endif
+        [Obsolete("Please use FormsListViewItem(AppVar windowObject).", false)]
+        public FormsListViewItem(WindowsAppFriend app, AppVar appVar)
+            : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
         /// コンストラクタです。
         /// </summary>
-        /// <param name="app">アプリケーション操作クラス。</param>
-        /// <param name="item">アイテム。</param>
+        /// <param name="appVar">アプリケーション内変数。</param>
 #endif
-        public FormsListViewItem(WindowsAppFriend app, AppVar item)
-            : base(app, item) { }
+        public FormsListViewItem(AppVar appVar)
+            : base(appVar) { }
 
 #if ENG
         /// <summary>
@@ -95,7 +112,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsListViewSubItem GetSubItem(int subitemindex)
         {
-            return new FormsListViewSubItem(App, App[GetType(), "GetSubItemInTarget"](AppVar, subitemindex));
+            return new FormsListViewSubItem(App[GetType(), "GetSubItemInTarget"](AppVar, subitemindex));
         }
 
 #if ENG

@@ -52,7 +52,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeText()
         {
-            FormsTextBox textBox = new FormsTextBox(app, testDlg["textBox"]());
+            FormsTextBox textBox = new FormsTextBox(testDlg["textBox"]());
             textBox.EmulateChangeText("textBox");
             string textBoxText = textBox.Text;
             Assert.AreEqual("textBox", textBoxText);

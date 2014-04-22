@@ -52,7 +52,7 @@ namespace FormsTest
         [TestMethod]
         public void TestGetMaximun()
         {
-            FormsProgressBar progress = new FormsProgressBar(app, testDlg["progressBar"]());
+            FormsProgressBar progress = new FormsProgressBar(testDlg["progressBar"]());
             int progressMax = progress.Max;
             Assert.AreEqual(100, progressMax);
         }
@@ -63,7 +63,7 @@ namespace FormsTest
         [TestMethod]
         public void TestGetMinimun()
         {
-            FormsProgressBar progress = new FormsProgressBar(app, testDlg["progressBar"]());
+            FormsProgressBar progress = new FormsProgressBar(testDlg["progressBar"]());
             int progressMin = progress.Min;
             Assert.AreEqual(0, progressMin);
         }
@@ -74,7 +74,7 @@ namespace FormsTest
         [TestMethod]
         public void TestGetPos()
         {
-            FormsProgressBar progress = new FormsProgressBar(app, testDlg["progressBar"]());
+            FormsProgressBar progress = new FormsProgressBar(testDlg["progressBar"]());
             int progressPos = progress.Pos;
             Assert.AreEqual(50, progressPos);
         }

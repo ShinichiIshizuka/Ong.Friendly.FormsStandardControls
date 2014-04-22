@@ -55,12 +55,12 @@ namespace FormsTest
         [TestMethod]
         public void TestCheckBoxCheck()
         {
-            FormsRadioButton radiobutton1 = new FormsRadioButton(app, testDlg["radioButton1"]());
+            FormsRadioButton radiobutton1 = new FormsRadioButton(testDlg["radioButton1"]());
             radiobutton1.EmulateCheck();
             Assert.AreEqual(true, radiobutton1.Checked);
 
             //”ñ“¯Šú
-            FormsRadioButton radiobutton2 = new FormsRadioButton(app, testDlg["radioButton2"]());
+            FormsRadioButton radiobutton2 = new FormsRadioButton(testDlg["radioButton2"]());
             app[GetType(), "CheckedChangeEvent"](radiobutton2.AppVar);
             radiobutton2.EmulateCheck(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");

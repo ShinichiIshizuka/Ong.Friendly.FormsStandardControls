@@ -52,7 +52,7 @@ namespace FormsTest
         [TestMethod]
         public void TestLinkClick()
         {
-            FormsLinkLabel linklabel = new FormsLinkLabel(app, testDlg["linkLabel"]());
+            FormsLinkLabel linklabel = new FormsLinkLabel(testDlg["linkLabel"]());
             linklabel.EmulateLinkClick();
             int count = (int)testDlg["async_counter"]().Core;
             Assert.AreEqual(12, count);

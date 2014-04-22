@@ -52,7 +52,7 @@ namespace FormsTest
         [TestMethod]
         public void TestEmulateChangeText()
         {
-            FormsRichTextBox richTextBox = new FormsRichTextBox(app, testDlg["richTextBox"]());
+            FormsRichTextBox richTextBox = new FormsRichTextBox(testDlg["richTextBox"]());
             richTextBox.EmulateChangeText("richTextBox");
             string richTextBoxText = richTextBox.Text;
             Assert.AreEqual("richTextBox", richTextBoxText);

@@ -44,19 +44,14 @@ namespace Ong.Friendly.FormsStandardControls
         /// <summary>
         /// コンストラクタです。
         /// </summary>
-        /// <param name="app">対象アプリ操作クラス。</param>
         /// <param name="appVar">対象アプリ内変数操作クラス。</param>
-        internal AppVarWrapper(WindowsAppFriend app, AppVar appVar)
+        internal AppVarWrapper(AppVar appVar)
         {
-            if (app == null)
-            {
-                throw new ArgumentNullException("app");
-            }
             if (appVar == null)
             {
                 throw new ArgumentNullException("appVar");
             }
-            _app = app;
+            _app = (WindowsAppFriend)appVar.App;
             _appVar = appVar;
             Initializer.Initialize(App, GetType());
         }
