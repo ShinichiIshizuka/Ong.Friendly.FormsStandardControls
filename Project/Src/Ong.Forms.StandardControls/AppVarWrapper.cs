@@ -53,7 +53,7 @@ namespace Ong.Friendly.FormsStandardControls
             }
             _app = (WindowsAppFriend)appVar.App;
             _appVar = appVar;
-            Initializer.Initialize(App, GetType());
+            Initializer.Initialize(App);
         }
 
 #if ENG

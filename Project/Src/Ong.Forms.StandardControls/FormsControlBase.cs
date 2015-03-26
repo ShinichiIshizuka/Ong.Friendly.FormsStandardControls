@@ -31,7 +31,7 @@ namespace Ong.Friendly.FormsStandardControls
         public FormsControlBase(WindowControl src)
             : base(src)
         {
-            Initializer.Initialize(App, GetType());
+            Initializer.Initialize(App);
         }
 
 #if ENG
@@ -53,7 +53,7 @@ namespace Ong.Friendly.FormsStandardControls
         public FormsControlBase(WindowsAppFriend app, AppVar appVar)
             : this(appVar)
         {
-            Initializer.Initialize(app, GetType());
+            Initializer.Initialize(app);
         }
 
 #if ENG
@@ -70,7 +70,7 @@ namespace Ong.Friendly.FormsStandardControls
         public FormsControlBase(AppVar appVar)
             : base(appVar)
         {
-            Initializer.Initialize((WindowsAppFriend)appVar.App, GetType());
+            Initializer.Initialize((WindowsAppFriend)appVar.App);
         }
 
 #if ENG
