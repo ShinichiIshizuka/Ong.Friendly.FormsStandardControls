@@ -182,6 +182,50 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
+        /// Returns the formatted text of a cell in the table.
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <returns>The cell's text.</returns>
+#else
+        /// <summary>
+        /// 行列で指定したセルのフォーマットされたテキストを取得します。
+        /// </summary>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        /// <returns>テキスト。</returns>
+#endif
+        public string GetFormattedText(int col, int row)
+        {
+            return (string)(App[GetType(), "GetFormattedTextInTarget"](AppVar, col, row).Core);
+        }
+
+#if ENG
+        /// <summary>
+        /// Returns the formatted text of the table cells in the specified range.
+        /// </summary>
+        /// <param name="startCol">Starting column number.</param>
+        /// <param name="startRow">Starting row number.</param>
+        /// <param name="endCol">Ending column number.</param>
+        /// <param name="endRow">Ending row number.</param>
+        /// <returns>Cell values.</returns>
+#else
+        /// <summary>
+        /// 行列で指定した範囲のセルのフォーマットされたテキストを取得します。
+        /// </summary>
+        /// <param name="startCol">開始列。</param>
+        /// <param name="startRow">開始行。</param>
+        /// <param name="endCol">終了列。</param>
+        /// <param name="endRow">終了行。</param>
+        /// <returns>テキスト配列。</returns>
+#endif
+        public string[][] GetFormattedText(int startCol, int startRow, int endCol, int endRow)
+        {
+            return (string[][])(App[GetType(), "GetFormattedTextInTarget"](AppVar, startCol, startRow, endCol, endRow).Core);
+        }
+
+#if ENG
+        /// <summary>
         /// Sets the checked state state of a cell.
         /// </summary>
         /// <param name="col">Column number of the cell.</param>
@@ -579,6 +623,46 @@ namespace Ong.Friendly.FormsStandardControls
                 {
                     int col = j + startCol;
                     texts[i][j] = GetTextInTarget(datagridview, col, row);
+                }
+            }
+            return texts;
+        }
+
+        /// <summary>
+        /// 行列で指定したセルのテキストを取得します(内部)。
+        /// </summary>
+        /// <param name="datagridview">データグリッドビュー。</param>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        /// <returns>テキスト。</returns>
+        static string GetFormattedTextInTarget(DataGridView datagridview, int col, int row)
+        {
+            object obj = datagridview.Rows[row].Cells[col].FormattedValue;
+            return obj != null ? obj.ToString() : string.Empty;
+        }
+
+        /// <summary>
+        /// 行列で指定した範囲のセルのテキストを取得します。
+        /// </summary>
+        /// <param name="datagridview">データグリッド。</param>
+        /// <param name="startCol">開始列。</param>
+        /// <param name="startRow">開始行。</param>
+        /// <param name="endCol">終了列。</param>
+        /// <param name="endRow">終了行。</param>
+        /// <returns>テキスト配列。</returns>
+        static string[][] GetFormattedTextInTarget(DataGridView datagridview, int startCol, int startRow, int endCol, int endRow)
+        {
+            int colCount = endCol - startCol + 1;
+            int rowCount = endRow - startRow + 1;
+            string[][] texts = new string[rowCount][];
+            for (int i = 0; i < rowCount; i++)
+            {
+                int row = i + startRow;
+                texts[i] = new string[colCount];
+                for (int j = 0; j < colCount; j++)
+                {
+                    int col = j + startCol;
+                    texts[i][j] = GetFormattedTextInTarget(datagridview, col, row);
                 }
             }
             return texts;
