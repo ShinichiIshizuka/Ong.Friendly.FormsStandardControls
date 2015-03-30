@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormControls));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button = new System.Windows.Forms.Button();
             this.checkBox = new System.Windows.Forms.CheckBox();
             this.treeView2 = new System.Windows.Forms.TreeView();
@@ -65,15 +66,17 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.linkLabel = new System.Windows.Forms.LinkLabel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this._maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.columnText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.columnCombo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.columnButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.columnLink = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.linkLabel = new System.Windows.Forms.LinkLabel();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this._columnFormat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -205,7 +208,7 @@
             this.menu001ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1028, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1146, 24);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -215,19 +218,19 @@
             this.menu00101ToolStripMenuItem,
             this.menu00102ToolStripMenuItem});
             this.menu001ToolStripMenuItem.Name = "menu001ToolStripMenuItem";
-            this.menu001ToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.menu001ToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.menu001ToolStripMenuItem.Text = "Menu001";
             // 
             // menu00101ToolStripMenuItem
             // 
             this.menu00101ToolStripMenuItem.Name = "menu00101ToolStripMenuItem";
-            this.menu00101ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.menu00101ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.menu00101ToolStripMenuItem.Text = "Menu001-01";
             // 
             // menu00102ToolStripMenuItem
             // 
             this.menu00102ToolStripMenuItem.Name = "menu00102ToolStripMenuItem";
-            this.menu00102ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.menu00102ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.menu00102ToolStripMenuItem.Text = "Menu001-02";
             // 
             // toolStrip1
@@ -242,7 +245,7 @@
             this.toolStripTextBox1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1028, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1146, 25);
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -371,18 +374,18 @@
             this.menuItem1ToolStripMenuItem,
             this.menuItem2ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(142, 48);
             // 
             // menuItem1ToolStripMenuItem
             // 
             this.menuItem1ToolStripMenuItem.Name = "menuItem1ToolStripMenuItem";
-            this.menuItem1ToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.menuItem1ToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.menuItem1ToolStripMenuItem.Text = "MenuItem1";
             // 
             // menuItem2ToolStripMenuItem
             // 
             this.menuItem2ToolStripMenuItem.Name = "menuItem2ToolStripMenuItem";
-            this.menuItem2ToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.menuItem2ToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.menuItem2ToolStripMenuItem.Text = "MenuItem2";
             // 
             // tabControl
@@ -399,10 +402,10 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.tabPage1.Location = new System.Drawing.Point(4, 21);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(233, 121);
+            this.tabPage1.Size = new System.Drawing.Size(233, 120);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -410,10 +413,10 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.tabPage2.Location = new System.Drawing.Point(4, 21);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(233, 121);
+            this.tabPage2.Size = new System.Drawing.Size(233, 120);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -421,9 +424,9 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabPage3.Location = new System.Drawing.Point(4, 21);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(233, 121);
+            this.tabPage3.Size = new System.Drawing.Size(233, 120);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -443,12 +446,53 @@
             this.columnCheck,
             this.columnCombo,
             this.columnButton,
-            this.columnLink});
+            this.columnLink,
+            this._columnFormat});
             this.dataGridView.Location = new System.Drawing.Point(486, 68);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 21;
-            this.dataGridView.Size = new System.Drawing.Size(530, 228);
+            this.dataGridView.Size = new System.Drawing.Size(648, 228);
             this.dataGridView.TabIndex = 25;
+            // 
+            // linkLabel
+            // 
+            this.linkLabel.AutoSize = true;
+            this.linkLabel.Location = new System.Drawing.Point(437, 395);
+            this.linkLabel.Name = "linkLabel";
+            this.linkLabel.Size = new System.Drawing.Size(56, 12);
+            this.linkLabel.TabIndex = 27;
+            this.linkLabel.TabStop = true;
+            this.linkLabel.Text = "linkLabel1";
+            this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(439, 410);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(166, 14);
+            this.progressBar.TabIndex = 29;
+            this.progressBar.Value = 50;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(627, 303);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 30;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(442, 430);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(163, 19);
+            this.dateTimePicker1.TabIndex = 31;
+            // 
+            // _maskedTextBox
+            // 
+            this._maskedTextBox.Location = new System.Drawing.Point(3, 95);
+            this._maskedTextBox.Mask = "99900-9990-0000";
+            this._maskedTextBox.Name = "_maskedTextBox";
+            this._maskedTextBox.Size = new System.Drawing.Size(100, 19);
+            this._maskedTextBox.TabIndex = 32;
             // 
             // columnText
             // 
@@ -484,43 +528,20 @@
             this.columnLink.Text = "link";
             this.columnLink.UseColumnTextForLinkValue = true;
             // 
-            // linkLabel
+            // _columnFormat
             // 
-            this.linkLabel.AutoSize = true;
-            this.linkLabel.Location = new System.Drawing.Point(437, 395);
-            this.linkLabel.Name = "linkLabel";
-            this.linkLabel.Size = new System.Drawing.Size(56, 12);
-            this.linkLabel.TabIndex = 27;
-            this.linkLabel.TabStop = true;
-            this.linkLabel.Text = "linkLabel1";
-            this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(439, 410);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(166, 14);
-            this.progressBar.TabIndex = 29;
-            this.progressBar.Value = 50;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(627, 303);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 30;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(442, 430);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(163, 19);
-            this.dateTimePicker1.TabIndex = 31;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this._columnFormat.DefaultCellStyle = dataGridViewCellStyle1;
+            this._columnFormat.HeaderText = "Format";
+            this._columnFormat.Name = "_columnFormat";
             // 
             // FormControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 464);
+            this.ClientSize = new System.Drawing.Size(1146, 464);
+            this.Controls.Add(this._maskedTextBox);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.progressBar);
@@ -598,15 +619,17 @@
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.LinkLabel linkLabel;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnText;
         private System.Windows.Forms.DataGridViewCheckBoxColumn columnCheck;
         private System.Windows.Forms.DataGridViewComboBoxColumn columnCombo;
         private System.Windows.Forms.DataGridViewButtonColumn columnButton;
         private System.Windows.Forms.DataGridViewLinkColumn columnLink;
-        private System.Windows.Forms.LinkLabel linkLabel;
-        private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _columnFormat;
+        private System.Windows.Forms.MaskedTextBox _maskedTextBox;
     }
 }
 

@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+ï»¿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -11,7 +11,7 @@ using Codeer.Friendly.Windows.NativeStandardControls;
 namespace FormsTest
 {
     /// <summary>
-    /// DataGridViewƒeƒXƒg
+    /// DataGridViewãƒ†ã‚¹ãƒˆ
     /// </summary>
     [TestClass]
     public class DataGridViewTest
@@ -20,24 +20,24 @@ namespace FormsTest
         WindowControl testDlg;
 
         /// <summary>
-        /// ‰Šú‰»
+        /// åˆæœŸåŒ–
         /// </summary>
         [TestInitialize]
         public void SetUp()
         {
-            //ƒeƒXƒg—p‚Ì‰æ–Ê‹N“®
+            //ãƒ†ã‚¹ãƒˆç”¨ã®ç”»é¢èµ·å‹•
             app = new WindowsAppFriend(Process.Start(Settings.TestApplicationPath));
             testDlg = WindowControl.FromZTop(app);
             WindowsAppExpander.LoadAssemblyFromFile(app, GetType().Assembly.Location);
         }
 
         /// <summary>
-        /// I—¹
+        /// çµ‚äº†
         /// </summary>
         [TestCleanup]
         public void TearDown()
         {
-            //I—¹ˆ—
+            //çµ‚äº†å‡¦ç†
             if (app != null)
             {
                 app.Dispose();
@@ -48,7 +48,7 @@ namespace FormsTest
         }
 
         /// <summary>
-        /// RowCount‚ÌƒeƒXƒg
+        /// RowCountã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestRowCount()
@@ -60,17 +60,17 @@ namespace FormsTest
         }
 
         /// <summary>
-        /// ColumnCount‚ÌƒeƒXƒg
+        /// ColumnCountã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestColumnCount()
         {
             FormsDataGridView datagridview = new FormsDataGridView(testDlg["dataGridView"]());
-            Assert.AreEqual(5, datagridview.ColumnCount);
+            Assert.AreEqual(6, datagridview.ColumnCount);
         }
 
         /// <summary>
-        /// EmulateChangeCurrentCell‚ÆCurrentCell‚ÌƒeƒXƒg
+        /// EmulateChangeCurrentCellã¨CurrentCellã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestEmulateChangeCurrentCellAndCurrentCell()
@@ -79,7 +79,7 @@ namespace FormsTest
             dataGridview.EmulateChangeCurrentCell(2, 0);
             Assert.AreEqual(new Cell(2, 0), dataGridview.CurrentCell);
 
-            //”ñ“¯Šú
+            //éåŒæœŸ
             app[GetType(), "CurrentCellChangedEvent"](dataGridview.AppVar);
             dataGridview.EmulateChangeCurrentCell(1, 0, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
@@ -87,9 +87,9 @@ namespace FormsTest
         }
 
         /// <summary>
-        /// ‘I‘ğ•ÏX‚ÉƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚ğ•\¦‚·‚é
+        /// é¸æŠå¤‰æ›´æ™‚ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒh</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰</param>
         static void CurrentCellChangedEvent(DataGridView grid)
         {
             EventHandler handler = null;
@@ -105,7 +105,7 @@ namespace FormsTest
         }
 
         /// <summary>
-        /// EmulateChangeCellSelected‚ÆSelectedCells‚ÌƒeƒXƒg
+        /// EmulateChangeCellSelectedã¨SelectedCellsã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestEmulateChangeCellSelectedAndSelectedCells()
@@ -115,7 +115,7 @@ namespace FormsTest
             dataGridview.EmulateChangeCellSelected(new CellSelectedInfo(1, 0, true), new CellSelectedInfo(2, 0, true));
             AssertEx.AreEqual(new Cell[] { new Cell(1, 0), new Cell(2, 0) }, dataGridview.SelectedCells);
 
-            //”ñ“¯Šú
+            //éåŒæœŸ
             app[GetType(), "SelectionChangedEvent"](dataGridview.AppVar);
             dataGridview.EmulateChangeCellSelected(new Async(), new CellSelectedInfo(1, 0, false));
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
@@ -123,35 +123,35 @@ namespace FormsTest
         }
 
         /// <summary>
-        /// EmulateChangeRowSelected‚ÆSelectedRows‚ÌƒeƒXƒg
+        /// EmulateChangeRowSelectedã¨SelectedRowsã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestEmulateChangeRowSelectedSelectedRows()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
-            //s’Ç‰Á
+            //è¡Œè¿½åŠ 
             dataGridview.EmulateCellCheck(1, 0, true);
             dataGridview.EmulateCellCheck(1, 1, true);
             dataGridview.EmulateCellCheck(1, 2, true);
 
-            //s‘I‘ğƒeƒXƒg
+            //è¡Œé¸æŠãƒ†ã‚¹ãƒˆ
             dataGridview.EmulateClearSelection();
             dataGridview.EmulateChangeRowSelected(new RowSelectedInfo(1,true), new RowSelectedInfo(2, true));
             AssertEx.AreEqual(new int[] { 1, 2 }, dataGridview.SelectedRows);
 
-            //”ñ“¯Šú
+            //éåŒæœŸ
             app[GetType(), "SelectionChangedEvent"](dataGridview.AppVar);
             dataGridview.EmulateChangeRowSelected(new Async(), new RowSelectedInfo(1, false));
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             AssertEx.AreEqual(new int[] { 2 }, dataGridview.SelectedRows);
 
-            //sƒNƒŠƒA
+            //è¡Œã‚¯ãƒªã‚¢
             dataGridview["Rows"]()["Clear"]();
         }
 
         /// <summary>
-        /// EmulateClearSelection‚ÌƒeƒXƒg
+        /// EmulateClearSelectionã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestEmulateClearSelection()
@@ -161,7 +161,7 @@ namespace FormsTest
             dataGridview.EmulateClearSelection();
             AssertEx.AreEqual(new Cell[] { }, dataGridview.SelectedCells);
 
-            //”ñ“¯Šú
+            //éåŒæœŸ
             dataGridview.EmulateChangeCellSelected(new CellSelectedInfo(1, 0, true), new CellSelectedInfo(2, 0, true));
             app[GetType(), "SelectionChangedEvent"](dataGridview.AppVar);
             dataGridview.EmulateClearSelection(new Async());
@@ -170,9 +170,9 @@ namespace FormsTest
         }
 
         /// <summary>
-        /// ‘I‘ğ•ÏX‚ÉƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚ğ•\¦‚·‚é
+        /// é¸æŠå¤‰æ›´æ™‚ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒh</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰</param>
         static void SelectionChangedEvent(DataGridView grid)
         {
             EventHandler handler = null;
@@ -188,14 +188,14 @@ namespace FormsTest
         }
         
         /// <summary>
-        /// GetText‚ÌƒeƒXƒg
+        /// GetTextã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestGetText()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
-            //ƒeƒXƒgƒf[ƒ^
+            //ãƒ†ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿
             dataGridview.EmulateChangeCellText(0, 0, "a");
             dataGridview.EmulateChangeCellText(0, 1, "b");
             dataGridview.EmulateChangeCellText(0, 2, "c");
@@ -207,31 +207,60 @@ namespace FormsTest
                 new string[] { "b", string.Empty }, 
                 new string[] { "c", true.ToString() } }, dataGridview.GetText(0, 0, 1, 2));
 
-            //sƒNƒŠƒA
+            //è¡Œã‚¯ãƒªã‚¢
+            dataGridview["Rows"]()["Clear"]();
+        }
+
+        /// <summary>
+        /// GetFormattedTextã®ãƒ†ã‚¹ãƒˆ
+        /// </summary>
+        [TestMethod]
+        public void TestGetFormattedText()
+        {
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
+
+            //ãƒ†ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿
+            dataGridview.EmulateChangeCellText(0, 0, "a");
+            dataGridview.EmulateChangeCellText(0, 1, "b");
+            dataGridview.EmulateChangeCellText(0, 2, "c");
+            dataGridview.EmulateCellCheck(1, 0, true);
+            dataGridview.EmulateCellCheck(1, 2, true);
+            dataGridview.EmulateChangeCellText(5, 0, "1234");
+            dataGridview.EmulateChangeCellText(5, 1, "5678");
+
+            Assert.AreEqual(false.ToString(), dataGridview.GetFormattedText(1, 1));
+            Assert.AreEqual(@"Â¥1,234.00", dataGridview.GetFormattedText(5, 0));
+            AssertEx.AreEqual(new string[][] { 
+                new string[] { "a", true.ToString(), string.Empty , string.Empty , "link", @"Â¥1,234.00"  }, 
+                new string[] { "b", false.ToString(), string.Empty , string.Empty , "link", @"Â¥5,678.00" }, 
+                new string[] { "c", true.ToString(), string.Empty , string.Empty , "link", string.Empty  } }, 
+                dataGridview.GetFormattedText(0, 0, 5, 2));
+
+            //è¡Œã‚¯ãƒªã‚¢
             dataGridview["Rows"]()["Clear"]();
         }
 
 
         /// <summary>
-        /// EmulateDelete‚ÌƒeƒXƒg
+        /// EmulateDeleteã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestEmulateDelete()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
-            //s’Ç‰Á
+            //è¡Œè¿½åŠ 
             dataGridview.EmulateCellCheck(1, 0, true);
             dataGridview.EmulateCellCheck(1, 1, true);
             dataGridview.EmulateCellCheck(1, 2, true);
 
-            //íœ
+            //å‰Šé™¤
             dataGridview.EmulateClearSelection();
             dataGridview.EmulateChangeRowSelected(new RowSelectedInfo(1, true));
             dataGridview.EmulateDelete();
             Assert.AreEqual(3, dataGridview.RowCount);
 
-            //”ñ“¯Šú
+            //éåŒæœŸ
             dataGridview.EmulateClearSelection();
             dataGridview.EmulateChangeRowSelected(new RowSelectedInfo(1, true));
             app[GetType(), "UserDeletedRowEvent"](dataGridview.AppVar);
@@ -239,14 +268,14 @@ namespace FormsTest
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             Assert.AreEqual(2, dataGridview.RowCount);
 
-            //sƒNƒŠƒA
+            //è¡Œã‚¯ãƒªã‚¢
             dataGridview["Rows"]()["Clear"]();
         }
 
         /// <summary>
-        /// síœ‚ÉƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚ğ•\¦‚·‚é
+        /// è¡Œå‰Šé™¤æ™‚ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒh</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰</param>
         static void UserDeletedRowEvent(DataGridView grid)
         {
             DataGridViewRowEventHandler handler = null;
@@ -262,75 +291,75 @@ namespace FormsTest
         }
 
         /// <summary>
-        /// EmulateCellCheck‚ÌƒeƒXƒg
+        /// EmulateCellCheckã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestEmulateCellCheck()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
-            //ƒ`ƒFƒbƒN
+            //ãƒã‚§ãƒƒã‚¯
             dataGridview.EmulateCellCheck(1, 0, true);
             Assert.AreEqual(true.ToString(), dataGridview.GetText(1, 0));
 
-            //”ñ“¯Šú
+            //éåŒæœŸ
             app[GetType(), "CellEndEditEvent"](dataGridview.AppVar);
             dataGridview.EmulateCellCheck(1, 0, false, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             Assert.AreEqual(false.ToString(), dataGridview.GetText(1, 0));
 
-            //sƒNƒŠƒA
+            //è¡Œã‚¯ãƒªã‚¢
             dataGridview["Rows"]()["Clear"]();
         }
 
         /// <summary>
-        /// EmulateChangeCellText‚ÌƒeƒXƒg
+        /// EmulateChangeCellTextã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestEmulateChangeCellText()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
-            //ƒeƒLƒXƒg•ÏX
+            //ãƒ†ã‚­ã‚¹ãƒˆå¤‰æ›´
             dataGridview.EmulateChangeCellText(0, 0, "abc");
             Assert.AreEqual("abc", dataGridview.GetText(0, 0));
 
-            //”ñ“¯Šú
+            //éåŒæœŸ
             app[GetType(), "CellEndEditEvent"](dataGridview.AppVar);
             dataGridview.EmulateChangeCellText(0, 0, "efg", new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             Assert.AreEqual("efg", dataGridview.GetText(0, 0));
 
-            //sƒNƒŠƒA
+            //è¡Œã‚¯ãƒªã‚¢
             dataGridview["Rows"]()["Clear"]();
         }
 
         /// <summary>
-        /// EmulateChangeCellComboSelect‚ÌƒeƒXƒg
+        /// EmulateChangeCellComboSelectã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestEmulateChangeCellComboSelect()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
-            //ƒeƒLƒXƒg•ÏX
+            //ãƒ†ã‚­ã‚¹ãƒˆå¤‰æ›´
             dataGridview.EmulateChangeCellComboSelect(2, 0, 2);
             Assert.AreEqual("2", dataGridview.GetText(2, 0));
 
-            //”ñ“¯Šú
+            //éåŒæœŸ
             app[GetType(), "CellEndEditEvent"](dataGridview.AppVar);
             dataGridview.EmulateChangeCellComboSelect(2, 0, 3, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             Assert.AreEqual("3", dataGridview.GetText(2, 0));
 
-            //sƒNƒŠƒA
+            //è¡Œã‚¯ãƒªã‚¢
             dataGridview["Rows"]()["Clear"]();
         }
 
         /// <summary>
-        /// •ÒWI—¹‚ÉƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚ğ•\¦‚·‚é
+        /// ç·¨é›†çµ‚äº†æ™‚ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒh</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰</param>
         static void CellEndEditEvent(DataGridView grid)
         {
             DataGridViewCellEventHandler handler = null;
@@ -346,45 +375,45 @@ namespace FormsTest
         }
 
         /// <summary>
-        /// EmulateClickCellContent‚ÌƒeƒXƒg
+        /// EmulateClickCellContentã®ãƒ†ã‚¹ãƒˆ
         /// </summary>
         [TestMethod]
         public void TestEmulateClickCellContent()
         {
             FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
 
-            //s’Ç‰Á
+            //è¡Œè¿½åŠ 
             dataGridview.EmulateCellCheck(1, 0, true);
 
-            //ƒ{ƒ^ƒ“ƒNƒŠƒbƒN
+            //ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯
             app[GetType(), "_testCol"](-1);
             app[GetType(), "CellContentClickEvent"](dataGridview.AppVar);
             dataGridview.EmulateClickCellContent(3, 0);
             Assert.AreEqual(3, (int)app[GetType(), "_testCol"]().Core);
 
-            //ƒŠƒ“ƒNƒNƒŠƒbƒN
+            //ãƒªãƒ³ã‚¯ã‚¯ãƒªãƒƒã‚¯
             app[GetType(), "_testCol"](-1);
             app[GetType(), "CellContentClickEvent"](dataGridview.AppVar);
             dataGridview.EmulateClickCellContent(4, 0);
             Assert.AreEqual(4, (int)app[GetType(), "_testCol"]().Core);
 
-            //”ñ“¯Šú
+            //éåŒæœŸ
             app[GetType(), "_testCol"](-1);
             app[GetType(), "CellContentClickEventMessage"](dataGridview.AppVar);
             dataGridview.EmulateClickCellContent(3, 0, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             Assert.AreEqual(3, (int)app[GetType(), "_testCol"]().Core);
 
-            //sƒNƒŠƒA
+            //è¡Œã‚¯ãƒªã‚¢
             dataGridview["Rows"]()["Clear"]();
         }
 
         static int _testCol;
 
         /// <summary>
-        /// ƒZƒ‹ƒNƒŠƒbƒN‚É_testCol‚Ì’l‚ğ•\¦‚·‚é
+        /// ã‚»ãƒ«ã‚¯ãƒªãƒƒã‚¯æ™‚ã«_testColã®å€¤ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒh</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰</param>
         static void CellContentClickEvent(DataGridView grid)
         {
             DataGridViewCellEventHandler handler = null;
@@ -400,9 +429,9 @@ namespace FormsTest
         }
 
         /// <summary>
-        /// ƒZƒ‹ƒNƒŠƒbƒN‚ÉƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚ğ•\¦‚·‚é
+        /// ã‚»ãƒ«ã‚¯ãƒªãƒƒã‚¯æ™‚ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒh</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰</param>
         static void CellContentClickEventMessage(DataGridView grid)
         {
             DataGridViewCellEventHandler handler = null;

@@ -52,14 +52,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.4.4\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows.NativeStandardControls, Version=2.1.9.0, Culture=neutral, PublicKeyToken=90759bf0c8b8639e, processorArchitecture=MSIL">
+    <Reference Include="Codeer.Friendly.Windows.NativeStandardControls, Version=2.2.0.0, Culture=neutral, PublicKeyToken=90759bf0c8b8639e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Codeer.Friendly.Windows.NativeStandardControls.2.1.9\lib\net20\Codeer.Friendly.Windows.NativeStandardControls.dll</HintPath>
+      <HintPath>packages\Codeer.Friendly.Windows.NativeStandardControls.2.2.0\lib\net20\Codeer.Friendly.Windows.NativeStandardControls.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Ong.Friendly.FormsStandardControls, Version=2.2.4.0, Culture=neutral, PublicKeyToken=ee7fcdb5644bd140, processorArchitecture=MSIL">
+    <Reference Include="Ong.Friendly.FormsStandardControls, Version=2.3.0.0, Culture=neutral, PublicKeyToken=ee7fcdb5644bd140, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Ong.Friendly.FormsStandardControls.2.2.4\lib\net20\Ong.Friendly.FormsStandardControls.dll</HintPath>
+      <HintPath>packages\Ong.Friendly.FormsStandardControls.2.3.0\lib\net20\Ong.Friendly.FormsStandardControls.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
@@ -88,6 +88,7 @@
     <Compile Include="LinkLabelTest.cs" />
     <Compile Include="ListBoxTest.cs" />
     <Compile Include="ListViewTest.cs" />
+    <Compile Include="MaskedTextBoxTest.cs" />
     <Compile Include="MonthCalendarTest.cs" />
     <Compile Include="NumericUpDownTest.cs" />
     <Compile Include="ProgressBarTest.cs" />

@@ -21,6 +21,7 @@ namespace FormsStandardControls
         public FormControls()
         {
             InitializeComponent();
+            _columnFormat.ValueType = typeof(decimal);
         }
 
         /// <summary>

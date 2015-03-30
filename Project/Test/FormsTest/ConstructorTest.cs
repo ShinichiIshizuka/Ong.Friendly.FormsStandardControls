@@ -22,16 +22,6 @@ namespace FormsTest
                     }
                 }
             }
-            foreach (var element in typeof(FormsButton).Assembly.GetTypes())
-            {
-                if (element.GetConstructor(new Type[] { typeof(AppVar) }) != null)
-                {
-                    if (element.GetConstructor(new Type[] { typeof(WindowsAppFriend), typeof(AppVar) }) == null)
-                    {
-                        Assert.Fail();
-                    }
-                }
-            }
         }
     }
 }

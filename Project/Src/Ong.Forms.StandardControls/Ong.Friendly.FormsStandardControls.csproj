@@ -79,6 +79,7 @@
     <Compile Include="FormsComboBox.cs" />
     <Compile Include="FormsDateTimePicker.cs" />
     <Compile Include="FormsLinkLabel.cs" />
+    <Compile Include="FormsMaskedTextBox.cs" />
     <Compile Include="FormsMonthCalendar.cs" />
     <Compile Include="FormsNumericUpDown.cs" />
     <Compile Include="FormsProgressBar.cs" />
