@@ -218,6 +218,41 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
+        /// Get itme text.
+        /// </summary>
+        /// <param name="index">index</param>
+        /// <returns>Item text.</returns>
+#else
+        /// <summary>
+        /// アイテム文字列取得
+        /// </summary>
+        /// <param name="index">インデックス</param>
+        /// <returns>アイテム文字列</returns>
+#endif
+        public string GetItemText(int index)
+        {
+            var item = this["Items"]()["[]"](index);
+            return item.IsNull ? string.Empty : (string)item["ToString"]().Core;
+        }
+
+#if ENG
+        /// <summary>
+        /// Get all item text.
+        /// </summary>
+        /// <returns>All item text.</returns>
+#else
+        /// <summary>
+        /// アイテム文字列全取得
+        /// </summary>
+        /// <returns>全アイテム文字列</returns>
+#endif
+        public string[] GetAllItemText()
+        {
+            return (string[])(App[GetType(), "GetAllItemText"](this).Core);
+        }
+
+#if ENG
+        /// <summary>
         /// I want to select an item state corresponding to the specified index.
         /// </summary>
 #else
@@ -327,6 +362,21 @@ namespace Ong.Friendly.FormsStandardControls
         {
             listbox.Focus();
             listbox.SetSelected(index, isSelect);
+        }
+
+        /// <summary>
+        /// アイテム文字列を全取得
+        /// </summary>
+        /// <param name="list">リスト</param>
+        /// <returns>全アイテム文字列</returns>
+        private static string[] GetAllItemText(ListBox list)
+        {
+            var items = new List<string>();
+            foreach (var e in list.Items)
+            {
+                items.Add(e == null ? string.Empty : e.ToString());
+            }
+            return items.ToArray();
         }
     }
 }

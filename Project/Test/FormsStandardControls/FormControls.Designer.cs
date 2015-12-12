@@ -66,23 +66,25 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.linkLabel = new System.Windows.Forms.LinkLabel();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this._maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.columnText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.columnCombo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.columnButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.columnLink = new System.Windows.Forms.DataGridViewLinkColumn();
             this._columnFormat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkLabel = new System.Windows.Forms.LinkLabel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this._maskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this._trackBar = new System.Windows.Forms.TrackBar();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._trackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // button
@@ -218,19 +220,19 @@
             this.menu00101ToolStripMenuItem,
             this.menu00102ToolStripMenuItem});
             this.menu001ToolStripMenuItem.Name = "menu001ToolStripMenuItem";
-            this.menu001ToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.menu001ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.menu001ToolStripMenuItem.Text = "Menu001";
             // 
             // menu00101ToolStripMenuItem
             // 
             this.menu00101ToolStripMenuItem.Name = "menu00101ToolStripMenuItem";
-            this.menu00101ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.menu00101ToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.menu00101ToolStripMenuItem.Text = "Menu001-01";
             // 
             // menu00102ToolStripMenuItem
             // 
             this.menu00102ToolStripMenuItem.Name = "menu00102ToolStripMenuItem";
-            this.menu00102ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.menu00102ToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.menu00102ToolStripMenuItem.Text = "Menu001-02";
             // 
             // toolStrip1
@@ -374,18 +376,18 @@
             this.menuItem1ToolStripMenuItem,
             this.menuItem2ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(142, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 48);
             // 
             // menuItem1ToolStripMenuItem
             // 
             this.menuItem1ToolStripMenuItem.Name = "menuItem1ToolStripMenuItem";
-            this.menuItem1ToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.menuItem1ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.menuItem1ToolStripMenuItem.Text = "MenuItem1";
             // 
             // menuItem2ToolStripMenuItem
             // 
             this.menuItem2ToolStripMenuItem.Name = "menuItem2ToolStripMenuItem";
-            this.menuItem2ToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.menuItem2ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.menuItem2ToolStripMenuItem.Text = "MenuItem2";
             // 
             // tabControl
@@ -454,46 +456,6 @@
             this.dataGridView.Size = new System.Drawing.Size(648, 228);
             this.dataGridView.TabIndex = 25;
             // 
-            // linkLabel
-            // 
-            this.linkLabel.AutoSize = true;
-            this.linkLabel.Location = new System.Drawing.Point(437, 395);
-            this.linkLabel.Name = "linkLabel";
-            this.linkLabel.Size = new System.Drawing.Size(56, 12);
-            this.linkLabel.TabIndex = 27;
-            this.linkLabel.TabStop = true;
-            this.linkLabel.Text = "linkLabel1";
-            this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(439, 410);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(166, 14);
-            this.progressBar.TabIndex = 29;
-            this.progressBar.Value = 50;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(627, 303);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 30;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(442, 430);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(163, 19);
-            this.dateTimePicker1.TabIndex = 31;
-            // 
-            // _maskedTextBox
-            // 
-            this._maskedTextBox.Location = new System.Drawing.Point(3, 95);
-            this._maskedTextBox.Mask = "99900-9990-0000";
-            this._maskedTextBox.Name = "_maskedTextBox";
-            this._maskedTextBox.Size = new System.Drawing.Size(100, 19);
-            this._maskedTextBox.TabIndex = 32;
-            // 
             // columnText
             // 
             this.columnText.HeaderText = "Text";
@@ -536,11 +498,61 @@
             this._columnFormat.HeaderText = "Format";
             this._columnFormat.Name = "_columnFormat";
             // 
+            // linkLabel
+            // 
+            this.linkLabel.AutoSize = true;
+            this.linkLabel.Location = new System.Drawing.Point(437, 395);
+            this.linkLabel.Name = "linkLabel";
+            this.linkLabel.Size = new System.Drawing.Size(56, 12);
+            this.linkLabel.TabIndex = 27;
+            this.linkLabel.TabStop = true;
+            this.linkLabel.Text = "linkLabel1";
+            this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(439, 410);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(166, 14);
+            this.progressBar.TabIndex = 29;
+            this.progressBar.Value = 50;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(627, 303);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 30;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(442, 430);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(163, 19);
+            this.dateTimePicker1.TabIndex = 31;
+            // 
+            // _maskedTextBox
+            // 
+            this._maskedTextBox.Location = new System.Drawing.Point(3, 95);
+            this._maskedTextBox.Mask = "99900-9990-0000";
+            this._maskedTextBox.Name = "_maskedTextBox";
+            this._maskedTextBox.Size = new System.Drawing.Size(100, 19);
+            this._maskedTextBox.TabIndex = 32;
+            // 
+            // _trackBar
+            // 
+            this._trackBar.Location = new System.Drawing.Point(1018, 364);
+            this._trackBar.Maximum = 100;
+            this._trackBar.Name = "_trackBar";
+            this._trackBar.Size = new System.Drawing.Size(104, 45);
+            this._trackBar.TabIndex = 33;
+            this._trackBar.Value = 50;
+            // 
             // FormControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 464);
+            this.Controls.Add(this._trackBar);
             this.Controls.Add(this._maskedTextBox);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.monthCalendar1);
@@ -577,6 +589,7 @@
             this.tabControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._trackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -630,6 +643,7 @@
         private System.Windows.Forms.DataGridViewLinkColumn columnLink;
         private System.Windows.Forms.DataGridViewTextBoxColumn _columnFormat;
         private System.Windows.Forms.MaskedTextBox _maskedTextBox;
+        private System.Windows.Forms.TrackBar _trackBar;
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <PluginInfo>
-  <AssemblyString>Ong.Friendly.FormsStandardControls, Version=2.3.2.0, Culture=neutral, PublicKeyToken=ee7fcdb5644bd140</AssemblyString>
+  <AssemblyString>Ong.Friendly.FormsStandardControls, Version=2.4.0.0, Culture=neutral, PublicKeyToken=ee7fcdb5644bd140</AssemblyString>
   <Company>onigiri-soft</Company>
   <WebPage>http://www.onigiri-soft.com/</WebPage>
   <NetTypePairs>
@@ -83,6 +83,10 @@
     <PluginClassPair>
       <TargetType>System.Windows.Forms.MonthCalendar</TargetType>
       <PluginType>Ong.Friendly.FormsStandardControls.FormsMonthCalendar</PluginType>
+    </PluginClassPair>
+    <PluginClassPair>
+      <TargetType>System.Windows.Forms.TrackBar</TargetType>
+      <PluginType>Ong.Friendly.FormsStandardControls.FormsTrackBar</PluginType>
     </PluginClassPair>
   </NetTypePairs>
 </PluginInfo>

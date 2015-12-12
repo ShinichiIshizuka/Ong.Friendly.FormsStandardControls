@@ -87,6 +87,7 @@
     <Compile Include="FormsToolStripButton.cs" />
     <Compile Include="FormsToolStripComboBox.cs" />
     <Compile Include="FormsToolStripTextBox.cs" />
+    <Compile Include="FormsTrackBar.cs" />
     <Compile Include="FormsTreeNode.cs" />
     <Compile Include="FormsTreeView.cs" />
     <Compile Include="FormsListBox.cs" />

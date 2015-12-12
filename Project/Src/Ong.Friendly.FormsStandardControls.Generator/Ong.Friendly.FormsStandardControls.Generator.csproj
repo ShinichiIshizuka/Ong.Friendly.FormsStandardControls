@@ -64,6 +64,7 @@
     <Compile Include="FormsListBoxGenerator.cs" />
     <Compile Include="FormsListViewGenerator.cs" />
     <Compile Include="FormsMonthCalendarGenerator.cs" />
+    <Compile Include="FormsTrackBarGenerator.cs" />
     <Compile Include="FormsNumericUpDownGenerator.cs" />
     <Compile Include="FormsRadioButtonGenerator.cs" />
     <Compile Include="FormsRichTextBoxGenerator.cs" />

@@ -8,11 +8,11 @@ namespace Ong.Friendly.FormsStandardControls
 {
 #if ENG
     /// <summary>
-    /// Provides operations on controls of type System.Windows.Forms.TextBox.
+    /// Provides operations on controls of type System.Windows.Forms.ProgressBar.
     /// </summary>
 #else
     /// <summary>
-    /// TypeがSystem.Windows.Forms.TextBoxのウィンドウに対応した操作を提供します。
+    /// TypeがSystem.Windows.Forms.ProgressBarのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
     public class FormsProgressBar : FormsControlBase

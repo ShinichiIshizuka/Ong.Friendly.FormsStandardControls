@@ -57,9 +57,9 @@
       <HintPath>packages\Codeer.Friendly.Windows.NativeStandardControls.2.2.3\lib\net20\Codeer.Friendly.Windows.NativeStandardControls.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Ong.Friendly.FormsStandardControls, Version=2.3.2.0, Culture=neutral, PublicKeyToken=ee7fcdb5644bd140, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Ong.Friendly.FormsStandardControls.2.3.2\lib\net20\Ong.Friendly.FormsStandardControls.dll</HintPath>
+    <Reference Include="Ong.Friendly.FormsStandardControls, Version=2.4.0.0, Culture=neutral, PublicKeyToken=ee7fcdb5644bd140, processorArchitecture=MSIL">
+      <HintPath>packages\Ong.Friendly.FormsStandardControls.2.4.0\lib\net20\Ong.Friendly.FormsStandardControls.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
@@ -91,6 +91,7 @@
     <Compile Include="MaskedTextBoxTest.cs" />
     <Compile Include="MonthCalendarTest.cs" />
     <Compile Include="NumericUpDownTest.cs" />
+    <Compile Include="TrackBarTest.cs" />
     <Compile Include="ProgressBarTest.cs" />
     <Compile Include="RadioButtonTest.cs" />
     <Compile Include="RichTextBoxTest.cs" />
