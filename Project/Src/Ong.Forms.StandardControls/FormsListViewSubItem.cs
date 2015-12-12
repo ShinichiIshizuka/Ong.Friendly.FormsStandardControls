@@ -1,4 +1,4 @@
-using Codeer.Friendly;
+ï»¿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using System;
 
@@ -10,7 +10,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// ƒŠƒXƒgƒrƒ…[ƒTƒuƒAƒCƒeƒ€‚Å‚·B
+    /// ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã‚µãƒ–ã‚¢ã‚¤ãƒ†ãƒ ã§ã™ã€‚
     /// </summary>
 #endif
     public class FormsListViewSubItem : AppVarWrapper
@@ -24,11 +24,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsListViewSubItem(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsListViewSubItem(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsListViewSubItem(AppVar windowObject).", false)]
         public FormsListViewSubItem(WindowsAppFriend app, AppVar appVar)
@@ -41,9 +41,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsListViewSubItem(AppVar appVar)
             : base(appVar) { }
@@ -54,7 +54,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public string Text

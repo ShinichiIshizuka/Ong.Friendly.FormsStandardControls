@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+ï»¿using System.Windows.Forms;
 using System.Collections.Generic;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
@@ -13,7 +13,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// Type‚ªSystem.Windows.Forms.ListView‚ÌƒEƒBƒ“ƒhƒE‚É‘Î‰‚µ‚½‘€ì‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+    /// TypeãŒSystem.Windows.Forms.ListViewã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾å¿œã—ãŸæ“ä½œã‚’æä¾›ã—ã¾ã™ã€‚
     /// </summary>
 #endif
     public class FormsListView : FormsControlBase
@@ -25,9 +25,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="src">WindowControl object for the underlying control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="src">Œ³‚Æ‚È‚éƒEƒBƒ“ƒhƒEƒRƒ“ƒgƒ[ƒ‹B</param>
+        /// <param name="src">å…ƒã¨ãªã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã€‚</param>
 #endif
         public FormsListView(WindowControl src)
             : base(src) { }
@@ -41,11 +41,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsListView(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsListView(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsListView(AppVar windowObject).", false)]
         public FormsListView(WindowsAppFriend app, AppVar appVar)
@@ -58,9 +58,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsListView(AppVar appVar)
             : base(appVar) { }
@@ -71,7 +71,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// Viewƒ‚[ƒh‚ğæ“¾‚µ‚Ü‚·B
+        /// Viewãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public View ViewMode
@@ -85,7 +85,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// —ñ”‚ğæ“¾‚µ‚Ü‚·B
+        /// åˆ—æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int ColumnCount
@@ -99,7 +99,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ƒAƒCƒeƒ€”‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ãƒ†ãƒ æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int ItemCount
@@ -113,7 +113,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ìˆê——‚ğæ“¾‚µ‚Ü‚·B
+        /// é¸æŠã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ä¸€è¦§ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int[] SelectIndexes
@@ -129,10 +129,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Item at the specified index.</returns>
 #else
         /// <summary>
-        /// w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒAƒCƒeƒ€B</returns>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
 #endif
         public FormsListViewItem GetListViewItem(int index)
         {
@@ -149,12 +149,12 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>The first found item whose text begins with the specified text value.</returns>
 #else
         /// <summary>
-        /// w’è‚µ‚½ƒeƒLƒXƒg’l‚Ån‚Ü‚éÅ‰‚ÌƒAƒCƒeƒ€‚ğŒŸõ‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸãƒ†ã‚­ã‚¹ãƒˆå€¤ã§å§‹ã¾ã‚‹æœ€åˆã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="itemText">ƒeƒLƒXƒgB</param>
-        /// <param name="includeSubItemsInSearch">ŒŸõ‚ÉƒTƒu€–Ú‚ğŠÜ‚ß‚éê‡‚Í trueB‚»‚êˆÈŠO‚Ìê‡‚Í falseB</param>
-        /// <param name="startIndex">ŒŸõ‚ğŠJn‚·‚éˆÊ’u‚Ì€–Ú‚ÌƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>w’è‚µ‚½ƒeƒLƒXƒg’l‚Ån‚Ü‚éÅ‰‚ÌƒAƒCƒeƒ€</returns>
+        /// <param name="itemText">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="includeSubItemsInSearch">æ¤œç´¢ã«ã‚µãƒ–é …ç›®ã‚’å«ã‚ã‚‹å ´åˆã¯ trueã€‚ãã‚Œä»¥å¤–ã®å ´åˆã¯ falseã€‚</param>
+        /// <param name="startIndex">æ¤œç´¢ã‚’é–‹å§‹ã™ã‚‹ä½ç½®ã®é …ç›®ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>æŒ‡å®šã—ãŸãƒ†ã‚­ã‚¹ãƒˆå€¤ã§å§‹ã¾ã‚‹æœ€åˆã®ã‚¢ã‚¤ãƒ†ãƒ </returns>
 #endif
         public FormsListViewItem FindItemWithText(string itemText, bool includeSubItemsInSearch, int startIndex)
         {
@@ -174,10 +174,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="isSelect">The selection state (true to select).</param>
 #else
         /// <summary>
-        /// w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÉŠY“–‚·‚éƒAƒCƒeƒ€‚Ì‘I‘ğó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
+        /// æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«è©²å½“ã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®é¸æŠçŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <param name="isSelect">‘I‘ğó‘Ô‚É‚·‚éê‡‚Ítrue‚ğİ’è‚µ‚Ü‚·B</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <param name="isSelect">é¸æŠçŠ¶æ…‹ã«ã™ã‚‹å ´åˆã¯trueã‚’è¨­å®šã—ã¾ã™ã€‚</param>
 #endif
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
@@ -194,12 +194,12 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÉŠY“–‚·‚éƒAƒCƒeƒ€‚Ì‘I‘ğó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«è©²å½“ã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®é¸æŠçŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <param name="isSelect">‘I‘ğó‘Ô‚É‚·‚éê‡‚Ítrue‚ğİ’è‚µ‚Ü‚·B</param>
-        /// <param name="async">”ñ“¯ŠúƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <param name="isSelect">é¸æŠçŠ¶æ…‹ã«ã™ã‚‹å ´åˆã¯trueã‚’è¨­å®šã—ã¾ã™ã€‚</param>
+        /// <param name="async">éåŒæœŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
@@ -207,10 +207,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ìˆê——‚ğæ“¾‚µ‚Ü‚·i“à•”jB
+        /// é¸æŠã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ä¸€è¦§ã‚’å–å¾—ã—ã¾ã™ï¼ˆå†…éƒ¨ï¼‰ã€‚
         /// </summary>
-        /// <param name="listview">ƒŠƒXƒgƒrƒ…[</param>
-        /// <returns>‘I‘ğ‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒXˆê——B</returns>
+        /// <param name="listview">ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼</param>
+        /// <returns>é¸æŠã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä¸€è¦§ã€‚</returns>
         private static int[] GetSelectedIndexesInTarget(ListView listview)
         {
             List<int> list = new List<int>();
@@ -225,11 +225,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒŠƒXƒgƒrƒ…[ƒAƒCƒeƒ€‚ğ‘I‘ğ‚µ‚Ü‚·i“à•”jB
+        /// ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã‚¢ã‚¤ãƒ†ãƒ ã‚’é¸æŠã—ã¾ã™ï¼ˆå†…éƒ¨ï¼‰ã€‚
         /// </summary>
-        /// <param name="listview">ƒŠƒXƒgƒrƒ…[B</param>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <param name="isSelect">‘I‘ğó‘Ô‚É‚·‚éê‡‚Ítrue‚ğİ’è‚µ‚Ü‚·B</param>
+        /// <param name="listview">ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã€‚</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <param name="isSelect">é¸æŠçŠ¶æ…‹ã«ã™ã‚‹å ´åˆã¯trueã‚’è¨­å®šã—ã¾ã™ã€‚</param>
         private static void EmulateChangeSelectedStateInTarget(ListView listview, int index, bool isSelect)
         {
             listview.Focus();

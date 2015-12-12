@@ -1,4 +1,4 @@
-using Codeer.Friendly;
+ï»¿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using System;
@@ -12,7 +12,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// Type‚ªSystem.Windows.Forms.TabControl‚ÌƒEƒBƒ“ƒhƒE‚É‘Î‰‚µ‚½‘€ì‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+    /// TypeãŒSystem.Windows.Forms.TabControlã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾å¿œã—ãŸæ“ä½œã‚’æä¾›ã—ã¾ã™ã€‚
     /// </summary>
 #endif
     public class FormsTabControl : FormsControlBase
@@ -24,9 +24,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="src">WindowControl object for the underlying control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="src">Œ³‚Æ‚È‚éƒEƒBƒ“ƒhƒEƒRƒ“ƒgƒ[ƒ‹B</param>
+        /// <param name="src">å…ƒã¨ãªã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã€‚</param>
 #endif
         public FormsTabControl(WindowControl src)
             : base(src) { }
@@ -40,11 +40,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsTabControl(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsTabControl(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsTabControl(AppVar windowObject).", false)]
         public FormsTabControl(WindowsAppFriend app, AppVar appVar)
@@ -57,9 +57,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsTabControl(AppVar appVar)
             : base(appVar) { }
@@ -70,7 +70,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ƒ^ƒu”‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¿ãƒ–æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int TabCount
@@ -84,7 +84,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½ƒ^ƒuƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// é¸æŠã•ã‚ŒãŸã‚¿ãƒ–ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int SelectedIndex
@@ -99,9 +99,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="index">Index (0-based) of the tab to select.</param>
 #else
         /// <summary>
-        /// ƒ^ƒu‚ğ‘I‘ğ‚µ‚Ü‚·B
+        /// ã‚¿ãƒ–ã‚’é¸æŠã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="index">ƒ^ƒuƒCƒ“ƒfƒbƒNƒXi‚On‚Ü‚èjB</param>
+        /// <param name="index">ã‚¿ãƒ–ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ï¼ˆï¼å§‹ã¾ã‚Šï¼‰ã€‚</param>
 #endif
         public void EmulateTabSelect(int index)
         {
@@ -117,11 +117,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒ^ƒu‚ğ‘I‘ğ‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ã‚¿ãƒ–ã‚’é¸æŠã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="index">ƒ^ƒuƒCƒ“ƒfƒbƒNƒXi‚On‚Ü‚èjB</param>
-        /// <param name="async">”ñ“¯ŠúƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="index">ã‚¿ãƒ–ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ï¼ˆï¼å§‹ã¾ã‚Šï¼‰ã€‚</param>
+        /// <param name="async">éåŒæœŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateTabSelect(int index, Async async)
         {
@@ -129,10 +129,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// w’è‚ÌƒCƒ“ƒfƒbƒNƒX‚ÌƒAƒCƒeƒ€‚ğ‘I‘ğ‚µ‚Ü‚·B
+        /// æŒ‡å®šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’é¸æŠã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="tabControl">ƒ^ƒuƒRƒ“ƒgƒ[ƒ‹B</param>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
+        /// <param name="tabControl">ã‚¿ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã€‚</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
         static void EmulateTabSelectInTarget(TabControl tabControl, int index)
         {
             tabControl.Focus();

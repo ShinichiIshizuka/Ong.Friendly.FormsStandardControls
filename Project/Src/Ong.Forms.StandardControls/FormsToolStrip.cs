@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+ï»¿using System.Windows.Forms;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -12,7 +12,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// ƒc[ƒ‹ƒXƒgƒŠƒbƒv‚Å‚·B
+    /// ãƒ„ãƒ¼ãƒ«ã‚¹ãƒˆãƒªãƒƒãƒ—ã§ã™ã€‚
     /// </summary>
 #endif
     public class FormsToolStrip : FormsControlBase
@@ -24,9 +24,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="src">WindowControl object for the underlying control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="src">Œ³‚Æ‚È‚éƒEƒBƒ“ƒhƒEƒRƒ“ƒgƒ[ƒ‹‚Å‚·B</param>
+        /// <param name="src">å…ƒã¨ãªã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã§ã™ã€‚</param>
 #endif
         public FormsToolStrip(WindowControl src)
             : base(src) { }
@@ -40,11 +40,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsToolStrip(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsToolStrip(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsToolStrip(AppVar windowObject).", false)]
         public FormsToolStrip(WindowsAppFriend app, AppVar appVar)
@@ -57,9 +57,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsToolStrip(AppVar appVar)
             : base(appVar) { }
@@ -72,10 +72,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Found child item.</returns>
 #else
         /// <summary>
-        /// qƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// å­ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="indexes">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>qƒAƒCƒeƒ€</returns>
+        /// <param name="indexes">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>å­ã‚¢ã‚¤ãƒ†ãƒ </returns>
 #endif
         public FormsToolStripItem GetItem(params int[] indexes)
         {
@@ -90,10 +90,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Found child item.</returns>
 #else
         /// <summary>
-        /// qƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// å­ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="keys">ƒL[‚Æ‚È‚é•¶š—ñ‚Å‚·B</param>
-        /// <returns>qƒAƒCƒeƒ€B</returns>
+        /// <param name="keys">ã‚­ãƒ¼ã¨ãªã‚‹æ–‡å­—åˆ—ã§ã™ã€‚</param>
+        /// <returns>å­ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
 #endif
         public FormsToolStripItem GetItem(params string[] keys)
         {
@@ -108,10 +108,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Found child item.</returns>
 #else
         /// <summary>
-        /// •\¦•¶š—ñ‚©‚çƒAƒCƒeƒ€‚ğŒŸõ‚µ‚Ü‚·B
+        /// è¡¨ç¤ºæ–‡å­—åˆ—ã‹ã‚‰ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="texts">•\¦•¶š—ñB</param>
-        /// <returns>•\¦•¶š—ñB</returns>
+        /// <param name="texts">è¡¨ç¤ºæ–‡å­—åˆ—ã€‚</param>
+        /// <returns>è¡¨ç¤ºæ–‡å­—åˆ—ã€‚</returns>
 #endif
         public FormsToolStripItem FindItem(params string[] texts)
         {
@@ -119,11 +119,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="toolStrip">ƒc[ƒ‹ƒXƒgƒŠƒbƒvB</param>
-        /// <param name="indexes">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>ƒAƒCƒeƒ€B</returns>
+        /// <param name="toolStrip">ãƒ„ãƒ¼ãƒ«ã‚¹ãƒˆãƒªãƒƒãƒ—ã€‚</param>
+        /// <param name="indexes">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
         static ToolStripItem GetItemInTarget(ToolStrip toolStrip, params int[] indexes)
         {
             int currentIndex = 0;
@@ -149,11 +149,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="toolStrip">ƒc[ƒ‹ƒXƒgƒŠƒbƒvB</param>
-        /// <param name="keys">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>ƒAƒCƒeƒ€B</returns>
+        /// <param name="toolStrip">ãƒ„ãƒ¼ãƒ«ã‚¹ãƒˆãƒªãƒƒãƒ—ã€‚</param>
+        /// <param name="keys">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
         static ToolStripItem GetItemInTarget(ToolStrip toolStrip, params string[] keys)
         {
             int currentIndex = 0;
@@ -179,11 +179,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// •\¦•¶š—ñ‚©‚çƒAƒCƒeƒ€‚ğŒŸõ‚µ‚Ü‚·B
+        /// è¡¨ç¤ºæ–‡å­—åˆ—ã‹ã‚‰ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="toolStrip">ƒc[ƒ‹ƒXƒgƒŠƒbƒvB</param>
-        /// <param name="texts">•\¦•¶š—ñB</param>
-        /// <returns>ƒAƒCƒeƒ€B</returns>
+        /// <param name="toolStrip">ãƒ„ãƒ¼ãƒ«ã‚¹ãƒˆãƒªãƒƒãƒ—ã€‚</param>
+        /// <param name="texts">è¡¨ç¤ºæ–‡å­—åˆ—ã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
         static ToolStripItem FindItemInTarget(ToolStrip toolStrip, string[] texts)
         {
             int currentIndex = 0;

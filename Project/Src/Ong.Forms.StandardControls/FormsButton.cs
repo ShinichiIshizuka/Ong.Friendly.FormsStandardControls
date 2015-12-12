@@ -1,4 +1,4 @@
-using Codeer.Friendly;
+ï»¿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using System;
@@ -12,7 +12,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// Type‚ªSystem.Windows.Forms.Button‚ÌƒEƒBƒ“ƒhƒE‚É‘Î‰‚µ‚½‘€ì‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+    /// TypeãŒSystem.Windows.Forms.Buttonã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾å¿œã—ãŸæ“ä½œã‚’æä¾›ã—ã¾ã™ã€‚
     /// </summary>
 #endif
     public class FormsButton : FormsControlBase
@@ -24,9 +24,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="src">WindowControl object for the underlying control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="src">Œ³‚Æ‚È‚éƒEƒBƒ“ƒhƒEƒRƒ“ƒgƒ[ƒ‹‚Å‚·B</param>
+        /// <param name="src">å…ƒã¨ãªã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã§ã™ã€‚</param>
 #endif
         public FormsButton(WindowControl src)
             : base(src) { }
@@ -40,11 +40,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsButton(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsButton(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsButton(AppVar windowObject).", false)]
         public FormsButton(WindowsAppFriend app, AppVar appVar)
@@ -57,9 +57,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsButton(AppVar appVar)
             : base(appVar) { }
@@ -70,7 +70,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ƒNƒŠƒbƒN‚Å‚·B
+        /// ã‚¯ãƒªãƒƒã‚¯ã§ã™ã€‚
         /// </summary>
 #endif
         public void EmulateClick()
@@ -86,10 +86,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒNƒŠƒbƒN‚Å‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ã‚¯ãƒªãƒƒã‚¯ã§ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateClick(Async async)
         {
@@ -97,9 +97,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒNƒŠƒbƒN‚Å‚·B
+        /// ã‚¯ãƒªãƒƒã‚¯ã§ã™ã€‚
         /// </summary>
-        /// <param name="button">ƒ{ƒ^ƒ“B</param>
+        /// <param name="button">ãƒœã‚¿ãƒ³ã€‚</param>
         static void EmulateClickInTarget(Button button)
         {
             button.Focus();

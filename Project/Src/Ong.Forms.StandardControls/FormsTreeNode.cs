@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Windows.Forms;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
@@ -13,7 +13,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// ƒcƒŠ[ƒm[ƒh‚Å‚·B
+    /// ãƒ„ãƒªãƒ¼ãƒãƒ¼ãƒ‰ã§ã™ã€‚
     /// </summary>
 #endif
     public class FormsTreeNode : AppVarWrapper
@@ -27,11 +27,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsTreeNode(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsTreeNode(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsTreeNode(AppVar windowObject).", false)]
         public FormsTreeNode(WindowsAppFriend app, AppVar appVar)
@@ -44,9 +44,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsTreeNode(AppVar appVar)
             : base(appVar) { }
@@ -57,7 +57,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public string Text
@@ -71,7 +71,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// “WŠJ‚µ‚Ä‚¢‚é‚©‚ğæ“¾‚µ‚Ü‚·B
+        /// å±•é–‹ã—ã¦ã„ã‚‹ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public bool IsExpanded
@@ -85,7 +85,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ƒ`ƒFƒbƒNó‘Ô‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public bool Checked
@@ -99,7 +99,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// “WŠJ‚µ‚Ü‚·B
+        /// å±•é–‹ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public void EmulateExpand()
@@ -115,10 +115,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// “WŠJ‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// å±•é–‹ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateExpand(Async async)
         {
@@ -131,7 +131,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// “WŠJ‚ğ•Â‚¶‚Ü‚·B
+        /// å±•é–‹ã‚’é–‰ã˜ã¾ã™ã€‚
         /// </summary>
 #endif
         public void EmulateCollapse()
@@ -147,10 +147,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// “WŠJ‚ğ•Â‚¶‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// å±•é–‹ã‚’é–‰ã˜ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateCollapse(Async async)
         {
@@ -164,9 +164,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="nodeText">New text to use.</param>
 #else
         /// <summary>
-        /// ƒm[ƒh–¼‚ğ•ÒW‚µ‚Ü‚·B
+        /// ãƒãƒ¼ãƒ‰åã‚’ç·¨é›†ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="nodeText">ƒeƒLƒXƒgB</param>
+        /// <param name="nodeText">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
 #endif
         public void EmulateEditLabel(string nodeText)
         {
@@ -182,11 +182,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒm[ƒh–¼‚ğ•ÒW‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ãƒãƒ¼ãƒ‰åã‚’ç·¨é›†ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="nodeText">ƒeƒLƒXƒgB</param>
-        /// <param name="async">”ñ“¯ŠúƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="nodeText">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="async">éåŒæœŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateEditLabel(string nodeText, Async async)
         {
@@ -200,9 +200,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="check">true to set the node as checked.</param>
 #else
         /// <summary>
-        /// ƒ`ƒFƒbƒNó‘Ô‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="check">true:ƒ`ƒFƒbƒN</param>
+        /// <param name="check">true:ãƒã‚§ãƒƒã‚¯</param>
 #endif
         public void EmulateCheck(bool check)
         {
@@ -218,11 +218,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒ`ƒFƒbƒNó‘Ô‚ğİ’è‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’è¨­å®šã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="check">true:ƒ`ƒFƒbƒN</param>
-        /// <param name="async">”ñ“¯ŠúƒIƒuƒWƒFƒNƒg</param>
+        /// <param name="check">true:ãƒã‚§ãƒƒã‚¯</param>
+        /// <param name="async">éåŒæœŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
 #endif
         public void EmulateCheck(bool check, Async async)
         {
@@ -230,9 +230,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// “WŠJ‚µ‚Ü‚·B
+        /// å±•é–‹ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="treeNode">ƒm[ƒhB</param>
+        /// <param name="treeNode">ãƒãƒ¼ãƒ‰ã€‚</param>
         private static void EmulateExpandInTarget(TreeNode treeNode)
         {
             if (treeNode.TreeView == null)
@@ -244,9 +244,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// “WŠJ‚ğ‚Æ‚¶‚Ü‚·B
+        /// å±•é–‹ã‚’ã¨ã˜ã¾ã™ã€‚
         /// </summary>
-        /// <param name="treeNode">ƒm[ƒhB</param>
+        /// <param name="treeNode">ãƒãƒ¼ãƒ‰ã€‚</param>
         private static void EmulateCollapseInTarget(TreeNode treeNode)
         {
             if (treeNode.TreeView == null)
@@ -258,10 +258,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒ`ƒFƒbƒNó‘Ô‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="treeNode">ƒm[ƒhB</param>
-        /// <param name="check">true:ƒ`ƒFƒbƒN</param>
+        /// <param name="treeNode">ãƒãƒ¼ãƒ‰ã€‚</param>
+        /// <param name="check">true:ãƒã‚§ãƒƒã‚¯</param>
         private static void EmulateCheckInTarget(TreeNode treeNode, bool check)
         {
             if (treeNode.TreeView == null)
@@ -273,10 +273,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒm[ƒh–¼‚ğ•ÒW‚µ‚Ü‚·i“à•”jB
+        /// ãƒãƒ¼ãƒ‰åã‚’ç·¨é›†ã—ã¾ã™ï¼ˆå†…éƒ¨ï¼‰ã€‚
         /// </summary>
-        /// <param name="treeNode">ƒm[ƒhB</param>
-        /// <param name="nodeText">ƒeƒLƒXƒgB</param>
+        /// <param name="treeNode">ãƒãƒ¼ãƒ‰ã€‚</param>
+        /// <param name="nodeText">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         private static void EmulateEditLabelInTarget(TreeNode treeNode, string nodeText)
         {
             if (treeNode.TreeView == null)

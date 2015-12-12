@@ -1,4 +1,4 @@
-using Codeer.Friendly;
+ï»¿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using System;
@@ -12,7 +12,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// Type‚ªSystem.Windows.Forms.TextBox‚ÌƒEƒBƒ“ƒhƒE‚É‘Î‰‚µ‚½‘€ì‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+    /// TypeãŒSystem.Windows.Forms.TextBoxã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾å¿œã—ãŸæ“ä½œã‚’æä¾›ã—ã¾ã™ã€‚
     /// </summary>
 #endif
     public class FormsTextBox : FormsControlBase
@@ -24,9 +24,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="src">WindowControl object for the underlying control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="src">Œ³‚Æ‚È‚éƒEƒBƒ“ƒhƒEƒRƒ“ƒgƒ[ƒ‹B</param>
+        /// <param name="src">å…ƒã¨ãªã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã€‚</param>
 #endif
         public FormsTextBox(WindowControl src)
             : base(src) { }
@@ -40,11 +40,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsTextBox(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsTextBox(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsTextBox(AppVar windowObject).", false)]
         public FormsTextBox(WindowsAppFriend app, AppVar appVar)
@@ -57,9 +57,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsTextBox(AppVar appVar)
             : base(appVar) { }
@@ -71,9 +71,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="text">Text to use.</param>
 #else
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•ÏX‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
 #endif
         public void EmulateChangeText(string text)
         {
@@ -89,11 +89,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•ÏX‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateChangeText(string text, Async async)
         {
@@ -101,10 +101,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•ÏX‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="textBox">ƒŠƒbƒ`ƒeƒLƒXƒgƒ{ƒbƒNƒXB</param>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
+        /// <param name="textBox">ãƒªãƒƒãƒãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         static void EmulateChangeTextInTarget(TextBox textBox, string text)
         {
             textBox.Focus();

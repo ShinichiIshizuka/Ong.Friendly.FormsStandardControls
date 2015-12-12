@@ -1,4 +1,4 @@
-using System.Reflection;
+ï»¿using System.Reflection;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Codeer.Friendly;
@@ -14,7 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// Type‚ªSystem.Windows.Forms.DataGridView‚ÌƒEƒBƒ“ƒhƒE‚É‘Î‰‚µ‚½‘€ì‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+    /// TypeãŒSystem.Windows.Forms.DataGridViewã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾å¿œã—ãŸæ“ä½œã‚’æä¾›ã—ã¾ã™ã€‚
     /// </summary>
 #endif
     public class FormsDataGridView : FormsControlBase
@@ -26,9 +26,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="src">WindowControl object for the underlying control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="src">Œ³‚Æ‚È‚éƒEƒBƒ“ƒhƒEƒRƒ“ƒgƒ[ƒ‹B</param>
+        /// <param name="src">å…ƒã¨ãªã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã€‚</param>
 #endif
         public FormsDataGridView(WindowControl src)
             : base(src) { }
@@ -42,11 +42,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsDataGridView(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsDataGridView(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsDataGridView(AppVar windowObject).", false)]
         public FormsDataGridView(WindowsAppFriend app, AppVar appVar)
@@ -59,9 +59,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsDataGridView(AppVar appVar)
             : base(appVar) { }
@@ -72,7 +72,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// —ñ”‚ğæ“¾‚µ‚Ü‚·B
+        /// åˆ—æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int ColumnCount
@@ -86,7 +86,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// s”‚ğæ“¾‚µ‚Ü‚·B
+        /// è¡Œæ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int RowCount
@@ -100,7 +100,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// Œ»İ‚Ì‘I‘ğƒZƒ‹‚ğæ“¾‚µ‚Ü‚·B
+        /// ç¾åœ¨ã®é¸æŠã‚»ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public Cell CurrentCell
@@ -114,7 +114,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// Œ»İ‚Ì‘I‘ğƒZƒ‹‚ğæ“¾‚µ‚Ü‚·B
+        /// ç¾åœ¨ã®é¸æŠã‚»ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public Cell[] SelectedCells
@@ -128,7 +128,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// Œ»İ‚Ì‘I‘ğs‚ğæ“¾‚µ‚Ü‚·B
+        /// ç¾åœ¨ã®é¸æŠè¡Œã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int[] SelectedRows
@@ -145,11 +145,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>The cell's text.</returns>
 #else
         /// <summary>
-        /// s—ñ‚Åw’è‚µ‚½ƒZƒ‹‚ÌƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// è¡Œåˆ—ã§æŒ‡å®šã—ãŸã‚»ãƒ«ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <returns>ƒeƒLƒXƒgB</returns>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <returns>ãƒ†ã‚­ã‚¹ãƒˆã€‚</returns>
 #endif
         public string GetText(int col, int row)
         {
@@ -167,13 +167,13 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Cell values.</returns>
 #else
         /// <summary>
-        /// s—ñ‚Åw’è‚µ‚½”ÍˆÍ‚ÌƒZƒ‹‚ÌƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// è¡Œåˆ—ã§æŒ‡å®šã—ãŸç¯„å›²ã®ã‚»ãƒ«ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="startCol">ŠJn—ñB</param>
-        /// <param name="startRow">ŠJnsB</param>
-        /// <param name="endCol">I—¹—ñB</param>
-        /// <param name="endRow">I—¹sB</param>
-        /// <returns>ƒeƒLƒXƒg”z—ñB</returns>
+        /// <param name="startCol">é–‹å§‹åˆ—ã€‚</param>
+        /// <param name="startRow">é–‹å§‹è¡Œã€‚</param>
+        /// <param name="endCol">çµ‚äº†åˆ—ã€‚</param>
+        /// <param name="endRow">çµ‚äº†è¡Œã€‚</param>
+        /// <returns>ãƒ†ã‚­ã‚¹ãƒˆé…åˆ—ã€‚</returns>
 #endif
         public string[][] GetText(int startCol, int startRow, int endCol, int endRow)
         {
@@ -189,11 +189,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>The cell's text.</returns>
 #else
         /// <summary>
-        /// s—ñ‚Åw’è‚µ‚½ƒZƒ‹‚ÌƒtƒH[ƒ}ƒbƒg‚³‚ê‚½ƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// è¡Œåˆ—ã§æŒ‡å®šã—ãŸã‚»ãƒ«ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã•ã‚ŒãŸãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <returns>ƒeƒLƒXƒgB</returns>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <returns>ãƒ†ã‚­ã‚¹ãƒˆã€‚</returns>
 #endif
         public string GetFormattedText(int col, int row)
         {
@@ -211,13 +211,13 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Cell values.</returns>
 #else
         /// <summary>
-        /// s—ñ‚Åw’è‚µ‚½”ÍˆÍ‚ÌƒZƒ‹‚ÌƒtƒH[ƒ}ƒbƒg‚³‚ê‚½ƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// è¡Œåˆ—ã§æŒ‡å®šã—ãŸç¯„å›²ã®ã‚»ãƒ«ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã•ã‚ŒãŸãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="startCol">ŠJn—ñB</param>
-        /// <param name="startRow">ŠJnsB</param>
-        /// <param name="endCol">I—¹—ñB</param>
-        /// <param name="endRow">I—¹sB</param>
-        /// <returns>ƒeƒLƒXƒg”z—ñB</returns>
+        /// <param name="startCol">é–‹å§‹åˆ—ã€‚</param>
+        /// <param name="startRow">é–‹å§‹è¡Œã€‚</param>
+        /// <param name="endCol">çµ‚äº†åˆ—ã€‚</param>
+        /// <param name="endRow">çµ‚äº†è¡Œã€‚</param>
+        /// <returns>ãƒ†ã‚­ã‚¹ãƒˆé…åˆ—ã€‚</returns>
 #endif
         public string[][] GetFormattedText(int startCol, int startRow, int endCol, int endRow)
         {
@@ -233,11 +233,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="isChecked">Checked state to use.</param>
 #else
         /// <summary>
-        /// ƒZƒ‹‚Ìƒ`ƒFƒbƒNó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="isChecked">ƒ`ƒFƒbƒNó‘ÔB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="isChecked">ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€‚</param>
 #endif
         public void EmulateCellCheck(int col, int row, bool isChecked)
         {
@@ -255,13 +255,13 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒZƒ‹‚Ìƒ`ƒFƒbƒNó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="isChecked">ƒ`ƒFƒbƒNó‘ÔB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="isChecked">ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateCellCheck(int col, int row, bool isChecked, Async async)
         {
@@ -277,11 +277,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="text">The text to use.</param>
 #else
         /// <summary>
-        /// ƒZƒ‹‚ÌƒeƒLƒXƒg‚ğ•ÏX‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
 #endif
         public void EmulateChangeCellText(int col, int row, string text)
         {
@@ -299,13 +299,13 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒZƒ‹‚ÌƒeƒLƒXƒg‚ğ•ÏX‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateChangeCellText(int col, int row, string text, Async async)
         {
@@ -321,11 +321,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="index">The index to select.</param>
 #else
         /// <summary>
-        /// ƒZƒ‹ƒRƒ“ƒ{‚Ì‘I‘ğ‚ğ•ÏX‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ã‚³ãƒ³ãƒœã®é¸æŠã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
 #endif
         public void EmulateChangeCellComboSelect(int col, int row, int index)
         {
@@ -343,13 +343,13 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒZƒ‹ƒRƒ“ƒ{‚Ì‘I‘ğ‚ğ•ÏX‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ã‚³ãƒ³ãƒœã®é¸æŠã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateChangeCellComboSelect(int col, int row, int index, Async async)
         {
@@ -364,10 +364,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="row">Row number of the cell.</param>
 #else
         /// <summary>
-        /// ƒZƒ‹ƒ{ƒ^ƒ“AƒZƒ‹ƒŠƒ“ƒN‚ğƒNƒŠƒbƒN‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ãƒœã‚¿ãƒ³ã€ã‚»ãƒ«ãƒªãƒ³ã‚¯ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
 #endif
         public void EmulateClickCellContent(int col, int row)
         {
@@ -384,12 +384,12 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒZƒ‹ƒ{ƒ^ƒ“AƒZƒ‹ƒŠƒ“ƒN‚ğƒNƒŠƒbƒN‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ãƒœã‚¿ãƒ³ã€ã‚»ãƒ«ãƒªãƒ³ã‚¯ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateClickCellContent(int col, int row, Async async)
         {
@@ -404,10 +404,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="row">Row number of the cell.</param>
 #else
         /// <summary>
-        /// ƒJƒŒƒ“ƒgƒZƒ‹‚ğ‘I‘ğ‚µ‚Ü‚·B
+        /// ã‚«ãƒ¬ãƒ³ãƒˆã‚»ãƒ«ã‚’é¸æŠã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
 #endif
         public void EmulateChangeCurrentCell(int col, int row)
         {
@@ -424,12 +424,12 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒJƒŒƒ“ƒgƒZƒ‹‚ğ‘I‘ğ‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ã‚«ãƒ¬ãƒ³ãƒˆã‚»ãƒ«ã‚’é¸æŠã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateChangeCurrentCell(int col, int row, Async async)
         {
@@ -442,7 +442,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ‘I‘ğó‘Ô‚ğ‰ğœ‚µ‚Ü‚·B
+        /// é¸æŠçŠ¶æ…‹ã‚’è§£é™¤ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public void EmulateClearSelection()
@@ -458,10 +458,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ‘I‘ğó‘Ô‚ğ‰ğœ‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// é¸æŠçŠ¶æ…‹ã‚’è§£é™¤ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateClearSelection(Async async)
         {
@@ -475,9 +475,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="cells">Cell selection information.</param>
 #else
         /// <summary>
-        /// ‘I‘ğó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
+        /// é¸æŠçŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="cells">‘I‘ğƒZƒ‹î•ñB</param>
+        /// <param name="cells">é¸æŠã‚»ãƒ«æƒ…å ±ã€‚</param>
 #endif
         public void EmulateChangeCellSelected(params CellSelectedInfo[] cells)
         {
@@ -493,11 +493,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="cells">Cell selection information.</param>
 #else
         /// <summary>
-        /// ‘I‘ğó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// é¸æŠçŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
-        /// <param name="cells">‘I‘ğƒZƒ‹î•ñB</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
+        /// <param name="cells">é¸æŠã‚»ãƒ«æƒ…å ±ã€‚</param>
 #endif
         public void EmulateChangeCellSelected(Async async, params CellSelectedInfo[] cells)
         {
@@ -511,9 +511,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="rows">Row selection information.</param>
 #else
         /// <summary>
-        /// s‘I‘ğó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
+        /// è¡Œé¸æŠçŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="rows">‘I‘ğsî•ñB</param>
+        /// <param name="rows">é¸æŠè¡Œæƒ…å ±ã€‚</param>
 #endif
         public void EmulateChangeRowSelected(params RowSelectedInfo[] rows)
         {
@@ -529,11 +529,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="rows">Row selection information.</param>
 #else
         /// <summary>
-        /// s‘I‘ğó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// è¡Œé¸æŠçŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
-        /// <param name="rows">‘I‘ğsî•ñB</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
+        /// <param name="rows">é¸æŠè¡Œæƒ…å ±ã€‚</param>
 #endif
         public void EmulateChangeRowSelected(Async async, params RowSelectedInfo[] rows)
         {
@@ -546,7 +546,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// Delete‘€ì‚ğƒGƒ~ƒ…ƒŒ[ƒg‚µ‚Ü‚·B
+        /// Deleteæ“ä½œã‚’ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public void EmulateDelete()
@@ -562,10 +562,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// Delete‘€ì‚ğƒGƒ~ƒ…ƒŒ[ƒg‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// Deleteæ“ä½œã‚’ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateDelete(Async async)
         {
@@ -573,10 +573,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// Œ»İ‚Ì‘I‘ğs‚ğæ“¾‚µ‚Ü‚·B
+        /// ç¾åœ¨ã®é¸æŠè¡Œã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
-        /// <returns>Œ»İ‚Ì‘I‘ğsB</returns>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <returns>ç¾åœ¨ã®é¸æŠè¡Œã€‚</returns>
         static int[] GetSelectedRowsInTarget(DataGridView grid)
         {
             List<int> list = new List<int>();
@@ -589,12 +589,12 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// s—ñ‚Åw’è‚µ‚½ƒZƒ‹‚ÌƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·(“à•”)B
+        /// è¡Œåˆ—ã§æŒ‡å®šã—ãŸã‚»ãƒ«ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™(å†…éƒ¨)ã€‚
         /// </summary>
-        /// <param name="datagridview">ƒf[ƒ^ƒOƒŠƒbƒhƒrƒ…[B</param>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <returns>ƒeƒLƒXƒgB</returns>
+        /// <param name="datagridview">ãƒ‡ãƒ¼ã‚¿ã‚°ãƒªãƒƒãƒ‰ãƒ“ãƒ¥ãƒ¼ã€‚</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <returns>ãƒ†ã‚­ã‚¹ãƒˆã€‚</returns>
         static string GetTextInTarget(DataGridView datagridview, int col, int row)
         {
             object obj = datagridview.Rows[row].Cells[col].Value;
@@ -602,14 +602,14 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// s—ñ‚Åw’è‚µ‚½”ÍˆÍ‚ÌƒZƒ‹‚ÌƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// è¡Œåˆ—ã§æŒ‡å®šã—ãŸç¯„å›²ã®ã‚»ãƒ«ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="datagridview">ƒf[ƒ^ƒOƒŠƒbƒhB</param>
-        /// <param name="startCol">ŠJn—ñB</param>
-        /// <param name="startRow">ŠJnsB</param>
-        /// <param name="endCol">I—¹—ñB</param>
-        /// <param name="endRow">I—¹sB</param>
-        /// <returns>ƒeƒLƒXƒg”z—ñB</returns>
+        /// <param name="datagridview">ãƒ‡ãƒ¼ã‚¿ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <param name="startCol">é–‹å§‹åˆ—ã€‚</param>
+        /// <param name="startRow">é–‹å§‹è¡Œã€‚</param>
+        /// <param name="endCol">çµ‚äº†åˆ—ã€‚</param>
+        /// <param name="endRow">çµ‚äº†è¡Œã€‚</param>
+        /// <returns>ãƒ†ã‚­ã‚¹ãƒˆé…åˆ—ã€‚</returns>
         static string[][] GetTextInTarget(DataGridView datagridview, int startCol, int startRow, int endCol, int endRow)
         {
             int colCount = endCol - startCol+ 1;
@@ -629,12 +629,12 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// s—ñ‚Åw’è‚µ‚½ƒZƒ‹‚ÌƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·(“à•”)B
+        /// è¡Œåˆ—ã§æŒ‡å®šã—ãŸã‚»ãƒ«ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™(å†…éƒ¨)ã€‚
         /// </summary>
-        /// <param name="datagridview">ƒf[ƒ^ƒOƒŠƒbƒhƒrƒ…[B</param>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <returns>ƒeƒLƒXƒgB</returns>
+        /// <param name="datagridview">ãƒ‡ãƒ¼ã‚¿ã‚°ãƒªãƒƒãƒ‰ãƒ“ãƒ¥ãƒ¼ã€‚</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <returns>ãƒ†ã‚­ã‚¹ãƒˆã€‚</returns>
         static string GetFormattedTextInTarget(DataGridView datagridview, int col, int row)
         {
             object obj = datagridview.Rows[row].Cells[col].FormattedValue;
@@ -642,14 +642,14 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// s—ñ‚Åw’è‚µ‚½”ÍˆÍ‚ÌƒZƒ‹‚ÌƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// è¡Œåˆ—ã§æŒ‡å®šã—ãŸç¯„å›²ã®ã‚»ãƒ«ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="datagridview">ƒf[ƒ^ƒOƒŠƒbƒhB</param>
-        /// <param name="startCol">ŠJn—ñB</param>
-        /// <param name="startRow">ŠJnsB</param>
-        /// <param name="endCol">I—¹—ñB</param>
-        /// <param name="endRow">I—¹sB</param>
-        /// <returns>ƒeƒLƒXƒg”z—ñB</returns>
+        /// <param name="datagridview">ãƒ‡ãƒ¼ã‚¿ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <param name="startCol">é–‹å§‹åˆ—ã€‚</param>
+        /// <param name="startRow">é–‹å§‹è¡Œã€‚</param>
+        /// <param name="endCol">çµ‚äº†åˆ—ã€‚</param>
+        /// <param name="endRow">çµ‚äº†è¡Œã€‚</param>
+        /// <returns>ãƒ†ã‚­ã‚¹ãƒˆé…åˆ—ã€‚</returns>
         static string[][] GetFormattedTextInTarget(DataGridView datagridview, int startCol, int startRow, int endCol, int endRow)
         {
             int colCount = endCol - startCol + 1;
@@ -669,10 +669,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// Œ»İ‚Ì‘I‘ğƒZƒ‹‚ğæ“¾‚µ‚Ü‚·B
+        /// ç¾åœ¨ã®é¸æŠã‚»ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
-        /// <returns>Œ»İ‚Ì‘I‘ğƒZƒ‹B</returns>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <returns>ç¾åœ¨ã®é¸æŠã‚»ãƒ«ã€‚</returns>
         static Cell[] GetSelectedCellsInTarget(DataGridView grid)
         {
             List<Cell> list = new List<Cell>();
@@ -681,7 +681,7 @@ namespace Ong.Friendly.FormsStandardControls
                 list.Add(new Cell(element.ColumnIndex, element.RowIndex));
             }
 
-            //Col,Row‚Åƒ\[ƒg
+            //Col,Rowã§ã‚½ãƒ¼ãƒˆ
             list.Sort(delegate(Cell data1, Cell data2)
             {
                 if (data1.Col < data2.Col)
@@ -706,12 +706,12 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒZƒ‹‚Ìƒ`ƒFƒbƒNó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="isChecked">ƒ`ƒFƒbƒNó‘ÔB</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="isChecked">ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€‚</param>
         static void EmulateCellCheckInTarget(DataGridView grid, int col, int row, bool isChecked)
         {
             EmulateChangeCurrentCellInTarget(grid, col, row);
@@ -731,12 +731,12 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒZƒ‹‚ÌƒeƒLƒXƒg‚ğ•ÏX‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         static void EmulateChangeCellTextInTarget(DataGridView grid, int col, int row, string text)
         {
             EmulateChangeCurrentCellInTarget(grid, col, row);
@@ -746,10 +746,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// s‘I‘ğó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
+        /// è¡Œé¸æŠçŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
-        /// <param name="rows">‘I‘ğsî•ñB</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <param name="rows">é¸æŠè¡Œæƒ…å ±ã€‚</param>
         static void EmulateChangeRowSelectedInTarget(DataGridView grid, RowSelectedInfo[] rows)
         {
             grid.Focus();
@@ -761,12 +761,12 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒZƒ‹ƒRƒ“ƒ{‚Ì‘I‘ğ‚ğ•ÏX‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ã‚³ãƒ³ãƒœã®é¸æŠã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
         static void EmulateChangeCellComboSelectInTarget(DataGridView grid, int col, int row, int index)
         {
             EmulateChangeCurrentCellInTarget(grid, col, row);
@@ -776,11 +776,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒZƒ‹ƒ{ƒ^ƒ“AƒZƒ‹ƒŠƒ“ƒN‚ğƒNƒŠƒbƒN‚µ‚Ü‚·B
+        /// ã‚»ãƒ«ãƒœã‚¿ãƒ³ã€ã‚»ãƒ«ãƒªãƒ³ã‚¯ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="grid"></param>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
         static void EmulateClickCellContentInTarget(DataGridView grid, int col, int row)
         {
             EmulateChangeCurrentCellInTarget(grid, col, row);
@@ -789,11 +789,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒJƒŒƒ“ƒgƒZƒ‹‚ğ‘I‘ğ‚µ‚Ü‚·B
+        /// ã‚«ãƒ¬ãƒ³ãƒˆã‚»ãƒ«ã‚’é¸æŠã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
-        /// <param name="col">—ñB</param>
-        /// <param name="row">sB</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <param name="col">åˆ—ã€‚</param>
+        /// <param name="row">è¡Œã€‚</param>
         static void EmulateChangeCurrentCellInTarget(DataGridView grid, int col, int row)
         {
             grid.Focus();
@@ -802,10 +802,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ‘I‘ğó‘Ô‚ğ•ÏX‚µ‚Ü‚·B
+        /// é¸æŠçŠ¶æ…‹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
-        /// <param name="cells">‘I‘ğƒZƒ‹î•ñB</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <param name="cells">é¸æŠã‚»ãƒ«æƒ…å ±ã€‚</param>
         static void EmulateChangeCellSelectedInTarget(DataGridView grid, CellSelectedInfo[] cells)
         {
             grid.Focus();
@@ -817,9 +817,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ‘I‘ğó‘Ô‚ğ‰ğœ‚µ‚Ü‚·B
+        /// é¸æŠçŠ¶æ…‹ã‚’è§£é™¤ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
         static void EmulateClearSelectionInTarget(DataGridView grid)
         {
             grid.Focus();
@@ -827,9 +827,9 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// Delete‘€ì‚ğƒGƒ~ƒ…ƒŒ[ƒg‚µ‚Ü‚·B
+        /// Deleteæ“ä½œã‚’ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
         static void EmulateDeleteInTarget(DataGridView grid)
         {
             grid.Focus();
@@ -838,10 +838,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// Œ»İ‚Ì‘I‘ğƒZƒ‹‚ğæ“¾‚µ‚Ü‚·B
+        /// ç¾åœ¨ã®é¸æŠã‚»ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="grid">ƒOƒŠƒbƒhB</param>
-        /// <returns>Œ»İ‚Ì‘I‘ğƒZƒ‹B</returns>
+        /// <param name="grid">ã‚°ãƒªãƒƒãƒ‰ã€‚</param>
+        /// <returns>ç¾åœ¨ã®é¸æŠã‚»ãƒ«ã€‚</returns>
         static Cell GetCurrentCellInTarget(DataGridView grid)
         {
             if (grid.CurrentCell == null)

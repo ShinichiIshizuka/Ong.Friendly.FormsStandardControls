@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// Type‚ªSystem.Windows.Forms.ComboBox‚ÌƒEƒBƒ“ƒhƒE‚É‘Î‰‚µ‚½‘€ì‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+    /// TypeãŒSystem.Windows.Forms.ComboBoxã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾å¿œã—ãŸæ“ä½œã‚’æä¾›ã—ã¾ã™ã€‚
     /// </summary>
 #endif
     public class FormsComboBox : FormsControlBase
@@ -26,9 +26,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="src">Window control object for the underlying control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="src">Œ³‚Æ‚È‚éƒEƒBƒ“ƒhƒEƒRƒ“ƒgƒ[ƒ‹B</param>
+        /// <param name="src">å…ƒã¨ãªã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã€‚</param>
 #endif
         public FormsComboBox(WindowControl src)
             : base(src) { }
@@ -42,11 +42,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsComboBox(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsComboBox(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsComboBox(AppVar windowObject).", false)]
         public FormsComboBox(WindowsAppFriend app, AppVar appVar)
@@ -59,9 +59,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsComboBox(AppVar appVar)
             : base(appVar) { }
@@ -72,7 +72,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ˆê——‚ÌƒAƒCƒeƒ€”‚ğæ“¾‚µ‚Ü‚·B
+        /// ä¸€è¦§ã®ã‚¢ã‚¤ãƒ†ãƒ æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int ItemCount
@@ -86,7 +86,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// Œ»İ‘I‘ğ‚³‚ê‚Ä‚¢‚éƒAƒCƒeƒ€‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// ç¾åœ¨é¸æŠã•ã‚Œã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int SelectedItemIndex
@@ -102,10 +102,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>The item's text.</returns>
 #else
         /// <summary>
-        /// ƒAƒCƒeƒ€‚Ì•¶š—ñ‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ãƒ†ãƒ ã®æ–‡å­—åˆ—ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>ƒAƒCƒeƒ€•¶š—ñB</returns>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ æ–‡å­—åˆ—ã€‚</returns>
 #endif
         public string GetItemText(int index)
         {
@@ -120,10 +120,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Index of the first item found; returns -1 if no match is found.</returns>
 #else
         /// <summary>
-        /// w’è‚Ì•¶š—ñ‚ÌƒAƒCƒeƒ€‚ğ•”•ªˆê’vŒŸõ‚µ‚Ü‚·B
+        /// æŒ‡å®šã®æ–‡å­—åˆ—ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’éƒ¨åˆ†ä¸€è‡´æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
-        /// <returns>ƒAƒCƒeƒ€ƒCƒ“ƒfƒbƒNƒXB</returns>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</returns>
 #endif
         public int FindString(string text)
         {
@@ -139,11 +139,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Index of the first item found; returns -1 if no match is found.</returns>
 #else
         /// <summary>
-        /// w’è‚Ì•¶š—ñ‚ÌƒAƒCƒeƒ€‚ğ•”•ªˆê’vŒŸõ‚µ‚Ü‚·B
+        /// æŒ‡å®šã®æ–‡å­—åˆ—ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’éƒ¨åˆ†ä¸€è‡´æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
-        /// <param name="startIndex">ŒŸõŠJnƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>ƒAƒCƒeƒ€ƒCƒ“ƒfƒbƒNƒXB</returns>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="startIndex">æ¤œç´¢é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</returns>
 #endif
         public int FindString(string text, int startIndex)
         {
@@ -158,10 +158,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Index of the first item found; returns -1 if no match is found, or 0 if the s parameter specifies Empty.</returns>
 #else
         /// <summary>
-        /// w’è‚Ì•¶š—ñ‚ÌƒAƒCƒeƒ€‚ğŠ®‘Sˆê’vŒŸõ‚µ‚Ü‚·B
+        /// æŒ‡å®šã®æ–‡å­—åˆ—ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å®Œå…¨ä¸€è‡´æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
-        /// <returns>ƒAƒCƒeƒ€ƒCƒ“ƒfƒbƒNƒXB</returns>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</returns>
 #endif
         public int FindStringExact(string text)
         {
@@ -177,11 +177,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Index of the first item found; returns -1 if no match is found, or 0 if the s parameter specifies Empty.</returns>
 #else
         /// <summary>
-        /// w’è‚Ì•¶š—ñ‚ÌƒAƒCƒeƒ€‚ğŠ®‘Sˆê’vŒŸõ‚µ‚Ü‚·B
+        /// æŒ‡å®šã®æ–‡å­—åˆ—ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å®Œå…¨ä¸€è‡´æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
-        /// <param name="startIndex">ŒŸõŠJnƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>ƒAƒCƒeƒ€ƒCƒ“ƒfƒbƒNƒXB</returns>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="startIndex">æ¤œç´¢é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</returns>
 #endif
         public int FindStringExact(string text, int startIndex)
         {
@@ -195,9 +195,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="text">Text to use.</param>
 #else
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•ÏX‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
 #endif
         public void EmulateChangeText(string text)
         {
@@ -213,11 +213,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•ÏX‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateChangeText(string text, Async async)
         {
@@ -231,9 +231,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="index">Item index.</param>
 #else
         /// <summary>
-        /// w’è‚ÌƒCƒ“ƒfƒbƒNƒX‚ÌƒAƒCƒeƒ€‚ğ‘I‘ğ‚µ‚Ü‚·B
+        /// æŒ‡å®šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’é¸æŠã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
 #endif
         public void EmulateChangeSelect(int index)
         {
@@ -249,11 +249,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// w’è‚ÌƒCƒ“ƒfƒbƒNƒX‚ÌƒAƒCƒeƒ€‚ğ‘I‘ğ‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// æŒ‡å®šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’é¸æŠã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateChangeSelect(int index, Async async)
         {
@@ -261,10 +261,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•ÏX‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ›´ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="comboBox">ƒRƒ“ƒ{ƒ{ƒbƒNƒXB</param>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
+        /// <param name="comboBox">ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         static void EmulateChangeTextInTarget(ComboBox comboBox, string text)
         {
             comboBox.Focus();
@@ -272,10 +272,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// w’è‚ÌƒCƒ“ƒfƒbƒNƒX‚ÌƒAƒCƒeƒ€‚ğ‘I‘ğ‚µ‚Ü‚·B
+        /// æŒ‡å®šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’é¸æŠã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="comboBox">ƒRƒ“ƒ{ƒ{ƒbƒNƒXB</param>
-        /// <param name="index">ƒCƒ“ƒfƒbƒNƒXB</param>
+        /// <param name="comboBox">ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
         static void EmulateChangeSelectInTarget(ComboBox comboBox, int index)
         {
             comboBox.Focus();

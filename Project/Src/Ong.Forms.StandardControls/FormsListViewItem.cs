@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// ƒŠƒXƒgƒAƒCƒeƒ€‚Å‚·B
+    /// ãƒªã‚¹ãƒˆã‚¢ã‚¤ãƒ†ãƒ ã§ã™ã€‚
     /// </summary>
 #endif
     public class FormsListViewItem : AppVarWrapper
@@ -31,11 +31,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsListViewItem(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsListViewItem(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsListViewItem(AppVar windowObject).", false)]
         public FormsListViewItem(WindowsAppFriend app, AppVar appVar)
@@ -48,9 +48,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsListViewItem(AppVar appVar)
             : base(appVar) { }
@@ -61,7 +61,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public string Text
@@ -75,7 +75,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ƒAƒCƒeƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ãƒ†ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public int ItemIndex
@@ -89,7 +89,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ƒ`ƒFƒbƒNó‘Ô‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public bool Checked
@@ -105,10 +105,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>The indicated item.</returns>
 #else
         /// <summary>
-        /// ƒTƒuƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚µãƒ–ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="subitemindex">ƒTƒuƒAƒCƒeƒ€ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>ƒTƒuƒAƒCƒeƒ€B</returns>
+        /// <param name="subitemindex">ã‚µãƒ–ã‚¢ã‚¤ãƒ†ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>ã‚µãƒ–ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
 #endif
         public FormsListViewSubItem GetSubItem(int subitemindex)
         {
@@ -122,9 +122,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="value">Check state to use.</param>
 #else
         /// <summary>
-        /// ƒ`ƒFƒbƒNó‘Ô‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="value">ƒ`ƒFƒbƒNó‘ÔB</param>
+        /// <param name="value">ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€‚</param>
 #endif
         public void EmulateCheck(bool value)
         {
@@ -140,11 +140,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒ`ƒFƒbƒNó‘Ô‚ğİ’è‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’è¨­å®šã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="value">ƒ`ƒFƒbƒNó‘ÔB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="value">ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateCheck(bool value, Async async)
         {
@@ -158,9 +158,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="text">Text to use.</param>
 #else
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•ÒW‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’ç·¨é›†ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
 #endif
         public void EmulateEditLabel(string text)
         {
@@ -176,11 +176,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•ÒW‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’ç·¨é›†ã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
-        /// <param name="async">”ñ“¯ŠúÀsƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="async">éåŒæœŸå®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateEditLabel(string text, Async async)
         {
@@ -188,10 +188,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒTƒuƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·(“à•”)B
+        /// ã‚µãƒ–ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™(å†…éƒ¨)ã€‚
         /// </summary>
-        /// <param name="listviewitem">ƒŠƒXƒgƒrƒ…[ƒAƒCƒeƒ€B</param>
-        /// <param name="subitemindex">ƒŠƒXƒgƒrƒ…[ƒTƒuƒAƒCƒeƒ€ƒCƒ“ƒfƒbƒNƒXB</param>
+        /// <param name="listviewitem">ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã‚¢ã‚¤ãƒ†ãƒ ã€‚</param>
+        /// <param name="subitemindex">ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã‚µãƒ–ã‚¢ã‚¤ãƒ†ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
         /// <returns>FormsListViewSubItem</returns>
         static ListViewItem.ListViewSubItem GetSubItemInTarget(ListViewItem listviewitem, int subitemindex)
         {
@@ -199,10 +199,10 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•ÒW‚µ‚Ü‚·B
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’ç·¨é›†ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="item">ƒAƒCƒeƒ€B</param>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
+        /// <param name="item">ã‚¢ã‚¤ãƒ†ãƒ ã€‚</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         static void EmulateEditLabelInTarget(ListViewItem item, string text)
         {
             if (item.ListView == null)
@@ -212,10 +212,10 @@ namespace Ong.Friendly.FormsStandardControls
 
             item.ListView.Focus();
 
-            //•ÒWŠJn
+            //ç·¨é›†é–‹å§‹
             item.BeginEdit();
 
-            //ƒGƒfƒBƒ^‚ğ’T‚·
+            //ã‚¨ãƒ‡ã‚£ã‚¿ã‚’æ¢ã™
             IntPtr edit = IntPtr.Zero;
             EnumWindowsProc proc = delegate(IntPtr hWnd, IntPtr lParam)
             {
@@ -231,18 +231,18 @@ namespace Ong.Friendly.FormsStandardControls
             EnumChildWindows(item.ListView.Handle, proc, IntPtr.Zero);
             GC.KeepAlive(proc);
 
-            //ƒeƒLƒXƒgİ’è
+            //ãƒ†ã‚­ã‚¹ãƒˆè¨­å®š
             SetWindowText(edit, text);
 
-            //ƒtƒH[ƒJƒX‚ğƒŠƒXƒgƒrƒ…[‚É–ß‚µ•ÒWŠ®—¹
+            //ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã«æˆ»ã—ç·¨é›†å®Œäº†
             item.ListView.Focus();
         }
 
         /// <summary>
-        /// ƒ`ƒFƒbƒNó‘Ô‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="item">ƒŠƒXƒgƒrƒ…[ƒAƒCƒeƒ€B</param>
-        /// <param name="value">ƒ`ƒFƒbƒNó‘ÔB</param>
+        /// <param name="item">ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã‚¢ã‚¤ãƒ†ãƒ ã€‚</param>
+        /// <param name="value">ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€‚</param>
         static void EmulateCheckInTarget(ListViewItem item, bool value)
         {
             if (item.ListView == null)
@@ -254,40 +254,40 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒEƒBƒ“ƒhƒEŒŸõƒvƒƒbƒNB
+        /// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æ¤œç´¢ãƒ—ãƒ­ãƒƒã‚¯ã€‚
         /// </summary>
-        /// <param name="hWnd">ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹B</param>
-        /// <param name="lParam">ƒpƒ‰ƒ[ƒ^B</param>
-        /// <returns>ŒŸõ‚ğ‘±‚¯‚é‚©B</returns>
+        /// <param name="hWnd">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
+        /// <param name="lParam">ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã€‚</param>
+        /// <returns>æ¤œç´¢ã‚’ç¶šã‘ã‚‹ã‹ã€‚</returns>
         delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
         /// <summary>
-        /// qƒEƒBƒ“ƒhƒEŒŸõB
+        /// å­ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æ¤œç´¢ã€‚
         /// </summary>
-        /// <param name="parent">eƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹B</param>
-        /// <param name="lpEnumFunc">ŒŸõƒvƒƒbƒNB</param>
-        /// <param name="lParam">ƒpƒ‰ƒ[ƒ^B</param>
+        /// <param name="parent">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
+        /// <param name="lpEnumFunc">æ¤œç´¢ãƒ—ãƒ­ãƒƒã‚¯ã€‚</param>
+        /// <param name="lParam">ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã€‚</param>
         /// <returns></returns>
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool EnumChildWindows(IntPtr parent, EnumWindowsProc lpEnumFunc, IntPtr lParam);
 
         /// <summary>
-        /// ƒEƒBƒ“ƒhƒEƒNƒ‰ƒX–¼Ìæ“¾B
+        /// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¯ãƒ©ã‚¹åç§°å–å¾—ã€‚
         /// </summary>
-        /// <param name="hWnd">ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹B</param>
-        /// <param name="lpClassName">ƒNƒ‰ƒX–¼ÌŠi”[ƒoƒbƒtƒ@B</param>
-        /// <param name="nMaxCount">Å‘å”B</param>
-        /// <returns>•¶š”B</returns>
+        /// <param name="hWnd">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
+        /// <param name="lpClassName">ã‚¯ãƒ©ã‚¹åç§°æ ¼ç´ãƒãƒƒãƒ•ã‚¡ã€‚</param>
+        /// <param name="nMaxCount">æœ€å¤§æ•°ã€‚</param>
+        /// <returns>æ–‡å­—æ•°ã€‚</returns>
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
 
         /// <summary>
-        /// ƒeƒLƒXƒg‚Ìİ’èB
+        /// ãƒ†ã‚­ã‚¹ãƒˆã®è¨­å®šã€‚
         /// </summary>
-        /// <param name="hWnd">ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹B</param>
-        /// <param name="lpString">ƒeƒLƒXƒgB</param>
-        /// <returns>¬”ÛB</returns>
+        /// <param name="hWnd">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
+        /// <param name="lpString">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <returns>æˆå¦ã€‚</returns>
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         static extern bool SetWindowText(IntPtr hWnd, string lpString);
     }

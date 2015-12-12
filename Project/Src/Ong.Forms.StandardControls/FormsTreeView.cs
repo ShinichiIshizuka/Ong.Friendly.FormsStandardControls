@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+ï»¿using System.Windows.Forms;
 using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -12,7 +12,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #else
     /// <summary>
-    /// Type‚ªSystem.Windows.Forms.TreeView‚ÌƒEƒBƒ“ƒhƒE‚É‘Î‰‚µ‚½‘€ì‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+    /// TypeãŒSystem.Windows.Forms.TreeViewã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾å¿œã—ãŸæ“ä½œã‚’æä¾›ã—ã¾ã™ã€‚
     /// </summary>
 #endif
     public class FormsTreeView : FormsControlBase
@@ -24,9 +24,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="src">WindowControl object for the underlying control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="src">Œ³‚Æ‚È‚éƒEƒBƒ“ƒhƒEƒRƒ“ƒgƒ[ƒ‹B</param>
+        /// <param name="src">å…ƒã¨ãªã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã€‚</param>
 #endif
         public FormsTreeView(WindowControl src)
             : base(src) { }
@@ -40,11 +40,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// Œ»İ”ñ„§‚Å‚·B
-        /// FormsTreeView(AppVar windowObject)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+        /// ç¾åœ¨éæ¨å¥¨ã§ã™ã€‚
+        /// FormsTreeView(AppVar windowObject)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
         /// </summary>
-        /// <param name="app">ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘€ìƒNƒ‰ƒXB</param>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="app">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ“ä½œã‚¯ãƒ©ã‚¹ã€‚</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         [Obsolete("Please use FormsTreeView(AppVar windowObject).", false)]
         public FormsTreeView(WindowsAppFriend app, AppVar appVar)
@@ -57,9 +57,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="appVar">Application variable object for the control.</param>
 #else
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
         /// </summary>
-        /// <param name="appVar">ƒAƒvƒŠƒP[ƒVƒ‡ƒ““à•Ï”B</param>
+        /// <param name="appVar">ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å†…å¤‰æ•°ã€‚</param>
 #endif
         public FormsTreeView(AppVar appVar)
             : base(appVar) { }
@@ -70,7 +70,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// </summary>
 #else
         /// <summary>
-        /// ‘I‘ğ‚µ‚Ä‚¢‚éƒm[ƒh‚ğæ“¾‚µ‚Ü‚·B
+        /// é¸æŠã—ã¦ã„ã‚‹ãƒãƒ¼ãƒ‰ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
 #endif
         public FormsTreeNode SelectNode
@@ -86,10 +86,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Child items.</returns>
 #else
         /// <summary>
-        /// qƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// å­ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="indexes">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>qƒAƒCƒeƒ€B</returns>
+        /// <param name="indexes">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>å­ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
 #endif
         public FormsTreeNode GetItem(params int[] indexes)
         {
@@ -104,10 +104,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Child items.</returns>
 #else
         /// <summary>
-        /// qƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// å­ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="keys">ƒL[‚Æ‚È‚éƒCƒ“ƒfƒbƒNƒX‚Å‚·B</param>
-        /// <returns>qƒAƒCƒeƒ€B</returns>
+        /// <param name="keys">ã‚­ãƒ¼ã¨ãªã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã§ã™ã€‚</param>
+        /// <returns>å­ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
 #endif
         public FormsTreeNode GetItem(params string[] keys)
         {
@@ -122,10 +122,10 @@ namespace Ong.Friendly.FormsStandardControls
         /// <returns>Child items.</returns>
 #else
         /// <summary>
-        /// •\¦•¶š—ñ‚©‚çƒAƒCƒeƒ€‚ğŒŸõ‚µ‚Ü‚·B
+        /// è¡¨ç¤ºæ–‡å­—åˆ—ã‹ã‚‰ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="texts">•\¦•¶š—ñB</param>
-        /// <returns>qƒAƒCƒeƒ€B</returns>
+        /// <param name="texts">è¡¨ç¤ºæ–‡å­—åˆ—ã€‚</param>
+        /// <returns>å­ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
 #endif
         public FormsTreeNode FindItem(params string[] texts)
         {
@@ -139,9 +139,9 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="node">Node to select.</param>
 #else
         /// <summary>
-        /// ƒm[ƒh‚ğ‘I‘ğ‚µ‚Ü‚·B
+        /// ãƒãƒ¼ãƒ‰ã‚’é¸æŠã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="node">ƒm[ƒhB</param>
+        /// <param name="node">ãƒãƒ¼ãƒ‰ã€‚</param>
 #endif
         public void EmulateNodeSelect(FormsTreeNode node)
         {
@@ -157,11 +157,11 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">Asynchronous execution.</param>
 #else
         /// <summary>
-        /// ƒm[ƒh‚ğ‘I‘ğ‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ãƒãƒ¼ãƒ‰ã‚’é¸æŠã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="node">ƒm[ƒhB</param>
-        /// <param name="async">”ñ“¯ŠúƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="node">ãƒãƒ¼ãƒ‰ã€‚</param>
+        /// <param name="async">éåŒæœŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
 #endif
         public void EmulateNodeSelect(FormsTreeNode node, Async async)
         {
@@ -169,11 +169,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒm[ƒh‚ğ‘I‘ğ‚µ‚Ü‚·B
-        /// ”ñ“¯Šú‚ÅÀs‚µ‚Ü‚·B
+        /// ãƒãƒ¼ãƒ‰ã‚’é¸æŠã—ã¾ã™ã€‚
+        /// éåŒæœŸã§å®Ÿè¡Œã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="tree">ƒcƒŠ[B</param>
-        /// <param name="node">ƒm[ƒhB</param>
+        /// <param name="tree">ãƒ„ãƒªãƒ¼ã€‚</param>
+        /// <param name="node">ãƒãƒ¼ãƒ‰ã€‚</param>
         static void EmulateNodeSelectInTarget(TreeView tree, TreeNode node)
         {
             tree.Focus();
@@ -181,11 +181,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="trerview">ƒcƒŠ[ƒrƒ…[B</param>
-        /// <param name="indexes">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>ƒAƒCƒeƒ€</returns>
+        /// <param name="trerview">ãƒ„ãƒªãƒ¼ãƒ“ãƒ¥ãƒ¼ã€‚</param>
+        /// <param name="indexes">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ </returns>
         static TreeNode GetItemInTarget(TreeView trerview, params int[] indexes)
         {
             int currentIndex = 0;
@@ -211,11 +211,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// ƒAƒCƒeƒ€‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="trerview">ƒcƒŠ[ƒrƒ…[B</param>
-        /// <param name="keys">ƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>ƒAƒCƒeƒ€</returns>
+        /// <param name="trerview">ãƒ„ãƒªãƒ¼ãƒ“ãƒ¥ãƒ¼ã€‚</param>
+        /// <param name="keys">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ </returns>
         static TreeNode GetItemInTarget(TreeView trerview, params string[] keys)
         {
             int currentIndex = 0;
@@ -241,11 +241,11 @@ namespace Ong.Friendly.FormsStandardControls
         }
 
         /// <summary>
-        /// •\¦•¶š—ñ‚©‚çƒAƒCƒeƒ€‚ğŒŸõ‚µ‚Ü‚·B
+        /// è¡¨ç¤ºæ–‡å­—åˆ—ã‹ã‚‰ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="trerview">ƒcƒŠ[ƒrƒ…[B</param>
-        /// <param name="texts">•\¦•¶š—ñB</param>
-        /// <returns>ƒAƒCƒeƒ€B</returns>
+        /// <param name="trerview">ãƒ„ãƒªãƒ¼ãƒ“ãƒ¥ãƒ¼ã€‚</param>
+        /// <param name="texts">è¡¨ç¤ºæ–‡å­—åˆ—ã€‚</param>
+        /// <returns>ã‚¢ã‚¤ãƒ†ãƒ ã€‚</returns>
         static TreeNode FindItemInTarget(TreeView trerview, string[] texts)
         {
             int currentIndex = 0;
