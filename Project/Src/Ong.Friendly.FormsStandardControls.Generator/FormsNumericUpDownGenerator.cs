@@ -18,6 +18,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         protected override void Attach()
         {
             _control = (NumericUpDown)ControlObject;
+            _control.TextChanged += TextChanged;
             _control.ValueChanged += ValueChanged;
         }
 
@@ -26,8 +27,21 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// </summary>
         protected override void Detach()
         {
-            _control.ValueChanged -= ValueChanged;
+            _control.TextChanged += TextChanged;
+            _control.ValueChanged += ValueChanged;
         }
+
+        private void TextChanged(object sender, EventArgs e)
+        {
+            if (_control.Focused)
+            {
+                if (decimal.TryParse(_control.Text, out var d))
+                {
+                    AddSentence(new TokenName(), ".EmulateChangeValue(" + _control.Text + "", new TokenAsync(CommaType.Before), ");");
+                }
+            }
+        }
+
 
         /// <summary>
         /// 値変更イベント
