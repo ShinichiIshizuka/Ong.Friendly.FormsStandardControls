@@ -27,8 +27,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// </summary>
         protected override void Detach()
         {
-            _control.TextChanged += TextChanged;
-            _control.ValueChanged += ValueChanged;
+            _control.TextChanged -= TextChanged;
+            _control.ValueChanged -= ValueChanged;
         }
 
         private void TextChanged(object sender, EventArgs e)

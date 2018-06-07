@@ -36,10 +36,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="e">イベント内容</param>
         void ButtonClick(object sender, EventArgs e)
         {
-            if (_control.Focused)
-            {
-                AddSentence(new TokenName(), ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
-            }
+            AddSentence(new TokenName(), ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
         }
     }
 }
