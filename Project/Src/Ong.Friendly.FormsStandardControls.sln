@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ong.Friendly.FormsStandardControls", "Ong.Forms.StandardControls\Ong.Friendly.FormsStandardControls.csproj", "{1CA63B58-74E7-4780-8C76-98B9082820E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ong.Friendly.FormsStandardControls.Generator", "Ong.Friendly.FormsStandardControls.Generator\Ong.Friendly.FormsStandardControls.Generator.csproj", "{BC60FAAD-67AB-4A55-8E47-DEF72F1281C9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1CA63B58-74E7-4780-8C76-98B9082820E6} = {1CA63B58-74E7-4780-8C76-98B9082820E6}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{6FBE01FF-2C96-4BB7-9362-CCF1D7694340}"
+	ProjectSection(SolutionItems) = preProject
+		..\Nuget\Friendly.FormsStandardControls.nuspec = ..\Nuget\Friendly.FormsStandardControls.nuspec
 	EndProjectSection
 EndProject
 Global
@@ -32,5 +37,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B89D1D44-F014-455A-9030-D8A66A8422C4}
 	EndGlobalSection
 EndGlobal
