@@ -7,9 +7,16 @@ using System.Globalization;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
+#if ENG
     /// <summary>
-    /// コード生成
+    /// This class generates operation codes for FormsXXX.
     /// </summary>
+#else
+    /// <summary>
+    /// FormsXXXの操作コードを生成します。
+    /// </summary>
+#endif
+    [Generator("Ong.Friendly.FormsStandardControls.FormsDataGridView")]
     public class FormsDataGridViewGenerator : GeneratorBase
     {
         /// <summary>
@@ -68,9 +75,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator
 
         DataGridView _control;
 
+#if ENG
+        /// <summary>
+        /// Attach.
+        /// </summary>
+#else
         /// <summary>
         /// アタッチ。
         /// </summary>
+#endif
         protected override void Attach()
         {
             _control = (DataGridView)ControlObject;
@@ -79,9 +92,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             _control.CellContentClick += CellContentClick;
         }
 
+#if ENG
+        /// <summary>
+        /// Detach.
+        /// </summary>
+#else
         /// <summary>
         /// ディタッチ。
         /// </summary>
+#endif
         protected override void Detach()
         {
             _control.SelectionChanged -= SelectionChanged;
@@ -227,7 +246,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// 選択インデックス
         /// </summary>
-        /// <param name="selectedIndices">選択インデックス</param>
+        /// <param name="list">選択インデックス</param>
         private void GetSelectedIndices(List<ColRow> list)
         {
             list.Clear();

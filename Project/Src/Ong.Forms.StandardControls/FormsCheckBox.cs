@@ -4,8 +4,8 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using System.Reflection;
 using System;
-using Ong.Friendly.FormsStandardControls.Properties;
 using Ong.Friendly.FormsStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -18,6 +18,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// TypeがSystem.Windows.Forms.CheckBoxのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.CheckBox")]
     public class FormsCheckBox : FormsControlBase
     {
 #if ENG

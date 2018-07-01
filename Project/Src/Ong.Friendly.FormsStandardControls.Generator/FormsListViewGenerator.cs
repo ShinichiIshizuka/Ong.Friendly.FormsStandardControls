@@ -6,17 +6,30 @@ using System.Globalization;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
+#if ENG
     /// <summary>
-    /// コード生成
+    /// This class generates operation codes for FormsXXX.
     /// </summary>
+#else
+    /// <summary>
+    /// FormsXXXの操作コードを生成します。
+    /// </summary>
+#endif
+    [Generator("Ong.Friendly.FormsStandardControls.FormsListView")]
     public class FormsListViewGenerator : GeneratorBase
     {
         ListView _control;
         List<int> _selectedIndices = new List<int>();
 
+#if ENG
+        /// <summary>
+        /// Attach.
+        /// </summary>
+#else
         /// <summary>
         /// アタッチ。
         /// </summary>
+#endif
         protected override void Attach()
         {
             _control = (ListView)ControlObject;
@@ -26,9 +39,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             GetSelectedIndices(_selectedIndices);
         }
 
+#if ENG
+        /// <summary>
+        /// Detach.
+        /// </summary>
+#else
         /// <summary>
         /// ディタッチ。
         /// </summary>
+#endif
         protected override void Detach()
         {
             _control.ItemCheck -= ItemCheck;

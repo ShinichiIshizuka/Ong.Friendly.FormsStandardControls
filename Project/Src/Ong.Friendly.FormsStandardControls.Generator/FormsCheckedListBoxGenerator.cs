@@ -5,16 +5,29 @@ using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
+#if ENG
     /// <summary>
-    /// コード生成
+    /// This class generates operation codes for FormsXXX.
     /// </summary>
+#else
+    /// <summary>
+    /// FormsXXXの操作コードを生成します。
+    /// </summary>
+#endif
+    [Generator("Ong.Friendly.FormsStandardControls.FormsCheckedListBox")]
     public class FormsCheckedListBoxGenerator : GeneratorBase
     {
         CheckedListBox _control;
 
+#if ENG
+        /// <summary>
+        /// Attach.
+        /// </summary>
+#else
         /// <summary>
         /// アタッチ。
         /// </summary>
+#endif
         protected override void Attach()
         {
             _control = (CheckedListBox)ControlObject;
@@ -22,9 +35,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             _control.SelectedIndexChanged += SelectedIndexChanged;
         }
 
+#if ENG
+        /// <summary>
+        /// Detach.
+        /// </summary>
+#else
         /// <summary>
         /// ディタッチ。
         /// </summary>
+#endif
         protected override void Detach()
         {
             _control.ItemCheck -= ItemCheck;

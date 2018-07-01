@@ -3,6 +3,7 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using System.Windows.Forms;
 using System;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -15,6 +16,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// TypeがSystem.Windows.Forms.DateTimePickerのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.DateTimePicker")]
     public class FormsDateTimePicker : FormsControlBase
     {
 

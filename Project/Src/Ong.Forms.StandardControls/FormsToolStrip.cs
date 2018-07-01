@@ -3,6 +3,7 @@ using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using System;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -15,6 +16,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// ツールストリップです。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.ToolStrip")]
     public class FormsToolStrip : FormsControlBase
     {
 #if ENG

@@ -4,6 +4,7 @@ using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using System;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -16,6 +17,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// TypeがSystem.Windows.Forms.ListViewのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.ListView")]
     public class FormsListView : FormsControlBase
     {
 #if ENG

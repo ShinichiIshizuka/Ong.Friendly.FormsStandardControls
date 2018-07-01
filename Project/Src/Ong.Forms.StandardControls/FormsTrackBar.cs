@@ -1,5 +1,6 @@
 ﻿using Codeer.Friendly;
 using Codeer.Friendly.Windows.Grasp;
+using Codeer.TestAssistant.GeneratorToolKit;
 using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
@@ -14,6 +15,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// TypeがSystem.Windows.Forms.TrackBarのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.TrackBar")]
     public class FormsTrackBar : FormsControlBase
     {
 #if ENG

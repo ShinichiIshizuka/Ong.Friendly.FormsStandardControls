@@ -5,16 +5,29 @@ using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
+#if ENG
     /// <summary>
-    /// コンボボックスのコード生成
+    /// This class generates operation codes for FormsXXX.
     /// </summary>
+#else
+    /// <summary>
+    /// FormsXXXの操作コードを生成します。
+    /// </summary>
+#endif
+    [Generator("Ong.Friendly.FormsStandardControls.FormsComboBox")]
     public class FormsComboBoxGenerator : GeneratorBase
     {
         ComboBox _control;
 
+#if ENG
+        /// <summary>
+        /// Attach.
+        /// </summary>
+#else
         /// <summary>
         /// アタッチ。
         /// </summary>
+#endif
         protected override void Attach()
         {
             _control = (ComboBox)ControlObject;
@@ -22,9 +35,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             _control.SelectedIndexChanged += ComboBoxSelectedIndexChanged;
         }
 
+#if ENG
+        /// <summary>
+        /// Detach.
+        /// </summary>
+#else
         /// <summary>
         /// ディタッチ。
         /// </summary>
+#endif
         protected override void Detach()
         {
             _control.TextChanged -= ComboBoxTextChanged;
@@ -56,11 +75,18 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 AddSentence(new TokenName(), ".EmulateChangeText(" + GenerateUtility.AdjustText(_control.Text), new TokenAsync(CommaType.Before), ");");
             }
         }
-        
+
+#if ENG
+        /// <summary>
+        /// Optimize the code.
+        /// </summary>
+        /// <param name="code">code.</param>
+#else
         /// <summary>
         /// コードの最適化。
         /// </summary>
-        /// <param name="list">コードリスト。</param>
+        /// <param name="code">コードリスト。</param>
+#endif
         public override void Optimize(List<Sentence> code)
         {
             GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateChangeText");

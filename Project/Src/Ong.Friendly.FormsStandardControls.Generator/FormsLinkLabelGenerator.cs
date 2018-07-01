@@ -5,25 +5,44 @@ using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
+#if ENG
     /// <summary>
-    /// コード生成
+    /// This class generates operation codes for FormsXXX.
     /// </summary>
+#else
+    /// <summary>
+    /// FormsXXXの操作コードを生成します。
+    /// </summary>
+#endif
+    [Generator("Ong.Friendly.FormsStandardControls.FormsLinkLabel")]
     public class FormsLinkLabelGenerator :GeneratorBase
     {
         LinkLabel _control;
 
+#if ENG
+        /// <summary>
+        /// Attach.
+        /// </summary>
+#else
         /// <summary>
         /// アタッチ。
         /// </summary>
+#endif
         protected override void Attach()
         {
             _control = (LinkLabel)ControlObject;
             _control.LinkClicked += LinkLabelClicked;
         }
 
+#if ENG
+        /// <summary>
+        /// Detach.
+        /// </summary>
+#else
         /// <summary>
         /// ディタッチ。
         /// </summary>
+#endif
         protected override void Detach()
         {
             _control.LinkClicked -= LinkLabelClicked;

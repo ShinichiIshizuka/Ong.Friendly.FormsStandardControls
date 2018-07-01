@@ -4,6 +4,7 @@ using Codeer.Friendly.Windows.Grasp;
 using System.Windows.Forms;
 using System.Reflection;
 using System;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -16,6 +17,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// TypeがSystem.Windows.Forms.LinkLabelのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.LinkLabel")]
     public class FormsLinkLabel : FormsControlBase
     {
 #if ENG

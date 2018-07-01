@@ -4,6 +4,7 @@ using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using System;
 using Codeer.Friendly.Windows.Grasp;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -16,6 +17,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// TypeがSystem.Windows.Forms.CheckdListBoxのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.CheckedListBox")]
     public class FormsCheckedListBox : FormsControlBase
     {
 #if ENG

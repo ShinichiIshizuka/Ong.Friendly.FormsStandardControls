@@ -1,7 +1,6 @@
 ﻿using Codeer.Friendly;
-using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
-using System;
+using Codeer.TestAssistant.GeneratorToolKit;
 using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls
@@ -15,6 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// TypeがSystem.Windows.Forms.MaskedTextBoxのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.MaskedTextBox")]
     public class FormsMaskedTextBox : FormsControlBase
     {
 #if ENG

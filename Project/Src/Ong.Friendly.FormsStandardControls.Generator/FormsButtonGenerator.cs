@@ -1,29 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
+#if ENG
     /// <summary>
-    /// コード生成
+    /// This class generates operation codes for FormsButton.
     /// </summary>
+#else
+    /// <summary>
+    /// FormsButtonの操作コードを生成します。
+    /// </summary>
+#endif
+    [Generator("Ong.Friendly.FormsStandardControls.FormsButton")]
     public class FormsButtonGenerator : GeneratorBase
     {
         Button _control;
 
+#if ENG
+        /// <summary>
+        /// Attach.
+        /// </summary>
+#else
         /// <summary>
         /// アタッチ。
         /// </summary>
+#endif
         protected override void Attach()
         {
             _control = (Button)ControlObject;
             _control.Click += ButtonClick;
         }
 
+#if ENG
+        /// <summary>
+        /// Detach.
+        /// </summary>
+#else
         /// <summary>
         /// ディタッチ。
         /// </summary>
+#endif
         protected override void Detach()
         {
             _control.Click -= ButtonClick;

@@ -7,17 +7,30 @@ using System.Globalization;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
+#if ENG
     /// <summary>
-    /// コード生成
+    /// This class generates operation codes for FormsXXX.
     /// </summary>
+#else
+    /// <summary>
+    /// FormsXXXの操作コードを生成します。
+    /// </summary>
+#endif
+    [Generator("Ong.Friendly.FormsStandardControls.FormsToolStrip")]
     public class FormsToolStripGenerator : GeneratorBase
     {
         ToolStrip _control;
         List<MethodInvoker> _detachHandler = new List<MethodInvoker>();
 
+#if ENG
+        /// <summary>
+        /// Attach.
+        /// </summary>
+#else
         /// <summary>
         /// アタッチ。
         /// </summary>
+#endif
         protected override void Attach()
         {
             _control = (ToolStrip)ControlObject;
@@ -27,9 +40,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             }
         }
 
+#if ENG
+        /// <summary>
+        /// Detach.
+        /// </summary>
+#else
         /// <summary>
         /// ディタッチ。
         /// </summary>
+#endif
         protected override void Detach()
         {
             foreach (MethodInvoker element in _detachHandler)
@@ -42,6 +61,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <summary>
         /// イベント
         /// </summary>
+        /// <param name="fromText">至るまでの文字列</param>
         /// <param name="fromIndex">至るまでのアイテムインデックス</param>
         /// <param name="item">アイテム</param>
         private void ConnectEventHandler(string[] fromText, int[] fromIndex, ToolStripItem item)
@@ -242,10 +262,17 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             return builder.ToString();
         }
 
+#if ENG
+        /// <summary>
+        /// Optimize the code.
+        /// </summary>
+        /// <param name="code">code.</param>
+#else
         /// <summary>
         /// コードの最適化。
         /// </summary>
-        /// <param name="list">コードリスト。</param>
+        /// <param name="code">コードリスト。</param>
+#endif
         public override void Optimize(List<Sentence> code)
         {
             GenerateUtility.RemoveDuplicationSentence(this, code,

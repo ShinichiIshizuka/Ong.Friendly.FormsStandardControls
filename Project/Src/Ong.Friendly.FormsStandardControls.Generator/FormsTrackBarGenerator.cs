@@ -5,25 +5,44 @@ using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
+#if ENG
     /// <summary>
-    /// コード生成
+    /// This class generates operation codes for FormsXXX.
     /// </summary>
+#else
+    /// <summary>
+    /// FormsXXXの操作コードを生成します。
+    /// </summary>
+#endif
+    [Generator("Ong.Friendly.FormsStandardControls.FormsTrackBar")]
     public class FormsTrackBarGenerator : GeneratorBase
     {
         TrackBar _control;
 
+#if ENG
+        /// <summary>
+        /// Attach.
+        /// </summary>
+#else
         /// <summary>
         /// アタッチ。
         /// </summary>
+#endif
         protected override void Attach()
         {
             _control = (TrackBar)ControlObject;
             _control.ValueChanged += ValueChanged;
         }
 
+#if ENG
+        /// <summary>
+        /// Detach.
+        /// </summary>
+#else
         /// <summary>
         /// ディタッチ。
         /// </summary>
+#endif
         protected override void Detach()
         {
             _control.ValueChanged -= ValueChanged;
@@ -41,11 +60,17 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 AddSentence(new TokenName(), ".EmulateChangeValue(" + _control.Value + "", new TokenAsync(CommaType.Before), ");");
             }
         }
-
+#if ENG
+        /// <summary>
+        /// Optimize the code.
+        /// </summary>
+        /// <param name="code">code.</param>
+#else
         /// <summary>
         /// コードの最適化。
         /// </summary>
-        /// <param name="list">コードリスト。</param>
+        /// <param name="code">コードリスト。</param>
+#endif
         public override void Optimize(List<Sentence> code)
         {
             GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateChangeValue");
