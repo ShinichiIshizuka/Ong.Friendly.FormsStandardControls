@@ -7,11 +7,11 @@ namespace Ong.Friendly.FormsStandardControls.Generator
 {
 #if ENG
     /// <summary>
-    /// This class generates operation codes for FormsXXX.
+    /// This class generates operation codes for FormsDateTimePicker.
     /// </summary>
 #else
     /// <summary>
-    /// FormsXXXの操作コードを生成します。
+    /// FormsDateTimePickerの操作コードを生成します。
     /// </summary>
 #endif
     [Generator("Ong.Friendly.FormsStandardControls.FormsDateTimePicker")]
