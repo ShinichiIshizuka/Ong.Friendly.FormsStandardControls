@@ -13,8 +13,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsCheckBoxの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsCheckBox")]
-    public class FormsCheckBoxGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsCheckBox")]
+    public class FormsCheckBoxGenerator : CaptureCodeGeneratorBase
     {
         CheckBox _control;
 

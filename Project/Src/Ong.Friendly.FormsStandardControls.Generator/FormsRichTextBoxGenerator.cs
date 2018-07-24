@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsRichTextBoxの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsRichTextBox")]
-    public class FormsRichTextBoxGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsRichTextBox")]
+    public class FormsRichTextBoxGenerator : CaptureCodeGeneratorBase
     {
         RichTextBox _control;
 

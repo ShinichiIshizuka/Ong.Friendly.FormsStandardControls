@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsTabControlの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsTabControl")]
-    public class FormsTabControlGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsTabControl")]
+    public class FormsTabControlGenerator : CaptureCodeGeneratorBase
     {
         TabControl _control;
 

@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsCheckedListBoxの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsCheckedListBox")]
-    public class FormsCheckedListBoxGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsCheckedListBox")]
+    public class FormsCheckedListBoxGenerator : CaptureCodeGeneratorBase
     {
         CheckedListBox _control;
 

@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsNumericUpDownの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsNumericUpDown")]
-    public class FormsNumericUpDownGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsNumericUpDown")]
+    public class FormsNumericUpDownGenerator : CaptureCodeGeneratorBase
     {
         NumericUpDown _control;
 

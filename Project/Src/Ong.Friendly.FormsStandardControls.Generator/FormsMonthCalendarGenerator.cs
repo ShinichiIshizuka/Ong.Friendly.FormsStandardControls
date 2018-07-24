@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsMonthCalendarの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsMonthCalendar")]
-    public class FormsMonthCalendarGenerator :GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsMonthCalendar")]
+    public class FormsMonthCalendarGenerator :CaptureCodeGeneratorBase
     {
         MonthCalendar _control;
 

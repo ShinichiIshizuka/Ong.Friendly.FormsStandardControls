@@ -15,8 +15,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsTreeViewの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsTreeView")]
-    public class FormsTreeViewGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsTreeView")]
+    public class FormsTreeViewGenerator : CaptureCodeGeneratorBase
     {
         TreeView _control;
 

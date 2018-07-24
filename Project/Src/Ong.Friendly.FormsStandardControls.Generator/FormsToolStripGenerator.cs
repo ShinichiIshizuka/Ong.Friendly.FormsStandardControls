@@ -16,8 +16,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsToolStripの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsToolStrip")]
-    public class FormsToolStripGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsToolStrip")]
+    public class FormsToolStripGenerator : CaptureCodeGeneratorBase
     {
         ToolStrip _control;
         List<MethodInvoker> _detachHandler = new List<MethodInvoker>();

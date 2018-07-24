@@ -16,8 +16,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsDataGridViewの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsDataGridView")]
-    public class FormsDataGridViewGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsDataGridView")]
+    public class FormsDataGridViewGenerator : CaptureCodeGeneratorBase
     {
         /// <summary>
         /// 列行情報

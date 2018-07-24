@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsComboBoxの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsComboBox")]
-    public class FormsComboBoxGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsComboBox")]
+    public class FormsComboBoxGenerator : CaptureCodeGeneratorBase
     {
         ComboBox _control;
 

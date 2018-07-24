@@ -13,8 +13,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsButtonの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsButton")]
-    public class FormsButtonGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsButton")]
+    public class FormsButtonGenerator : CaptureCodeGeneratorBase
     {
         Button _control;
 

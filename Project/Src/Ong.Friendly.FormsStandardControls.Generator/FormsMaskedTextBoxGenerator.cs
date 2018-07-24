@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsMaskedTextBoxの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsMaskedTextBox")]
-    public class FormsMaskedTextBoxGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsMaskedTextBox")]
+    public class FormsMaskedTextBoxGenerator : CaptureCodeGeneratorBase
     {
         MaskedTextBox _control;
 

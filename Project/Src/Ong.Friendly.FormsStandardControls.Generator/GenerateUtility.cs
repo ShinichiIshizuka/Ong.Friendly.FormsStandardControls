@@ -16,7 +16,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="generator">ジェネレータ。</param>
         /// <param name="list">リスト。</param>
         /// <param name="pattern">パターン。</param>
-        internal static void RemoveDuplicationSentence(GeneratorBase generator, List<Sentence> list, object[] pattern)
+        internal static void RemoveDuplicationSentence(CaptureCodeGeneratorBase generator, List<Sentence> list, object[] pattern)
         {
             Sentence old = null;
             for (int i = list.Count - 1; 0 <= i; i--)
@@ -78,7 +78,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="generator">ジェネレータ。</param>
         /// <param name="list">リスト。</param>
         /// <param name="function">関数。</param>
-        internal static void RemoveDuplicationFunction(GeneratorBase generator, List<Sentence> list, string function)
+        internal static void RemoveDuplicationFunction(CaptureCodeGeneratorBase generator, List<Sentence> list, string function)
         {
             bool findChangeText = false;
             for (int i = list.Count - 1; 0 <= i; i--)
@@ -105,7 +105,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="sentence">センテンス。</param>
         /// <param name="function">関数。</param>
         /// <returns>重複した関数であるか。</returns>
-        private static bool IsDuplicationFunction(GeneratorBase generator, Sentence sentence, string function)
+        private static bool IsDuplicationFunction(CaptureCodeGeneratorBase generator, Sentence sentence, string function)
         {
             if (!ReferenceEquals(generator, sentence.Owner))
             {

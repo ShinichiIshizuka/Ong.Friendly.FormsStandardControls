@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsRadioButtonの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsRadioButton")]
-    public class FormsRadioButtonGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsRadioButton")]
+    public class FormsRadioButtonGenerator : CaptureCodeGeneratorBase
     {
         RadioButton _control;
 

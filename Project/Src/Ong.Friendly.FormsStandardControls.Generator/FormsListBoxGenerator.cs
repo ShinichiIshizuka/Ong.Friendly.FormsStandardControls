@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsListBoxの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsListBox")]
-    public class FormsListBoxGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsListBox")]
+    public class FormsListBoxGenerator : CaptureCodeGeneratorBase
     {
         ListBox _control;
         List<int> _selectedIndices = new List<int>();

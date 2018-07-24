@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsLinkLabelの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsLinkLabel")]
-    public class FormsLinkLabelGenerator :GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsLinkLabel")]
+    public class FormsLinkLabelGenerator :CaptureCodeGeneratorBase
     {
         LinkLabel _control;
 

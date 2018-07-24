@@ -14,8 +14,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     /// FormsTextBoxの操作コードを生成します。
     /// </summary>
 #endif
-    [Generator("Ong.Friendly.FormsStandardControls.FormsTextBox")]
-    public class FormsTextBoxGenerator : GeneratorBase
+    [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsTextBox")]
+    public class FormsTextBoxGenerator : CaptureCodeGeneratorBase
     {
         TextBox _control;
 
