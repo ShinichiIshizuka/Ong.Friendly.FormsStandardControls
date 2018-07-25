@@ -64,6 +64,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="e">イベント内容</param>
         void AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
+            if (e == null || e.Label == null) return;
             string from = GetNodePath(e.Node);
             AddSentence(new TokenName(), from + ".EmulateEditLabel(" + GenerateUtility.AdjustText(e.Label), new TokenAsync(CommaType.Before), ");");
         }
