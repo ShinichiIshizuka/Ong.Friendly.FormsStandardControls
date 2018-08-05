@@ -60,6 +60,31 @@ namespace FormsTest
         }
 
         /// <summary>
+        /// FormsTreeNode SelectNodeのテスト
+        /// </summary>
+        [TestMethod]
+        public void TestFormsTreeNodeSelect()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
+            treeView1.FindItem("Parent", "Child 1").EmulateSelect();
+            FormsTreeNode selectedNode = treeView1.SelectNode;
+            Assert.AreEqual("Child 1", selectedNode.Text);
+        }
+
+        /// <summary>
+        /// FormsTreeNode SelectNodeのテスト
+        /// </summary>
+        [TestMethod]
+        public void TestFormsTreeNodeUIElement()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
+            var node = treeView1.FindItem("Parent", "Child 1");
+            var pos = node.PointToScreen(new System.Drawing.Point());
+            var size = node.Size;
+            node.Activate();
+        }
+
+        /// <summary>
         /// FormsTreeNode GetItem(params int[] indexes)のテスト
         /// </summary>
         [TestMethod]
@@ -108,6 +133,25 @@ namespace FormsTest
             app[GetType(), "TreeViewAfterSelectEvent"](treeView1.AppVar);
             FormsTreeNode item2 = treeView1.GetItem(0, 1);
             treeView1.EmulateNodeSelect(item2, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            FormsTreeNode selectitem2 = treeView1.SelectNode;
+            Assert.AreEqual("Child 2", selectitem2.Text);
+        }
+
+        /// <summary>
+        /// EmulateNodeSelect(FormsTreeNode node)のテスト
+        /// </summary>
+        [TestMethod]
+        public void TestNodeEmulateSelect()
+        {
+            FormsTreeView treeView1 = new FormsTreeView(testDlg["treeView1"]());
+            treeView1.FindItem("Parent").EmulateSelect();
+            FormsTreeNode selectitem = treeView1.SelectNode;
+            Assert.AreEqual("Parent", selectitem.Text);
+
+            //非同期
+            app[GetType(), "TreeViewAfterSelectEvent"](treeView1.AppVar);
+            treeView1.GetItem(0, 1).EmulateSelect(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             FormsTreeNode selectitem2 = treeView1.SelectNode;
             Assert.AreEqual("Child 2", selectitem2.Text);

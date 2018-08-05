@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Codeer.TestAssistant.GeneratorToolKit;
 using System.Globalization;
+using System.Drawing;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
@@ -58,6 +59,23 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         }
 
         /// <summary>
+        /// Convert from parent client coordinates to child client coordinates.
+        /// </summary>
+        /// <param name="clientPoint">Client coordinates.Convert to child client coordinates.</param>
+        /// <param name="childUIObject">A child object that is the origin of client coordinates. If not, set null or empty character.</param>
+        /// <returns>Returns true if converted to child client coordinates.</returns>
+        public override bool ConvertChildClientPoint(ref Point clientPoint, out string childUIObject)
+        {
+            childUIObject = string.Empty;
+            var info = _control.HitTest(clientPoint);
+            if (info.Node == null) return false;
+
+            clientPoint = new Point(clientPoint.X - info.Node.Bounds.X, clientPoint.Y - info.Node.Bounds.Y);
+            childUIObject = GetNodePath(info.Node);
+            return true;
+        }
+
+        /// <summary>
         /// ラベル編集イベント
         /// </summary>
         /// <param name="sender">イベント送信元</param>
@@ -79,7 +97,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             if (_control.Focused)
             {
                 string from = GetNodePath(e.Node);
-                AddSentence(new TokenName(), ".EmulateNodeSelect(", new TokenName(), from, new TokenAsync(CommaType.Before), ");");
+                AddSentence(new TokenName(), from + ".EmulateSelect(", new TokenAsync(CommaType.Before), ");");
             }
         }
 

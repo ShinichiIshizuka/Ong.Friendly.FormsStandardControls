@@ -4,6 +4,8 @@ using Codeer.Friendly;
 using Codeer.Friendly.Windows;
 using Ong.Friendly.FormsStandardControls.Properties;
 using Ong.Friendly.FormsStandardControls.Inside;
+using Codeer.Friendly.Windows.Grasp;
+using System.Drawing;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -16,7 +18,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// ツリーノードです。
     /// </summary>
 #endif
-    public class FormsTreeNode : AppVarWrapper
+    public class FormsTreeNode : AppVarWrapper, IUIObject
     {
 #if ENG
         /// <summary>
@@ -92,6 +94,17 @@ namespace Ong.Friendly.FormsStandardControls
         {
             get { return (bool)(this["Checked"]().Core); }
         }
+
+#if ENG
+        /// <summary>
+        /// Returns the size of IUIObject.
+        /// </summary>
+#else
+        /// <summary>
+        /// IUIObjectのサイズを取得します。
+        /// </summary>
+#endif
+        public Size Size => (Size)AppVar["Bounds"]()["Size"]().Core;
 
 #if ENG
         /// <summary>
@@ -229,6 +242,50 @@ namespace Ong.Friendly.FormsStandardControls
             App[GetType(), "EmulateCheckInTarget", async](AppVar, check);
         }
 
+#if ENG
+        /// <summary>
+        /// Selects a certain node.
+        /// </summary>
+#else
+        /// <summary>
+        /// ノードを選択します。
+        /// </summary>
+#endif
+        public void EmulateSelect()
+        {
+            App[GetType(), "EmulateSelectInTarget"](AppVar);
+        }
+
+#if ENG
+        /// <summary>
+        /// Selects a certain node.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="async">Asynchronous execution.</param>
+#else
+        /// <summary>
+        /// ノードを選択します。
+        /// 非同期で実行します。
+        /// </summary>
+        /// <param name="async">非同期オブジェクト。</param>
+#endif
+        public void EmulateSelect(Async async)
+        {
+            App[GetType(), "EmulateSelectInTarget", async](AppVar);
+        }
+
+        /// <summary>
+        /// ノードを選択します。
+        /// 非同期で実行します。
+        /// </summary>
+        /// <param name="node">ノード。</param>
+        static void EmulateSelectInTarget(TreeNode node)
+        {
+            var tree = node.TreeView;
+            tree.Focus();
+            tree.SelectedNode = node;
+        }
+
         /// <summary>
         /// 展開します。
         /// </summary>
@@ -287,6 +344,41 @@ namespace Ong.Friendly.FormsStandardControls
             treeNode.BeginEdit();
             treeNode.Text = nodeText;
             treeNode.EndEdit(false);
+        }
+
+#if ENG
+        /// <summary>
+        /// Convert IUIObject's client coordinates to screen coordinates.
+        /// </summary>
+        /// <param name="clientPoint">client coordinates.</param>
+        /// <returns>screen coordinates.</returns>
+#else
+        /// <summary>
+        /// IUIObjectのクライアント座標からスクリーン座標に変換します。
+        /// </summary>
+        /// <param name="clientPoint">クライアント座標</param>
+        /// <returns>スクリーン座標</returns>
+#endif
+        public Point PointToScreen(Point clientPoint)
+        {
+            var rect = (Rectangle)AppVar["Bounds"]().Core;
+            var screen = (Point)AppVar["TreeView"]()["PointToScreen"](clientPoint).Core;
+            return new Point(screen.X + rect.X, screen.Y + rect.Y);
+        }
+
+#if ENG
+        /// <summary>
+        /// Make it active.
+        /// </summary>
+#else
+        /// <summary>
+        /// アクティブな状態にします。
+        /// </summary>
+#endif
+        public void Activate()
+        {
+            var w = new WindowControl(AppVar["TreeView"]());
+            w.Activate();
         }
     }
 }
