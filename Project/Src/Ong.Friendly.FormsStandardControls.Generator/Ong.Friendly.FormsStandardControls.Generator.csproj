@@ -69,6 +69,8 @@
     <Compile Include="FormsMdiClientGenerator.cs" />
     <Compile Include="FormsMonthCalendarGenerator.cs" />
     <Compile Include="FormsMaskedTextBoxGenerator.cs" />
+    <Compile Include="FormsToolStripButtonGenerator.cs" />
+    <Compile Include="FormsToolStripItemGenerator.cs" />
     <Compile Include="FormsTrackBarGenerator.cs" />
     <Compile Include="FormsNumericUpDownGenerator.cs" />
     <Compile Include="FormsRadioButtonGenerator.cs" />
