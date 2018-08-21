@@ -16,7 +16,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// TypeがSystem.Windows.Forms.TabControlのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
-    [ControlDriver(TypeFullName = "System.Windows.Forms.TabControl")]
+    [ControlDriver(TypeFullName = "System.Windows.Forms.TabControl", SearchDescendantUserControls = true)]
     public class FormsTabControl : FormsControlBase
     {
 #if ENG

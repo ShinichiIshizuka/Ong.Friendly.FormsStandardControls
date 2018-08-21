@@ -16,7 +16,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
     [CaptureCodeGenerator("Ong.Friendly.FormsStandardControls.FormsToolStripItem")]
     public class FormsToolStripItemGenerator : CaptureCodeGeneratorBase
     {
-        ToolStripItem _control;
+        ToolStripItem  _control;
 
 #if ENG
         /// <summary>
