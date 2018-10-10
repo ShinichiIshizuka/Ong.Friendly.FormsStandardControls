@@ -112,7 +112,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeValue(decimal value)
         {
-            App[GetType(), "EmulateChangeValueInTarget"](AppVar, value);
+            App[typeof(FormsNumericUpDown), "EmulateChangeValueInTarget"](AppVar, value);
         }
 
 #if ENG
@@ -132,7 +132,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeValue(decimal value, Async async)
         {
-            App[GetType(), "EmulateChangeValueInTarget", async](AppVar, value);
+            App[typeof(FormsNumericUpDown), "EmulateChangeValueInTarget", async](AppVar, value);
         }
 
         /// <summary>

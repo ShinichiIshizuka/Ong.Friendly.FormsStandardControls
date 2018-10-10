@@ -79,7 +79,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeText(string text)
         {
-            App[GetType(), "EmulateChangeTextInTarget"](AppVar, text);
+            App[typeof(FormsRichTextBox), "EmulateChangeTextInTarget"](AppVar, text);
         }
 
 #if ENG
@@ -99,7 +99,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeText(string text, Async async)
         {
-            App[GetType(), "EmulateChangeTextInTarget", async](AppVar, text);
+            App[typeof(FormsRichTextBox), "EmulateChangeTextInTarget", async](AppVar, text);
         }
 
         /// <summary>

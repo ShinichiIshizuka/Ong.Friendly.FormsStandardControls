@@ -202,7 +202,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeText(string text)
         {
-            App[GetType(), "EmulateChangeTextInTarget"](AppVar, text);
+            App[typeof(FormsComboBox), "EmulateChangeTextInTarget"](AppVar, text);
         }
 
 #if ENG
@@ -222,7 +222,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeText(string text, Async async)
         {
-            App[GetType(), "EmulateChangeTextInTarget", async](AppVar, text);
+            App[typeof(FormsComboBox), "EmulateChangeTextInTarget", async](AppVar, text);
         }
 
 #if ENG
@@ -238,7 +238,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelect(int index)
         {
-            App[GetType(), "EmulateChangeSelectInTarget"](AppVar, index);
+            App[typeof(FormsComboBox), "EmulateChangeSelectInTarget"](AppVar, index);
         }
 
 #if ENG
@@ -258,7 +258,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelect(int index, Async async)
         {
-            App[GetType(), "EmulateChangeSelectInTarget", async](AppVar, index);
+            App[typeof(FormsComboBox), "EmulateChangeSelectInTarget", async](AppVar, index);
         }
 
         /// <summary>

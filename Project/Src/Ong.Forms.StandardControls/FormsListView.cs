@@ -120,7 +120,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public int[] SelectIndexes
         {
-            get { return (int[])(App[GetType(), "GetSelectedIndexesInTarget"](AppVar).Core); } 
+            get { return (int[])(App[typeof(FormsListView), "GetSelectedIndexesInTarget"](AppVar).Core); } 
         }
 
 #if ENG
@@ -161,7 +161,7 @@ namespace Ong.Friendly.FormsStandardControls
         public FormsListViewItem FindItemWithText(string itemText, bool includeSubItemsInSearch, int startIndex)
         {
             AppVar returnItem = this["FindItemWithText"](itemText, includeSubItemsInSearch, startIndex);
-            if ((bool)App[GetType(), "ReferenceEquals"](returnItem, null).Core)
+            if ((bool)App[typeof(FormsListView), "ReferenceEquals"](returnItem, null).Core)
             {
                 return null;
             }
@@ -183,7 +183,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
-            App[GetType(), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
+            App[typeof(FormsListView), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
         }
 
 #if ENG
@@ -205,7 +205,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
-            App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
+            App[typeof(FormsListView), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
         }
 
         /// <summary>

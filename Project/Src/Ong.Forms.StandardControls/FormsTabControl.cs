@@ -107,7 +107,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateTabSelect(int index)
         {
-            App[GetType(), "EmulateTabSelectInTarget"](AppVar, index);
+            App[typeof(FormsTabControl), "EmulateTabSelectInTarget"](AppVar, index);
         }
 
 #if ENG
@@ -127,7 +127,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateTabSelect(int index, Async async)
         {
-            App[GetType(), "EmulateTabSelectInTarget", async](AppVar, index);
+            App[typeof(FormsTabControl), "EmulateTabSelectInTarget", async](AppVar, index);
         }
 
         /// <summary>

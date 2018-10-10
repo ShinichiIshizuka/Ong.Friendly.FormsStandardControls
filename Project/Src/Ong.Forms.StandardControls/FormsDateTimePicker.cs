@@ -94,7 +94,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateSelectDay(DateTime datetime)
         {
-            App[GetType(), "EmulateSelectDayInTarget"](AppVar, datetime);
+            App[typeof(FormsDateTimePicker), "EmulateSelectDayInTarget"](AppVar, datetime);
         }
 
 #if ENG
@@ -114,7 +114,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateSelectDay(DateTime datetime, Async async)
         {
-            App[GetType(), "EmulateSelectDayInTarget", async](AppVar, datetime);
+            App[typeof(FormsDateTimePicker), "EmulateSelectDayInTarget", async](AppVar, datetime);
         }
 
         /// <summary>

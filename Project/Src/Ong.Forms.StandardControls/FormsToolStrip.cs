@@ -81,7 +81,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsToolStripItem GetItem(params int[] indexes)
         {
-            return new FormsToolStripItem(App[GetType(), "GetItemInTarget"](AppVar, indexes));
+            return new FormsToolStripItem(App[typeof(FormsToolStrip), "GetItemInTarget"](AppVar, indexes));
         }
 
 #if ENG
@@ -99,7 +99,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsToolStripItem GetItem(params string[] keys)
         {
-            return new FormsToolStripItem(App[GetType(), "GetItemInTarget"](AppVar, keys));
+            return new FormsToolStripItem(App[typeof(FormsToolStrip), "GetItemInTarget"](AppVar, keys));
         }
 
 #if ENG
@@ -117,7 +117,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsToolStripItem FindItem(params string[] texts)
         {
-            return new FormsToolStripItem(App[GetType(), "FindItemInTarget"](AppVar, texts));
+            return new FormsToolStripItem(App[typeof(FormsToolStrip), "FindItemInTarget"](AppVar, texts));
         }
 
         /// <summary>

@@ -57,7 +57,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="text">テキスト。</param>
 #endif
         public void EmulateChangeActiveMdiChild(string text)
-            => App[GetType(), "EmulateChangeActiveMdiChild"](this, text);
+            => App[typeof(FormsMdiClient), "EmulateChangeActiveMdiChild"](this, text);
 
 #if ENG
         /// <summary>
@@ -75,7 +75,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
 #endif
         public void EmulateChangeActiveMdiChild(string text, Async async)
-            => App[GetType(), "EmulateChangeActiveMdiChild"](this, text, async);
+            => App[typeof(FormsMdiClient), "EmulateChangeActiveMdiChild"](this, text, async);
 
 #if ENG
         /// <summary>
@@ -89,7 +89,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="index">インデックス。</param>
 #endif
         public void EmulateChangeActiveMdiChild(int index)
-            => App[GetType(), "EmulateChangeActiveMdiChild"](this, index);
+            => App[typeof(FormsMdiClient), "EmulateChangeActiveMdiChild"](this, index);
 
 #if ENG
         /// <summary>
@@ -107,7 +107,7 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期実行オブジェクト。</param>
 #endif
         public void EmulateChangeActiveMdiChild(int index, Async async)
-            => App[GetType(), "EmulateChangeActiveMdiChild"](this, index, async);
+            => App[typeof(FormsMdiClient), "EmulateChangeActiveMdiChild"](this, index, async);
 
         static void EmulateChangeActiveMdiChild(MdiClient client, string text)
         {

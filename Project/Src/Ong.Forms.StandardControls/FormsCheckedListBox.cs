@@ -121,7 +121,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public int[] CheckedIndices
         {
-            get { return (int[])(App[GetType(), "CheckedIndicsInTarget"](AppVar).Core); }
+            get { return (int[])(App[typeof(FormsCheckedListBox), "CheckedIndicsInTarget"](AppVar).Core); }
         }
 
 #if ENG
@@ -250,7 +250,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheckState(int index, CheckState value)
         {
-            App[GetType(), "EmulateCheckStateInTarget"](AppVar, index, value);
+            App[typeof(FormsCheckedListBox), "EmulateCheckStateInTarget"](AppVar, index, value);
         }
 
 #if ENG
@@ -272,7 +272,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheckState(int index ,CheckState value, Async async)
         {
-            App[GetType(), "EmulateCheckStateInTarget", async](AppVar, index, value);
+            App[typeof(FormsCheckedListBox), "EmulateCheckStateInTarget", async](AppVar, index, value);
         }
 
 #if ENG
@@ -288,7 +288,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelectedIndex(int index)
         {
-            App[GetType(), "EmulateChangeSelectedIndexInTarget"](AppVar, index);
+            App[typeof(FormsCheckedListBox), "EmulateChangeSelectedIndexInTarget"](AppVar, index);
         }
 
 #if ENG
@@ -308,7 +308,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelectedIndex(int index, Async async)
         {
-            App[GetType(), "EmulateChangeSelectedIndexInTarget", async](AppVar, index);
+            App[typeof(FormsCheckedListBox), "EmulateChangeSelectedIndexInTarget", async](AppVar, index);
         }
 
         /// <summary>

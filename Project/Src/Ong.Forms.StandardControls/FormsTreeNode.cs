@@ -117,7 +117,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateExpand()
         {
-            App[GetType(), "EmulateExpandInTarget"](AppVar);
+            App[typeof(FormsTreeNode), "EmulateExpandInTarget"](AppVar);
         }
 
 #if ENG
@@ -135,7 +135,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateExpand(Async async)
         {
-            App[GetType(), "EmulateExpandInTarget", async](AppVar);
+            App[typeof(FormsTreeNode), "EmulateExpandInTarget", async](AppVar);
         }
 
 #if ENG
@@ -149,7 +149,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCollapse()
         {
-            App[GetType(), "EmulateCollapseInTarget"](AppVar);
+            App[typeof(FormsTreeNode), "EmulateCollapseInTarget"](AppVar);
         }
 
 #if ENG
@@ -167,7 +167,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCollapse(Async async)
         {
-            App[GetType(), "EmulateCollapseInTarget", async](AppVar);
+            App[typeof(FormsTreeNode), "EmulateCollapseInTarget", async](AppVar);
         }
 
 #if ENG
@@ -183,7 +183,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateEditLabel(string nodeText)
         {
-            App[GetType(), "EmulateEditLabelInTarget"](AppVar, nodeText);
+            App[typeof(FormsTreeNode), "EmulateEditLabelInTarget"](AppVar, nodeText);
         }
 
 #if ENG
@@ -203,7 +203,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateEditLabel(string nodeText, Async async)
         {
-            App[GetType(), "EmulateEditLabelInTarget", async](AppVar, nodeText);
+            App[typeof(FormsTreeNode), "EmulateEditLabelInTarget", async](AppVar, nodeText);
         }
 
 #if ENG
@@ -219,7 +219,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck(bool check)
         {
-            App[GetType(), "EmulateCheckInTarget"](AppVar, check);
+            App[typeof(FormsTreeNode), "EmulateCheckInTarget"](AppVar, check);
         }
 
 #if ENG
@@ -239,7 +239,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck(bool check, Async async)
         {
-            App[GetType(), "EmulateCheckInTarget", async](AppVar, check);
+            App[typeof(FormsTreeNode), "EmulateCheckInTarget", async](AppVar, check);
         }
 
 #if ENG
@@ -253,7 +253,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateSelect()
         {
-            App[GetType(), "EmulateSelectInTarget"](AppVar);
+            App[typeof(FormsTreeNode), "EmulateSelectInTarget"](AppVar);
         }
 
 #if ENG
@@ -271,7 +271,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateSelect(Async async)
         {
-            App[GetType(), "EmulateSelectInTarget", async](AppVar);
+            App[typeof(FormsTreeNode), "EmulateSelectInTarget", async](AppVar);
         }
 
         /// <summary>

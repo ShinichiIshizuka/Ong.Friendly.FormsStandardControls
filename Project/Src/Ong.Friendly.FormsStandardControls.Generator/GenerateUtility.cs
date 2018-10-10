@@ -1,5 +1,8 @@
 ﻿using System;
+using System.CodeDom;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Codeer.TestAssistant.GeneratorToolKit;
 
@@ -130,18 +133,13 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <returns>調整済み行。</returns>
         static internal string AdjustText(string text)
         {
-            text = text.Replace("\"", "\"\"");
-            string[] lines = text.Replace("\r\n", "\n").Replace("\r", "\n").Split(new char[] { '\n' });
-            StringBuilder builder = new StringBuilder();
-            foreach (string line in lines)
+            using (var writer = new StringWriter())
+            using (var provider = CodeDomProvider.CreateProvider("CSharp"))
             {
-                if (0 < builder.Length)
-                {
-                    builder.Append(" + Environment.NewLine + ");
-                }
-                builder.Append("@\"" + line + "\"");
+                var expression = new CodePrimitiveExpression(text);
+                provider.GenerateCodeFromExpression(expression, writer, options: null);
+                return writer.ToString();
             }
-            return builder.ToString();
         }
     }
 }

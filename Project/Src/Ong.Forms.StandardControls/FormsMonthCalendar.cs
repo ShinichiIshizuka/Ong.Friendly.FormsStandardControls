@@ -135,7 +135,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateSelectDay(DateTime date)
         {
-            App[GetType(), "EmulateSelectDayInTarget"](AppVar, date);
+            App[typeof(FormsMonthCalendar), "EmulateSelectDayInTarget"](AppVar, date);
         }
 
 #if ENG
@@ -155,7 +155,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateSelectDay(DateTime date, Async async)
         {
-            App[GetType(), "EmulateSelectDayInTarget", async](AppVar, date);
+            App[typeof(FormsMonthCalendar), "EmulateSelectDayInTarget", async](AppVar, date);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateSelectDay(DateTime min, DateTime max)
         {
-            App[GetType(), "EmulateSelectDaysInTarget"](AppVar, min, max);
+            App[typeof(FormsMonthCalendar), "EmulateSelectDaysInTarget"](AppVar, min, max);
         }
 
 #if ENG
@@ -206,7 +206,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateSelectDay(DateTime min, DateTime max, Async async)
         {
-            App[GetType(), "EmulateSelectDaysInTarget", async](AppVar, min, max);
+            App[typeof(FormsMonthCalendar), "EmulateSelectDaysInTarget", async](AppVar, min, max);
         }
 
         /// <summary>

@@ -107,7 +107,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public Cell CurrentCell
         {
-            get { return (Cell)(App[GetType(), "GetCurrentCellInTarget"](AppVar).Core); }
+            get { return (Cell)(App[typeof(FormsDataGridView), "GetCurrentCellInTarget"](AppVar).Core); }
         }
 
 #if ENG
@@ -121,7 +121,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public Cell[] SelectedCells
         {
-            get { return (Cell[])(App[GetType(), "GetSelectedCellsInTarget"](AppVar).Core); }
+            get { return (Cell[])(App[typeof(FormsDataGridView), "GetSelectedCellsInTarget"](AppVar).Core); }
         }
 
 #if ENG
@@ -135,7 +135,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public int[] SelectedRows
         {
-            get { return (int[])(App[GetType(), "GetSelectedRowsInTarget"](AppVar).Core); }
+            get { return (int[])(App[typeof(FormsDataGridView), "GetSelectedRowsInTarget"](AppVar).Core); }
         }
 
 #if ENG
@@ -155,7 +155,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public string GetText(int col, int row)
         {
-            return (string)(App[GetType(), "GetTextInTarget"](AppVar, col, row).Core);
+            return (string)(App[typeof(FormsDataGridView), "GetTextInTarget"](AppVar, col, row).Core);
         }
 
 #if ENG
@@ -179,7 +179,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public string[][] GetText(int startCol, int startRow, int endCol, int endRow)
         {
-            return (string[][])(App[GetType(), "GetTextInTarget"](AppVar, startCol, startRow, endCol, endRow).Core);
+            return (string[][])(App[typeof(FormsDataGridView), "GetTextInTarget"](AppVar, startCol, startRow, endCol, endRow).Core);
         }
 
 #if ENG
@@ -199,7 +199,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public string GetFormattedText(int col, int row)
         {
-            return (string)(App[GetType(), "GetFormattedTextInTarget"](AppVar, col, row).Core);
+            return (string)(App[typeof(FormsDataGridView), "GetFormattedTextInTarget"](AppVar, col, row).Core);
         }
 
 #if ENG
@@ -223,7 +223,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public string[][] GetFormattedText(int startCol, int startRow, int endCol, int endRow)
         {
-            return (string[][])(App[GetType(), "GetFormattedTextInTarget"](AppVar, startCol, startRow, endCol, endRow).Core);
+            return (string[][])(App[typeof(FormsDataGridView), "GetFormattedTextInTarget"](AppVar, startCol, startRow, endCol, endRow).Core);
         }
 
 #if ENG
@@ -243,7 +243,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCellCheck(int col, int row, bool isChecked)
         {
-            App[GetType(), "EmulateCellCheckInTarget"](AppVar, col, row, isChecked);
+            App[typeof(FormsDataGridView), "EmulateCellCheckInTarget"](AppVar, col, row, isChecked);
         }
 
 #if ENG
@@ -267,7 +267,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCellCheck(int col, int row, bool isChecked, Async async)
         {
-            App[GetType(), "EmulateCellCheckInTarget", async](AppVar, col, row, isChecked);
+            App[typeof(FormsDataGridView), "EmulateCellCheckInTarget", async](AppVar, col, row, isChecked);
         }
 
 #if ENG
@@ -287,7 +287,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeCellText(int col, int row, string text)
         {
-            App[GetType(), "EmulateChangeCellTextInTarget"](AppVar, col, row, text);
+            App[typeof(FormsDataGridView), "EmulateChangeCellTextInTarget"](AppVar, col, row, text);
         }
 
 #if ENG
@@ -311,7 +311,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeCellText(int col, int row, string text, Async async)
         {
-            App[GetType(), "EmulateChangeCellTextInTarget", async](AppVar, col, row, text);
+            App[typeof(FormsDataGridView), "EmulateChangeCellTextInTarget", async](AppVar, col, row, text);
         }
 
 #if ENG
@@ -331,7 +331,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeCellComboSelect(int col, int row, int index)
         {
-            App[GetType(), "EmulateChangeCellComboSelectInTarget"](AppVar, col, row, index);
+            App[typeof(FormsDataGridView), "EmulateChangeCellComboSelectInTarget"](AppVar, col, row, index);
         }
 
 #if ENG
@@ -355,7 +355,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeCellComboSelect(int col, int row, int index, Async async)
         {
-            App[GetType(), "EmulateChangeCellComboSelectInTarget", async](AppVar, col, row, index);
+            App[typeof(FormsDataGridView), "EmulateChangeCellComboSelectInTarget", async](AppVar, col, row, index);
         }
 
 #if ENG
@@ -373,7 +373,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateClickCellContent(int col, int row)
         {
-            App[GetType(), "EmulateClickCellContentInTarget"](AppVar, col, row);
+            App[typeof(FormsDataGridView), "EmulateClickCellContentInTarget"](AppVar, col, row);
         }
 
 #if ENG
@@ -395,7 +395,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateClickCellContent(int col, int row, Async async)
         {
-            App[GetType(), "EmulateClickCellContentInTarget", async](AppVar, col, row);
+            App[typeof(FormsDataGridView), "EmulateClickCellContentInTarget", async](AppVar, col, row);
         }
 
 #if ENG
@@ -413,7 +413,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeCurrentCell(int col, int row)
         {
-            App[GetType(), "EmulateChangeCurrentCellInTarget"](AppVar, col, row);
+            App[typeof(FormsDataGridView), "EmulateChangeCurrentCellInTarget"](AppVar, col, row);
         }
 
 #if ENG
@@ -435,7 +435,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeCurrentCell(int col, int row, Async async)
         {
-            App[GetType(), "EmulateChangeCurrentCellInTarget", async](AppVar, col, row);
+            App[typeof(FormsDataGridView), "EmulateChangeCurrentCellInTarget", async](AppVar, col, row);
         }
 
 #if ENG
@@ -449,7 +449,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateClearSelection()
         {
-            App[GetType(), "EmulateClearSelectionInTarget"](AppVar);
+            App[typeof(FormsDataGridView), "EmulateClearSelectionInTarget"](AppVar);
         }
 
 #if ENG
@@ -467,7 +467,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateClearSelection(Async async)
         {
-            App[GetType(), "EmulateClearSelectionInTarget", async](AppVar);
+            App[typeof(FormsDataGridView), "EmulateClearSelectionInTarget", async](AppVar);
         }
 
 #if ENG
@@ -483,7 +483,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeCellSelected(params CellSelectedInfo[] cells)
         {
-            App[GetType(), "EmulateChangeCellSelectedInTarget"](AppVar, cells);
+            App[typeof(FormsDataGridView), "EmulateChangeCellSelectedInTarget"](AppVar, cells);
         }
 
 #if ENG
@@ -503,7 +503,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeCellSelected(Async async, params CellSelectedInfo[] cells)
         {
-            App[GetType(), "EmulateChangeCellSelectedInTarget", async](AppVar, cells);
+            App[typeof(FormsDataGridView), "EmulateChangeCellSelectedInTarget", async](AppVar, cells);
         }
 
 #if ENG
@@ -519,7 +519,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeRowSelected(params RowSelectedInfo[] rows)
         {
-            App[GetType(), "EmulateChangeRowSelectedInTarget"](AppVar, rows);
+            App[typeof(FormsDataGridView), "EmulateChangeRowSelectedInTarget"](AppVar, rows);
         }
 
 #if ENG
@@ -539,7 +539,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeRowSelected(Async async, params RowSelectedInfo[] rows)
         {
-            App[GetType(), "EmulateChangeRowSelectedInTarget", async](AppVar, rows);
+            App[typeof(FormsDataGridView), "EmulateChangeRowSelectedInTarget", async](AppVar, rows);
         }
 
 #if ENG
@@ -553,7 +553,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateDelete()
         {
-            App[GetType(), "EmulateDeleteInTarget"](AppVar);
+            App[typeof(FormsDataGridView), "EmulateDeleteInTarget"](AppVar);
         }
 
 #if ENG
@@ -571,7 +571,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateDelete(Async async)
         {
-            App[GetType(), "EmulateDeleteInTarget", async](AppVar);
+            App[typeof(FormsDataGridView), "EmulateDeleteInTarget", async](AppVar);
         }
 
         /// <summary>

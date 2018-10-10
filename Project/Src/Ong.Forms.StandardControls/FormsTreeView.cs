@@ -95,7 +95,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsTreeNode GetItem(params int[] indexes)
         {
-            return new FormsTreeNode(App[GetType(), "GetItemInTarget"](AppVar, indexes));
+            return new FormsTreeNode(App[typeof(FormsTreeView), "GetItemInTarget"](AppVar, indexes));
         }
 
 #if ENG
@@ -113,7 +113,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsTreeNode GetItem(params string[] keys)
         {
-            return new FormsTreeNode(App[GetType(), "GetItemInTarget"](AppVar, keys));
+            return new FormsTreeNode(App[typeof(FormsTreeView), "GetItemInTarget"](AppVar, keys));
         }
 
 #if ENG
@@ -131,7 +131,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsTreeNode FindItem(params string[] texts)
         {
-            return new FormsTreeNode(App[GetType(), "FindItemInTarget"](AppVar, texts));
+            return new FormsTreeNode(App[typeof(FormsTreeView), "FindItemInTarget"](AppVar, texts));
         }
 
 #if ENG
@@ -147,7 +147,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateNodeSelect(FormsTreeNode node)
         {
-            App[GetType(), "EmulateNodeSelectInTarget"](AppVar, node.AppVar);
+            App[typeof(FormsTreeView), "EmulateNodeSelectInTarget"](AppVar, node.AppVar);
         }
 
 #if ENG
@@ -167,7 +167,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateNodeSelect(FormsTreeNode node, Async async)
         {
-            App[GetType(), "EmulateNodeSelectInTarget", async](AppVar, node.AppVar);
+            App[typeof(FormsTreeView), "EmulateNodeSelectInTarget", async](AppVar, node.AppVar);
         }
 
         /// <summary>

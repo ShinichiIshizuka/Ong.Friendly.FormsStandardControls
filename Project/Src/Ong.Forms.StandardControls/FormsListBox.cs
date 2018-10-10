@@ -120,7 +120,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public int[] SelectedIndexes
         {
-            get { return (int[])(App[GetType(), "GetSelectedIndexesInTarget"](AppVar).Core); }
+            get { return (int[])(App[typeof(FormsListBox), "GetSelectedIndexesInTarget"](AppVar).Core); }
         }
 
 #if ENG
@@ -250,7 +250,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public string[] GetAllItemText()
         {
-            return (string[])(App[GetType(), "GetAllItemText"](this).Core);
+            return (string[])(App[typeof(FormsListBox), "GetAllItemText"](this).Core);
         }
 
 #if ENG
@@ -264,7 +264,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelectedIndex(int index)
         {
-            App[GetType(), "EmulateChangeSelectedIndexInTarget"](AppVar, index);
+            App[typeof(FormsListBox), "EmulateChangeSelectedIndexInTarget"](AppVar, index);
         }
 
 #if ENG
@@ -284,7 +284,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelectedIndex(int index, Async async)
         {
-            App[GetType(), "EmulateChangeSelectedIndexInTarget", async](AppVar, index);
+            App[typeof(FormsListBox), "EmulateChangeSelectedIndexInTarget", async](AppVar, index);
         }
 
 #if ENG
@@ -302,7 +302,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelectedState(int index, bool isSelect)
         {
-            App[GetType(), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
+            App[typeof(FormsListBox), "EmulateChangeSelectedStateInTarget"](AppVar, index, isSelect);
         }
 
 #if ENG
@@ -324,7 +324,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeSelectedState(int index, bool isSelect, Async async)
         {
-            App[GetType(), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
+            App[typeof(FormsListBox), "EmulateChangeSelectedStateInTarget", async](AppVar, index, isSelect);
         }
 
         /// <summary>

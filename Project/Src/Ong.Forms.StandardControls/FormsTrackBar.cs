@@ -103,7 +103,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeValue(int value)
         {
-            App[GetType(), "EmulateChangeValue"](AppVar, value);
+            App[typeof(FormsTrackBar), "EmulateChangeValue"](AppVar, value);
         }
 
 #if ENG
@@ -123,7 +123,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateChangeValue(int value, Async async)
         {
-            App[GetType(), "EmulateChangeValue", async](AppVar, value);
+            App[typeof(FormsTrackBar), "EmulateChangeValue", async](AppVar, value);
         }
 
         /// <summary>

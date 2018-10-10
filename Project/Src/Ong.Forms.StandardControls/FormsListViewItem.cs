@@ -112,7 +112,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsListViewSubItem GetSubItem(int subitemindex)
         {
-            return new FormsListViewSubItem(App[GetType(), "GetSubItemInTarget"](AppVar, subitemindex));
+            return new FormsListViewSubItem(App[typeof(FormsListViewItem), "GetSubItemInTarget"](AppVar, subitemindex));
         }
 
 #if ENG
@@ -128,7 +128,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck(bool value)
         {
-            App[GetType(), "EmulateCheckInTarget"](AppVar, value);
+            App[typeof(FormsListViewItem), "EmulateCheckInTarget"](AppVar, value);
         }
 
 #if ENG
@@ -148,7 +148,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck(bool value, Async async)
         {
-            App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
+            App[typeof(FormsListViewItem), "EmulateCheckInTarget", async](AppVar, value);
         }
 
 #if ENG
@@ -164,7 +164,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateEditLabel(string text)
         {
-            App[GetType(), "EmulateEditLabelInTarget"](AppVar, text);
+            App[typeof(FormsListViewItem), "EmulateEditLabelInTarget"](AppVar, text);
         }
 
 #if ENG
@@ -184,7 +184,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateEditLabel(string text, Async async)
         {
-            App[GetType(), "EmulateEditLabelInTarget", async](AppVar, text);
+            App[typeof(FormsListViewItem), "EmulateEditLabelInTarget", async](AppVar, text);
         }
 
         /// <summary>

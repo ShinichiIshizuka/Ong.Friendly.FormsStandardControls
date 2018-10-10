@@ -94,7 +94,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck()
         {
-            App[GetType(), "EmulateCheckInTarget"](AppVar);
+            App[typeof(FormsRadioButton), "EmulateCheckInTarget"](AppVar);
         }
 
 #if ENG
@@ -112,7 +112,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck(Async async)
         {
-            App[GetType(), "EmulateCheckInTarget", async](AppVar);
+            App[typeof(FormsRadioButton), "EmulateCheckInTarget", async](AppVar);
         }
 
         /// <summary>

@@ -77,7 +77,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateClick()
         {
-            App[GetType(), "EmulateClickInTarget"](AppVar);
+            App[typeof(FormsButton), "EmulateClickInTarget"](AppVar);
         }
 
 #if ENG
@@ -95,7 +95,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateClick(Async async)
         {
-            App[GetType(), "EmulateClickInTarget", async](AppVar);
+            App[typeof(FormsButton), "EmulateClickInTarget", async](AppVar);
         }
 
         /// <summary>

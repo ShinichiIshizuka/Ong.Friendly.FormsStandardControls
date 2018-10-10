@@ -95,7 +95,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck(CheckState value)
         {
-            App[GetType(), "EmulateCheckInTarget"](AppVar, value);
+            App[typeof(FormsCheckBox), "EmulateCheckInTarget"](AppVar, value);
         }
 
 #if ENG
@@ -115,7 +115,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck(CheckState value, Async async)
         {
-            App[GetType(), "EmulateCheckInTarget", async](AppVar, value);
+            App[typeof(FormsCheckBox), "EmulateCheckInTarget", async](AppVar, value);
         }
 
         /// <summary>
