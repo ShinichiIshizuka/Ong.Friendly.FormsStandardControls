@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System;
 using Ong.Friendly.FormsStandardControls.Properties;
 using Ong.Friendly.FormsStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -16,6 +17,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// ツールストリップアイテム操作クラスです。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.ToolStripItem", DriverMappingEnabled = false)]
     public class FormsToolStripItem : AppVarWrapper
     {
 #if ENG

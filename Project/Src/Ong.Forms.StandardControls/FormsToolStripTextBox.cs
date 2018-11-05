@@ -1,5 +1,6 @@
 ﻿using Codeer.Friendly;
 using Codeer.Friendly.Windows;
+using Codeer.TestAssistant.GeneratorToolKit;
 using System;
 
 namespace Ong.Friendly.FormsStandardControls
@@ -13,6 +14,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// ツールストリップアイテム操作クラスです。
     /// </summary>
 #endif
+    [ControlDriver(TypeFullName = "System.Windows.Forms.ToolStripTextBox", DriverMappingEnabled = false)]
     public class FormsToolStripTextBox : FormsToolStripItem
     {
 #if ENG
