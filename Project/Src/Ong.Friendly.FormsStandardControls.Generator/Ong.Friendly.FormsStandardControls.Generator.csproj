@@ -57,6 +57,15 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateDriver\CollectionUtility.cs" />
+    <Compile Include="CreateDriver\ControlAndFieldName.cs" />
+    <Compile Include="CreateDriver\DriverCreatorUtils.cs" />
+    <Compile Include="CreateDriver\DriverElementNameGeneratorAdaptor.cs" />
+    <Compile Include="CreateDriver\DriverInfo.cs" />
+    <Compile Include="CreateDriver\ReflectionAccessor.cs" />
+    <Compile Include="CreateDriver\WindowUtilityInTarget.cs" />
+    <Compile Include="CreateDriver\WinFormsDriverCreator.cs" />
+    <Compile Include="CreateDriver\CreateMenu.cs" />
     <Compile Include="FormsButtonGenerator.cs" />
     <Compile Include="FormsCheckBoxGenerator.cs" />
     <Compile Include="FormsCheckedListBoxGenerator.cs" />
