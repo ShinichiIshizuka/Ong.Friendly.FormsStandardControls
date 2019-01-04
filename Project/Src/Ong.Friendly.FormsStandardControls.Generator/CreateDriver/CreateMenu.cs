@@ -10,13 +10,13 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         public Dictionary<string, MethodInvoker> GetAction(object target, WindowAnalysisTreeInfo info)
         {
             var dic = new Dictionary<string, MethodInvoker>();
-            if (target is Control ctrl)
+            if (target is Form || target is UserControl)
             {
                 dic["Create Driver(&C)"] = () =>
                 {
                     using (var dom = CodeDomProvider.CreateProvider("CSharp"))
                     {
-                        new WinFormsDriverCreator(dom).CreateDriver(ctrl);
+                        new WinFormsDriverCreator(dom).CreateDriver((Control)target);
                     }
                 };
             }
