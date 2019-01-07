@@ -6,7 +6,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 {
     internal static class WindowUtilityInTarget
     {
-        public static IEnumerable<Control> GetAncesters(Control targetControl)
+        public static Control[] GetAncesters(Control targetControl)
         {
             var ancesters = new List<Control> { targetControl };
             var parent = targetControl.Parent;
@@ -15,7 +15,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                 ancesters.Add(parent);
                 parent = parent.Parent;
             }
-            return ancesters;
+            return ancesters.ToArray();
         }
 
         public static void GetDecendants(Control ctrl, IList<Control> decendants)

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 {
-    internal class WinFormsDriverCreator
+    public class WinFormsDriverCreator
     {
         private const string TodoComment = "// TODO It is not the best way to identify. Please change to a better method.";
         private const string Indent = "    ";

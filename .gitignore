@@ -29,3 +29,4 @@ ReleaseBinary/
 Release-Eng/
 Project/Src/packages
 Project/Test/FormsTest/packages
+Project/Src/_ReSharper.Caches

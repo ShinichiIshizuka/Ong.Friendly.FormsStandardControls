@@ -69,9 +69,16 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateDriverTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -85,6 +92,44 @@
       <Project>{bc60faad-67ab-4a55-8e47-def72f1281c9}</Project>
       <Name>Ong.Friendly.FormsStandardControls.Generator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CreateDriverTarget\CreateDriverTarget.csproj">
+      <Project>{f76c0f5f-9a7c-4126-a059-e1bb602fb361}</Project>
+      <Name>CreateDriverTarget</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SingleForm_Driver.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MdiParentForm_Driver.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MdiChildForm_Driver.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserControlForm_Driver.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserControl1_Driver.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TabUserControlForm_Driver.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserControl2_Driver.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NestedUserControl1_Driver.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

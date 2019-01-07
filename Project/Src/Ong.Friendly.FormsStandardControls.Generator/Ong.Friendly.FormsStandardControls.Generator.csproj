@@ -89,7 +89,6 @@
     <Compile Include="FormsToolStripGenerator.cs" />
     <Compile Include="FormsTreeViewGenerator.cs" />
     <Compile Include="GenerateUtility.cs" />
-    <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

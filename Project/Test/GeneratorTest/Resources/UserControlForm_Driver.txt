@@ -1,0 +1,26 @@
+using Codeer.Friendly.Dynamic;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
+using Codeer.TestAssistant.GeneratorToolKit;
+
+namespace TestCode
+{
+    [WindowDriver(TypeFullName = "CreateDriverTarget.UserControlForm")]
+    public class UserControlForm_Driver
+    {
+        public WindowControl Core { get; }
+        public UserControl1_Driver userControl11 => new UserControl1_Driver(new WindowControl(Core.Dynamic().userControl11));
+
+        public UserControlForm_Driver(WindowControl core)
+        {
+            Core = core;
+        }
+    }
+
+    public static class UserControlForm_Driver_Extensions
+    {
+        [WindowDriverIdentify(TypeFullName = "CreateDriverTarget.UserControlForm")]
+        public static UserControlForm_Driver Attach_UserControlForm(this WindowsAppFriend app)
+            => new UserControlForm_Driver(app.WaitForIdentifyFromTypeFullName("CreateDriverTarget.UserControlForm"));
+    }
+}

@@ -1,0 +1,50 @@
+using Codeer.Friendly.Dynamic;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
+using Codeer.TestAssistant.GeneratorToolKit;
+using Ong.Friendly.FormsStandardControls;
+
+namespace TestCode
+{
+    [WindowDriver(TypeFullName = "CreateDriverTarget.MdiParentForm")]
+    public class MdiParentForm_Driver
+    {
+        public WindowControl Core { get; }
+        public FormsMonthCalendar MonthCalendar => new FormsMonthCalendar(Core.IdentifyFromTypeFullName("System.Windows.Forms.MonthCalendar"));
+        public FormsCheckBox CheckBox => new FormsCheckBox(Core.IdentifyFromTypeFullName("System.Windows.Forms.CheckBox"));
+        public FormsCheckedListBox CheckedListBox => new FormsCheckedListBox(Core.IdentifyFromTypeFullName("System.Windows.Forms.CheckedListBox"));
+        public FormsComboBox ComboBox1 => new FormsComboBox(Core.Dynamic().MdiChildren[0].Controls[18]); // TODO It is not the best way to identify. Please change to a better method.
+        public FormsComboBox ComboBox0 => new FormsComboBox(Core.Dynamic().MdiChildren[0].Controls[17]); // TODO It is not the best way to identify. Please change to a better method.
+        public FormsDataGridView DataGridView => new FormsDataGridView(Core.IdentifyFromTypeFullName("System.Windows.Forms.DataGridView"));
+        public FormsDateTimePicker DateTimePicker => new FormsDateTimePicker(Core.IdentifyFromTypeFullName("System.Windows.Forms.DateTimePicker"));
+        public FormsLinkLabel LinkLabel => new FormsLinkLabel(Core.IdentifyFromTypeFullName("System.Windows.Forms.LinkLabel"));
+        public FormsListBox ListBox => new FormsListBox(Core.Dynamic().MdiChildren[0].Controls[13]); // TODO It is not the best way to identify. Please change to a better method.
+        public FormsListView ListView => new FormsListView(Core.IdentifyFromTypeFullName("System.Windows.Forms.ListView"));
+        public FormsMaskedTextBox MaskedTextBox => new FormsMaskedTextBox(Core.IdentifyFromTypeFullName("System.Windows.Forms.MaskedTextBox"));
+        public FormsToolStrip MenuStrip => new FormsToolStrip(Core.IdentifyFromTypeFullName("System.Windows.Forms.MenuStrip"));
+        public FormsNumericUpDown NumericUpDown => new FormsNumericUpDown(Core.IdentifyFromTypeFullName("System.Windows.Forms.NumericUpDown"));
+        public FormsRadioButton RadioButton0 => new FormsRadioButton(Core.Dynamic().MdiChildren[0].Controls[8]); // TODO It is not the best way to identify. Please change to a better method.
+        public FormsRadioButton RadioButton => new FormsRadioButton(Core.Dynamic().MdiChildren[0].Controls[7]); // TODO It is not the best way to identify. Please change to a better method.
+        public FormsRichTextBox RichTextBox => new FormsRichTextBox(Core.IdentifyFromTypeFullName("System.Windows.Forms.RichTextBox"));
+        public FormsTabControl TabControl => new FormsTabControl(Core.IdentifyFromTypeFullName("System.Windows.Forms.TabControl"));
+        public FormsTextBox TextBox => new FormsTextBox(Core.Dynamic().MdiChildren[0].Controls[4]); // TODO It is not the best way to identify. Please change to a better method.
+        public FormsTrackBar TrackBar => new FormsTrackBar(Core.IdentifyFromTypeFullName("System.Windows.Forms.TrackBar"));
+        public FormsTreeView TreeView => new FormsTreeView(Core.IdentifyFromTypeFullName("System.Windows.Forms.TreeView"));
+        public FormsComboBox ComboBox => new FormsComboBox(Core.Dynamic().MdiChildren[0].Controls[1]); // TODO It is not the best way to identify. Please change to a better method.
+        public FormsToolStrip ToolStrip => new FormsToolStrip(Core.Dynamic().MdiChildren[0].Controls[0]); // TODO It is not the best way to identify. Please change to a better method.
+        public FormsButton Button => new FormsButton(Core.Dynamic().MdiChildren[0].Controls[21]); // TODO It is not the best way to identify. Please change to a better method.
+        public FormsMdiClient MdiClient => new FormsMdiClient(Core.IdentifyFromTypeFullName("System.Windows.Forms.MdiClient"));
+
+        public MdiParentForm_Driver(WindowControl core)
+        {
+            Core = core;
+        }
+    }
+
+    public static class MdiParentForm_Driver_Extensions
+    {
+        [WindowDriverIdentify(TypeFullName = "CreateDriverTarget.MdiParentForm")]
+        public static MdiParentForm_Driver Attach_MdiParentForm(this WindowsAppFriend app)
+            => new MdiParentForm_Driver(app.WaitForIdentifyFromTypeFullName("CreateDriverTarget.MdiParentForm"));
+    }
+}
