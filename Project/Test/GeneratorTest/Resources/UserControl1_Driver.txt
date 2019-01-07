@@ -10,31 +10,8 @@ namespace TestCode
     public class UserControl1_Driver
     {
         public WindowControl Core { get; }
-        public FormsToolStrip menuStrip1 => new FormsToolStrip(Core.Dynamic().menuStrip1);
-        public FormsToolStrip toolStrip1 => new FormsToolStrip(Core.Dynamic().toolStrip1);
         public FormsButton button1 => new FormsButton(Core.Dynamic().button1);
-        public FormsCheckBox checkBox1 => new FormsCheckBox(Core.Dynamic().checkBox1);
-        public FormsCheckedListBox checkedListBox1 => new FormsCheckedListBox(Core.Dynamic().checkedListBox1);
-        public FormsComboBox comboBox1 => new FormsComboBox(Core.Dynamic().comboBox1);
-        public FormsComboBox comboBox2 => new FormsComboBox(Core.Dynamic().comboBox2);
-        public FormsDataGridView dataGridView1 => new FormsDataGridView(Core.Dynamic().dataGridView1);
-        public FormsDateTimePicker dateTimePicker1 => new FormsDateTimePicker(Core.Dynamic().dateTimePicker1);
-        public FormsLinkLabel linkLabel1 => new FormsLinkLabel(Core.Dynamic().linkLabel1);
         public FormsListBox listBox1 => new FormsListBox(Core.Dynamic().listBox1);
-        public FormsListView listView1 => new FormsListView(Core.Dynamic().listView1);
-        public FormsMaskedTextBox maskedTextBox1 => new FormsMaskedTextBox(Core.Dynamic().maskedTextBox1);
-        public FormsMonthCalendar monthCalendar1 => new FormsMonthCalendar(Core.Dynamic().monthCalendar1);
-        public FormsNumericUpDown numericUpDown1 => new FormsNumericUpDown(Core.Dynamic().numericUpDown1);
-        public FormsRadioButton radioButton1 => new FormsRadioButton(Core.Dynamic().radioButton1);
-        public FormsRadioButton radioButton2 => new FormsRadioButton(Core.Dynamic().radioButton2);
-        public FormsRichTextBox richTextBox1 => new FormsRichTextBox(Core.Dynamic().richTextBox1);
-        public FormsTabControl tabControl1 => new FormsTabControl(Core.Dynamic().tabControl1);
-        public FormsButton button2 => new FormsButton(Core.Dynamic().button2);
-        public FormsListBox listBox2 => new FormsListBox(Core.Dynamic().listBox2);
-        public FormsTextBox textBox1 => new FormsTextBox(Core.Dynamic().textBox1);
-        public FormsTrackBar trackBar1 => new FormsTrackBar(Core.Dynamic().trackBar1);
-        public FormsTreeView treeView1 => new FormsTreeView(Core.Dynamic().treeView1);
-        public FormsComboBox comboBox3 => new FormsComboBox(Core.Dynamic().comboBox3);
 
         public UserControl1_Driver(WindowControl core)
         {

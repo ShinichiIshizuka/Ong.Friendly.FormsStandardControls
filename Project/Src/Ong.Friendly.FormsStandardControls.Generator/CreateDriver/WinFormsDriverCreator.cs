@@ -207,15 +207,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                     CreateDriverInfoFindFromControlTree(mdiChildrenIndex, root, ctrl, driverInfo, controlAndDefines, mappedControls, names, next.ToArray(), fileName);
                 }
             }
-
-            //フォームの場合はMDIも検索
-            if (target is Form form)
-            {
-                for (int i = 0; i < form.MdiChildren.Length; i++)
-                {
-                    CreateDriverInfoFindFromControlTree(i, root, form.MdiChildren[i], driverInfo, controlAndDefines, mappedControls, names, new int[0], fileName);
-                }
-            }
         }
 
         private static List<Control> GetTabOrderChildControls(Control targetControl)
