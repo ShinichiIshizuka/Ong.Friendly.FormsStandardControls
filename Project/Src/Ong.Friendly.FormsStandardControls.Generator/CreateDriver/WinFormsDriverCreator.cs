@@ -6,6 +6,15 @@ using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 {
+#if ENG
+    /// <summary>
+    /// Generate WinForms driver.
+    /// </summary>
+#else
+    /// <summary>
+    /// WinFormsのドライバを生成します。
+    /// </summary>
+#endif
     public class WinFormsDriverCreator
     {
         private const string TodoComment = "// TODO It is not the best way to identify. Please change to a better method.";
@@ -14,12 +23,34 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         private readonly CodeDomProvider _dom;
         private readonly DriverElementNameGeneratorAdaptor _customNameGenerator;
 
+#if ENG
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="dom">CodeDomProvider.</param>
+#else
+        /// <summary>
+        /// コンストラクタ。
+        /// </summary>
+        /// <param name="dom">CodeDomProvider.</param>
+#endif
         public WinFormsDriverCreator(CodeDomProvider dom)
         {
             _dom = dom;
             _customNameGenerator = new DriverElementNameGeneratorAdaptor(dom);
         }
 
+#if ENG
+        /// <summary>
+        /// Route control.
+        /// </summary>
+        /// <param name="root">CodeDomProvider.</param>
+#else
+        /// <summary>
+        /// コンストラクタ。
+        /// </summary>
+        /// <param name="root">ルートのコントロール。</param>
+#endif
         public void CreateDriver(Control root)
         {
             //FormとUserControlを全取得
