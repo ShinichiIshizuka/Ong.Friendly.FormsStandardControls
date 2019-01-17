@@ -145,6 +145,9 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                 //不正なフィールド名のものは取得できない
                 if (!_dom.IsValidIdentifier(field.Name)) continue;
 
+                //すでにマップされているかチェック
+                if (CollectionUtility.HasReference(mappedControls, field.Control)) continue;
+
                 //コントロールドライバ
                 var driver = DriverCreatorUtils.GetDriverTypeFullName(field.Control, DriverCreatorAdapter.TypeFullNameAndControlDriver);
                 if (!string.IsNullOrEmpty(driver))
