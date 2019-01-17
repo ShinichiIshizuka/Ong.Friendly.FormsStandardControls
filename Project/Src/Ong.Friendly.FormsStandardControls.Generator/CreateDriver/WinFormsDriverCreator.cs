@@ -22,6 +22,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 
         private readonly CodeDomProvider _dom;
         private readonly DriverElementNameGeneratorAdaptor _customNameGenerator;
+        private readonly DriverTypeNameManager _driverTypeNameManager;
 
 #if ENG
         /// <summary>
@@ -38,6 +39,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         {
             _dom = dom;
             _customNameGenerator = new DriverElementNameGeneratorAdaptor(dom);
+            _driverTypeNameManager = new DriverTypeNameManager(DriverCreatorAdapter.SelectedNamespace, DriverCreatorAdapter.TypeFullNameAndWindowDriver);
         }
 
 #if ENG
@@ -63,7 +65,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             var driverInfos = new Dictionary<Type, DriverInfo<Control>>();
             foreach (var e in targets)
             {
-                var fileName = $"{DriverCreatorUtils.MakeDriverType(e.Value, DriverCreatorAdapter.TypeFullNameAndWindowDriver)}.cs";
+                var fileName = $"{_driverTypeNameManager.MakeDriverType(e.Value)}.cs";
                 var info = CreateDriverInfo(e.Value, fileName);
                 driverInfos[e.Key] = info;
             }
@@ -71,7 +73,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             //コード生成
             foreach (var e in driverInfos)
             {
-                var driverName = DriverCreatorUtils.MakeDriverType(e.Value.Target, DriverCreatorAdapter.TypeFullNameAndWindowDriver, out var nameSpace);
+                var driverName = _driverTypeNameManager.MakeDriverType(e.Value.Target, out var nameSpace);
                 if (string.IsNullOrEmpty(nameSpace)) nameSpace = DriverCreatorAdapter.SelectedNamespace;
                 DriverCreatorAdapter.AddCode($"{driverName}.cs", GenerateCode(root, e.Value.Target, nameSpace, driverName, e.Value.Usings, e.Value.Members, getFromControlTreeOnly), e.Value.Target);
             }
@@ -162,7 +164,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                     mappedControls.Add(field.Control);
                     var name = _customNameGenerator.MakeDriverPropName(field.Control, field.Name, names);
                     names.Add(name);
-                    var typeName = DriverCreatorUtils.MakeDriverType(field.Control, DriverCreatorAdapter.TypeFullNameAndWindowDriver, out var nameSpace);
+                    var typeName = _driverTypeNameManager.MakeDriverType(field.Control, out var nameSpace);
                     if (!string.IsNullOrEmpty(nameSpace) && (nameSpace != DriverCreatorAdapter.SelectedNamespace) && !driverInfo.Usings.Contains(nameSpace)) driverInfo.Usings.Add(nameSpace);
                     var key = $"new WindowControl(Core.Dynamic().{field.Name}";
                     controlAndDefines.Add(new ControlAndDefine(field.Control, $"public {typeName} {name} => new {typeName}({key}));"));
@@ -342,7 +344,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                 code.Add($"{Indent}public static class {driverClassName}_Extensions");
                 code.Add($"{Indent}{{");
                 var funcName = GetFuncName(driverClassName);
-                var rootDriver = DriverCreatorUtils.MakeDriverType(root, DriverCreatorAdapter.TypeFullNameAndWindowDriver, out var rootNameSpace);
+                var rootDriver = _driverTypeNameManager.MakeDriverType(root, out var rootNameSpace);
                 if (!string.IsNullOrEmpty(rootNameSpace) && !usings.Contains(rootNameSpace) && (rootNameSpace != nameSpace))
                 {
                     code.Insert(nextUsingIndex, $"using {rootNameSpace};");

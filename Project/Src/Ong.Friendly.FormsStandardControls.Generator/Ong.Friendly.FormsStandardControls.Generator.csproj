@@ -62,6 +62,7 @@
     <Compile Include="CreateDriver\DriverCreatorUtils.cs" />
     <Compile Include="CreateDriver\DriverElementNameGeneratorAdaptor.cs" />
     <Compile Include="CreateDriver\DriverInfo.cs" />
+    <Compile Include="CreateDriver\DriverTypeNameManager.cs" />
     <Compile Include="CreateDriver\ReflectionAccessor.cs" />
     <Compile Include="CreateDriver\WindowUtilityInTarget.cs" />
     <Compile Include="CreateDriver\WinFormsDriverCreator.cs" />

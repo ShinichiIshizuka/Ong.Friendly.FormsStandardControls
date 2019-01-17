@@ -21,21 +21,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             if (index == -1) return driver;
             return driver.Substring(0, index);
         }
-
-        public static string MakeDriverType(object control, Dictionary<string, WindowDriverInfo> typeFullNameAndWindowDriver)
-            => MakeDriverType(control, typeFullNameAndWindowDriver, out _);
-
-        public static string MakeDriverType(object control, Dictionary<string, WindowDriverInfo> typeFullNameAndWindowDriver, out string nameSpace)
-        {
-            nameSpace = string.Empty;
-            if (typeFullNameAndWindowDriver.TryGetValue(control.GetType().FullName, out var typeFullName))
-            {
-                nameSpace = GetTypeNamespace(typeFullName.DriverTypeFullName);
-                return GetTypeName(typeFullName.DriverTypeFullName);
-            }
-            return control.GetType().Name + Suffix;
-        }
-
+        
         public static string GetDriverTypeFullName<T>(T ctrl, Dictionary<string, ControlDriverInfo> netTypeAndDriverType)
         {
             var info = GetDriverInfo(ctrl, netTypeAndDriverType);
