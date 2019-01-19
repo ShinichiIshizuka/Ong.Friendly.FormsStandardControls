@@ -7,9 +7,9 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 {
     internal class CreateMenu : IWindowAnalysisMenuAction
     {
-        public Dictionary<string, MethodInvoker> GetAction(object target, WindowAnalysisTreeInfo info)
+        public Dictionary<string, MenuAction> GetAction(object target, WindowAnalysisTreeInfo info)
         {
-            var dic = new Dictionary<string, MethodInvoker>();
+            var dic = new Dictionary<string, MenuAction>();
             if (target is Form || target is UserControl)
             {
                 dic["Create Driver(&C)"] = () =>
