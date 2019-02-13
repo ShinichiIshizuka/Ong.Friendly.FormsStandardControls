@@ -47,12 +47,30 @@ namespace FormsTest
             }
         }
 
+        static void AAA()
+        {
+
+            var x = typeof(FormsControlBase).ToString();
+            
+        }
+
+
+
         /// <summary>
         /// EmulateClick‚ÌƒeƒXƒg
         /// </summary>
         [TestMethod]
         public void TestButtonClick()
         {
+            app.LoadAssembly(GetType().Assembly);
+            app.LoadAssembly(typeof(Cell).Assembly);
+            app.LoadAssembly(typeof(WindowControl).Assembly);
+            app.LoadAssembly(typeof(FormsControlBase).Assembly);
+            var cell = app.Dim(new Cell());
+            string t = (string)cell["GetType"]()["Assembly"]()["ToString"]().Core;
+
+            app[GetType(), "AAA"]();
+
             FormsButton button = new FormsButton(testDlg["button"]());
             button.EmulateClick();
             int count = (int)testDlg["async_counter"]().Core;
