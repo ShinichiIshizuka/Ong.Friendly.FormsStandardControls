@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -35,8 +36,8 @@ namespace GeneratorTest
             }
             // プロパティに値を設定
             var driverCreatorAdapterType = typeof(DriverCreatorAdapter);
-            driverCreatorAdapterType.InvokeMember("SetSelectedNamespace", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.InvokeMethod, null, null, new object[] {"TestCode"});
-            driverCreatorAdapterType.InvokeMember("SetClientProjectExtension", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.InvokeMethod, null, null, new object[] {".csproj"});
+            driverCreatorAdapterType.InvokeMember("SetSelectedNamespace", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.InvokeMethod, null, null, new object[] { "TestCode" });
+            driverCreatorAdapterType.InvokeMember("SetClientProjectExtension", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.InvokeMethod, null, null, new object[] { ".csproj" });
         }
 
         [TestMethod]
