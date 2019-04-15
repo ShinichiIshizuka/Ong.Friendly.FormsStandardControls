@@ -151,6 +151,29 @@ namespace FormsTest
         }
 
         /// <summary>
+        /// EmulateChangeRowSelectedとSelectedRowsのテスト
+        /// </summary>
+        [TestMethod]
+        public void TestEmulateChangeRowSelectedSelectedRows2()
+        {
+            FormsDataGridView dataGridview = new FormsDataGridView(testDlg["dataGridView"]());
+
+            //行追加
+            dataGridview.EmulateCellCheck(1, 0, true);
+            dataGridview.EmulateCellCheck(1, 1, true);
+            dataGridview.EmulateCellCheck(1, 2, true);
+
+            //行選択テスト
+            dataGridview.EmulateClearSelection();
+            dataGridview.EmulateChangeRowSelected(new RowSelectedInfo(1, true));
+            dataGridview.EmulateChangeRowSelected(new RowSelectedInfo(2, true));
+            AssertEx.AreEqual(new int[] { 1, 2 }, dataGridview.SelectedRows);
+
+            //行クリア
+            dataGridview["Rows"]()["Clear"]();
+        }
+
+        /// <summary>
         /// EmulateClearSelectionのテスト
         /// </summary>
         [TestMethod]
