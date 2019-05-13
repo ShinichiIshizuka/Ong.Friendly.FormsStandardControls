@@ -5,6 +5,7 @@ using System;
 using Ong.Friendly.FormsStandardControls.Properties;
 using Ong.Friendly.FormsStandardControls.Inside;
 using Codeer.TestAssistant.GeneratorToolKit;
+using System.Collections.Generic;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -118,6 +119,34 @@ namespace Ong.Friendly.FormsStandardControls
             App[typeof(FormsToolStripItem), "EmulateClickInTarget", async](AppVar);
         }
 
+#if ENG
+        /// <summary>
+        /// Show item.
+        /// </summary>
+#else
+        /// <summary>
+        /// 指定のアイテムを表示します
+        /// </summary>
+#endif
+        public void EmulateShow()
+        {
+            App[typeof(FormsToolStripItem), "Show"](AppVar);
+        }
+
+#if ENG
+        /// <summary>
+        /// Hide item.
+        /// </summary>
+#else
+        /// <summary>
+        /// 指定のアイテムを非表示にします。
+        /// </summary>
+#endif
+        public void EmulateHide()
+        {
+            App[typeof(FormsToolStripItem), "Hide"](AppVar);
+        }
+
         /// <summary>
         /// クリックです。
         /// </summary>
@@ -130,6 +159,53 @@ namespace Ong.Friendly.FormsStandardControls
             }
             item.Owner.Focus();
             item.PerformClick();
+        }
+
+        static void Show(ToolStripMenuItem target)
+        {
+            var show = new List<MethodInvoker>();
+            var hide = new List<MethodInvoker>();
+            GetOpenClose(target, show, hide);
+            foreach (var e in show)
+            {
+                e();
+            }
+        }
+
+        static void Hide(ToolStripMenuItem target)
+        {
+            var show = new List<MethodInvoker>();
+            var hide = new List<MethodInvoker>();
+            GetOpenClose(target, show, hide);
+            foreach (var e in hide)
+            {
+                e();
+            }
+        }
+
+
+        static void GetOpenClose(ToolStripMenuItem target, List<MethodInvoker> show, List<MethodInvoker> hide)
+        {
+            var current = target;
+            while (true)
+            {
+                if (current.OwnerItem != null && current.OwnerItem is ToolStripMenuItem i)
+                {
+                    show.Add(() => i.ShowDropDown());
+                    hide.Add(() => i.HideDropDown());
+                    current = i;
+                }
+                else
+                {
+                    if (current.Owner is ContextMenuStrip m)
+                    {
+                        show.Add(() => m.Show());
+                        hide.Add(() => m.Hide());
+                    }
+                    break;
+                }
+            }
+            show.Reverse();
         }
     }
 }

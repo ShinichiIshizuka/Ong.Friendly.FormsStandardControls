@@ -226,5 +226,70 @@ namespace FormsTest
             FormsToolStripItem item = new FormsToolStripItem(testDlg["menu001ToolStripMenuItem"]());
             item.EmulateClick();
         }
+
+        /// <summary>
+        /// メニューの開閉テスト
+        /// </summary>
+        [TestMethod]
+        public void TestShowClose1()
+        {
+            FormsToolStripItem item = new FormsToolStripItem(testDlg["menu00104ToolStripMenuItem"]());
+            Assert.IsFalse(item.Enabled);
+            Assert.IsFalse(item.Visible);
+            item.EmulateShow();
+            Assert.IsTrue(item.Enabled);
+            Assert.IsTrue(item.Visible);
+            item.EmulateHide();
+            Assert.IsFalse(item.Enabled);
+            Assert.IsFalse(item.Visible);
+        }
+
+        /// <summary>
+        /// メニューの開閉テスト
+        /// </summary>
+        [TestMethod]
+        public void TestShowClose2()
+        {
+            FormsToolStripItem item = new FormsToolStripItem(testDlg["menuItem4ToolStripMenuItem"]());
+            Assert.IsFalse(item.Enabled);
+            Assert.IsFalse(item.Visible);
+            item.EmulateShow();
+            Assert.IsTrue(item.Enabled);
+            Assert.IsTrue(item.Visible);
+            item.EmulateHide();
+            Assert.IsFalse(item.Enabled);
+            Assert.IsFalse(item.Visible);
+        }
+
+
+
+
+        /// <summary>
+        /// メニューの開閉テスト
+        /// </summary>
+        [TestMethod]
+        public void TestShowClick1()
+        {
+            FormsToolStripItem item = new FormsToolStripItem(testDlg["menu00104ToolStripMenuItem"]());
+            item.EmulateShow();
+            item.EmulateClick();
+            item.EmulateHide();
+            Assert.IsFalse(item.Enabled);
+            Assert.IsFalse(item.Visible);
+        }
+
+        /// <summary>
+        /// メニューの開閉テスト
+        /// </summary>
+        [TestMethod]
+        public void TestShowClick2()
+        {
+            FormsToolStripItem item = new FormsToolStripItem(testDlg["menuItem4ToolStripMenuItem"]());
+            item.EmulateShow();
+            item.EmulateClick();
+            item.EmulateHide();
+            Assert.IsFalse(item.Enabled);
+            Assert.IsFalse(item.Visible);
+        }
     }
 }

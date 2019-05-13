@@ -15,7 +15,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// </summary>
 #endif
     [ControlDriver(TypeFullName = "System.Windows.Forms.ToolStripComboBox", DriverMappingEnabled = false)]
-    public class FormsToolStripComboBox : AppVarWrapper
+    public class FormsToolStripComboBox : FormsToolStripItem
     {
 #if ENG
         /// <summary>

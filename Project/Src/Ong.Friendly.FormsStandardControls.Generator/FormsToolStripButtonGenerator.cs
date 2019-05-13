@@ -57,6 +57,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="e">イベント内容</param>
         void ButtonClick(object sender, EventArgs e)
         {
+            AddSentence(new TokenName(), ".EmulateShow();");
             AddSentence(new TokenName(), ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
         }
 
@@ -67,6 +68,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="e">イベント内容</param>
         void CheckedChanged(object sender, EventArgs e)
         {
+            AddSentence(new TokenName(), ".EmulateShow();");
             AddSentence(new TokenName(), ".EmulateCheck(CheckState." + _control.CheckState, new TokenAsync(CommaType.Before), ");");
         }
 

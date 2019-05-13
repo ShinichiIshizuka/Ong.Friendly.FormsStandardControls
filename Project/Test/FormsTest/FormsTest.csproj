@@ -61,11 +61,11 @@
       <HintPath>packages\Codeer.TestAssistant.GeneratorToolKit.3.3.2\lib\net20\Codeer.TestAssistant.GeneratorToolKit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Ong.Friendly.FormsStandardControls, Version=2.11.11.0, Culture=neutral, PublicKeyToken=ee7fcdb5644bd140, processorArchitecture=MSIL">
-      <HintPath>packages\Ong.Friendly.FormsStandardControls.2.11.11\lib\net20\Ong.Friendly.FormsStandardControls.dll</HintPath>
+    <Reference Include="Ong.Friendly.FormsStandardControls, Version=2.12.1.0, Culture=neutral, PublicKeyToken=ee7fcdb5644bd140, processorArchitecture=MSIL">
+      <HintPath>packages\Ong.Friendly.FormsStandardControls.2.12.1\lib\net20\Ong.Friendly.FormsStandardControls.dll</HintPath>
     </Reference>
-    <Reference Include="Ong.Friendly.FormsStandardControls.Generator, Version=2.11.11.0, Culture=neutral, PublicKeyToken=d15e24feb703b5b0, processorArchitecture=MSIL">
-      <HintPath>packages\Ong.Friendly.FormsStandardControls.2.11.11\lib\net20\Ong.Friendly.FormsStandardControls.Generator.dll</HintPath>
+    <Reference Include="Ong.Friendly.FormsStandardControls.Generator, Version=2.12.1.0, Culture=neutral, PublicKeyToken=d15e24feb703b5b0, processorArchitecture=MSIL">
+      <HintPath>packages\Ong.Friendly.FormsStandardControls.2.12.1\lib\net20\Ong.Friendly.FormsStandardControls.Generator.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />

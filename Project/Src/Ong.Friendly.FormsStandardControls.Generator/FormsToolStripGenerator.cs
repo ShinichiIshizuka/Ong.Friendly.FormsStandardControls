@@ -109,6 +109,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             EventHandler click = delegate
             {
+                AddSentence(new TokenName(), GetItemPath(fromText) + ".EmulateShow();");
                 AddSentence(new TokenName(), GetItemPath(fromText) + ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
             };
             item.Click += click;
@@ -206,6 +207,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 {
                     EventHandler click = delegate
                     {
+                        AddSentence(new TokenName(), GetItemPath(fromIndex) + ".EmulateShow();");
                         AddSentence(new TokenName(), GetItemPath(fromIndex) + ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
                     };
                     item.Click += click;
