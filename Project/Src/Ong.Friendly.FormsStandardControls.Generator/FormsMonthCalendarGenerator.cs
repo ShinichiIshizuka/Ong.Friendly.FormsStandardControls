@@ -59,7 +59,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             {
                 DateTime selectionStart = _control.SelectionStart;
                 DateTime selectionEnd = _control.SelectionEnd;
-                if(selectionStart == selectionEnd)
+                AddUsingNamespace(typeof(DateTime).Namespace);
+                if (selectionStart == selectionEnd)
                 {
                     AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(",
                         selectionStart.Year, ", ",

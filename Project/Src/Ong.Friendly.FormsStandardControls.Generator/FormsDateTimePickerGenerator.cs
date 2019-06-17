@@ -55,6 +55,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="e">イベント内容</param>
         void DateTimeValueChanged(object sender, EventArgs e)
         {
+            AddUsingNamespace(typeof(DateTime).Namespace);
             AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", _control.Value.Year , ", " , _control.Value.Month , ", " ,_control.Value.Day , ")", new TokenAsync(CommaType.Before),");");
         }
     }
