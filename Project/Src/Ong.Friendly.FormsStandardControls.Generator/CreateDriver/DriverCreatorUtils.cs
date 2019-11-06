@@ -21,14 +21,44 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             if (index == -1) return driver;
             return driver.Substring(0, index);
         }
-        
+
         public static string GetDriverTypeFullName<T>(T ctrl, Dictionary<string, ControlDriverInfo> netTypeAndDriverType)
         {
             var info = GetDriverInfo(ctrl, netTypeAndDriverType);
             return (info == null) || !info.DriverMappingEnabled ? string.Empty : info.ControlDriverTypeFullName;
         }
 
-        private static ControlDriverInfo GetDriverInfo<T>(T ctrl, Dictionary<string, ControlDriverInfo> netTypeAndDriverType)
+        static ControlDriverInfo GetDriverInfo<T>(T ctrl, Dictionary<string, ControlDriverInfo> netTypeAndDriverType)
+        {
+            for (var type = ctrl.GetType(); type != null; type = type.BaseType)
+            {
+                if (netTypeAndDriverType.TryGetValue(type.FullName, out var driver)) return driver;
+            }
+            return null;
+        }
+
+        public static string GetDriverTypeFullName<T>(T ctrl, Dictionary<string, WindowDriverInfo> netTypeAndDriverType)
+        {
+            var info = GetDriverInfo(ctrl, netTypeAndDriverType);
+            return info == null ? string.Empty : info.DriverTypeFullName;
+        }
+
+        static WindowDriverInfo GetDriverInfo<T>(T ctrl, Dictionary<string, WindowDriverInfo> netTypeAndDriverType)
+        {
+            for (var type = ctrl.GetType(); type != null; type = type.BaseType)
+            {
+                if (netTypeAndDriverType.TryGetValue(type.FullName, out var driver)) return driver;
+            }
+            return null;
+        }
+
+        public static string GetDriverTypeFullName<T>(T ctrl, Dictionary<string, UserControlDriverInfo> netTypeAndDriverType)
+        {
+            var info = GetDriverInfo(ctrl, netTypeAndDriverType);
+            return info == null ? string.Empty : info.DriverTypeFullName;
+        }
+
+        static UserControlDriverInfo GetDriverInfo<T>(T ctrl, Dictionary<string, UserControlDriverInfo> netTypeAndDriverType)
         {
             for (var type = ctrl.GetType(); type != null; type = type.BaseType)
             {

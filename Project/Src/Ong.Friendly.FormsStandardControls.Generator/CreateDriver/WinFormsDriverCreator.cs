@@ -39,7 +39,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         {
             _dom = dom;
             _customNameGenerator = new DriverElementNameGeneratorAdaptor(dom);
-            _driverTypeNameManager = new DriverTypeNameManager(DriverCreatorAdapter.SelectedNamespace, DriverCreatorAdapter.TypeFullNameAndWindowDriver);
+            _driverTypeNameManager = new DriverTypeNameManager(DriverCreatorAdapter.SelectedNamespace, DriverCreatorAdapter.TypeFullNameAndWindowDriver, DriverCreatorAdapter.TypeFullNameAndUserControlDriver);
         }
 
 #if ENG
@@ -59,7 +59,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             var recursiveCheck = new List<Control>();
             var targets = new Dictionary<Type, Control>();
             var getFromControlTreeOnly = new List<Type>();
-            GetAllFormAndUserControl(false, root, targets, getFromControlTreeOnly, recursiveCheck);
+            GetAllFormAndUserControl(true, false, root, targets, getFromControlTreeOnly, recursiveCheck);
 
             //ドライバ情報を取得
             var driverInfos = new Dictionary<Type, DriverInfo<Control>>();
@@ -79,9 +79,75 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             }
         }
 
-        private void GetAllFormAndUserControl(bool isControlTreeOnly, Control control, IDictionary<Type, Control> targets, IList<Type> getFromControlTreeOnly, IList<Control> recursiveCheck)
+        /// <summary>
+        /// Route control.
+        /// </summary>
+        /// <param name="root">CodeDomProvider.</param>
+        public void CreateControlDriver(Control root)
+        {
+            var driverName = root.GetType().Name + "Driver";
+            var generatorName = driverName + "Generator";
+
+            var driverCode = @"using Codeer.Friendly;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
+using Codeer.TestAssistant.GeneratorToolKit;
+using Ong.Friendly.FormsStandardControls;
+using System;
+using System.Windows.Forms;
+
+namespace [*namespace]
+{
+    [ControlDriver(TypeFullName = ""{typefullname}"", Priority = 2)]
+    public class {driverName} : FormsControlBase
+    {
+        public {driverName}(AppVar appVar)
+            : base(appVar) { }
+    }
+}
+";
+            DriverCreatorAdapter.AddCode($"{driverName}.cs", driverCode.Replace("{typefullname}", root.GetType().FullName).Replace("{driverName}", driverName), root);
+
+            var generatorCode = @"using System;
+using System.Windows.Forms;
+using Codeer.TestAssistant.GeneratorToolKit;
+
+namespace [*namespace]
+{
+    [CaptureCodeGenerator(""[*namespace.{driverName}]"")]
+    public class {generatorName} : CaptureCodeGeneratorBase
+    {
+        Control _control;
+
+        protected override void Attach()
+        {
+            _control = (Control)ControlObject;
+        }
+
+        protected override void Detach()
+        {
+        }
+    }
+}
+";
+            DriverCreatorAdapter.AddCode($"{generatorName}.cs", generatorCode.Replace("{generatorName}", generatorName).Replace("{driverName}", driverName), root);
+        }
+
+        private void GetAllFormAndUserControl(bool isRoot, bool isControlTreeOnly, Control control, IDictionary<Type, Control> targets, IList<Type> getFromControlTreeOnly, IList<Control> recursiveCheck)
         {
             if (control == null) return;
+
+            //ルート以外はすでに割り当てがあれば再生成しないようにする
+            var addToTarget = true;
+            if (!isRoot)
+            {
+                if (!string.IsNullOrEmpty(DriverCreatorUtils.GetDriverTypeFullName(control, DriverCreatorAdapter.TypeFullNameAndControlDriver)) ||
+                    !string.IsNullOrEmpty(DriverCreatorUtils.GetDriverTypeFullName(control, DriverCreatorAdapter.TypeFullNameAndWindowDriver)) ||
+                    !string.IsNullOrEmpty(DriverCreatorUtils.GetDriverTypeFullName(control, DriverCreatorAdapter.TypeFullNameAndUserControlDriver)))
+                {
+                    addToTarget = false;
+                }
+            }
 
             //再帰チェック
             if (CollectionUtility.HasReference(recursiveCheck, control)) return;
@@ -89,28 +155,31 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 
             if ((control is Form) || (control is UserControl))
             {
-                targets[control.GetType()] = control;
-                if (isControlTreeOnly)
+                if (addToTarget)
                 {
-                    getFromControlTreeOnly.Add(control.GetType());
+                    targets[control.GetType()] = control;
+                    if (isControlTreeOnly)
+                    {
+                        getFromControlTreeOnly.Add(control.GetType());
+                    }
                 }
 
                 //Form, UserControlの時はメンバも見る
                 foreach (var field in GetFields(control))
                 {
-                    GetAllFormAndUserControl(false, field.Control, targets, getFromControlTreeOnly, recursiveCheck);
+                    GetAllFormAndUserControl(false, false, field.Control, targets, getFromControlTreeOnly, recursiveCheck);
                 }
             }
 
             foreach (Control ctrl in control.Controls)
             {
-                GetAllFormAndUserControl(true, ctrl, targets, getFromControlTreeOnly, recursiveCheck);
+                GetAllFormAndUserControl(false, true, ctrl, targets, getFromControlTreeOnly, recursiveCheck);
             }
 
             //MDI対応
             foreach (var form in (control as Form)?.MdiChildren ?? new Form[0])
             {
-                GetAllFormAndUserControl(true, form, targets, getFromControlTreeOnly, recursiveCheck);
+                GetAllFormAndUserControl(false, true, form, targets, getFromControlTreeOnly, recursiveCheck);
             }
         }
 
@@ -157,7 +226,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                     var nameSpace = DriverCreatorUtils.GetTypeNamespace(driver);
                     var name = _customNameGenerator.MakeDriverPropName(field.Control, field.Name, names);
                     var key = $"Core.Dynamic().{field.Name}";
-                    controlAndDefines.Add(new ControlAndDefine(field.Control, $"public {typeName} {name} => new {typeName}({key});"));
+                    controlAndDefines.Add(new ControlAndDefine(field.Control, $"public {typeName} {name} => {key};"));
                     DriverCreatorAdapter.AddCodeLineSelectInfo(fileName, key, field.Control);
                     if (!driverInfo.Usings.Contains(nameSpace)) driverInfo.Usings.Add(nameSpace);
                 }
@@ -169,8 +238,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                     names.Add(name);
                     var typeName = _driverTypeNameManager.MakeDriverType(field.Control, out var nameSpace);
                     if (!string.IsNullOrEmpty(nameSpace) && (nameSpace != DriverCreatorAdapter.SelectedNamespace) && !driverInfo.Usings.Contains(nameSpace)) driverInfo.Usings.Add(nameSpace);
-                    var key = $"new WindowControl(Core.Dynamic().{field.Name}";
-                    controlAndDefines.Add(new ControlAndDefine(field.Control, $"public {typeName} {name} => new {typeName}({key}));"));
+                    var key = $"Core.Dynamic().{field.Name}";
+                    controlAndDefines.Add(new ControlAndDefine(field.Control, $"public {typeName} {name} => {key};"));
                     DriverCreatorAdapter.AddCodeLineSelectInfo(fileName, key, field.Control);
                 }
             }
@@ -299,6 +368,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         {
             var code = new List<string>
             {
+                "using Codeer.Friendly;",
                 "using Codeer.Friendly.Dynamic;",
                 "using Codeer.Friendly.Windows;",
                 "using Codeer.Friendly.Windows.Grasp;",
@@ -338,6 +408,12 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             code.Add($"{Indent}{Indent}public {driverClassName}(WindowControl core)");
             code.Add($"{Indent}{Indent}{{");
             code.Add($"{Indent}{Indent}{Indent}Core = core;");
+            code.Add($"{Indent}{Indent}}}");
+
+            code.Add(string.Empty);
+            code.Add($"{Indent}{Indent}public {driverClassName}(AppVar core)");
+            code.Add($"{Indent}{Indent}{{");
+            code.Add($"{Indent}{Indent}{Indent}Core = new WindowControl(core);");
             code.Add($"{Indent}{Indent}}}");
             code.Add($"{Indent}}}");
 
