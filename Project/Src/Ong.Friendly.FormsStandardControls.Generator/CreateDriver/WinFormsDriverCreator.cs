@@ -17,12 +17,12 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 #endif
     public class WinFormsDriverCreator
     {
-        private const string TodoComment = "// TODO It is not the best way to identify. Please change to a better method.";
-        private const string Indent = "    ";
+        internal const string TodoComment = "// TODO It is not the best way to identify. Please change to a better method.";
+        const string Indent = "    ";
 
-        private readonly CodeDomProvider _dom;
-        private readonly DriverElementNameGeneratorAdaptor _customNameGenerator;
-        private readonly DriverTypeNameManager _driverTypeNameManager;
+        readonly CodeDomProvider _dom;
+        readonly DriverElementNameGeneratorAdaptor _customNameGenerator;
+        readonly DriverTypeNameManager _driverTypeNameManager;
 
 #if ENG
         /// <summary>
@@ -133,7 +133,7 @@ namespace [*namespace]
             DriverCreatorAdapter.AddCode($"{generatorName}.cs", generatorCode.Replace("{generatorName}", generatorName).Replace("{driverName}", driverName), root);
         }
 
-        private void GetAllFormAndUserControl(bool isRoot, bool isControlTreeOnly, Control control, IDictionary<Type, Control> targets, IList<Type> getFromControlTreeOnly, IList<Control> recursiveCheck)
+        void GetAllFormAndUserControl(bool isRoot, bool isControlTreeOnly, Control control, IDictionary<Type, Control> targets, IList<Type> getFromControlTreeOnly, IList<Control> recursiveCheck)
         {
             if (control == null) return;
 
@@ -183,7 +183,7 @@ namespace [*namespace]
             }
         }
 
-        private class ControlAndDefine
+        class ControlAndDefine
         {
             public Control Control { get; }
             public string Define { get; }
@@ -195,7 +195,7 @@ namespace [*namespace]
             }
         }
 
-        private DriverInfo<Control> CreateDriverInfo(Control targetControl, string fileName)
+        DriverInfo<Control> CreateDriverInfo(Control targetControl, string fileName)
         {
             var driverInfo = new DriverInfo<Control>(targetControl);
 
@@ -266,7 +266,7 @@ namespace [*namespace]
             return driverInfo;
         }
 
-        private void CreateDriverInfoFindFromControlTree(
+        void CreateDriverInfoFindFromControlTree(
             int mdiChildrenIndex,
             Control root,
             Control target,
@@ -314,7 +314,7 @@ namespace [*namespace]
             }
         }
 
-        private static List<Control> GetTabOrderChildControls(Control targetControl)
+        static List<Control> GetTabOrderChildControls(Control targetControl)
         {
             var allControls = new List<Control>();
             var currentControl = targetControl;
@@ -336,7 +336,7 @@ namespace [*namespace]
             }
         }
 
-        private static string MakeCodeGetFromControls(int mdiChildrenIndex, Control root, Type type, List<int> next, out bool nogood)
+        static string MakeCodeGetFromControls(int mdiChildrenIndex, Control root, Type type, List<int> next, out bool nogood)
         {
             nogood = false;
             var decendants = new List<Control>();
@@ -364,7 +364,7 @@ namespace [*namespace]
             return code;
         }
 
-        private string GenerateCode(Control root, Control targetControl, string nameSpace, string driverClassName, List<string> usings, List<string> members, List<Type> getFromControlTreeOnly)
+        internal string GenerateCode(Control root, Control targetControl, string nameSpace, string driverClassName, List<string> usings, List<string> members, List<Type> getFromControlTreeOnly)
         {
             var code = new List<string>
             {
@@ -460,12 +460,12 @@ namespace [*namespace]
             return string.Join(Environment.NewLine, code.ToArray());
         }
 
-        private string GetFuncName(string driverClassName)
+        static string GetFuncName(string driverClassName)
         {
             return $"Attach_{driverClassName.Substring(0, driverClassName.Length - DriverCreatorUtils.Suffix.Length)}";
         }
 
-        private static ControlAndFieldName<Control>[] GetFields(object obj)
+        static ControlAndFieldName<Control>[] GetFields(object obj)
             => DriverCreatorUtils.GetFields<Control>(obj, typeof(Form), typeof(UserControl), typeof(Control));
     }
 }
