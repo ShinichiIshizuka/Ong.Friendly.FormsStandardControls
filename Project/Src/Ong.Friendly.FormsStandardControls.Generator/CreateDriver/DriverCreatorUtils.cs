@@ -82,5 +82,44 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             }
             return list.ToArray();
         }
+
+        public static bool CanConvert(string typeFullName)
+        {
+            foreach (var e in DriverCreatorAdapter.TypeFullNameAndControlDriver)
+            {
+                if (e.Value.ControlDriverTypeFullName == typeFullName)
+                {
+                    return CanConvert(e.Value.ConstructorArguments);
+                }
+            }
+
+            foreach (var e in DriverCreatorAdapter.TypeFullNameAndUserControlDriver)
+            {
+                if (e.Value.DriverTypeFullName == typeFullName)
+                {
+                    return CanConvert(e.Value.ConstructorArguments);
+                }
+            }
+
+            foreach (var e in DriverCreatorAdapter.TypeFullNameAndWindowDriver)
+            {
+                if (e.Value.DriverTypeFullName == typeFullName)
+                {
+                    return CanConvert(e.Value.ConstructorArguments);
+                }
+            }
+
+            //それ以外は仮で変換できることにしておく
+            return true;
+        }
+
+        private static bool CanConvert(string[][] constructorArguments)
+        {
+            foreach (var e in constructorArguments)
+            {
+                if (e.Length == 1 && e[0] == "Codeer.Friendly.AppVar") return true;
+            }
+            return false;
+        }
     }
 }

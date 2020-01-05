@@ -222,11 +222,11 @@ namespace [*namespace]
                 if (!string.IsNullOrEmpty(driver))
                 {
                     mappedControls.Add(field.Control);
-                    var typeName = DriverCreatorUtils.GetTypeName(driver);
                     var nameSpace = DriverCreatorUtils.GetTypeNamespace(driver);
                     var name = _customNameGenerator.MakeDriverPropName(field.Control, field.Name, names);
                     var key = $"Core.Dynamic().{field.Name}";
-                    controlAndDefines.Add(new ControlAndDefine(field.Control, $"public {typeName} {name} => {key};"));
+                    var memberCode = GenerateMemberCode(driver, name, key);
+                    controlAndDefines.Add(new ControlAndDefine(field.Control, memberCode));
                     DriverCreatorAdapter.AddCodeLineSelectInfo(fileName, key, field.Control);
                     if (!driverInfo.Usings.Contains(nameSpace)) driverInfo.Usings.Add(nameSpace);
                 }
@@ -239,7 +239,9 @@ namespace [*namespace]
                     var typeName = _driverTypeNameManager.MakeDriverType(field.Control, out var nameSpace);
                     if (!string.IsNullOrEmpty(nameSpace) && (nameSpace != DriverCreatorAdapter.SelectedNamespace) && !driverInfo.Usings.Contains(nameSpace)) driverInfo.Usings.Add(nameSpace);
                     var key = $"Core.Dynamic().{field.Name}";
-                    controlAndDefines.Add(new ControlAndDefine(field.Control, $"public {typeName} {name} => {key};"));
+
+                    var memberCode = GenerateMemberCode(nameSpace + "." + typeName, name, key);
+                    controlAndDefines.Add(new ControlAndDefine(field.Control, memberCode));
                     DriverCreatorAdapter.AddCodeLineSelectInfo(fileName, key, field.Control);
                 }
             }
@@ -291,13 +293,12 @@ namespace [*namespace]
                 if (!string.IsNullOrEmpty(driver))
                 {
                     var name = _customNameGenerator.MakeDriverPropName(ctrl, string.Empty, names);
-                    var typeName = DriverCreatorUtils.GetTypeName(driver);
                     var nameSpace = DriverCreatorUtils.GetTypeNamespace(driver);
                     var getter = MakeCodeGetFromControls(mdiChildrenIndex, root, ctrl.GetType(), next, out var nogood);
 
                     DriverCreatorAdapter.AddCodeLineSelectInfo(fileName, getter, ctrl);
 
-                    var code = $"public {typeName} {name} => new {typeName}({getter});";
+                    string code = GenerateMemberCode(driver, name, getter);
                     if (nogood)
                     {
                         code += $" {TodoComment}";
@@ -312,6 +313,14 @@ namespace [*namespace]
                     CreateDriverInfoFindFromControlTree(mdiChildrenIndex, root, ctrl, driverInfo, controlAndDefines, mappedControls, names, next.ToArray(), fileName);
                 }
             }
+        }
+
+        static string GenerateMemberCode(string driver, string name, string getter)
+        {
+            var typeName = DriverCreatorUtils.GetTypeName(driver);
+            return DriverCreatorUtils.CanConvert(driver) ?
+                $"public {typeName} {name} => {getter};" :
+                $"public {typeName} {name} => new {typeName}(new WindowControl({getter}));";
         }
 
         static List<Control> GetTabOrderChildControls(Control targetControl)
