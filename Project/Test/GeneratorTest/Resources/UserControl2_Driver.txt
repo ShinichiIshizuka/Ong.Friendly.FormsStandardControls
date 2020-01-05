@@ -1,3 +1,4 @@
+using Codeer.Friendly;
 using Codeer.Friendly.Dynamic;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -10,15 +11,20 @@ namespace TestCode
     public class UserControl2_Driver
     {
         public WindowControl Core { get; }
-        public FormsButton button1 => new FormsButton(Core.Dynamic().button1);
-        public FormsCheckBox checkBox1 => new FormsCheckBox(Core.Dynamic().checkBox1);
-        public FormsTabControl tabControl1 => new FormsTabControl(Core.Dynamic().tabControl1);
-        public UserControl1_Driver userControl11 => new UserControl1_Driver(new WindowControl(Core.Dynamic().userControl11));
-        public FormsTextBox textBox1 => new FormsTextBox(Core.Dynamic().textBox1);
+        public FormsButton button1 => Core.Dynamic().button1;
+        public FormsCheckBox checkBox1 => Core.Dynamic().checkBox1;
+        public FormsTabControl tabControl1 => Core.Dynamic().tabControl1;
+        public UserControl1_Driver userControl11 => Core.Dynamic().userControl11;
+        public FormsTextBox textBox1 => Core.Dynamic().textBox1;
 
         public UserControl2_Driver(WindowControl core)
         {
             Core = core;
+        }
+
+        public UserControl2_Driver(AppVar core)
+        {
+            Core = new WindowControl(core);
         }
     }
 

@@ -1,3 +1,4 @@
+using Codeer.Friendly;
 using Codeer.Friendly.Dynamic;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -10,35 +11,40 @@ namespace TestCode
     public class SingleForm_Driver
     {
         public WindowControl Core { get; }
-        public FormsToolStrip toolStrip1 => new FormsToolStrip(Core.Dynamic().toolStrip1);
-        public FormsToolStrip menuStrip1 => new FormsToolStrip(Core.Dynamic().menuStrip1);
-        public FormsButton button1 => new FormsButton(Core.Dynamic().button1);
-        public FormsCheckBox checkBox1 => new FormsCheckBox(Core.Dynamic().checkBox1);
-        public FormsCheckedListBox checkedListBox1 => new FormsCheckedListBox(Core.Dynamic().checkedListBox1);
-        public FormsComboBox comboBox1 => new FormsComboBox(Core.Dynamic().comboBox1);
-        public FormsComboBox comboBox2 => new FormsComboBox(Core.Dynamic().comboBox2);
-        public FormsDataGridView dataGridView1 => new FormsDataGridView(Core.Dynamic().dataGridView1);
-        public FormsDateTimePicker dateTimePicker1 => new FormsDateTimePicker(Core.Dynamic().dateTimePicker1);
-        public FormsLinkLabel linkLabel1 => new FormsLinkLabel(Core.Dynamic().linkLabel1);
-        public FormsListBox listBox1 => new FormsListBox(Core.Dynamic().listBox1);
-        public FormsListView listView1 => new FormsListView(Core.Dynamic().listView1);
-        public FormsMaskedTextBox maskedTextBox1 => new FormsMaskedTextBox(Core.Dynamic().maskedTextBox1);
-        public FormsMonthCalendar monthCalendar1 => new FormsMonthCalendar(Core.Dynamic().monthCalendar1);
-        public FormsNumericUpDown numericUpDown1 => new FormsNumericUpDown(Core.Dynamic().numericUpDown1);
-        public FormsRadioButton radioButton1 => new FormsRadioButton(Core.Dynamic().radioButton1);
-        public FormsRadioButton radioButton2 => new FormsRadioButton(Core.Dynamic().radioButton2);
-        public FormsRichTextBox richTextBox1 => new FormsRichTextBox(Core.Dynamic().richTextBox1);
-        public FormsTabControl tabControl1 => new FormsTabControl(Core.Dynamic().tabControl1);
-        public FormsButton button2 => new FormsButton(Core.Dynamic().button2);
-        public FormsListBox listBox2 => new FormsListBox(Core.Dynamic().listBox2);
-        public FormsTextBox textBox1 => new FormsTextBox(Core.Dynamic().textBox1);
-        public FormsTrackBar trackBar1 => new FormsTrackBar(Core.Dynamic().trackBar1);
-        public FormsTreeView treeView1 => new FormsTreeView(Core.Dynamic().treeView1);
-        public FormsComboBox comboBox3 => new FormsComboBox(Core.Dynamic().comboBox3);
+        public FormsToolStrip toolStrip1 => Core.Dynamic().toolStrip1;
+        public FormsToolStrip menuStrip1 => Core.Dynamic().menuStrip1;
+        public FormsButton button1 => Core.Dynamic().button1;
+        public FormsCheckBox checkBox1 => Core.Dynamic().checkBox1;
+        public FormsCheckedListBox checkedListBox1 => Core.Dynamic().checkedListBox1;
+        public FormsComboBox comboBox1 => Core.Dynamic().comboBox1;
+        public FormsComboBox comboBox2 => Core.Dynamic().comboBox2;
+        public FormsDataGridView dataGridView1 => Core.Dynamic().dataGridView1;
+        public FormsDateTimePicker dateTimePicker1 => Core.Dynamic().dateTimePicker1;
+        public FormsLinkLabel linkLabel1 => Core.Dynamic().linkLabel1;
+        public FormsListBox listBox1 => Core.Dynamic().listBox1;
+        public FormsListView listView1 => Core.Dynamic().listView1;
+        public FormsMaskedTextBox maskedTextBox1 => Core.Dynamic().maskedTextBox1;
+        public FormsMonthCalendar monthCalendar1 => Core.Dynamic().monthCalendar1;
+        public FormsNumericUpDown numericUpDown1 => Core.Dynamic().numericUpDown1;
+        public FormsRadioButton radioButton1 => Core.Dynamic().radioButton1;
+        public FormsRadioButton radioButton2 => Core.Dynamic().radioButton2;
+        public FormsRichTextBox richTextBox1 => Core.Dynamic().richTextBox1;
+        public FormsTabControl tabControl1 => Core.Dynamic().tabControl1;
+        public FormsButton button2 => Core.Dynamic().button2;
+        public FormsListBox listBox2 => Core.Dynamic().listBox2;
+        public FormsTextBox textBox1 => Core.Dynamic().textBox1;
+        public FormsTrackBar trackBar1 => Core.Dynamic().trackBar1;
+        public FormsTreeView treeView1 => Core.Dynamic().treeView1;
+        public FormsComboBox comboBox3 => Core.Dynamic().comboBox3;
 
         public SingleForm_Driver(WindowControl core)
         {
             Core = core;
+        }
+
+        public SingleForm_Driver(AppVar core)
+        {
+            Core = new WindowControl(core);
         }
     }
 

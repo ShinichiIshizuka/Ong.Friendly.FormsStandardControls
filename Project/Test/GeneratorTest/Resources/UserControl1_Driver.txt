@@ -1,3 +1,4 @@
+using Codeer.Friendly;
 using Codeer.Friendly.Dynamic;
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
@@ -10,12 +11,17 @@ namespace TestCode
     public class UserControl1_Driver
     {
         public WindowControl Core { get; }
-        public FormsButton button1 => new FormsButton(Core.Dynamic().button1);
-        public FormsListBox listBox1 => new FormsListBox(Core.Dynamic().listBox1);
+        public FormsButton button1 => Core.Dynamic().button1;
+        public FormsListBox listBox1 => Core.Dynamic().listBox1;
 
         public UserControl1_Driver(WindowControl core)
         {
             Core = core;
+        }
+
+        public UserControl1_Driver(AppVar core)
+        {
+            Core = new WindowControl(core);
         }
     }
 }

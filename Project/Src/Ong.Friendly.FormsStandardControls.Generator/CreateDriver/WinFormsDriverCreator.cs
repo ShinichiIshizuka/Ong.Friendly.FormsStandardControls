@@ -366,14 +366,18 @@ namespace [*namespace]
 
         internal string GenerateCode(Control root, Control targetControl, string nameSpace, string driverClassName, List<string> usings, List<string> members, List<Type> getFromControlTreeOnly)
         {
-            var code = new List<string>
+            foreach (var e in new[]
+                    {
+                        "Codeer.TestAssistant.GeneratorToolKit",
+                        "Codeer.Friendly.Windows.Grasp",
+                        "Codeer.Friendly.Windows",
+                        "Codeer.Friendly.Dynamic",
+                        "Codeer.Friendly",
+                    })
             {
-                "using Codeer.Friendly;",
-                "using Codeer.Friendly.Dynamic;",
-                "using Codeer.Friendly.Windows;",
-                "using Codeer.Friendly.Windows.Grasp;",
-                "using Codeer.TestAssistant.GeneratorToolKit;"
-            };
+                if (!usings.Contains(e)) usings.Insert(0, e);
+            }
+            var code = new List<string>();
             foreach (var e in usings)
             {
                 code.Add($"using {e};");
