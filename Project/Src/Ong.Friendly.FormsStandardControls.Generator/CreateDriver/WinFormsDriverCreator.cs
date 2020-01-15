@@ -430,7 +430,7 @@ namespace [*namespace]
             code.Add($"{Indent}{Indent}}}");
             code.Add($"{Indent}}}");
 
-            if (getFromControlTreeOnly.Contains(targetControl.GetType()))
+            if (getFromControlTreeOnly.Contains(targetControl.GetType()) && !ReferenceEquals(root, targetControl))
             {
                 code.Add(string.Empty);
                 code.Add($"{Indent}public static class {driverClassName}_Extensions");
