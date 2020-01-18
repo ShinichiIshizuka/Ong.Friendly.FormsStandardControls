@@ -27,6 +27,9 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             var infos = GetIdentifyingCandidatesByField(rootCtrl, elementCtrl);
             if (infos != null) return infos;
 
+            infos = GetIdentifyingCandidatesByType(rootCtrl, elementCtrl);
+            if (infos != null) return infos;
+
             using (var dom = CodeDomProvider.CreateProvider("CSharp"))
             {
                 infos = GetIdentifyingCandidatesByControlTree(dom, rootCtrl, elementCtrl);
@@ -99,6 +102,40 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                     IsPerfect = true,
                     Identify = "Core.Dynamic()." + accessPath,
                     DefaultName = sp[sp.Length - 1]
+                }
+            };
+        }
+
+        static void GetAllTypeFullNames(Control ctrl, List<string> types)
+        {
+            types.Add(ctrl.GetType().FullName);
+            foreach (Control e in ctrl.Controls)
+            {
+                if (e == null) continue;
+                GetAllTypeFullNames(e, types);
+            }
+        }
+
+        static DriverIdentifyInfo[] GetIdentifyingCandidatesByType(Control rootCtrl, Control elementCtrl)
+        {
+            var targetType = elementCtrl.GetType();
+
+            var types = new List<string>();
+            GetAllTypeFullNames(rootCtrl, types);
+            int matchCount = 0;
+            foreach (var e in types)
+            {
+                if (targetType.FullName == e) matchCount++;
+            }
+            if (matchCount != 1) return null;
+
+            return new[]
+            {
+                new DriverIdentifyInfo
+                {
+                    IsPerfect = true,
+                    Identify = $"Core.IdentifyFromTypeFullName(\"{targetType.FullName}\").Dynamic()",
+                    DefaultName = targetType.Name
                 }
             };
         }

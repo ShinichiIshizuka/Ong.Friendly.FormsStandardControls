@@ -357,7 +357,7 @@ namespace [*namespace]
             }
             if (cnt == 1)
             {
-                return $"Core.IdentifyFromTypeFullName(\"{type.FullName}\")";
+                return $"Core.IdentifyFromTypeFullName(\"{type.FullName}\").Dynamic()";
             }
 
             nogood = true;
