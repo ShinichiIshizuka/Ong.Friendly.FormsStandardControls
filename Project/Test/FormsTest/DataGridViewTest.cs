@@ -7,6 +7,9 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System;
 using Codeer.Friendly.Windows.NativeStandardControls;
+using Codeer.Friendly.Windows.KeyMouse;
+using System.Threading;
+using Codeer.Friendly.Dynamic;
 
 namespace FormsTest
 {

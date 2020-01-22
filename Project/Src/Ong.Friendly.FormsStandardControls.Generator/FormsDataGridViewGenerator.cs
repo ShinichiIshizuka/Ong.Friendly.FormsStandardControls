@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Codeer.TestAssistant.GeneratorToolKit;
 using System.Text;
 using System.Globalization;
+using System.Drawing;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
@@ -291,6 +292,27 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             {
                 selectedRows.Add(sel.Index);
             }
+        }
+
+        /// <summary>
+        /// Convert from parent client coordinates to child client coordinates.
+        /// </summary>
+        /// <param name="clientPoint">Client coordinates.Convert to child client coordinates.</param>
+        /// <param name="childUIObject">A child object that is the origin of client coordinates. If not, set null or empty character.</param>
+        /// <returns>Returns true if converted to child client coordinates.</returns>
+        public override bool ConvertChildClientPoint(ref Point clientPoint, out string childUIObject)
+        {
+            childUIObject = string.Empty;
+            var info = _control.HitTest(clientPoint.X, clientPoint.Y);
+            if (info == null) return false;
+            if (info.RowIndex < 0 || _control.RowCount <= info.RowIndex) return false;
+            if (info.ColumnIndex < 0 || _control.ColumnCount <= info.ColumnIndex) return false;
+
+            childUIObject = $".GetCell({info.ColumnIndex}, {info.RowIndex})";
+
+            var rc = _control.GetCellDisplayRectangle(info.ColumnIndex, info.RowIndex, true);
+            clientPoint = new Point(clientPoint.X - rc.X, clientPoint.Y - rc.Y);
+            return true;
         }
     }
 }

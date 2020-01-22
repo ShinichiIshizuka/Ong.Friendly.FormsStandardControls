@@ -160,6 +160,24 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
+        /// Returns the cell in the table.
+        /// </summary>
+        /// <param name="col">Column number of the cell.</param>
+        /// <param name="row">Row number of the cell.</param>
+        /// <returns>cell.</returns>
+#else
+        /// <summary>
+        /// 行列で指定したセルを取得します。
+        /// </summary>
+        /// <param name="col">列。</param>
+        /// <param name="row">行。</param>
+        /// <returns>セル。</returns>
+#endif
+        public FormsDataGridViewCell GetCell(int col, int row)
+            => new FormsDataGridViewCell(this, this["Rows"]()["[]"](row)["Cells"]()["[]"](col));
+
+#if ENG
+        /// <summary>
         /// Returns the text of the table cells in the specified range.
         /// </summary>
         /// <param name="startCol">Starting column number.</param>

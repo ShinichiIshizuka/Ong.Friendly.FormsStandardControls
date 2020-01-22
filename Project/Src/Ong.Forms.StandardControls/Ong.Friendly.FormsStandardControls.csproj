@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CellSelectedInfo.cs" />
+    <Compile Include="FormsDataGridViewCell.cs" />
     <Compile Include="FormsLabel.cs" />
     <Compile Include="FormsButton.cs" />
     <Compile Include="FormsCheckBox.cs" />
