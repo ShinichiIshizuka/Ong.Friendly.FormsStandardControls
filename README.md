@@ -5,7 +5,7 @@ This library is a layer on top of
 Friendly, so you must learn that first.
 But it is very easy to learn.
 
-https://github.com/Codeer-Software/Friendly.Windows
+https://github.com/Codeer-Software/Friendly
 
 ## Getting Started
 Install Friendly.FormsStandardControls from NuGet
