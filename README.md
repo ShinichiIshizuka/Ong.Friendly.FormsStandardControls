@@ -59,7 +59,7 @@ using (var app = new WindowsAppFriend(process))
 ### More samples.
 https://github.com/ShinichiIshizuka/Ong.Friendly.FormsStandardControls/tree/master/Project/Test/FormsTest
 
-**
+***
 The control driver is implemented using processing that uses the basic functions of Friendly.
 If you are using non-standard controls such as 3rd party controls you will need to create a new one.
 Knowledge of Friendly and its controls should not be so difficult.
@@ -70,7 +70,7 @@ Please refer to this as it is relatively easy to read.
 It is 3rd party control driver.
 https://github.com/Codeer-Software/Friendly.XamControls<br>
 
-**
+***
 For other GUI types, use the following libraries:
 
 * For Win32.  
