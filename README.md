@@ -59,7 +59,18 @@ using (var app = new WindowsAppFriend(process))
 ### More samples.
 https://github.com/ShinichiIshizuka/Ong.Friendly.FormsStandardControls/tree/master/Project/Test/FormsTest
 
-***
+**
+The control driver is implemented using processing that uses the basic functions of Friendly.
+If you are using non-standard controls such as 3rd party controls you will need to create a new one.
+Knowledge of Friendly and its controls should not be so difficult.
+When you make ControlDriver, it is better not to refer to the implementation of FormsStandard Controls.
+It is difficult to read because there are many special writing methods that include support for .Net 4.0 and earlier.
+Normally, it is not necessary to support .Net 4.0 or earlier, so it is better to write it differently.
+Please refer to this as it is relatively easy to read.
+It is 3rd party control driver.
+https://github.com/Codeer-Software/Friendly.XamControls<br>
+
+**
 For other GUI types, use the following libraries:
 
 * For Win32.  
@@ -70,10 +81,4 @@ https://www.nuget.org/packages/RM.Friendly.WPFStandardControls/
 
 * For getting the target window.  
 https://www.nuget.org/packages/Codeer.Friendly.Windows.Grasp/  
-
-***
-If you use PinInterface, you map control simple.  
-https://www.nuget.org/packages/VSHTC.Friendly.PinInterface/
-
-
 
