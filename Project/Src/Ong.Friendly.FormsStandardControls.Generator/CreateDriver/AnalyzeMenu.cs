@@ -12,13 +12,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             var dic = new Dictionary<string, MenuAction>();
             if (target is Form || target is UserControl)
             {
-                dic["Create Driver(&C)"] = () =>
-                {
-                    using (var dom = CodeDomProvider.CreateProvider("CSharp"))
-                    {
-                        new WinFormsDriverCreator(dom).CreateDriver((Control)target);
-                    }
-                };
+                dic["Pickup Children(&P)"] = () => ControlPicker.PickupChildren((Control)target);
             }
             if (target is Control)
             {

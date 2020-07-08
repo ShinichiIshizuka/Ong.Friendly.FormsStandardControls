@@ -22,6 +22,23 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             return driver.Substring(0, index);
         }
 
+        public static string GetDriverTypeFullName<T>(T ctrl, Dictionary<string, ControlDriverInfo> ctrls, Dictionary<string, UserControlDriverInfo> userControls, Dictionary<string, WindowDriverInfo> windows, out bool searchDescendantUserControls)
+        {
+            searchDescendantUserControls = true;
+
+            var info = GetDriverInfo(ctrl, ctrls);
+            if (info != null)
+            {
+                searchDescendantUserControls = info.SearchDescendantUserControls;
+                if (info.DriverMappingEnabled) return info.ControlDriverTypeFullName;
+            }
+
+            var driver = GetDriverTypeFullName(ctrl, userControls);
+            if (!string.IsNullOrEmpty(driver)) return driver;
+            
+            return GetDriverTypeFullName(ctrl, windows);
+        }
+
         public static string GetDriverTypeFullName<T>(T ctrl, Dictionary<string, ControlDriverInfo> netTypeAndDriverType)
         {
             var info = GetDriverInfo(ctrl, netTypeAndDriverType);

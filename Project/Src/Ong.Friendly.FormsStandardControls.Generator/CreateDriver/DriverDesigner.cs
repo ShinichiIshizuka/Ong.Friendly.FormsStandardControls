@@ -19,6 +19,33 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             return driverTypeNameManager.MakeDriverType(coreObj, out var _);
         }
 
+        public string[] GetAttachExtensionClassCandidates(object obj)
+        {
+            var candidates = new List<string>();
+            var parent = ((Control)obj).Parent;
+            while (parent != null)
+            {
+                var driver = DriverCreatorUtils.GetDriverTypeFullName(parent, new Dictionary<string, ControlDriverInfo>(),
+                                                                    DriverCreatorAdapter.TypeFullNameAndUserControlDriver,
+                                                                    DriverCreatorAdapter.TypeFullNameAndWindowDriver, out var _);
+                if (!string.IsNullOrEmpty(driver))
+                {
+                    candidates.Add(driver);
+                }
+                parent = parent.Parent;
+            }
+            candidates.Add("Codeer.Friendly.Windows.WindowsAppFriend");
+            return candidates.ToArray();
+        }
+
+        public string[] GetAttachMethodCandidates(object obj)
+        {
+            var candidates = new List<string>();
+            candidates.Add("Type Full Name");
+            candidates.Add("Window Text");
+            return candidates.ToArray();
+        }
+
         public DriverIdentifyInfo[] GetIdentifyingCandidates(object root, object element)
         {
             var rootCtrl = (Control)root;
@@ -45,6 +72,9 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             var root = FindRoot((Control)targetControl, driverTypeNameManager);
             GetMembers(info, out var usings, out var members);
             var fileName = $"{info.ClassName}.cs";
+
+
+            //★ここでコネコネする
 
             var getFromControlTreeOnly = new List<Type>();
             if (info.CreateAttachCode)
