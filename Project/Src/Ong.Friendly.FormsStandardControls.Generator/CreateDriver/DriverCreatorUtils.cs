@@ -7,7 +7,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 {
     internal static class DriverCreatorUtils
     {
-        public static string Suffix { get; } = "_Driver";
+        public static string Suffix { get; } = "Driver";
 
         public static string GetTypeName(string driver)
         {
