@@ -1,5 +1,4 @@
-﻿using System.CodeDom.Compiler;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Codeer.TestAssistant.GeneratorToolKit;
 
@@ -16,13 +15,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             }
             if (target is Control)
             {
-                dic["Create Control Driver(&D)"] = () =>
-                {
-                    using (var dom = CodeDomProvider.CreateProvider("CSharp"))
-                    {
-                        new WinFormsDriverCreator(dom).CreateControlDriver((Control)target);
-                    }
-                };
+                dic["Create Control Driver(&D)"] = () => ControlDriverCreater.Create((Control)target);
+
                 dic["Show Base Class(&B)"] = () =>
                 {
                     AnalyzeWindow.Output.Show();

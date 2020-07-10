@@ -1,6 +1,5 @@
 ﻿using Codeer.TestAssistant.GeneratorToolKit;
 using System;
-using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Reflection;
@@ -11,6 +10,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
     public class DriverDesigner : IDriverDesigner
     {
         const string Indent = "    ";
+        const string TodoComment = "// TODO It is not the best way to identify. Please change to a better method.";
         const string WindowsAppFriendTypeFullName = "Codeer.Friendly.Windows.WindowsAppFriend";
         const string AttachByTypeFullName = "Type Full Name";
         const string AttachByWindowText = "Window Text";
@@ -512,7 +512,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             {
                 var typeName = DriverCreatorUtils.GetTypeName(e.TypeFullName);
                 var nameSpace = DriverCreatorUtils.GetTypeNamespace(e.TypeFullName);
-                var todo = (e.IsPerfect.HasValue && !e.IsPerfect.Value) ? WinFormsDriverCreator.TodoComment : string.Empty;
+                var todo = (e.IsPerfect.HasValue && !e.IsPerfect.Value) ? TodoComment : string.Empty;
 
                 if (DriverCreatorUtils.CanConvert(e.TypeFullName))
                 {
