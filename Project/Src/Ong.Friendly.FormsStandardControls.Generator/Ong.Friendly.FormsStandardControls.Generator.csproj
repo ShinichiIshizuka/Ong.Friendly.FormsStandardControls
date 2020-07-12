@@ -60,7 +60,6 @@
     <Compile Include="CreateDriver\AnalyzeMenu.cs" />
     <Compile Include="CreateDriver\CollectionUtility.cs" />
     <Compile Include="CreateDriver\ControlAndFieldName.cs" />
-    <Compile Include="CreateDriver\ControlDriverCreater.cs" />
     <Compile Include="CreateDriver\ControlPicker.cs" />
     <Compile Include="CreateDriver\DriverCreatorUtils.cs" />
     <Compile Include="CreateDriver\DriverDesigner.cs" />

@@ -9,14 +9,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         public Dictionary<string, MenuAction> GetAction(object target, WindowAnalysisTreeInfo info)
         {
             var dic = new Dictionary<string, MenuAction>();
-            if (target is Form || target is UserControl)
-            {
-                dic["Pickup Children(&P)"] = () => ControlPicker.PickupChildren((Control)target);
-            }
             if (target is Control)
             {
-                dic["Create Control Driver(&D)"] = () => ControlDriverCreater.Create((Control)target);
-
+                dic["Pickup Children(&P)"] = () => ControlPicker.PickupChildren((Control)target);
+                dic["Create Control Driver(&D)"] = () => DriverDesigner.CreateControlDriver((Control)target);
                 dic["Show Base Class(&B)"] = () =>
                 {
                     AnalyzeWindow.Output.Show();

@@ -15,6 +15,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         const string AttachByTypeFullName = "Type Full Name";
         const string AttachByWindowText = "Window Text";
         const string AttachVariableWindowText = "VariableWindowText";
+        const string AttachCustom = "Custom";
 
         public int Priority { get; }
 
@@ -51,6 +52,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             candidates.Add(AttachByTypeFullName);
             candidates.Add(AttachByWindowText);
             candidates.Add(AttachVariableWindowText);
+            candidates.Add(AttachCustom);
             return candidates.ToArray();
         }
 
@@ -85,6 +87,56 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             {
                 DriverCreatorAdapter.AddCodeLineSelectInfo(fileName, e.Identify, e.Element);
             }
+        }
+
+        internal static void CreateControlDriver(Control control)
+        {
+            var driverName = control.GetType().Name + "Driver";
+            var generatorName = driverName + "Generator";
+
+            var driverCode = @"using Codeer.Friendly;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
+using Codeer.TestAssistant.GeneratorToolKit;
+using Ong.Friendly.FormsStandardControls;
+using System;
+using System.Windows.Forms;
+
+namespace [*namespace]
+{
+    [ControlDriver(TypeFullName = ""{typefullname}"", Priority = 2)]
+    public class {driverName} : FormsControlBase
+    {
+        public {driverName}(AppVar appVar)
+            : base(appVar) { }
+    }
+}
+";
+            DriverCreatorAdapter.AddCode($"{driverName}.cs", driverCode.Replace("{typefullname}", control.GetType().FullName).Replace("{driverName}", driverName), control);
+
+            var generatorCode = @"using System;
+using System.Windows.Forms;
+using Codeer.TestAssistant.GeneratorToolKit;
+
+namespace [*namespace]
+{
+    [CaptureCodeGenerator(""[*namespace.{driverName}]"")]
+    public class {generatorName} : CaptureCodeGeneratorBase
+    {
+        Control _control;
+
+        protected override void Attach()
+        {
+            _control = (Control)ControlObject;
+        }
+
+        protected override void Detach()
+        {
+        }
+    }
+}
+";
+            DriverCreatorAdapter.AddCode($"{generatorName}.cs", generatorCode.Replace("{generatorName}", generatorName).Replace("{driverName}", driverName), control);
         }
 
         string GenerateCodeCore(Control targetControl, DriverDesignInfo info)
@@ -174,7 +226,20 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             {
                 if (targetControl is Form)
                 {
-                    if (info.AttachMethod == AttachVariableWindowText)
+                    if (info.AttachMethod == AttachCustom)
+                    {
+                        code.Add($"{Indent}{Indent}[WindowDriverIdentify(CustomMethod = \"TryGet\")]");
+                        code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, T identifier)");
+                        code.Add($"{Indent}{Indent}{{");
+                        code.Add($"{Indent}{Indent}{Indent}//TODO");
+                        code.Add($"{Indent}{Indent}}}");
+                        code.Add(string.Empty);
+                        code.Add($"{Indent}{Indent}public static bool TryGet(WindowControl window, out T identifier)");
+                        code.Add($"{Indent}{Indent}{{");
+                        code.Add($"{Indent}{Indent}{Indent}//TODO");
+                        code.Add($"{Indent}{Indent}}}");
+                    }
+                    else if (info.AttachMethod == AttachVariableWindowText)
                     {
                         code.Add($"{Indent}{Indent}[WindowDriverIdentify(CustomMethod = \"TryGet\")]");
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, string text)");
@@ -235,7 +300,20 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                 //UserControl
                 else
                 {
-                    if (info.AttachMethod == AttachVariableWindowText)
+                    if (info.AttachMethod == AttachCustom)
+                    {
+                        code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
+                        code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, T identifier)");
+                        code.Add($"{Indent}{Indent}{{");
+                        code.Add($"{Indent}{Indent}{Indent}//TODO");
+                        code.Add($"{Indent}{Indent}}}");
+                        code.Add(string.Empty);
+                        code.Add($"{Indent}{Indent}public static void TryGet(this WindowsAppFriend app, out T[] identifiers)");
+                        code.Add($"{Indent}{Indent}{{");
+                        code.Add($"{Indent}{Indent}{Indent}//TODO");
+                        code.Add($"{Indent}{Indent}}}");
+                    }
+                    else if (info.AttachMethod == AttachVariableWindowText)
                     {
                         code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, string text)");
@@ -294,7 +372,20 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                     usings.Add(ns);
                 }
 
-                if (info.AttachMethod == AttachVariableWindowText)
+                if (info.AttachMethod == AttachCustom)
+                {
+                    code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
+                    code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent, T identifier)");
+                    code.Add($"{Indent}{Indent}{{");
+                    code.Add($"{Indent}{Indent}{Indent}//TODO");
+                    code.Add($"{Indent}{Indent}}}");
+                    code.Add(string.Empty);
+                    code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out T identifier)");
+                    code.Add($"{Indent}{Indent}{{");
+                    code.Add($"{Indent}{Indent}{Indent}//TODO");
+                    code.Add($"{Indent}{Indent}}}");
+                }
+                else if (info.AttachMethod == AttachVariableWindowText)
                 {
                     code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
                     code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent, string text)");
@@ -445,7 +536,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                 new DriverIdentifyInfo
                 {
                     IsPerfect = true,
-                    Identify = $"Core.IdentifyFromTypeFullName(\"{targetType.FullName}\").Dynamic()",
+                    Identify = $"Core.GetFromTypeFullName(\"{targetType.FullName}\").SingleOrDefault()?.Dynamic()",
                     DefaultName = targetType.Name
                 }
             };

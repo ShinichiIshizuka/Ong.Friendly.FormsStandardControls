@@ -3,7 +3,6 @@ using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 {
-
     static class ControlPicker
     {
         internal static void PickupChildren(Control ctrl)
