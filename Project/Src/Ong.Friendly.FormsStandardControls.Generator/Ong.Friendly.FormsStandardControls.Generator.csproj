@@ -68,6 +68,7 @@
     <Compile Include="CreateDriver\DriverTypeNameManager.cs" />
     <Compile Include="CreateDriver\ReflectionAccessor.cs" />
     <Compile Include="CreateDriver\WindowUtilityInTarget.cs" />
+    <Compile Include="CreateDriver\WinFormsDriverCreator.cs" />
     <Compile Include="FormsButtonGenerator.cs" />
     <Compile Include="FormsCheckBoxGenerator.cs" />
     <Compile Include="FormsCheckedListBoxGenerator.cs" />

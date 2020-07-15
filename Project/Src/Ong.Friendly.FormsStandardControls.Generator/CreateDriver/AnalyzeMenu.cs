@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Codeer.TestAssistant.GeneratorToolKit;
 
@@ -22,6 +23,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                     {
                         AnalyzeWindow.Output.WriteLine(type.FullName);
                         type = type.BaseType;
+                    }
+                };
+
+                //非推奨
+                dic["Create Driver (*Obsolete)"] = () =>
+                {
+                    using (var dom = CodeDomProvider.CreateProvider("CSharp"))
+                    {
+                        new WinFormsDriverCreator(dom).CreateDriver((Control)target);
                     }
                 };
             }
