@@ -503,7 +503,8 @@ namespace [*namespace]
                 {
                     IsPerfect = true,
                     Identify = "Core.Dynamic()." + accessPath,
-                    DefaultName = sp[sp.Length - 1]
+                    DefaultName = sp[sp.Length - 1],
+                    DriverTypeCandidates = GetDriverTypeCandidates(elementCtrl)
                 }
             };
         }
@@ -537,7 +538,8 @@ namespace [*namespace]
                 {
                     IsPerfect = true,
                     Identify = $"Core.GetFromTypeFullName(\"{targetType.FullName}\").SingleOrDefault()?.Dynamic()",
-                    DefaultName = targetType.Name
+                    DefaultName = targetType.Name,
+                    DriverTypeCandidates = GetDriverTypeCandidates(elementCtrl)
                 }
             };
         }
@@ -580,10 +582,14 @@ namespace [*namespace]
                 {
                     IsPerfect = false,
                     Identify = "Core.Dynamic()." + accessPath,
-                    DefaultName = name
+                    DefaultName = name,
+                    DriverTypeCandidates = GetDriverTypeCandidates(elementCtrl)
                 }
             };
         }
+
+        static string[] GetDriverTypeCandidates(Control elementCtrl)
+            => DriverCreatorUtils.GetDriverTypeFullNames(elementCtrl, DriverCreatorAdapter.MultiTypeFullNameAndControlDriver, DriverCreatorAdapter.MultiTypeFullNameAndUserControlDriver, DriverCreatorAdapter.MultiTypeFullNameAndWindowDriver);
 
         static string GetAccessPath(Control parent, Control target)
         {
