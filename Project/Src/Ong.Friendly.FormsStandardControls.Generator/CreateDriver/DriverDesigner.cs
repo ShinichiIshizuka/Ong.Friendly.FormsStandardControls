@@ -21,6 +21,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 
         public bool CanDesign(object obj) => obj is Control;
 
+        static bool CanBeParent(object obj) => obj is Form || obj is UserControl;
+
         public string CreateDriverClassName(object coreObj)
         {
             var driverTypeNameManager = new DriverTypeNameManager(DriverCreatorAdapter.SelectedNamespace, DriverCreatorAdapter.TypeFullNameAndWindowDriver, DriverCreatorAdapter.TypeFullNameAndUserControlDriver);
@@ -61,15 +63,11 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             var rootCtrl = (Control)root;
             var elementCtrl = (Control)element;
 
-            var infos = GetIdentifyingCandidatesByField(rootCtrl, elementCtrl);
-            if (infos != null) return infos;
-
-            infos = GetIdentifyingCandidatesByType(rootCtrl, elementCtrl);
-            if (infos != null) return infos;
+            if (rootCtrl == null || elementCtrl == null) return new DriverIdentifyInfo[0];
 
             using (var dom = CodeDomProvider.CreateProvider("CSharp"))
             {
-                infos = GetIdentifyingCandidatesByControlTree(dom, rootCtrl, elementCtrl);
+                var infos = GetIdentifyingCandidatesCore(dom, rootCtrl, elementCtrl);
                 if (infos != null) return infos;
             }
 
@@ -469,59 +467,138 @@ namespace [*namespace]
             }
         }
 
-        static DriverIdentifyInfo[] GetIdentifyingCandidatesByField(Control rootCtrl, Control elementCtrl)
+        DriverIdentifyInfo[] GetIdentifyingCandidatesCore(CodeDomProvider dom, Control rootCtrl, Control elementCtrl)
         {
+            if (rootCtrl == elementCtrl) return new DriverIdentifyInfo[0];
+
             var current = elementCtrl.Parent;
             var ancestor = new List<Control>();
             while (current != null)
             {
-                ancestor.Add(current);
+                if (CanBeParent(current))
+                {
+                    ancestor.Add(current);
+                }
                 if (ReferenceEquals(current, rootCtrl)) break;
                 current = current.Parent;
             }
-
-            var target = elementCtrl;
-            var accessPaths = new List<string>();
-            foreach (var e in ancestor)
+            if (ancestor.Count == 0)
             {
+                ancestor.Add(rootCtrl);
+            }
+
+            //Fieldでたどることができる範囲を取得
+            var target = elementCtrl;
+            var isPerfect = true;
+            string name = string.Empty;
+            var usings = new List<string>();
+            var accessPaths = new List<string>();
+            var isWindowControl = new List<bool>();
+            for (int i = 0; i < ancestor.Count; i++)
+            {
+                var currentPrarent = ancestor[i];
                 //直接のフィールドに持っているか？
-                var path = GetAccessPath(e, target);
+                var path = GetAccessPath(currentPrarent, target);
                 if (!string.IsNullOrEmpty(path))
                 {
+                    //最初がフィールドで特定できた場合はその名前を使う
+                    if (target == elementCtrl)
+                    {
+                        var sp = path.Split('.');
+                        name = sp.Length == 0 ? string.Empty : sp[sp.Length - 1];
+                    }
                     accessPaths.Insert(0, path);
-                    target = e;
+                    isWindowControl.Insert(0, false);
+                    target = currentPrarent;
+                    continue;
                 }
+
+                //Typeで特定できる場合
+                if (CanIdentifyByType(currentPrarent, target))
+                {
+                    //さらに上の階層から特定可能かみる
+                    for (int j = i + 1; j < ancestor.Count; j++)
+                    {
+                        if (CanIdentifyByType(ancestor[j], target))
+                        {
+                            i++;
+                            currentPrarent = ancestor[i];
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    accessPaths.Insert(0, $"IdentifyFromTypeFullName(\"{target.GetType().FullName}\")");
+                    isWindowControl.Insert(0, true);
+                    target = currentPrarent;
+                    continue;
+                }
+
+                var controlPath = GetControlTreePath(currentPrarent, target);
+                if (string.IsNullOrEmpty(controlPath)) return null;
+
+                accessPaths.Insert(0, controlPath);
+                isWindowControl.Insert(0, false);
+                target = currentPrarent;
             }
 
             if (target != rootCtrl) return null;
 
+            if (string.IsNullOrEmpty(name))
+            {
+                var names = new List<string>();
+                var customNameGenerator = new DriverElementNameGeneratorAdaptor(dom);
+                name = customNameGenerator.MakeDriverPropName(elementCtrl, string.Empty, names);
+            }
+
+            var windowControlNew = string.Empty;
+            bool modeDynamic = false;
+            for (int i = 0; i < isWindowControl.Count; i++)
+            {
+                if (isWindowControl[i])
+                {
+                    if (modeDynamic)
+                    {
+                        if (0 < i)
+                        {
+                            windowControlNew = "new WindowControl(" + windowControlNew;
+                            accessPaths[i - 1] = accessPaths[i - 1] + ")";
+                        }
+                    }
+                    modeDynamic = false;
+                }
+                else
+                {
+                    if (!modeDynamic)
+                    {
+                        accessPaths[i] = "Dynamic()." + accessPaths[i];
+                    }
+                    modeDynamic = true;
+                }
+            }
             var accessPath = string.Join(".", accessPaths.ToArray());
-            var sp = accessPath.Split('.');
+            if (!modeDynamic)
+            {
+                accessPath += ".Dynamic()";
+            }
+
             return new[]
             {
                 new DriverIdentifyInfo
                 {
-                    IsPerfect = true,
-                    Identify = "Core.Dynamic()." + accessPath,
-                    DefaultName = sp[sp.Length - 1],
+                    IsPerfect = isPerfect,
+                    Identify = windowControlNew + "Core." + accessPath,
+                    DefaultName = name,
+                    ExtensionUsingNamespaces = usings.ToArray(),
                     DriverTypeCandidates = GetDriverTypeCandidates(elementCtrl)
                 }
             };
         }
 
-        static void GetAllTypeFullNames(Control ctrl, List<string> types)
+        static bool CanIdentifyByType(Control rootCtrl, Control target)
         {
-            types.Add(ctrl.GetType().FullName);
-            foreach (Control e in ctrl.Controls)
-            {
-                if (e == null) continue;
-                GetAllTypeFullNames(e, types);
-            }
-        }
-
-        static DriverIdentifyInfo[] GetIdentifyingCandidatesByType(Control rootCtrl, Control elementCtrl)
-        {
-            var targetType = elementCtrl.GetType();
+            var targetType = target.GetType();
 
             var types = new List<string>();
             GetAllTypeFullNames(rootCtrl, types);
@@ -530,25 +607,11 @@ namespace [*namespace]
             {
                 if (targetType.FullName == e) matchCount++;
             }
-            if (matchCount != 1) return null;
-
-            return new[]
-            {
-                new DriverIdentifyInfo
-                {
-                    IsPerfect = true,
-                    Identify = $"Core.GetFromTypeFullName(\"{targetType.FullName}\").SingleOrDefault()?.Dynamic()",
-                    DefaultName = targetType.Name,
-                    DriverTypeCandidates = GetDriverTypeCandidates(elementCtrl)
-                }
-            };
+            return matchCount == 1;
         }
 
-        static DriverIdentifyInfo[] GetIdentifyingCandidatesByControlTree(CodeDomProvider dom, Control rootCtrl, Control elementCtrl)
+        static string GetControlTreePath(Control rootCtrl, Control elementCtrl)
         {
-            var names = new List<string>();
-            var customNameGenerator = new DriverElementNameGeneratorAdaptor(dom);
-
             var current = elementCtrl;
             var identify = new List<string>();
             while (true)
@@ -572,20 +635,19 @@ namespace [*namespace]
                 if (ReferenceEquals(current, rootCtrl)) break;
             }
 
-            if (!ReferenceEquals(current, rootCtrl)) return null;
+            if (!ReferenceEquals(current, rootCtrl)) return string.Empty;
 
-            var accessPath = string.Join(".", identify.ToArray());
-            var name = customNameGenerator.MakeDriverPropName(elementCtrl, string.Empty, names);
-            return new[]
+            return string.Join(".", identify.ToArray());
+        }
+
+        static void GetAllTypeFullNames(Control ctrl, List<string> types)
+        {
+            types.Add(ctrl.GetType().FullName);
+            foreach (Control e in ctrl.Controls)
             {
-                new DriverIdentifyInfo
-                {
-                    IsPerfect = false,
-                    Identify = "Core.Dynamic()." + accessPath,
-                    DefaultName = name,
-                    DriverTypeCandidates = GetDriverTypeCandidates(elementCtrl)
-                }
-            };
+                if (e == null) continue;
+                GetAllTypeFullNames(e, types);
+            }
         }
 
         static string[] GetDriverTypeCandidates(Control elementCtrl)
