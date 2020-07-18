@@ -454,9 +454,11 @@ namespace [*namespace]
         static string GetAttachFuncName(string driverClassName)
         {
             var index = driverClassName.IndexOf(DriverCreatorUtils.Suffix);
-            if (0 < index && index == driverClassName.Length - DriverCreatorUtils.Suffix.Length) return "Attach" + driverClassName;
-
-            return $"Attach{driverClassName.Substring(0, driverClassName.Length - DriverCreatorUtils.Suffix.Length)}";
+            if (0 < index && index == driverClassName.Length - DriverCreatorUtils.Suffix.Length)
+            {
+                return $"Attach{driverClassName.Substring(0, driverClassName.Length - DriverCreatorUtils.Suffix.Length)}";
+            }
+            return "Attach" + driverClassName;
         }
 
         static void DistinctAddRange(IEnumerable<string> src, List<string> dst)
