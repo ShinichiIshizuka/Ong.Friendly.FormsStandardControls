@@ -217,7 +217,7 @@ namespace [*namespace]
             code.Add($"{Indent}public static class {info.ClassName}Extensions");
             code.Add($"{Indent}{{");
 
-            var funcName = GetFuncName(info.ClassName);
+            var funcName = GetAttachFuncName(info.ClassName);
 
             //WindowsAppFriendにアタッチする場合
             if (info.AttachExtensionClass == WindowsAppFriendTypeFullName)
@@ -283,13 +283,13 @@ namespace [*namespace]
                             if (info.AttachMethod == AttachByTypeFullName)
                             {
                                 code.Add($"{Indent}{Indent}[WindowDriverIdentify(TypeFullName = \"{targetControl.GetType().FullName}\")]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {GetFuncName(info.ClassName)}(this WindowsAppFriend app)");
+                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
                                 code.Add($"{Indent}{Indent}{Indent}=> app.WaitForIdentifyFromTypeFullName(\"{targetControl.GetType().FullName}\").Dynamic();");
                             }
                             else
                             {
                                 code.Add($"{Indent}{Indent}[WindowDriverIdentify(WindowText = \"{targetControl.Text}\")]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {GetFuncName(info.ClassName)}(this WindowsAppFriend app)");
+                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
                                 code.Add($"{Indent}{Indent}{Indent}=> app.WaitForIdentifyFromWindowText(\"{targetControl.Text}\").Dynamic();");
                             }
                         }
@@ -451,7 +451,7 @@ namespace [*namespace]
             ns = string.Join(".", nsArray);
         }
 
-        static string GetFuncName(string driverClassName)
+        static string GetAttachFuncName(string driverClassName)
         {
             var index = driverClassName.IndexOf(DriverCreatorUtils.Suffix);
             if (0 < index && index == driverClassName.Length - DriverCreatorUtils.Suffix.Length) return "Attach" + driverClassName;
