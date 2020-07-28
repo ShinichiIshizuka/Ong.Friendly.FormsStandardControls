@@ -141,7 +141,7 @@ namespace [*namespace]
             var addToTarget = true;
             if (!isRoot)
             {
-                if (!string.IsNullOrEmpty(DriverCreatorUtils.GetDriverTypeFullName(control, DriverCreatorAdapter.TypeFullNameAndControlDriver)) ||
+                if (!string.IsNullOrEmpty(DriverCreatorUtils.GetControlDriverTypeFullName(control, DriverCreatorAdapter.TypeFullNameAndControlDriver)) ||
                     !string.IsNullOrEmpty(DriverCreatorUtils.GetDriverTypeFullName(control, DriverCreatorAdapter.TypeFullNameAndWindowDriver)) ||
                     !string.IsNullOrEmpty(DriverCreatorUtils.GetDriverTypeFullName(control, DriverCreatorAdapter.TypeFullNameAndUserControlDriver)))
                 {
@@ -218,7 +218,7 @@ namespace [*namespace]
                 if (CollectionUtility.HasReference(mappedControls, field.Control)) continue;
 
                 //コントロールドライバ
-                var driver = DriverCreatorUtils.GetDriverTypeFullName(field.Control, DriverCreatorAdapter.TypeFullNameAndControlDriver);
+                var driver = DriverCreatorUtils.GetControlDriverTypeFullName(field.Control, DriverCreatorAdapter.TypeFullNameAndControlDriver);
                 if (!string.IsNullOrEmpty(driver))
                 {
                     mappedControls.Add(field.Control);
@@ -289,7 +289,7 @@ namespace [*namespace]
                 if (CollectionUtility.HasReference(mappedControls, ctrl)) continue;
 
                 //コントロールドライバ検索
-                var driver = DriverCreatorUtils.GetDriverTypeFullName(ctrl, DriverCreatorAdapter.TypeFullNameAndControlDriver);
+                var driver = DriverCreatorUtils.GetControlDriverTypeFullName(ctrl, DriverCreatorAdapter.TypeFullNameAndControlDriver);
                 if (!string.IsNullOrEmpty(driver))
                 {
                     var name = _customNameGenerator.MakeDriverPropName(ctrl, string.Empty, names);

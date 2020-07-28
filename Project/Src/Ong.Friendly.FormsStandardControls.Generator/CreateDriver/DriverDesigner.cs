@@ -14,7 +14,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         const string WindowsAppFriendTypeFullName = "Codeer.Friendly.Windows.WindowsAppFriend";
         const string AttachByTypeFullName = "Type Full Name";
         const string AttachByWindowText = "Window Text";
-        const string AttachVariableWindowText = "VariableWindowText";
+        const string AttachVariableWindowText = "Variable Window Text";
         const string AttachCustom = "Custom";
 
         public int Priority { get; }
@@ -89,7 +89,31 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 
         internal static void CreateControlDriver(Control control)
         {
-            var driverName = control.GetType().Name + "Driver";
+            var list = new List<Type>();
+            var type = control.GetType();
+            while (type != null)
+            {
+                list.Add(type);
+                type = type.BaseType;
+                if (type == null || type == typeof(Control) || type == typeof(UserControl) || type == typeof(Form))
+                {   
+                    break;
+                }
+            }
+
+            var driverName = string.Empty;
+            if (1 == list.Count)
+            {
+                driverName = list[0].Name + "Driver";
+            }
+            else
+            {
+                using (var dlg = new TypeSelectForm(list.ToArray()))
+                {
+                    if (dlg.ShowDialog() != DialogResult.OK) return;
+                    driverName = dlg.SelectedType.Name + "Driver";
+                }
+            }
             var generatorName = driverName + "Generator";
 
             var driverCode = @"using Codeer.Friendly;
@@ -181,29 +205,51 @@ namespace [*namespace]
             GetMembers(info, out usings, out var members);
 
             var code = new List<string>();
+            var coreType = "WindowControl";
 
-            var attr = (targetControl is Form) ? "WindowDriver" : "UserControlDriver";
+            var controlDriverTypeFullname = DriverCreatorUtils.GetControlDriverTypeFullName(targetControl, DriverCreatorAdapter.TypeFullNameAndControlDriver);
+            if (!string.IsNullOrEmpty(controlDriverTypeFullname))
+            {
+                coreType = DriverCreatorUtils.GetTypeName(controlDriverTypeFullname);
+                usings.Add(DriverCreatorUtils.GetTypeNamespace(controlDriverTypeFullname));
+            }
+
+            var attr = (targetControl is Form form && form.TopLevel) ? "WindowDriver" : "UserControlDriver";
             code.Add($"{Indent}[{attr}(TypeFullName = \"{targetControl.GetType().FullName}\")]");
             code.Add($"{Indent}public class {info.ClassName}");
             code.Add($"{Indent}{{");
-            code.Add($"{Indent}{Indent}public WindowControl Core {{ get; }}");
+            code.Add($"{Indent}{Indent}public {coreType} Core {{ get; }}");
             foreach (var e in members)
             {
                 code.Add($"{Indent}{Indent}{e}");
             }
-            code.Add(string.Empty);
-            code.Add($"{Indent}{Indent}public {info.ClassName}(WindowControl core)");
-            code.Add($"{Indent}{Indent}{{");
-            code.Add($"{Indent}{Indent}{Indent}Core = core;");
-            code.Add($"{Indent}{Indent}}}");
 
-            code.Add(string.Empty);
-            code.Add($"{Indent}{Indent}public {info.ClassName}(AppVar core)");
-            code.Add($"{Indent}{Indent}{{");
-            code.Add($"{Indent}{Indent}{Indent}Core = new WindowControl(core);");
-            code.Add($"{Indent}{Indent}}}");
-            code.Add($"{Indent}}}");
+            if (string.IsNullOrEmpty(controlDriverTypeFullname))
+            {
+                code.Add(string.Empty);
+                code.Add($"{Indent}{Indent}public {info.ClassName}(WindowControl core)");
+                code.Add($"{Indent}{Indent}{{");
+                code.Add($"{Indent}{Indent}{Indent}Core = core;");
+                code.Add($"{Indent}{Indent}}}");
 
+                code.Add(string.Empty);
+                code.Add($"{Indent}{Indent}public {info.ClassName}(AppVar core)");
+                code.Add($"{Indent}{Indent}{{");
+                code.Add($"{Indent}{Indent}{Indent}Core = new WindowControl(core);");
+                code.Add($"{Indent}{Indent}}}");
+                code.Add($"{Indent}}}");
+            }
+            else
+            {
+                code.Add(string.Empty);
+                code.Add($"{Indent}{Indent}public {info.ClassName}(WindowControl core) : this(core.AppVar) {{}}");
+                code.Add(string.Empty);
+                code.Add($"{Indent}{Indent}public {info.ClassName}(AppVar core)");
+                code.Add($"{Indent}{Indent}{{");
+                code.Add($"{Indent}{Indent}{Indent}Core = new {coreType}(core);");
+                code.Add($"{Indent}{Indent}}}");
+                code.Add($"{Indent}}}");
+            }
             return code;
         }
 
@@ -223,7 +269,7 @@ namespace [*namespace]
             //WindowsAppFriendにアタッチする場合
             if (info.AttachExtensionClass == WindowsAppFriendTypeFullName)
             {
-                if (targetControl is Form)
+                if (targetControl is Form form && form.TopLevel)
                 {
                     if (info.AttachMethod == AttachCustom)
                     {
@@ -252,47 +298,17 @@ namespace [*namespace]
                     }
                     else
                     {
-                        if (info.ManyExists)
+                        if (info.AttachMethod == AttachByTypeFullName)
                         {
-                            if (info.AttachMethod == AttachByTypeFullName)
-                            {
-                                code.Add($"{Indent}{Indent}[WindowDriverIdentify(CustomMethod = \"TryGet\")]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, int index)");
-                                code.Add($"{Indent}{Indent}{Indent}=> app.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")[index].Dynamic();");
-                                code.Add(string.Empty);
-                                code.Add($"{Indent}{Indent}public static bool TryGet(WindowControl window, out int index)");
-                                code.Add($"{Indent}{Indent}{{");
-                                code.Add($"{Indent}{Indent}{Indent}index = window.App.GetFromTypeFullName(\"{targetControl.GetType().FullName}\").Select(e => e.Handle).ToList().IndexOf(window.Handle);");
-                                code.Add($"{Indent}{Indent}{Indent}return index != -1;");
-                                code.Add($"{Indent}{Indent}}}");
-                            }
-                            else
-                            {
-                                code.Add($"{Indent}{Indent}[WindowDriverIdentify(CustomMethod = \"TryGet\")]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, int index)");
-                                code.Add($"{Indent}{Indent}{Indent}=> app.GetFromWindowText(\"{targetControl.Text}\")[index].Dynamic();");
-                                code.Add(string.Empty);
-                                code.Add($"{Indent}{Indent}public static bool TryGet(WindowControl window, out int index)");
-                                code.Add($"{Indent}{Indent}{{");
-                                code.Add($"{Indent}{Indent}{Indent}index = window.App.GetFromWindowText(\"{targetControl.Text}\").Select(e => e.Handle).ToList().IndexOf(window.Handle);");
-                                code.Add($"{Indent}{Indent}{Indent}return index != -1;");
-                                code.Add($"{Indent}{Indent}}}");
-                            }
+                            code.Add($"{Indent}{Indent}[WindowDriverIdentify(TypeFullName = \"{targetControl.GetType().FullName}\")]");
+                            code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
+                            code.Add($"{Indent}{Indent}{Indent}=> app.WaitForIdentifyFromTypeFullName(\"{targetControl.GetType().FullName}\").Dynamic();");
                         }
                         else
                         {
-                            if (info.AttachMethod == AttachByTypeFullName)
-                            {
-                                code.Add($"{Indent}{Indent}[WindowDriverIdentify(TypeFullName = \"{targetControl.GetType().FullName}\")]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
-                                code.Add($"{Indent}{Indent}{Indent}=> app.WaitForIdentifyFromTypeFullName(\"{targetControl.GetType().FullName}\").Dynamic();");
-                            }
-                            else
-                            {
-                                code.Add($"{Indent}{Indent}[WindowDriverIdentify(WindowText = \"{targetControl.Text}\")]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
-                                code.Add($"{Indent}{Indent}{Indent}=> app.WaitForIdentifyFromWindowText(\"{targetControl.Text}\").Dynamic();");
-                            }
+                            code.Add($"{Indent}{Indent}[WindowDriverIdentify(WindowText = \"{targetControl.Text}\")]");
+                            code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
+                            code.Add($"{Indent}{Indent}{Indent}=> app.WaitForIdentifyFromWindowText(\"{targetControl.Text}\").Dynamic();");
                         }
                     }
                 }
@@ -323,41 +339,17 @@ namespace [*namespace]
                     }
                     else
                     {
-                        if (info.ManyExists)
+                        if (info.AttachMethod == AttachByTypeFullName)
                         {
-                            if (info.AttachMethod == AttachByTypeFullName)
-                            {
-                                code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, int index)");
-                                code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")).ToArray()[index].Dynamic();");
-                                code.Add(string.Empty);
-                                code.Add($"{Indent}{Indent}public static void TryGet(this WindowsAppFriend app, out int[] indices)");
-                                code.Add($"{Indent}{Indent}{Indent}=> indices = Enumerable.Range(0, app.GetTopLevelWindows().Sum(e => e.GetFromTypeFullName(\"{targetControl.GetType().FullName}\").Length)).ToArray();");
-                            }
-                            else
-                            {
-                                code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, int index)");
-                                code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(\"{targetControl.Text}\")).ToArray()[index].Dynamic();");
-                                code.Add(string.Empty);
-                                code.Add($"{Indent}{Indent}public static void TryGet(this WindowsAppFriend app, out int[] indices)");
-                                code.Add($"{Indent}{Indent}{Indent}=> indices = Enumerable.Range(0, app.GetTopLevelWindows().Sum(e => e.GetFromWindowText(\"{targetControl.Text}\").Length)).ToArray();");
-                            }
+                            code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
+                            code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
+                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")).SingleOrDefault()?.Dynamic();");
                         }
                         else
                         {
-                            if (info.AttachMethod == AttachByTypeFullName)
-                            {
-                                code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
-                                code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")).SingleOrDefault()?.Dynamic();");
-                            }
-                            else
-                            {
-                                code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
-                                code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
-                                code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(\"{targetControl.Text}\")).SingleOrDefault()?.Dynamic();");
-                            }
+                            code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
+                            code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
+                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(\"{targetControl.Text}\")).SingleOrDefault()?.Dynamic();");
                         }
                     }
                 }
@@ -379,7 +371,7 @@ namespace [*namespace]
                     code.Add($"{Indent}{Indent}{Indent}//TODO");
                     code.Add($"{Indent}{Indent}}}");
                     code.Add(string.Empty);
-                    code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out T identifier)");
+                    code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out T[] identifier)");
                     code.Add($"{Indent}{Indent}{{");
                     code.Add($"{Indent}{Indent}{Indent}//TODO");
                     code.Add($"{Indent}{Indent}}}");
@@ -395,41 +387,17 @@ namespace [*namespace]
                 }
                 else
                 {
-                    if (info.ManyExists)
+                    if (info.AttachMethod == AttachByTypeFullName)
                     {
-                        if (info.AttachMethod == AttachByTypeFullName)
-                        {
-                            code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
-                            code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent, int index)");
-                            code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")[index].Dynamic();");
-                            code.Add(string.Empty);
-                            code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out int[] indices)");
-                            code.Add($"{Indent}{Indent}{Indent}=> indices = Enumerable.Range(0, parent.Core.GetFromTypeFullName(\"{targetControl.GetType().FullName}\").Length).ToArray();");
-                        }
-                        else
-                        {
-                            code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
-                            code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent, int index)");
-                            code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowText(\"{targetControl.Text}\")[index].Dynamic();");
-                            code.Add(string.Empty);
-                            code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out int[] indices)");
-                            code.Add($"{Indent}{Indent}{Indent}=> indices = Enumerable.Range(0, parent.Core.GetFromWindowText(\"{targetControl.Text}\").Length).ToArray();");
-                        }
+                        code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
+                        code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent)");
+                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromTypeFullName(\"{targetControl.GetType().FullName}\").SingleOrDefault()?.Dynamic();");
                     }
                     else
                     {
-                        if (info.AttachMethod == AttachByTypeFullName)
-                        {
-                            code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
-                            code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent)");
-                            code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromTypeFullName(\"{targetControl.GetType().FullName}\").SingleOrDefault()?.Dynamic();");
-                        }
-                        else
-                        {
-                            code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
-                            code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent)");
-                            code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowText(\"{targetControl.Text}\").SingleOrDefault()?.Dynamic();");
-                        }
+                        code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
+                        code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent)");
+                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowText(\"{targetControl.Text}\").SingleOrDefault()?.Dynamic();");
                     }
                 }
             }

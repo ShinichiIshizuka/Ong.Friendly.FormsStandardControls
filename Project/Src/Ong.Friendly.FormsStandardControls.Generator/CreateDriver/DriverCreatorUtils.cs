@@ -91,7 +91,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             return null;
         }
 
-        public static string GetDriverTypeFullName<T>(T ctrl, Dictionary<string, ControlDriverInfo> netTypeAndDriverType)
+        public static string GetControlDriverTypeFullName<T>(T ctrl, Dictionary<string, ControlDriverInfo> netTypeAndDriverType)
         {
             var info = GetDriverInfo(ctrl, netTypeAndDriverType);
             return (info == null) || !info.DriverMappingEnabled ? string.Empty : info.ControlDriverTypeFullName;
