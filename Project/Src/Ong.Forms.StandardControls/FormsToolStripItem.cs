@@ -163,8 +163,11 @@ namespace Ong.Friendly.FormsStandardControls
             item.PerformClick();
         }
 
-        static void Show(ToolStripMenuItem target)
+        static void Show(object obj)
         {
+            var target = obj as ToolStripMenuItem;
+            if (target == null) return;
+
             var show = new List<MethodInvoker>();
             var hide = new List<MethodInvoker>();
             GetOpenClose(target, show, hide);
@@ -174,8 +177,11 @@ namespace Ong.Friendly.FormsStandardControls
             }
         }
 
-        static void Hide(ToolStripMenuItem target)
+        static void Hide(object obj)
         {
+            var target = obj as ToolStripMenuItem;
+            if (target == null) return;
+
             var show = new List<MethodInvoker>();
             var hide = new List<MethodInvoker>();
             GetOpenClose(target, show, hide);
@@ -185,9 +191,11 @@ namespace Ong.Friendly.FormsStandardControls
             }
         }
 
-
-        static void GetOpenClose(ToolStripMenuItem target, List<MethodInvoker> show, List<MethodInvoker> hide)
+        static void GetOpenClose(object obj, List<MethodInvoker> show, List<MethodInvoker> hide)
         {
+            var target = obj as ToolStripMenuItem;
+            if (target == null) return;
+
             var current = target;
             while (true)
             {
