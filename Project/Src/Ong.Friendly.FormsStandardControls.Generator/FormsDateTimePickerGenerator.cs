@@ -58,5 +58,21 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             AddUsingNamespace(typeof(DateTime).Namespace);
             AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(", _control.Value.Year , ", " , _control.Value.Month , ", " ,_control.Value.Day , ")", new TokenAsync(CommaType.Before),");");
         }
+
+#if ENG
+        /// <summary>
+        /// Optimize the code.
+        /// </summary>
+        /// <param name="code">code.</param>
+#else
+        /// <summary>
+        /// コードの最適化。
+        /// </summary>
+        /// <param name="code">コードリスト。</param>
+#endif
+        public override void Optimize(List<Sentence> code)
+        {
+            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateSelectDay");
+        }
     }
 }

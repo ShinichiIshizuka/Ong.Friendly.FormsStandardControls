@@ -181,7 +181,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             if (_control.Focused)
             {
-                AddSentence(new TokenName(), ".EmulateClearSelection(", new TokenAsync(CommaType.Non), ");");
                 //現在のセルの設定
                 if (_control.CurrentCell != null)
                 {

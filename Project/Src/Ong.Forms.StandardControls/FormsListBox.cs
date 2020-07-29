@@ -364,6 +364,10 @@ namespace Ong.Friendly.FormsStandardControls
         {
             listbox.Focus();
             listbox.SetSelected(index, isSelect);
+            if (isSelect)
+            {
+                listbox.SelectedIndex = index;
+            }
         }
 
         /// <summary>

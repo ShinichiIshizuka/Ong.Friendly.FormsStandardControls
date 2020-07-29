@@ -69,7 +69,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                             DiffSelect(current, _selectedIndices);
                             _selectedIndices = current;
                         }
-                        break;
+                        return;
                 }
                 AddSentence(new TokenName(), ".EmulateChangeSelectedIndex(" + _control.SelectedIndex, new TokenAsync(CommaType.Before), ");");
             }
@@ -87,7 +87,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             {
                 if (current.IndexOf(index) == -1)
                 {
-                    AddSentence(new TokenName(), ".EmulateChangeSelectedState(" + index + ", false", new TokenAsync(CommaType.Before), ");");
+                    AddSentence(new TokenName(), ".EmulateChangeSelectedState(" + index + ", false);");
                 }
             }
             //currentで選択が増えているものをtrueにする
@@ -95,7 +95,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             {
                 if (old.IndexOf(index) == -1)
                 {
-                    AddSentence(new TokenName(), ".EmulateChangeSelectedState(" + index + ", true", new TokenAsync(CommaType.Before), ");");
+                    AddSentence(new TokenName(), ".EmulateChangeSelectedState(" + index + ", true);");
                 }
             }
         }

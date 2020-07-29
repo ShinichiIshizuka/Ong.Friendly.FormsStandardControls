@@ -74,12 +74,25 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         /// <param name="e">イベント内容</param>
         void SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_control.Focused)
+            if (!_control.Focused) return;
+
+            if (_control.MultiSelect)
             {
                 List<int> current = new List<int>();
                 GetSelectedIndices(current);
                 DiffSelect(current, _selectedIndices);
                 _selectedIndices = current;
+                return;
+            }
+
+            List<int> list = new List<int>();
+            for (int itemIndex = 0; itemIndex < _control.Items.Count; itemIndex++)
+            {
+                if (_control.Items[itemIndex].Selected == true)
+                {
+                    AddSentence(new TokenName(), ".EmulateChangeSelectedIndex(" + itemIndex, new TokenAsync(CommaType.Before), ");");
+                    return;
+                }
             }
         }
 

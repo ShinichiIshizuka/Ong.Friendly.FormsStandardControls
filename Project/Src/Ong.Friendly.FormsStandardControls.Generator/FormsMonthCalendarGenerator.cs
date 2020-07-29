@@ -60,7 +60,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                 DateTime selectionStart = _control.SelectionStart;
                 DateTime selectionEnd = _control.SelectionEnd;
                 AddUsingNamespace(typeof(DateTime).Namespace);
-                if (selectionStart == selectionEnd)
+                if (selectionStart.Date == selectionEnd.Date)
                 {
                     AddSentence(new TokenName(), ".EmulateSelectDay(new DateTime(",
                         selectionStart.Year, ", ",
@@ -80,6 +80,22 @@ namespace Ong.Friendly.FormsStandardControls.Generator
                         new TokenAsync(CommaType.Before), ");");
                 }
             }
+        }
+
+#if ENG
+        /// <summary>
+        /// Optimize the code.
+        /// </summary>
+        /// <param name="code">code.</param>
+#else
+        /// <summary>
+        /// コードの最適化。
+        /// </summary>
+        /// <param name="code">コードリスト。</param>
+#endif
+        public override void Optimize(List<Sentence> code)
+        {
+            GenerateUtility.RemoveDuplicationFunction(this, code, "EmulateSelectDay");
         }
     }
 }

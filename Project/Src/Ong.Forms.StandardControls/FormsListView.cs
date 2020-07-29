@@ -170,6 +170,40 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
+        /// I want to select an item state corresponding to the specified index.
+        /// </summary>
+#else
+        /// <summary>
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
+        /// </summary>
+#endif
+        public void EmulateChangeSelectedIndex(int index)
+        {
+            App[typeof(FormsListView), "EmulateChangeSelectedIndexInTarget"](AppVar, index);
+        }
+
+#if ENG
+        /// <summary>
+        /// I want to select an item state corresponding to the specified index.
+        /// Executes asynchronously. 
+        /// </summary>
+        /// <param name="index">Index.</param>
+        /// <param name="async">Asynchronous execution.</param>
+#else
+        /// <summary>
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
+        /// 非同期に実行します。
+        /// </summary>
+        /// <param name="index">インデックス。</param>
+        /// <param name="async">非同期実行オブジェクト。</param>
+#endif
+        public void EmulateChangeSelectedIndex(int index, Async async)
+        {
+            App[typeof(FormsListView), "EmulateChangeSelectedIndexInTarget", async](AppVar, index);
+        }
+
+#if ENG
+        /// <summary>
         /// Sets the selection state of the item with the specified index.
         /// </summary>
         /// <param name="index">Index of the item to change.</param>
@@ -236,6 +270,23 @@ namespace Ong.Friendly.FormsStandardControls
         {
             listview.Focus();
             listview.Items[index].Selected = isSelect;
+            if (isSelect)
+            {
+                listview.Items[index].Focused = true;
+            }
+        }
+
+        /// <summary>
+        /// 指定されたインデックスに該当するアイテムを選択状態にします。
+        /// 非同期に実行します。
+        /// </summary>
+        /// <param name="listview">ListBox。</param>
+        /// <param name="index">インデックス。</param>
+        static void EmulateChangeSelectedIndexInTarget(ListView listview, int index)
+        {
+            listview.Focus();
+            listview.Items[index].Focused = true;
+            listview.Items[index].Selected = true;
         }
     }
 }
