@@ -13,5 +13,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             _listBox.Items.AddRange(types);
             _listBox.SelectedIndex = 0;
         }
+
+        void ListBoxMouseDoubleClick(object sender, MouseEventArgs e)
+            => DialogResult = DialogResult.OK;
     }
 }

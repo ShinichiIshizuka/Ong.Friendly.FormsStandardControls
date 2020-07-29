@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Reflection;
+using System.Windows.Forms;
 using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
@@ -17,6 +18,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                 if (searchDescendantUserControls && !(e is UserControl) && !(e is Form))
                 {
                     PickupChildren(e);
+                }
+            }
+
+            //ContextMenu
+            foreach (var e in ctrl.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
+            {
+                if (typeof(ToolStrip).IsAssignableFrom(e.FieldType))
+                {
+                    DriverCreatorAdapter.AddDriverElements(e.GetValue(ctrl));
                 }
             }
         }

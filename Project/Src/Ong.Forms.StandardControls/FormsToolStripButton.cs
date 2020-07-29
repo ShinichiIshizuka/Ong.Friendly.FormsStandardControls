@@ -94,6 +94,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck(CheckState value)
         {
+            EmulateShow();
             App[typeof(FormsToolStripButton), "EmulateCheckInTarget"](AppVar, value);
         }
 
@@ -114,6 +115,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateCheck(CheckState value, Async async)
         {
+            EmulateShow();
             App[typeof(FormsToolStripButton), "EmulateCheckInTarget", async](AppVar, value);
         }
 

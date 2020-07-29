@@ -44,6 +44,7 @@
             this._listBox.Name = "_listBox";
             this._listBox.Size = new System.Drawing.Size(236, 88);
             this._listBox.TabIndex = 0;
+            this._listBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListBoxMouseDoubleClick);
             // 
             // _buttonOK
             // 
@@ -69,8 +70,10 @@
             // 
             // TypeSelectForm
             // 
+            this.AcceptButton = this._buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this._buttonCancel;
             this.ClientSize = new System.Drawing.Size(237, 128);
             this.Controls.Add(this._buttonCancel);
             this.Controls.Add(this._buttonOK);
@@ -79,6 +82,7 @@
             this.Name = "TypeSelectForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Select Type";
             this.ResumeLayout(false);
 

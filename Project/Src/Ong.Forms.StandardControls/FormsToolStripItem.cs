@@ -98,6 +98,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateClick()
         {
+            EmulateShow();
             App[typeof(FormsToolStripItem), "EmulateClickInTarget"](AppVar);
         }
 
@@ -116,6 +117,7 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public void EmulateClick(Async async)
         {
+            EmulateShow();
             App[typeof(FormsToolStripItem), "EmulateClickInTarget", async](AppVar);
         }
 
