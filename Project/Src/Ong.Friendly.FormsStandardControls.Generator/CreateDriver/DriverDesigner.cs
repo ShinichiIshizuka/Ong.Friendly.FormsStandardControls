@@ -461,10 +461,10 @@ namespace [*namespace]
             //Fieldでたどることができる範囲を取得
             var target = elementCtrl;
             var isPerfect = true;
-            string name = string.Empty;
             var usings = new List<string>();
             var accessPaths = new List<string>();
             var isWindowControl = new List<bool>();
+            var fieldName = string.Empty;
             for (int i = 0; i < ancestor.Count; i++)
             {
                 var currentPrarent = ancestor[i];
@@ -476,7 +476,7 @@ namespace [*namespace]
                     if (target == elementCtrl)
                     {
                         var sp = path.Split('.');
-                        name = sp.Length == 0 ? string.Empty : sp[sp.Length - 1];
+                        fieldName = sp.Length == 0 ? string.Empty : sp[sp.Length - 1];
                     }
                     accessPaths.Insert(0, path);
                     isWindowControl.Insert(0, false);
@@ -516,12 +516,9 @@ namespace [*namespace]
 
             if (target != rootCtrl) return null;
 
-            if (string.IsNullOrEmpty(name))
-            {
-                var names = new List<string>();
-                var customNameGenerator = new DriverElementNameGeneratorAdaptor(dom);
-                name = customNameGenerator.MakeDriverPropName(elementCtrl, string.Empty, names);
-            }
+            var names = new List<string>();
+            var customNameGenerator = new DriverElementNameGeneratorAdaptor(dom);
+            var name = customNameGenerator.MakeDriverPropName(elementCtrl, fieldName, names);
 
             var windowControlNew = string.Empty;
             bool modeDynamic = false;

@@ -1,4 +1,5 @@
 ﻿using Codeer.TestAssistant.GeneratorToolKit;
+using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -92,7 +93,11 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             foreach (var e in _nameGenerators)
             {
                 var name = e.GenerateName(obj);
-                if (!string.IsNullOrEmpty(name)) return name;
+                if (!string.IsNullOrEmpty(name))
+                {
+                    var provider = new CSharpCodeProvider();
+                    return provider.IsValidIdentifier(name) ? name : string.Empty;
+                }
             }
             return string.Empty;
         }
