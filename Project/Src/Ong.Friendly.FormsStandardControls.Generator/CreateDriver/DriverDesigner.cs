@@ -332,7 +332,7 @@ namespace [*namespace]
                     {
                         code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, string text)");
-                        code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(text)).SingleOrDefault()?.Dynamic();");
+                        code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(text)).FirstOrDefault()?.Dynamic();");
                         code.Add(string.Empty);
                         code.Add($"{Indent}{Indent}public static void TryGet(this WindowsAppFriend app, out string[] texts)");
                         code.Add($"{Indent}{Indent}{Indent}=> texts = app.GetTopLevelWindows().SelectMany(e => e.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")).Select(e => (string)e.Dynamic().Text).ToArray();");
@@ -343,13 +343,13 @@ namespace [*namespace]
                         {
                             code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
                             code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
-                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")).SingleOrDefault()?.Dynamic();");
+                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")).FirstOrDefault()?.Dynamic();");
                         }
                         else
                         {
                             code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
                             code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
-                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(\"{targetControl.Text}\")).SingleOrDefault()?.Dynamic();");
+                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(\"{targetControl.Text}\")).FirstOrDefault()?.Dynamic();");
                         }
                     }
                 }
@@ -391,13 +391,13 @@ namespace [*namespace]
                     {
                         code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent)");
-                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromTypeFullName(\"{targetControl.GetType().FullName}\").SingleOrDefault()?.Dynamic();");
+                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromTypeFullName(\"{targetControl.GetType().FullName}\").FirstOrDefault()?.Dynamic();");
                     }
                     else
                     {
                         code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent)");
-                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowText(\"{targetControl.Text}\").SingleOrDefault()?.Dynamic();");
+                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowText(\"{targetControl.Text}\").FirstOrDefault()?.Dynamic();");
                     }
                 }
             }
