@@ -105,11 +105,6 @@
     <None Include="Properties\Ong.Friendly.FormsStandardControls.Generator.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ong.Friendly.FormsStandardControls.Generator.Plugin.xml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="CreateDriver\TypeSelectForm.resx">
       <DependentUpon>TypeSelectForm.cs</DependentUpon>
     </EmbeddedResource>

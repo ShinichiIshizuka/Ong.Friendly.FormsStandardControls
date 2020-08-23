@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CellSelectedInfo.cs" />
+    <Compile Include="FormsCheckedListBoxItem.cs" />
     <Compile Include="FormsDataGridViewCell.cs" />
     <Compile Include="FormsLabel.cs" />
     <Compile Include="FormsButton.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="FormsComboBox.cs" />
     <Compile Include="FormsDateTimePicker.cs" />
     <Compile Include="FormsLinkLabel.cs" />
+    <Compile Include="FormsListBoxItem.cs" />
     <Compile Include="FormsMaskedTextBox.cs" />
     <Compile Include="FormsMdiClient.cs" />
     <Compile Include="FormsMonthCalendar.cs" />
@@ -111,11 +113,6 @@
     <Compile Include="RowSelectedInfo.cs" />
     <Compile Include="FormsListViewSubItem.cs" />
     <Compile Include="Cell.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Settings\Ong.Friendly.FormsStandardControls.Plugin.xml">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppVarWrapper.cs" />

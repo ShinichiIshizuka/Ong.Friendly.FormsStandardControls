@@ -125,6 +125,22 @@ namespace Ong.Friendly.FormsStandardControls
 
 #if ENG
         /// <summary>
+        /// Retrieves the item at the specified index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns>Item at the specified index.</returns>
+#else
+        /// <summary>
+        /// 指定したインデックスのアイテムを取得します。
+        /// </summary>
+        /// <param name="index">インデックス。</param>
+        /// <returns>指定したインデックスのアイテム。</returns>
+#endif
+        public FormsListBoxItem GetItem(int index)
+            => new FormsListBoxItem(this, index);
+
+#if ENG
+        /// <summary>
         /// Finds an item with the indicated text.
         /// </summary>
         /// <param name="itemText">Text of the item.</param>

@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
 {
+    /// <summary>
+    /// Driver Designer.
+    /// </summary>
     public class DriverDesigner : IDriverDesigner
     {
         const string Indent = "    ";
@@ -17,18 +20,37 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         const string AttachVariableWindowText = "Variable Window Text";
         const string AttachCustom = "Custom";
 
+        /// <summary>
+        /// priority.
+        /// </summary>
         public int Priority { get; }
 
+        /// <summary>
+        /// can you design a driver for a given object?
+        /// </summary>
+        /// <param name="obj">obj.</param>
+        /// <returns>Can you design a driver for a given object?</returns>
         public bool CanDesign(object obj) => obj is Control;
 
         static bool CanBeParent(object obj) => obj is Form || obj is UserControl;
 
+        /// <summary>
+        /// create driver class name.
+        /// </summary>
+        /// <param name="coreObj">root.</param>
+        /// <returns>driver class name.</returns>
         public string CreateDriverClassName(object coreObj)
         {
             var driverTypeNameManager = new DriverTypeNameManager(DriverCreatorAdapter.SelectedNamespace, DriverCreatorAdapter.TypeFullNameAndWindowDriver, DriverCreatorAdapter.TypeFullNameAndUserControlDriver);
             return driverTypeNameManager.MakeDriverType(coreObj, out var _);
         }
 
+
+        /// <summary>
+        /// candidates of attach extension class.
+        /// </summary>
+        /// <param name="obj">obj.</param>
+        /// <returns>candidates of attach extension class.</returns>
         public string[] GetAttachExtensionClassCandidates(object obj)
         {
             var candidates = new List<string>();
@@ -48,6 +70,11 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             return candidates.ToArray();
         }
 
+        /// <summary>
+        /// candidates of attach method.
+        /// </summary>
+        /// <param name="obj">obj.</param>
+        /// <returns>candidates of attach method.</returns>
         public string[] GetAttachMethodCandidates(object obj)
         {
             var candidates = new List<string>();
@@ -58,6 +85,12 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             return candidates.ToArray();
         }
 
+        /// <summary>
+        /// candidate code to identify element.
+        /// </summary>
+        /// <param name="root">root.</param>
+        /// <param name="element">elemnet.</param>
+        /// <returns>candidate code to identify element.</returns>
         public DriverIdentifyInfo[] GetIdentifyingCandidates(object root, object element)
         {
             var rootCtrl = (Control)root;
@@ -74,6 +107,11 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             return new DriverIdentifyInfo[0];
         }
 
+        /// <summary>
+        /// generate code.
+        /// </summary>
+        /// <param name="targetControl">root.</param>
+        /// <param name="info">information.</param>
         public void GenerateCode(object targetControl, DriverDesignInfo info)
         {
             var code = GenerateCodeCore((Control)targetControl, info);

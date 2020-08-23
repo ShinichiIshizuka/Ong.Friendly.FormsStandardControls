@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Codeer.TestAssistant.GeneratorToolKit;
 
@@ -48,6 +49,24 @@ namespace Ong.Friendly.FormsStandardControls.Generator
         {
             _control.ItemCheck -= ItemCheck;
             _control.SelectedIndexChanged -= SelectedIndexChanged;
+        }
+
+        /// <summary>
+        /// Convert from parent client coordinates to child client coordinates.
+        /// </summary>
+        /// <param name="clientPoint">Client coordinates.Convert to child client coordinates.</param>
+        /// <param name="childUIObject">A child object that is the origin of client coordinates. If not, set null or empty character.</param>
+        /// <returns>Returns true if converted to child client coordinates.</returns>
+        public override bool ConvertChildClientPoint(ref Point clientPoint, out string childUIObject)
+        {
+            childUIObject = string.Empty;
+            var index = _control.IndexFromPoint(clientPoint);
+            if (index == -1) return false;
+
+            childUIObject = $".GetItem({index})";
+            var rect = _control.GetItemRectangle(index);
+            clientPoint = new Point(clientPoint.X - rect.X, clientPoint.Y - rect.Y);
+            return true;
         }
 
         /// <summary>

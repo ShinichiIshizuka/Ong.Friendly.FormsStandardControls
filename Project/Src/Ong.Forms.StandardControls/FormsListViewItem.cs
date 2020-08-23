@@ -8,6 +8,7 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Ong.Friendly.FormsStandardControls.Properties;
 using Ong.Friendly.FormsStandardControls.Inside;
+using System.Drawing;
 
 namespace Ong.Friendly.FormsStandardControls
 {
@@ -20,7 +21,7 @@ namespace Ong.Friendly.FormsStandardControls
     /// リストアイテムです。
     /// </summary>
 #endif
-    public class FormsListViewItem : AppVarWrapper
+    public class FormsListViewItem : AppVarWrapper, IUIObject
     {
 #if ENG
         /// <summary>
@@ -54,6 +55,17 @@ namespace Ong.Friendly.FormsStandardControls
 #endif
         public FormsListViewItem(AppVar appVar)
             : base(appVar) { }
+
+#if ENG
+        /// <summary>
+        /// Returns the size of IUIObject.
+        /// </summary>
+#else
+        /// <summary>
+        /// IUIObjectのサイズを取得します。
+        /// </summary>
+#endif
+        public Size Size => (Size)AppVar["Bounds"]()["Size"]().Core;
 
 #if ENG
         /// <summary>
@@ -95,6 +107,41 @@ namespace Ong.Friendly.FormsStandardControls
         public bool Checked
         {
             get { return (bool)this["Checked"]().Core; }
+        }
+
+#if ENG
+        /// <summary>
+        /// Convert IUIObject's client coordinates to screen coordinates.
+        /// </summary>
+        /// <param name="clientPoint">client coordinates.</param>
+        /// <returns>screen coordinates.</returns>
+#else
+        /// <summary>
+        /// IUIObjectのクライアント座標からスクリーン座標に変換します。
+        /// </summary>
+        /// <param name="clientPoint">クライアント座標</param>
+        /// <returns>スクリーン座標</returns>
+#endif
+        public Point PointToScreen(Point clientPoint)
+        {
+            var rect = (Rectangle)AppVar["Bounds"]().Core;
+            var screen = (Point)AppVar["ListView"]()["PointToScreen"](clientPoint).Core;
+            return new Point(screen.X + rect.X, screen.Y + rect.Y);
+        }
+
+#if ENG
+        /// <summary>
+        /// Make it active.
+        /// </summary>
+#else
+        /// <summary>
+        /// アクティブな状態にします。
+        /// </summary>
+#endif
+        public void Activate()
+        {
+            var w = new WindowControl(AppVar["ListView"]());
+            w.Activate();
         }
 
 #if ENG

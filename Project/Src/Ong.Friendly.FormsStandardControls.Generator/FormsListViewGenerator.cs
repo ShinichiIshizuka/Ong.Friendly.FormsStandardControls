@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Codeer.TestAssistant.GeneratorToolKit;
 using System.Globalization;
+using System.Drawing;
 
 namespace Ong.Friendly.FormsStandardControls.Generator
 {
@@ -53,6 +54,32 @@ namespace Ong.Friendly.FormsStandardControls.Generator
             _control.ItemCheck -= ItemCheck;
             _control.SelectedIndexChanged -= SelectedIndexChanged;
             _control.AfterLabelEdit -= AfterLabelEdit;
+        }
+
+        /// <summary>
+        /// Convert from parent client coordinates to child client coordinates.
+        /// </summary>
+        /// <param name="clientPoint">Client coordinates.Convert to child client coordinates.</param>
+        /// <param name="childUIObject">A child object that is the origin of client coordinates. If not, set null or empty character.</param>
+        /// <returns>Returns true if converted to child client coordinates.</returns>
+        public override bool ConvertChildClientPoint(ref Point clientPoint, out string childUIObject)
+        {
+            childUIObject = string.Empty;
+            var info = _control.HitTest(clientPoint.X, clientPoint.Y);
+            if (info == null) return false;
+            if (info.Item == null) return false;
+
+            if (info.SubItem != null)
+            {
+                childUIObject = $".GetListViewItem({info.Item.Index}).GetSubItem({info.Item.SubItems.IndexOf(info.SubItem)})";
+                clientPoint = new Point(clientPoint.X - info.SubItem.Bounds.X, clientPoint.Y - info.SubItem.Bounds.Y);
+            }
+            else
+            {
+                childUIObject = $".GetListViewItem({info.Item.Index})";
+                clientPoint = new Point(clientPoint.X - info.Item.Bounds.X, clientPoint.Y - info.Item.Bounds.Y);
+            }
+            return true;
         }
 
         /// <summary>
