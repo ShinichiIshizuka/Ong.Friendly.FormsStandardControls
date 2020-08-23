@@ -149,8 +149,9 @@ namespace FormsTest
             FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
             checkedlistbox1.EmulateChangeSelectedIndex(4);
             Assert.AreEqual(4, checkedlistbox1.SelectedItemIndex);
+            Assert.IsTrue(checkedlistbox1.GetItem(4).IsSelected);
 
-            checkedlistbox1.EmulateChangeSelectedIndex(2,new Async());
+            checkedlistbox1.EmulateChangeSelectedIndex(2, new Async());
             Assert.AreEqual(2, checkedlistbox1.SelectedItemIndex);
         }
 
@@ -173,6 +174,26 @@ namespace FormsTest
             Assert.AreEqual("Item-3", checkedlistbox1Text);
         }
 
+
+        /// <summary>
+        /// EmulateChangeSelectedIndexテスト
+        /// </summary>
+        [TestMethod]
+        public void TestEmulateChangeSelectedIndexByItem()
+        {
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
+            checkedlistbox1.GetItem(4).EmulateSelect();
+            string checkedlistbox1Text = checkedlistbox1.Text;
+            Assert.AreEqual("Item-5", checkedlistbox1Text);
+
+            //非同期
+            app[GetType(), "ChangeSelectedIndexEvent"](checkedlistbox1.AppVar);
+            checkedlistbox1.GetItem(2).EmulateSelect(new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            checkedlistbox1Text = checkedlistbox1.Text;
+            Assert.AreEqual("Item-3", checkedlistbox1Text);
+        }
+
         /// <summary>
         /// 状態変更時にメッセージボックスを表示する
         /// </summary>
@@ -190,7 +211,7 @@ namespace FormsTest
             };
             checkdListBox.SelectedIndexChanged += handler;
         }
-        
+
         /// <summary>
         /// EmulateCheckStateテスト
         /// </summary>
@@ -205,7 +226,27 @@ namespace FormsTest
 
             //非同期
             app[GetType(), "ItemCheckedEvent"](checkedlistbox1.AppVar);
-            checkedlistbox1.EmulateCheckState(0, CheckState.Unchecked,new Async());
+            checkedlistbox1.EmulateCheckState(0, CheckState.Unchecked, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            int[] listUnchecked = checkedlistbox1.CheckedIndices;
+            Assert.AreEqual(0, list[0]);
+        }
+
+        /// <summary>
+        /// EmulateCheckStateテスト
+        /// </summary>
+        [TestMethod]
+        public void TestEmulateCheckStateByItem()
+        {
+            FormsCheckedListBox checkedlistbox1 = new FormsCheckedListBox(testDlg["checkedListBox1"]());
+            checkedlistbox1.GetItem(0).EmulateCheckState(CheckState.Checked);
+
+            int[] list = checkedlistbox1.CheckedIndices;
+            Assert.AreEqual(0, list[0]);
+            Assert.AreEqual(CheckState.Checked, checkedlistbox1.GetItem(0).CheckState);
+            //非同期
+            app[GetType(), "ItemCheckedEvent"](checkedlistbox1.AppVar);
+            checkedlistbox1.GetItem(0).EmulateCheckState(CheckState.Unchecked, new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             int[] listUnchecked = checkedlistbox1.CheckedIndices;
             Assert.AreEqual(0, list[0]);

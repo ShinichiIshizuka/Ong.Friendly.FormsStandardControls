@@ -158,6 +158,6 @@ namespace Ong.Friendly.FormsStandardControls
         /// <param name="async">非同期オブジェクト</param>
 #endif
         public void EmulateChangeSelectedState(bool isSelect, Async async)
-            => _parent.EmulateChangeSelectedState(_index, isSelect);
+            => _parent.EmulateChangeSelectedState(_index, isSelect, async);
     }
 }

@@ -104,7 +104,7 @@ namespace FormsTest
             listbox1["Items"]()["RemoveAt"](listbox1.ItemCount - 1);
             listbox1["Items"]()["RemoveAt"](listbox1.ItemCount - 1);
         }
-        
+
         /// <summary>
         /// SelectedIndextテスト
         /// </summary>
@@ -112,10 +112,22 @@ namespace FormsTest
         public void TestSelectIndexes()
         {
             FormsListBox listbox2 = new FormsListBox(testDlg["listBox2"]());
-            int[] select = new int[]{5};
-            listbox2.EmulateChangeSelectedIndex(5,new Async());
+            int[] select = new int[] { 5 };
+            listbox2.EmulateChangeSelectedIndex(5, new Async());
             int selected = listbox2.SelectedIndex;
             Assert.AreEqual(5, selected);
+            Assert.IsTrue(listbox2.GetItem(5).IsSelected);
+        }
+
+        /// <summary>
+        /// SelectedIndextテスト
+        /// </summary>
+        [TestMethod]
+        public void TestItemtext()
+        {
+            FormsListBox listbox2 = new FormsListBox(testDlg["listBox2"]());
+            Assert.AreEqual("Item-6", listbox2.GetItemText(5));
+            Assert.AreEqual("Item-6", listbox2.GetItem(5).Text);
         }
 
         /// <summary>
@@ -151,6 +163,28 @@ namespace FormsTest
             Assert.AreEqual(2, selected2[0]);
         }
 
+
+        /// <summary>
+        /// EmulateChangeSelectedStateテスト
+        /// </summary>
+        [TestMethod]
+        public void TestEmulateChangeSelectedStateByItem()
+        {
+            FormsListBox listbox2 = new FormsListBox(testDlg["listBox2"]());
+            listbox2.GetItem(4).EmulateChangeSelectedState(true);
+            int[] selected1 = listbox2.SelectedIndexes;
+            Assert.AreEqual(1, selected1.Length);
+            Assert.AreEqual(4, selected1[0]);
+
+            // 非同期
+            app[GetType(), "ChangeSelectedIndexEvent"](listbox2.AppVar);
+            listbox2.GetItem(2).EmulateChangeSelectedState(true, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            Assert.AreEqual(1, selected1.Length);
+            int[] selected2 = listbox2.SelectedIndexes;
+            Assert.AreEqual(2, selected2[0]);
+        }
+
         /// <summary>
         /// EmulateChangeSelectedIndexテスト
         /// </summary>
@@ -167,6 +201,30 @@ namespace FormsTest
             // 非同期
             app[GetType(), "ChangeSelectedIndexEvent"](listbox2.AppVar);
             listbox2.EmulateChangeSelectedIndex(3, new Async());
+            new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
+            int[] selected2 = listbox2.SelectedIndexes;
+            Assert.AreEqual(1, selected2[0]);
+            Assert.AreEqual(2, selected2[1]);
+            Assert.AreEqual(3, selected2[2]);
+        }
+
+
+        /// <summary>
+        /// EmulateChangeSelectedIndexテスト
+        /// </summary>
+        [TestMethod]
+        public void TestEmulateChangeSelectedIndexByItem()
+        {
+            FormsListBox listbox2 = new FormsListBox(testDlg["listBox2"]());
+            listbox2.GetItem(1).EmulateSelect();
+            listbox2.GetItem(2).EmulateSelect();
+            int[] selected1 = listbox2.SelectedIndexes;
+            Assert.AreEqual(1, selected1[0]);
+            Assert.AreEqual(2, selected1[1]);
+
+            // 非同期
+            app[GetType(), "ChangeSelectedIndexEvent"](listbox2.AppVar);
+            listbox2.GetItem(3).EmulateSelect(new Async());
             new NativeMessageBox(testDlg.WaitForNextModal()).EmulateButtonClick("OK");
             int[] selected2 = listbox2.SelectedIndexes;
             Assert.AreEqual(1, selected2[0]);
