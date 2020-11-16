@@ -361,7 +361,7 @@ namespace [*namespace]
                         code.Add($"{Indent}{Indent}{Indent}//TODO");
                         code.Add($"{Indent}{Indent}}}");
                         code.Add(string.Empty);
-                        code.Add($"{Indent}{Indent}public static void TryGet(this WindowsAppFriend app, out T[] identifiers)");
+                        code.Add($"{Indent}{Indent}public static T[] TryGet(this WindowsAppFriend app)");
                         code.Add($"{Indent}{Indent}{{");
                         code.Add($"{Indent}{Indent}{Indent}//TODO");
                         code.Add($"{Indent}{Indent}}}");
@@ -372,8 +372,8 @@ namespace [*namespace]
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, string text)");
                         code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(text)).FirstOrDefault()?.Dynamic();");
                         code.Add(string.Empty);
-                        code.Add($"{Indent}{Indent}public static void TryGet(this WindowsAppFriend app, out string[] texts)");
-                        code.Add($"{Indent}{Indent}{Indent}=> texts = app.GetTopLevelWindows().SelectMany(e => e.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")).Select(e => (string)e.Dynamic().Text).ToArray();");
+                        code.Add($"{Indent}{Indent}public static string[] TryGet(this WindowsAppFriend app)");
+                        code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromTypeFullName(\"{targetControl.GetType().FullName}\")).Select(e => (string)e.Dynamic().Text).ToArray();");
                     }
                     else
                     {
@@ -409,7 +409,7 @@ namespace [*namespace]
                     code.Add($"{Indent}{Indent}{Indent}//TODO");
                     code.Add($"{Indent}{Indent}}}");
                     code.Add(string.Empty);
-                    code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out T[] identifier)");
+                    code.Add($"{Indent}{Indent}public static T[] TryGet(this {parentDriver} parent)");
                     code.Add($"{Indent}{Indent}{{");
                     code.Add($"{Indent}{Indent}{Indent}//TODO");
                     code.Add($"{Indent}{Indent}}}");
@@ -420,8 +420,8 @@ namespace [*namespace]
                     code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent, string text)");
                     code.Add($"{Indent}{Indent}{Indent}=> parent.Core.IdentifyFromWindowText(\"{targetControl.Text}\").Dynamic();");
                     code.Add(string.Empty);
-                    code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out string[] texts)");
-                    code.Add($"{Indent}{Indent}{Indent}=> texts = parent.Core.GetFromTypeFullName(\"{targetControl.GetType().FullName}\").Select(e => (string)e.Dynamic().Text).ToArray();");
+                    code.Add($"{Indent}{Indent}public static string[] TryGet(this {parentDriver} parent)");
+                    code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromTypeFullName(\"{targetControl.GetType().FullName}\").Select(e => (string)e.Dynamic().Text).ToArray();");
                 }
                 else
                 {
@@ -679,15 +679,8 @@ namespace [*namespace]
                 var nameSpace = DriverCreatorUtils.GetTypeNamespace(e.TypeFullName);
                 var todo = (e.IsPerfect.HasValue && !e.IsPerfect.Value) ? TodoComment : string.Empty;
 
-                if (DriverCreatorUtils.CanConvert(e.TypeFullName))
-                {
-                    members.Add($"public {typeName} {e.Name} => {e.Identify}; {todo}");
-                }
-                else
-                {
-                    members.Add($"public {typeName} {e.Name} => new {typeName}({e.Identify}); {todo}");
-                }
-                
+                members.Add($"public {typeName} {e.Name} => {e.Identify}; {todo}");
+
                 if (!usings.Contains(nameSpace)) usings.Add(nameSpace);
             }
         }
