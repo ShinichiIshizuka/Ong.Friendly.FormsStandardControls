@@ -140,6 +140,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             }
 
             var driverName = string.Empty;
+            var targetType = control.GetType();
             if (1 == list.Count)
             {
                 driverName = list[0].Name + "Driver";
@@ -150,6 +151,7 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
                 {
                     if (dlg.ShowDialog() != DialogResult.OK) return;
                     driverName = dlg.SelectedType.Name + "Driver";
+                    targetType = dlg.SelectedType;
                 }
             }
             var generatorName = driverName + "Generator";
@@ -172,7 +174,7 @@ namespace [*namespace]
     }
 }
 ";
-            DriverCreatorAdapter.AddCode($"{driverName}.cs", driverCode.Replace("{typefullname}", control.GetType().FullName).Replace("{driverName}", driverName), control);
+            DriverCreatorAdapter.AddCode($"{driverName}.cs", driverCode.Replace("{typefullname}", targetType.FullName).Replace("{driverName}", driverName), control);
 
             var generatorCode = @"using System;
 using System.Windows.Forms;
