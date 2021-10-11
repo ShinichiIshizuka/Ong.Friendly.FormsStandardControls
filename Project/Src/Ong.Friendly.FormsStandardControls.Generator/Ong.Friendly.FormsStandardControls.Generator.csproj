@@ -49,15 +49,18 @@
     <DocumentationFile>bin\Release-Eng\Ong.Friendly.FormsStandardControls.Generator.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Codeer.TestAssistant.GeneratorToolKit, Version=3.11.0.0, Culture=neutral, PublicKeyToken=f7af39ab9bcf13fe, processorArchitecture=MSIL">
-      <HintPath>..\packages\Codeer.TestAssistant.GeneratorToolKit.3.11.0\lib\net20\Codeer.TestAssistant.GeneratorToolKit.dll</HintPath>
+    <Reference Include="Codeer.TestAssistant.GeneratorToolKit, Version=3.12.0.0, Culture=neutral, PublicKeyToken=f7af39ab9bcf13fe, processorArchitecture=MSIL">
+      <HintPath>..\packages\Codeer.TestAssistant.GeneratorToolKit.3.12.0\lib\net20\Codeer.TestAssistant.GeneratorToolKit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateDriver\AnalyzeMenu.cs" />
+    <Compile Include="CreateDriver\CheckBoxAndTextCell.cs" />
     <Compile Include="CreateDriver\CollectionUtility.cs" />
     <Compile Include="CreateDriver\ControlAndFieldName.cs" />
     <Compile Include="CreateDriver\ControlPicker.cs" />
@@ -66,6 +69,12 @@
     <Compile Include="CreateDriver\DriverElementNameGeneratorAdaptor.cs" />
     <Compile Include="CreateDriver\DriverInfo.cs" />
     <Compile Include="CreateDriver\DriverTypeNameManager.cs" />
+    <Compile Include="CreateDriver\PropertyMethodSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateDriver\PropertyMethodSelectForm.Designer.cs">
+      <DependentUpon>PropertyMethodSelectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateDriver\ReflectionAccessor.cs" />
     <Compile Include="CreateDriver\TypeSelectForm.cs">
       <SubType>Form</SubType>
@@ -105,6 +114,9 @@
     <None Include="Properties\Ong.Friendly.FormsStandardControls.Generator.snk" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CreateDriver\PropertyMethodSelectForm.resx">
+      <DependentUpon>PropertyMethodSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateDriver\TypeSelectForm.resx">
       <DependentUpon>TypeSelectForm.cs</DependentUpon>
     </EmbeddedResource>
