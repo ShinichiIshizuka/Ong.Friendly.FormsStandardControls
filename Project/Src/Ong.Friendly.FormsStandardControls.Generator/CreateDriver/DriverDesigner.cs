@@ -129,77 +129,83 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         {
             var list = new List<Type>();
             var type = control.GetType();
+            // Controlまでさかのぼって選択できるようにする
             while (type != null)
             {
                 list.Add(type);
                 type = type.BaseType;
-                if (type == null || type == typeof(Control) || type == typeof(UserControl) || type == typeof(Form))
-                {   
+                if (type == null || type.ToString().IndexOf(typeof(Control).ToString()) == 0)
+                {
                     break;
                 }
             }
 
-            var driverName = (list.Count == 1) ? list[0].Name + "Driver" : string.Empty;
+            var driverName = string.Empty;
             var targetType = control.GetType();
-            string[] targetEventName = null;
-            EventInfo[] eventInfoList = null;
-            try
+            if (1 == list.Count)
             {
-                eventInfoList = targetType.GetEvents(
-                    BindingFlags.FlattenHierarchy |
-                    BindingFlags.Instance |
-                    BindingFlags.Public |
-                    BindingFlags.Static);
+                driverName = list[0].Name + "Driver";
             }
-            catch { }
-
-            // DriverGeneratorに関する設定
-            using (var dlg = new TypeSelectForm())
+            else
             {
-                var settingType = (1 < list.Count) ? TypeSelectForm.SettingType.Type : TypeSelectForm.SettingType.None;
-                settingType |= (eventInfoList != null && 0 < eventInfoList.Length) ? TypeSelectForm.SettingType.Event : 0;
-                dlg.SetSettingType(settingType);
-
-                if ((settingType & TypeSelectForm.SettingType.Type) != 0)
+                // 作成するクラスの選択
+                using (var dlg = new TypeSelectForm(list.ToArray()))
                 {
-                    dlg.SetTypeList(list.ToArray());
-                }
-                if ((settingType & TypeSelectForm.SettingType.Event) != 0)
-                {
-                    foreach (var eventInfo in eventInfoList)
-                    {
-                        dlg.AddEventName(eventInfo.Name);
-                    }
-                }
-                if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
-                if ((settingType & TypeSelectForm.SettingType.Type) != 0)
-                {
+                    if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
                     driverName = dlg.SelectedType.Name + "Driver";
                     targetType = dlg.SelectedType;
                 }
-                if ((settingType & TypeSelectForm.SettingType.Event) != 0)
-                {
-                    targetEventName = dlg.GetSelectedEventName();
-                }
             }
 
+            string[] targetEventName = null;
+            var generatorName = driverName + "Generator";
             var propertyCode = string.Empty;
             var methodCode = string.Empty;
-            // Driverに関する設定
-            using (var dlg = new PropertyMethodSelectForm(control))
+            // プロパティ/フィールドとメソッドの選択
+            using (var dlg = new DriverCodeSettingForm(targetType, driverName, generatorName))
             {
-                var result = dlg.ShowDialog();
-                if (result == System.Windows.Forms.DialogResult.OK)
+                dlg.DelegateGetDriverCode = GetDriverCode;
+                dlg.DelegateGetGeneratorCode = GetGeneratorCode;
+
+                EventInfo[] eventInfoList = null;
+                try
                 {
-                    propertyCode = dlg.GetOutputTextProperty();
-                    methodCode = dlg.GetOutputTextMethod();
+                    eventInfoList = targetType.GetEvents(
+                        BindingFlags.FlattenHierarchy |
+                        BindingFlags.Instance |
+                        BindingFlags.Public |
+                        BindingFlags.Static);
                 }
+                catch { }
+                foreach (var eventInfo in eventInfoList)
+                {
+                    dlg.AddEventName(eventInfo.Name);
+                }
+                if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+                targetEventName = dlg.GetSelectedEventName();
+                propertyCode = dlg.GetOutputTextProperty();
+                methodCode = dlg.GetOutputTextMethod();
             }
 
-            var generatorName = driverName + "Generator";
+            var driverCode = GetDriverCode(targetType, driverName, propertyCode, methodCode);
+            DriverCreatorAdapter.AddCode($"{driverName}.cs", driverCode, control);
 
+            var generatorCode = GetGeneratorCode(driverName, generatorName, targetEventName);
+            DriverCreatorAdapter.AddCode($"{generatorName}.cs", generatorCode, control);
+        }
+
+        /// <summary>
+        /// ドライバ用コード作成
+        /// </summary>
+        /// <param name="targetType">対象オブジェクト</param>
+        /// <param name="driverName">ドライバ名</param>
+        /// <param name="propertyCode">プロパティ/フィールドのコード</param>
+        /// <param name="methodCode">メソッドのコード</param>
+        /// <returns>生成したコード</returns>
+        static string GetDriverCode(Type targetType, string driverName, string propertyCode, string methodCode)
+        {
             var driverCode = @"using Codeer.Friendly;";
-            if (targetEventName != null)
+            if ((0 < propertyCode.Length) || (0 < methodCode.Length))
             {
                 driverCode += @"
 using Codeer.Friendly.Dynamic;";
@@ -228,8 +234,18 @@ namespace [*namespace]
     }
 }
 ";
-            DriverCreatorAdapter.AddCode($"{driverName}.cs", driverCode.Replace("{typefullname}", targetType.FullName).Replace("{driverName}", driverName), control);
+            return driverCode.Replace("{typefullname}", targetType.FullName).Replace("{driverName}", driverName);
+        }
 
+        /// <summary>
+        /// ジェネレータ用コード作成
+        /// </summary>
+        /// <param name="driverName">ドライバ名</param>
+        /// <param name="generatorName">ジェネレータ名</param>
+        /// <param name="targetEventName">追加するイベント名一覧</param>
+        /// <returns>生成したコード</returns>
+        static string GetGeneratorCode(string driverName, string generatorName, string[] targetEventName)
+        {
             var generatorCode = @"using System;
 using System.Windows.Forms;";
             if (targetEventName != null)
@@ -294,7 +310,7 @@ namespace [*namespace]
     }
 }
 ";
-            DriverCreatorAdapter.AddCode($"{generatorName}.cs", generatorCode.Replace("{generatorName}", generatorName).Replace("{driverName}", driverName), control);
+            return generatorCode.Replace("{generatorName}", generatorName).Replace("{driverName}", driverName);
         }
 
         string GenerateCodeCore(Control targetControl, DriverDesignInfo info)
