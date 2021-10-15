@@ -51,7 +51,8 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(12, 12);
+            this.splitContainer1.Location = new System.Drawing.Point(9, 10);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -61,8 +62,9 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this._textBoxPreview);
-            this.splitContainer1.Size = new System.Drawing.Size(776, 377);
-            this.splitContainer1.SplitterDistance = 363;
+            this.splitContainer1.Size = new System.Drawing.Size(705, 302);
+            this.splitContainer1.SplitterDistance = 407;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
             // _tabControlType
@@ -72,9 +74,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             this._tabControlType.Controls.Add(this.tabPage2);
             this._tabControlType.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tabControlType.Location = new System.Drawing.Point(0, 0);
+            this._tabControlType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._tabControlType.Name = "_tabControlType";
             this._tabControlType.SelectedIndex = 0;
-            this._tabControlType.Size = new System.Drawing.Size(363, 377);
+            this._tabControlType.Size = new System.Drawing.Size(407, 302);
             this._tabControlType.TabIndex = 1;
             this._tabControlType.SelectedIndexChanged += new System.EventHandler(this._tabControlType_SelectedIndexChanged);
             // 
@@ -83,9 +86,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Controls.Add(this._driverCodeDriverControl);
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(355, 348);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Size = new System.Drawing.Size(399, 276);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Driver";
             // 
@@ -93,9 +97,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             // 
             this._driverCodeDriverControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this._driverCodeDriverControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._driverCodeDriverControl.Location = new System.Drawing.Point(3, 3);
+            this._driverCodeDriverControl.Location = new System.Drawing.Point(2, 2);
+            this._driverCodeDriverControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._driverCodeDriverControl.Name = "_driverCodeDriverControl";
-            this._driverCodeDriverControl.Size = new System.Drawing.Size(349, 342);
+            this._driverCodeDriverControl.Size = new System.Drawing.Size(395, 272);
             this._driverCodeDriverControl.TabIndex = 15;
             // 
             // tabPage2
@@ -103,9 +108,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this._driverCodeGeneratorControl);
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(355, 348);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Size = new System.Drawing.Size(399, 276);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Generator";
             // 
@@ -113,28 +119,31 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             // 
             this._driverCodeGeneratorControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this._driverCodeGeneratorControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._driverCodeGeneratorControl.Location = new System.Drawing.Point(3, 3);
+            this._driverCodeGeneratorControl.Location = new System.Drawing.Point(2, 2);
+            this._driverCodeGeneratorControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._driverCodeGeneratorControl.Name = "_driverCodeGeneratorControl";
-            this._driverCodeGeneratorControl.Size = new System.Drawing.Size(349, 342);
+            this._driverCodeGeneratorControl.Size = new System.Drawing.Size(395, 272);
             this._driverCodeGeneratorControl.TabIndex = 0;
             // 
             // _textBoxPreview
             // 
             this._textBoxPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this._textBoxPreview.Location = new System.Drawing.Point(0, 0);
+            this._textBoxPreview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._textBoxPreview.Multiline = true;
             this._textBoxPreview.Name = "_textBoxPreview";
             this._textBoxPreview.ReadOnly = true;
-            this._textBoxPreview.Size = new System.Drawing.Size(409, 377);
+            this._textBoxPreview.Size = new System.Drawing.Size(295, 302);
             this._textBoxPreview.TabIndex = 0;
             // 
             // _buttonOK
             // 
             this._buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this._buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this._buttonOK.Location = new System.Drawing.Point(632, 395);
+            this._buttonOK.Location = new System.Drawing.Point(597, 316);
+            this._buttonOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._buttonOK.Name = "_buttonOK";
-            this._buttonOK.Size = new System.Drawing.Size(75, 29);
+            this._buttonOK.Size = new System.Drawing.Size(56, 23);
             this._buttonOK.TabIndex = 1;
             this._buttonOK.Text = "OK";
             this._buttonOK.UseVisualStyleBackColor = true;
@@ -143,9 +152,10 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             // 
             this._buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this._buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this._buttonCancel.Location = new System.Drawing.Point(713, 395);
+            this._buttonCancel.Location = new System.Drawing.Point(658, 316);
+            this._buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._buttonCancel.Name = "_buttonCancel";
-            this._buttonCancel.Size = new System.Drawing.Size(75, 29);
+            this._buttonCancel.Size = new System.Drawing.Size(56, 23);
             this._buttonCancel.TabIndex = 2;
             this._buttonCancel.Text = "Cancel";
             this._buttonCancel.UseVisualStyleBackColor = true;
@@ -153,14 +163,15 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             // DriverCodeSettingForm
             // 
             this.AcceptButton = this._buttonOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this._buttonCancel;
-            this.ClientSize = new System.Drawing.Size(800, 436);
+            this.ClientSize = new System.Drawing.Size(723, 349);
             this.Controls.Add(this._buttonCancel);
             this.Controls.Add(this._buttonOK);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DriverCodeSettingForm";
