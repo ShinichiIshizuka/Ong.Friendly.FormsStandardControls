@@ -34,7 +34,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._textBoxFilterProperty = new System.Windows.Forms.TextBox();
             this._dataGridViewProperty = new System.Windows.Forms.DataGridView();
-            this._labelWait = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this._textBoxFilterMethod = new System.Windows.Forms.TextBox();
             this._dataGridViewMethod = new System.Windows.Forms.DataGridView();
@@ -81,7 +80,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this._labelWait);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this._textBoxFilterMethod);
             this.splitContainer1.Panel2.Controls.Add(this._dataGridViewMethod);
@@ -117,20 +115,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             this._dataGridViewProperty.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this._dataGridViewProperty.Size = new System.Drawing.Size(354, 105);
             this._dataGridViewProperty.TabIndex = 0;
-            // 
-            // _labelWait
-            // 
-            this._labelWait.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._labelWait.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this._labelWait.ForeColor = System.Drawing.SystemColors.Window;
-            this._labelWait.Location = new System.Drawing.Point(0, 29);
-            this._labelWait.Name = "_labelWait";
-            this._labelWait.Size = new System.Drawing.Size(354, 106);
-            this._labelWait.TabIndex = 6;
-            this._labelWait.Text = "Wait a moment...";
-            this._labelWait.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -205,7 +189,6 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TextBox _textBoxFilterProperty;
         private System.Windows.Forms.DataGridView _dataGridViewProperty;
-        private System.Windows.Forms.Label _labelWait;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox _textBoxFilterMethod;
         private System.Windows.Forms.DataGridView _dataGridViewMethod;
