@@ -129,12 +129,13 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
         {
             var list = new List<Type>();
             var type = control.GetType();
+            // Controlまでさかのぼって選択できるようにする
             while (type != null)
             {
                 list.Add(type);
                 type = type.BaseType;
-                if (type == null || type == typeof(Control) || type == typeof(UserControl) || type == typeof(Form))
-                {   
+                if (type == null || type.ToString().IndexOf(typeof(Control).ToString()) == 0)
+                {
                     break;
                 }
             }
@@ -147,16 +148,69 @@ namespace Ong.Friendly.FormsStandardControls.Generator.CreateDriver
             }
             else
             {
+                // 作成するクラスの選択
                 using (var dlg = new TypeSelectForm(list.ToArray()))
                 {
-                    if (dlg.ShowDialog() != DialogResult.OK) return;
+                    if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
                     driverName = dlg.SelectedType.Name + "Driver";
                     targetType = dlg.SelectedType;
                 }
             }
-            var generatorName = driverName + "Generator";
 
-            var driverCode = @"using Codeer.Friendly;
+            string[] targetEventName = null;
+            var generatorName = driverName + "Generator";
+            var propertyCode = string.Empty;
+            var methodCode = string.Empty;
+            // プロパティ/フィールドとメソッドの選択
+            using (var dlg = new DriverCodeSettingForm(targetType, driverName, generatorName))
+            {
+                dlg.DelegateGetDriverCode = GetDriverCode;
+                dlg.DelegateGetGeneratorCode = GetGeneratorCode;
+
+                EventInfo[] eventInfoList = null;
+                try
+                {
+                    eventInfoList = targetType.GetEvents(
+                        BindingFlags.FlattenHierarchy |
+                        BindingFlags.Instance |
+                        BindingFlags.Public |
+                        BindingFlags.Static);
+                }
+                catch { }
+                foreach (var eventInfo in eventInfoList)
+                {
+                    dlg.AddEventName(eventInfo.Name);
+                }
+                if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+                targetEventName = dlg.GetSelectedEventName();
+                propertyCode = dlg.GetOutputTextProperty();
+                methodCode = dlg.GetOutputTextMethod();
+            }
+
+            var driverCode = GetDriverCode(targetType, driverName, propertyCode, methodCode);
+            DriverCreatorAdapter.AddCode($"{driverName}.cs", driverCode, control);
+
+            var generatorCode = GetGeneratorCode(driverName, generatorName, targetEventName);
+            DriverCreatorAdapter.AddCode($"{generatorName}.cs", generatorCode, control);
+        }
+
+        /// <summary>
+        /// ドライバ用コード作成
+        /// </summary>
+        /// <param name="targetType">対象オブジェクト</param>
+        /// <param name="driverName">ドライバ名</param>
+        /// <param name="propertyCode">プロパティ/フィールドのコード</param>
+        /// <param name="methodCode">メソッドのコード</param>
+        /// <returns>生成したコード</returns>
+        static string GetDriverCode(Type targetType, string driverName, string propertyCode, string methodCode)
+        {
+            var driverCode = @"using Codeer.Friendly;";
+            if ((0 < propertyCode.Length) || (0 < methodCode.Length))
+            {
+                driverCode += @"
+using Codeer.Friendly.Dynamic;";
+            }
+            driverCode += @"
 using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.TestAssistant.GeneratorToolKit;
@@ -168,37 +222,95 @@ namespace [*namespace]
 {
     [ControlDriver(TypeFullName = ""{typefullname}"", Priority = 2)]
     public class {driverName} : FormsControlBase
-    {
+    {";
+            driverCode += (0 < propertyCode.Length) ? Environment.NewLine : "";
+            driverCode += propertyCode;
+            driverCode += @"
         public {driverName}(AppVar appVar)
-            : base(appVar) { }
+            : base(appVar) { }";
+            driverCode += (0 < methodCode.Length) ? Environment.NewLine : "";
+            driverCode += methodCode;
+            driverCode += @"
     }
 }
 ";
-            DriverCreatorAdapter.AddCode($"{driverName}.cs", driverCode.Replace("{typefullname}", targetType.FullName).Replace("{driverName}", driverName), control);
+            return driverCode.Replace("{typefullname}", targetType.FullName).Replace("{driverName}", driverName);
+        }
 
+        /// <summary>
+        /// ジェネレータ用コード作成
+        /// </summary>
+        /// <param name="driverName">ドライバ名</param>
+        /// <param name="generatorName">ジェネレータ名</param>
+        /// <param name="targetEventName">追加するイベント名一覧</param>
+        /// <returns>生成したコード</returns>
+        static string GetGeneratorCode(string driverName, string generatorName, string[] targetEventName)
+        {
             var generatorCode = @"using System;
-using System.Windows.Forms;
+using System.Windows.Forms;";
+            if (targetEventName != null)
+            {
+                generatorCode += @"
+using System.Collections.Generic;";
+            }
+            generatorCode += @"
 using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace [*namespace]
 {
     [CaptureCodeGenerator(""[*namespace.{driverName}]"")]
     public class {generatorName} : CaptureCodeGeneratorBase
-    {
+    {";
+            if (targetEventName != null)
+            {
+                generatorCode += @"
+        List<Action> _removes = new List<Action>();";
+            }
+            generatorCode += @"
         Control _control;
 
         protected override void Attach()
         {
-            _control = (Control)ControlObject;
+            _control = (Control)ControlObject;";
+
+            if (targetEventName != null)
+            {
+                foreach (var name in targetEventName)
+                {
+                    generatorCode += @"
+            _removes.Add(EventAdapter.Add(ControlObject, ""{eventName}"", {eventName}));";
+                    generatorCode = generatorCode.Replace("{eventName}", name);
+                }
+            }
+            generatorCode += @"
         }
 
         protected override void Detach()
+        {";
+            if (targetEventName != null)
+            {
+                generatorCode += @"
+            _removes.ForEach(e => e());";
+            }
+            generatorCode += @"
+        }";
+            if (targetEventName != null)
+            {
+                foreach (var name in targetEventName)
+                {
+                    generatorCode += @"
+
+        void {eventName}(object sender, dynamic e)
         {
-        }
+        }";
+                    generatorCode = generatorCode.Replace("{eventName}", name);
+                }
+            }
+            generatorCode += @"
     }
 }
 ";
-            DriverCreatorAdapter.AddCode($"{generatorName}.cs", generatorCode.Replace("{generatorName}", generatorName).Replace("{driverName}", driverName), control);
+            return generatorCode.Replace("{generatorName}", generatorName).Replace("{driverName}", driverName);
         }
 
         string GenerateCodeCore(Control targetControl, DriverDesignInfo info)
