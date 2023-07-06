@@ -125,9 +125,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Src\Ong.Forms.StandardControls\Ong.Friendly.FormsStandardControls.csproj">
       <Project>{1ca63b58-74e7-4780-8c76-98b9082820e6}</Project>
       <Name>Ong.Friendly.FormsStandardControls</Name>
