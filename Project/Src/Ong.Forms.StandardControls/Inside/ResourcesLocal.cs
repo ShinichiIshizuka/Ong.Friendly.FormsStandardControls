@@ -8,14 +8,29 @@ namespace Ong.Friendly.FormsStandardControls.Inside
     /// ローカライズ済みリソース。
     /// </summary>
     [Serializable]
-    class ResourcesLocal
+    public class ResourcesLocal
     {
         static internal ResourcesLocal Instance;
 
-        internal string ErrorCheckSetting;
-        internal string ErrorNotSetListView;
-        internal string ErrorNotSetToolStrip;
-        internal string ErrorNotSetTreeView;
+        /// <summary>
+        /// ErrorCheckSetting
+        /// </summary>
+        public string ErrorCheckSetting { get; set; }
+
+        /// <summary>
+        /// ErrorNotSetListView
+        /// </summary>
+        public string ErrorNotSetListView { get; set; }
+
+        /// <summary>
+        /// ErrorNotSetToolStrip
+        /// </summary>
+        public string ErrorNotSetToolStrip { get; set; }
+
+        /// <summary>
+        /// ErrorNotSetTreeView
+        /// </summary>
+        public string ErrorNotSetTreeView { get; set; }
 
         /// <summary>
         /// 初期化。
@@ -29,7 +44,7 @@ namespace Ong.Friendly.FormsStandardControls.Inside
         }
 
         /// <summary>
-        /// コンストラクタ。
+        /// 初期化。
         /// </summary>
         void Initialize()
         {
